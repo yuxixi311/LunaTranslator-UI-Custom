@@ -555,17 +555,21 @@ class TextBrowser(WebviewWidget, somecommon):
             self.setstatus(running)
 
     def calloverlayaction(self, name):
-        """Route overlay chrome actions to existing application functionality."""
+        """Route overlay chrome actions to existing application functionality.
+
+        Chrome menu items use explicit SHOW semantics (realshowhide), unlike
+        the toolbar buttons which toggle on repeated clicks.
+        """
         if name == "dictionary":
-            gobject.base.translation_ui.callopensearchwordwindow()
+            gobject.base.searchwordW.realshowhide.emit(True)
         elif name == "history":
-            gobject.base.transhis.showsignal.emit()
+            gobject.base.transhis.realshowhide.emit(True)
         elif name == "memo":
             from gui.dialog_memory import dialog_memory
 
             dialog_memory(gobject.base.commonstylebase)
         elif name == "settings":
-            gobject.base.settin_ui_showsignal.emit()
+            gobject.base.settin_ui.realshowhide.emit(True)
         elif name == "togglepause":
             gobject.base.translation_ui.startTranslater()
         elif name == "togglemode":
