@@ -200,6 +200,28 @@ class Textbrowser(QFrame):
             lambda _1: _1.clear(),
         )
 
+    # ---- Learning UI chrome passthroughs (no-op on the Qt fallback engine) ----
+
+    def setdesignstyle(self, dark=None):
+        if hasattr(self.textbrowser, "setdesignstyle"):
+            self.textbrowser.setdesignstyle(dark)
+
+    def setoverlaymode(self, mode):
+        if hasattr(self.textbrowser, "setoverlaymode"):
+            self.textbrowser.setoverlaymode(mode)
+
+    def setprevtext(self, text):
+        if hasattr(self.textbrowser, "setprevtext"):
+            self.textbrowser.setprevtext(text)
+
+    def setprevlabel(self, text):
+        if hasattr(self.textbrowser, "setprevlabel"):
+            self.textbrowser.setprevlabel(text)
+
+    def setstatus(self, running):
+        if hasattr(self.textbrowser, "setstatus"):
+            self.textbrowser.setstatus(running)
+
     def setcolorstyle(self, _=None):
         self.textbrowser.setcolorstyle()
         WSForEach(

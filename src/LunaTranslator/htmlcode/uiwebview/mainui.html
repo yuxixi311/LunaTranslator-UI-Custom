@@ -19,6 +19,36 @@
 </style>
 <svg id="bg-layer"></svg>
 <div id="luna_root_div" dir="auto">
+    <div id="luna_chrome" class="lt-chrome">
+        <div id="luna_chrome_bar" class="lt-chrome-bar">
+            <span id="luna_status_dot" class="lt-dot lt-dot-idle"></span>
+            <span class="lt-spacer"></span>
+            <button id="luna_pause_btn" class="lt-iconbtn" title="Pause / Resume">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5v14"/><path d="M15 5v14"/></svg>
+            </button>
+            <button id="luna_more_btn" class="lt-iconbtn" title="More">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+            </button>
+        </div>
+        <div id="luna_prev_div" class="lt-prev lt-hidden">
+            <span id="luna_prev_label" class="lt-prev-label"></span>
+            <div id="luna_prev_text" class="lt-prev-text"></div>
+        </div>
+        <div id="luna_actions_row" class="lt-actions lt-hidden">
+            <button class="lt-quietbtn" data-ltaction="dictionary">Dictionary</button>
+            <button class="lt-quietbtn" data-ltaction="history">History</button>
+            <button class="lt-quietbtn" data-ltaction="memo">Memo</button>
+            <button class="lt-quietbtn" data-ltaction="settings">Settings</button>
+        </div>
+        <div id="luna_more_menu" class="lt-menu lt-hidden">
+            <button class="lt-menuitem" data-ltaction="togglepause">Pause / Resume</button>
+            <button class="lt-menuitem" id="luna_menu_modebtn" data-ltaction="togglemode">Expanded mode</button>
+            <button class="lt-menuitem" data-ltaction="dictionary">Open dictionary</button>
+            <button class="lt-menuitem" data-ltaction="history">Open history</button>
+            <button class="lt-menuitem" data-ltaction="memo">Memo</button>
+            <button class="lt-menuitem" data-ltaction="settings">Settings</button>
+        </div>
+    </div>
     <div id="luna_root_div_trans"></div>
     <div id="luna_root_div_origin"></div>
 </div>
@@ -152,6 +182,102 @@
 <style id="maybevertical">
 </style>
 <style id="colorcontroller"></style>
+<style id="ltdesignstyle"></style>
+<style>
+    /* ==== LunaTranslator Learning UI overlay chrome (designtokens-driven) ==== */
+    .lt-chrome { position: relative; }
+    .lt-chrome-bar {
+        position: sticky;
+        top: 0;
+        z-index: 2001;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        height: 28px;
+        padding: 0 10px;
+        background: var(--lt-overlay_glass, rgba(255, 255, 255, 0.86));
+        backdrop-filter: saturate(180%) blur(8px);
+        -webkit-backdrop-filter: saturate(180%) blur(8px);
+        border-bottom: 1px solid var(--lt-hairline, rgba(0, 0, 0, 0.08));
+        border-radius: var(--lt-r_overlay, 18px) var(--lt-r_overlay, 18px) 0 0;
+    }
+    @media (prefers-reduced-transparency: reduce) {
+        .lt-chrome-bar { backdrop-filter: none; -webkit-backdrop-filter: none; }
+    }
+    .lt-spacer { flex: 1; }
+    .lt-dot {
+        width: 7px; height: 7px; border-radius: 50%;
+        background: var(--lt-live, #30D158);
+        flex: none;
+        opacity: 0;
+        transition: opacity var(--lt-m_fast, 120)ms ease;
+    }
+    .lt-dot.lt-dot-live { opacity: 1; }
+    .lt-iconbtn {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 22px; height: 22px; padding: 0;
+        border: none; background: transparent;
+        color: var(--lt-text2, #6E6E73);
+        border-radius: 6px; cursor: pointer;
+    }
+    .lt-iconbtn:hover { background: var(--lt-hover, rgba(0, 0, 0, 0.05)); color: var(--lt-text, #1D1D1F); }
+    .lt-prev {
+        padding: 6px 12px 8px 12px;
+        border-bottom: 1px solid var(--lt-hairline, rgba(0, 0, 0, 0.08));
+        opacity: 0.85;
+    }
+    .lt-prev-label {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        color: var(--lt-text3, #86868B);
+        margin-bottom: 2px;
+    }
+    .lt-prev-text {
+        font-size: 12px;
+        color: var(--lt-text2, #6E6E73);
+        white-space: pre-wrap;
+        word-break: break-word;
+        max-height: 72px;
+        overflow: hidden;
+    }
+    .lt-actions {
+        display: flex; gap: 6px; flex-wrap: wrap;
+        padding: 6px 10px;
+        border-bottom: 1px solid var(--lt-hairline, rgba(0, 0, 0, 0.08));
+    }
+    .lt-quietbtn {
+        border: 1px solid var(--lt-hairline, rgba(0, 0, 0, 0.08));
+        background: var(--lt-surface, #FFFFFF);
+        color: var(--lt-text, #1D1D1F);
+        font-size: 12px; font-family: inherit;
+        border-radius: var(--lt-r_control, 8px);
+        padding: 3px 10px; cursor: pointer;
+    }
+    .lt-quietbtn:hover { background: var(--lt-hover, rgba(0, 0, 0, 0.05)); }
+    .lt-menu {
+        position: absolute;
+        right: 10px; top: 32px;
+        z-index: 3000;
+        min-width: 160px;
+        background: var(--lt-surface, #FFFFFF);
+        border: 1px solid var(--lt-hairline, rgba(0, 0, 0, 0.08));
+        border-radius: var(--lt-r_control, 8px);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.14);
+        padding: 4px;
+        display: flex; flex-direction: column;
+    }
+    .lt-menuitem {
+        text-align: left;
+        border: none; background: transparent;
+        color: var(--lt-text, #1D1D1F);
+        font-size: 13px; font-family: inherit;
+        padding: 6px 10px; border-radius: 6px; cursor: pointer;
+    }
+    .lt-menuitem:hover { background: var(--lt-hover, rgba(0, 0, 0, 0.05)); }
+    .lt-hidden { display: none !important; }
+    #luna_root_div { font-family: var(--lt-font_ui, "Segoe UI", "Microsoft YaHei UI", sans-serif); }
+</style>
 <script>document.addEventListener('DOMContentLoaded', () => {
         //https://github.com/MicrosoftEdge/WebView2Feedback/blob/main/specs/WebMessageObjects.md
 
@@ -812,7 +938,8 @@
         })
         needremoves.forEach((e) => { e.remove() })
         ele.parentNode.parentNode.parentNode.childNodes.forEach((e) => {
-            if (e.id && (e.id != ele.parentNode.parentNode.id)) {
+            // luna_chrome is the Learning UI chrome bar; it must survive line clears
+            if (e.id && (e.id != ele.parentNode.parentNode.id) && (e.id != 'luna_chrome')) {
                 e.innerHTML = ""
             }
         })
@@ -1191,4 +1318,76 @@
                     }
                 }, { passive: false });
             })()
+</script>
+<script>
+    /* ==== LunaTranslator Learning UI chrome functions ==== */
+    function setdesignstyle(css) {
+        document.getElementById('ltdesignstyle').innerHTML = css;
+    }
+    function setoverlaymode(mode) {
+        document.body.classList.toggle('lt-compact', mode == 'compact');
+        document.body.classList.toggle('lt-expanded', mode == 'expanded');
+        var b = document.getElementById('luna_menu_modebtn');
+        if (b) b.innerText = (mode == 'compact') ? 'Expanded mode' : 'Compact mode';
+        var act = document.getElementById('luna_actions_row');
+        if (act) act.classList.toggle('lt-hidden', mode == 'compact');
+        var prev = document.getElementById('luna_prev_div');
+        if (prev) prev.classList.toggle('lt-hidden', mode == 'compact' || prev.getAttribute('lt-empty') == '1');
+    }
+    function setprevtext(text) {
+        var d = document.getElementById('luna_prev_text');
+        if (d) d.innerText = text || '';
+        var wrap = document.getElementById('luna_prev_div');
+        if (!wrap) return;
+        var empty = !(text && text.trim());
+        wrap.setAttribute('lt-empty', empty ? '1' : '0');
+        var compact = document.body.classList.contains('lt-compact');
+        wrap.classList.toggle('lt-hidden', compact || empty);
+    }
+    function setprevlabel(text) {
+        var d = document.getElementById('luna_prev_label');
+        if (d) d.innerText = text || '';
+    }
+    function setstatus(running) {
+        var d = document.getElementById('luna_status_dot');
+        if (d) d.classList.toggle('lt-dot-live', !!running);
+    }
+    function setpaused(paused) {
+        var b = document.getElementById('luna_pause_btn');
+        if (!b) return;
+        b.innerHTML = paused
+            ? '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5l11 7-11 7z"/></svg>'
+            : '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5v14"/><path d="M15 5v14"/></svg>';
+    }
+    function lt_send(action) {
+        if (window.LUNAJSObject) LUNAJSObject.calloverlayaction(action);
+        else wsinvoke('calloverlayaction', [action]);
+    }
+    function lt_stop(e) { e.stopPropagation(); }
+    (function () {
+        var pause = document.getElementById('luna_pause_btn');
+        var more = document.getElementById('luna_more_btn');
+        var menu = document.getElementById('luna_more_menu');
+        if (!pause || !more || !menu) return;
+        [pause, more].forEach(function (el) {
+            el.addEventListener('mousedown', lt_stop);
+            el.addEventListener('mouseup', lt_stop);
+        });
+        pause.addEventListener('click', function (e) { e.stopPropagation(); lt_send('togglepause'); });
+        more.addEventListener('click', function (e) { e.stopPropagation(); menu.classList.toggle('lt-hidden'); });
+        menu.addEventListener('mousedown', lt_stop);
+        menu.addEventListener('mouseup', lt_stop);
+        menu.querySelectorAll('.lt-menuitem').forEach(function (el) {
+            el.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menu.classList.add('lt-hidden');
+                lt_send(el.getAttribute('data-ltaction'));
+            });
+        });
+        document.querySelectorAll('#luna_actions_row .lt-quietbtn').forEach(function (el) {
+            el.addEventListener('mousedown', lt_stop);
+            el.addEventListener('mouseup', lt_stop);
+            el.addEventListener('click', function (e) { e.stopPropagation(); lt_send(el.getAttribute('data-ltaction')); });
+        });
+    })();
 </script>

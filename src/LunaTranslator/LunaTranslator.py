@@ -632,6 +632,7 @@ class BASEOBJECT(QObject):
         _showrawfunction_unsafe = None
         if not waitforresultcallback:
             if not isRefresh:
+                self.previoustext_raw = self.currenttext_raw
                 self.currenttext = text
                 self.currenttext_raw = origin
                 self.statusok = statusok
@@ -1570,6 +1571,13 @@ class BASEOBJECT(QObject):
         style += "#NOBORDER{border:0;margin:0;padding:0;}"
         if self.commonstylebase.styleSheet() != style:
             self.commonstylebase.setStyleSheet(style)
+        # Learning UI: keep the webview overlay design tokens in sync with the theme
+        try:
+            tt = getattr(self.translation_ui, "translate_text", None)
+            if tt is not None and hasattr(tt, "setdesignstyle"):
+                tt.setdesignstyle(dark)
+        except Exception:
+            pass
         font = QFont()
         font.setFamily(globalconfig.get("settingfonttype", ""))
         font.setPointSizeF(globalconfig.get("settingfontsize", 12))

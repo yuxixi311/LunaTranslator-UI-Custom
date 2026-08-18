@@ -207,6 +207,13 @@ class TranslatorWindow(resizableframeless):
             updateTranslate=updateTranslate,
             is_auto_run=is_auto_run,
         )
+        # Learning UI: expose the previous sentence to the overlay chrome
+        try:
+            tt = getattr(self, "translate_text", None)
+            if tt is not None and hasattr(tt, "setprevtext"):
+                tt.setprevtext(getattr(gobject.base, "previoustext_raw", ""))
+        except Exception:
+            pass
 
     def showstatus(self, res, t: TextType, klass=None):
         if t == TextType.Info:

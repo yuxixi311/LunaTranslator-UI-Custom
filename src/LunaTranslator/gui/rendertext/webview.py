@@ -53,6 +53,11 @@ class somecommon(dataget):
         self.setfontstyle()
         self.setdisplayrank(globalconfig.get("displayrank", 0))
         self.sethovercolor(globalconfig.get("hovercolor", "#80000000"))
+        # Learning UI: push design tokens + overlay mode once the page is ready
+        self.setdesignstyle(None)
+        self.setoverlaymode(globalconfig.get("overlay_mode", "compact"))
+        self._ltlaststatuspush = None
+        self._ltcheckstatuspush()
         self.settooltipsstyle(
             globalconfig["word_hover_bg_color"],
             globalconfig["word_hover_text_color"],
@@ -495,6 +500,7 @@ class TextBrowser(WebviewWidget, somecommon):
         self.bind("calllunaLeave", self.calllunaLeave)
         self.bind("calllunaloadready", self.calllunaloadready)
         self.bind("calllunaMouseHoverWord", self.calllunaMouseHoverWord)
+        self.bind("calloverlayaction", self.calloverlayaction)
         self.set_zoom(globalconfig.get("ZoomFactor2", 1))
         self.on_ZoomFactorChanged.connect(
             functools.partial(globalconfig.__setitem__, "ZoomFactor2")
@@ -513,6 +519,62 @@ class TextBrowser(WebviewWidget, somecommon):
         self.trans0checkercheck = None
         self.trans0checker = QTimer(self)
         self.trans0checker.timeout.connect(self.__checkmousestate)
+        # Learning UI: recognition-status push (1 Hz, push only on change)
+        self.statuspushchecker = QTimer(self)
+        self.statuspushchecker.setInterval(1000)
+        self.statuspushchecker.timeout.connect(self._ltcheckstatuspush)
+        self.statuspushchecker.start()
+
+    # ---------------- Learning UI overlay chrome (designtokens-driven) ----------------
+
+    def setdesignstyle(self, dark=None):
+        from myutils.designtokens import css, resolve_theme
+
+        if dark is None:
+            from myutils.utils import nowisdark
+
+            dark = bool(nowisdark())
+        self.eval("setdesignstyle({})".format(json.dumps(css(resolve_theme(dark)))))
+
+    def setoverlaymode(self, mode):
+        self.eval("setoverlaymode({})".format(json.dumps(mode)))
+
+    def setprevtext(self, text):
+        self.eval("setprevtext({})".format(json.dumps(text or "")))
+
+    def setprevlabel(self, text):
+        self.eval("setprevlabel({})".format(json.dumps(text or "")))
+
+    def setstatus(self, running):
+        self.eval("setstatus({})".format("true" if running else "false"))
+
+    def _ltcheckstatuspush(self):
+        running = bool(getattr(gobject.base, "statusok", False))
+        if running != self._ltlaststatuspush:
+            self._ltlaststatuspush = running
+            self.setstatus(running)
+
+    def calloverlayaction(self, name):
+        """Route overlay chrome actions to existing application functionality."""
+        if name == "dictionary":
+            gobject.base.translation_ui.callopensearchwordwindow()
+        elif name == "history":
+            gobject.base.transhis.showsignal.emit()
+        elif name == "memo":
+            from gui.dialog_memory import dialog_memory
+
+            dialog_memory(gobject.base.commonstylebase)
+        elif name == "settings":
+            gobject.base.settin_ui_showsignal.emit()
+        elif name == "togglepause":
+            gobject.base.translation_ui.startTranslater()
+        elif name == "togglemode":
+            mode = "expanded" if globalconfig.get("overlay_mode", "compact") == "compact" else "compact"
+            globalconfig["overlay_mode"] = mode
+            gobject.base.translation_ui.translate_text.setoverlaymode(mode)
+        elif name in ("compact", "expanded"):
+            globalconfig["overlay_mode"] = name
+            self.setoverlaymode(name)
 
     def ___cleartext(self):
         self.parent().clear(False)

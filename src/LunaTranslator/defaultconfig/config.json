@@ -2,6 +2,7 @@
     "showna": true,
     "llama.cpp": {},
     "screenshot_savepath": "",
+    "overlay_mode": "compact",
     "history": {
         "autosave": false,
         "showorigin": true,
