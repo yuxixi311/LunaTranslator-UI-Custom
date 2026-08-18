@@ -570,6 +570,15 @@ class TextBrowser(WebviewWidget, somecommon):
             dialog_memory(gobject.base.commonstylebase)
         elif name == "settings":
             gobject.base.settin_ui.realshowhide.emit(True)
+        elif name == "ocrsettings":
+            # quick access to the OCR-related settings (核心设置 hosts them)
+            gobject.base.settin_ui.realshowhide.emit(True)
+            if gobject.base.settin_ui.isfirst:
+                gobject.base.settin_ui.firstshow()
+            try:
+                gobject.base.settin_ui.tab_widget.setCurrentIndex(0)
+            except Exception:
+                pass
         elif name == "togglepause":
             gobject.base.translation_ui.startTranslater()
         elif name == "togglemode":
