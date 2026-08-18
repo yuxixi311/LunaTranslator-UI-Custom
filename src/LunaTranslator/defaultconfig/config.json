@@ -4,6 +4,8 @@
     "screenshot_savepath": "",
     "overlay_mode": "compact",
     "interface_level": "simplified",
+    "yuanjiao_r": 18,
+    "theme3": "",
     "history": {
         "autosave": false,
         "showorigin": true,

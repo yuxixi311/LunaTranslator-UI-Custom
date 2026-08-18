@@ -1558,6 +1558,16 @@ class BASEOBJECT(QObject):
                         style = ff.read()
             except:
                 print_exc()
+        # Learning UI: with no classic theme selected, the design-system
+        # tokens ARE the default theme (generated QSS). Classic themes stay
+        # selectable through the unchanged theme3 mechanism.
+        if not style:
+            try:
+                from myutils.designtokens import qss as _dtqss, resolve_theme
+
+                style = _dtqss(resolve_theme(dark))
+            except:
+                print_exc()
         fontstr = lambda fsize: "font:{fontsize}pt  {fonttype}; {bold}".format(
             fontsize=fsize,
             fonttype=globalconfig.get("settingfonttype", ""),
