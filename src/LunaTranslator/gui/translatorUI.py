@@ -636,6 +636,39 @@ class TranslatorWindow(resizableframeless):
                 middleclick,
             )
 
+    # Learning UI: simplified/full toolbar presentation levels.
+    # Flags live in the existing toolbutton.buttons config (user-editable in
+    # the buttons settings page, saved through the normal save path), so the
+    # switch is fully reversible and never applied automatically at startup
+    # (a user's custom toolbar must survive relaunches).
+    SIMPLIFIED_BUTTONS = {
+        "retrans",
+        "automodebutton",
+        "selectgame",
+        "selectocrrange",
+        "ocr_once",
+        "setting",
+        "history",
+        "searchwordW",
+        "keepontop",
+        "minmize",
+        "quit",
+    }
+
+    def apply_interface_level(self, level):
+        """Switch the toolbar between the Simplified Japanese Learning set
+        and the full button inventory."""
+        buttons = globalconfig["toolbutton"]["buttons"]
+        if level == "simplified":
+            for name in buttons:
+                buttons[name]["use"] = name in self.SIMPLIFIED_BUTTONS
+        else:  # "full"
+            for name in buttons:
+                buttons[name]["use"] = True
+        globalconfig["interface_level"] = level
+        self.adjustbuttons()
+        self.enterfunction()
+
     def callopensearchwordwindow(self):
         curr = self.translate_text.GetSelectedText()
         if curr:

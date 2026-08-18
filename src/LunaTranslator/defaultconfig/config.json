@@ -3,6 +3,7 @@
     "llama.cpp": {},
     "screenshot_savepath": "",
     "overlay_mode": "compact",
+    "interface_level": "simplified",
     "history": {
         "autosave": false,
         "showorigin": true,
@@ -387,7 +388,7 @@
                 "align": 2
             },
             "automodebutton": {
-                "use": false,
+                "use": true,
                 "tip": "自动模式",
                 "icon": "fa.forward",
                 "icon2": "fa.play",
@@ -400,7 +401,7 @@
                 "align": 2
             },
             "copy_once": {
-                "use": true,
+                "use": false,
                 "tip": "读取剪贴板",
                 "icon": "fa.file-o",
                 "align": 2
@@ -412,19 +413,19 @@
                 "align": 0
             },
             "mousetransbutton": {
-                "use": true,
+                "use": false,
                 "tip": "鼠标穿透窗口",
                 "icon": "fa.mouse-pointer",
                 "align": 2
             },
             "backtransbutton": {
-                "use": true,
+                "use": false,
                 "tip": "窗口背景透明",
                 "icon": "fa.lightbulb-o",
                 "align": 2
             },
             "locktoolsbutton": {
-                "use": true,
+                "use": false,
                 "tip": "锁定工具栏",
                 "icon": "fa.lock",
                 "icon2": "fa.unlock",
@@ -440,7 +441,7 @@
                 "align": 2
             },
             "selecttext": {
-                "use": true,
+                "use": false,
                 "tip": "选择文本",
                 "belong": [
                     "texthook"
@@ -458,7 +459,7 @@
                 "align": 2
             },
             "hideocrrange": {
-                "use": true,
+                "use": false,
                 "tip": "显示/隐藏范围框",
                 "belong": [
                     "ocr"
@@ -515,13 +516,13 @@
                 "align": 1
             },
             "move": {
-                "use": true,
+                "use": false,
                 "tip": "移动",
                 "icon": "fa.hand-paper-o",
                 "align": 0
             },
             "fullscreen": {
-                "use": true,
+                "use": false,
                 "tip": "窗口缩放",
                 "icon": "fa.compress",
                 "icon2": "fa.expand",
@@ -541,7 +542,7 @@
                 "align": 0
             },
             "showraw": {
-                "use": true,
+                "use": false,
                 "tip": "显示/隐藏原文",
                 "icon": "fa.eye",
                 "icon2": "fa.eye-slash",
@@ -555,13 +556,13 @@
                 "align": 2
             },
             "langdu": {
-                "use": true,
+                "use": false,
                 "tip": "朗读",
                 "icon": "fa.music",
                 "align": 2
             },
             "copy": {
-                "use": true,
+                "use": false,
                 "tip": "复制到剪贴板",
                 "icon": "fa.copy",
                 "align": 2
@@ -573,7 +574,7 @@
                 "align": 2
             },
             "gamepad_new": {
-                "use": true,
+                "use": false,
                 "tip": "游戏管理",
                 "icon": "fa.gamepad",
                 "align": 2
@@ -609,13 +610,13 @@
                 "align": 0
             },
             "bindwindow": {
-                "use": true,
+                "use": false,
                 "tip": "绑定窗口_（点击自己取消）",
                 "icon": "fa.windows",
                 "align": 2
             },
             "keepontop": {
-                "use": false,
+                "use": true,
                 "tip": "窗口置顶",
                 "icon": "fa.neuter",
                 "align": 2
@@ -627,7 +628,7 @@
                 "align": 0
             },
             "searchwordW": {
-                "use": false,
+                "use": true,
                 "tip": "查词",
                 "icon": "fa.search",
                 "align": 0

@@ -572,6 +572,13 @@ class TextBrowser(WebviewWidget, somecommon):
             mode = "expanded" if globalconfig.get("overlay_mode", "compact") == "compact" else "compact"
             globalconfig["overlay_mode"] = mode
             gobject.base.translation_ui.translate_text.setoverlaymode(mode)
+        elif name == "togglefulltoolbar":
+            level = (
+                "simplified"
+                if globalconfig.get("interface_level", "simplified") != "simplified"
+                else "full"
+            )
+            gobject.base.translation_ui.apply_interface_level(level)
         elif name in ("compact", "expanded"):
             globalconfig["overlay_mode"] = name
             self.setoverlaymode(name)
