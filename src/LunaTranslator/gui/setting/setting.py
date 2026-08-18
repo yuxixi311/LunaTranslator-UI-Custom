@@ -12,6 +12,7 @@ from gui.setting.cishu import setTabcishu
 from gui.setting.hotkey import setTab_quick, registrhotkeys
 from gui.setting.transopti import setTab7_lazy
 from gui.setting.about import setTab_about
+from gui.setting.quick import setTabQuick
 from gui.dynalang import LListWidgetItem, LListWidget
 
 
@@ -99,6 +100,7 @@ class Setting(closeashidewindow):
 
         self.tab_widget, do = makesubtab_lazy(
             [
+                "常用设置",
                 "核心设置",
                 "翻译设置",
                 "显示设置",
@@ -109,6 +111,7 @@ class Setting(closeashidewindow):
                 "关于软件",
             ],
             [
+                functools.partial(setTabQuick, self),
                 functools.partial(setTabOne_lazy, self),
                 functools.partial(setTabTwo_lazy, self),
                 functools.partial(setTabThree_lazy, self),
