@@ -384,9 +384,65 @@ QProgressBar::chunk {{
     background: {t["accent"]};
     border-radius: {t["r_pill"]}px;
 }}
+QSlider::groove:horizontal {{
+    height: 4px;
+    background: {t["track"]};
+    border-radius: 2px;
+}}
+QSlider::handle:horizontal {{
+    background: {t["surface"]};
+    border: 1px solid {t["hairline"]};
+    width: 14px;
+    height: 14px;
+    margin: -5px 0;
+    border-radius: 7px;
+}}
+QSlider::sub-page:horizontal {{
+    background: {t["accent"]};
+    border-radius: 2px;
+}}
+QCheckBox, QRadioButton {{
+    spacing: 8px;
+}}
 QCheckBox::indicator, QRadioButton::indicator {{
     width: 16px;
     height: 16px;
+    border: 1px solid {t["hairline"]};
+    border-radius: {t["r_control"]}px;
+    background: {t["surface"]};
+}}
+QCheckBox::indicator:hover, QRadioButton::indicator:hover {{
+    border: 1px solid {t["accent"]};
+}}
+QCheckBox::indicator:checked, QRadioButton::indicator:checked {{
+    background: {t["accent"]};
+    border: 1px solid {t["accent"]};
+}}
+QToolButton {{
+    background: transparent;
+    border: none;
+    border-radius: {t["r_control"]}px;
+    color: {t["text2"]};
+    padding: 3px;
+}}
+QToolButton:hover {{
+    background: {t["hover"]};
+    color: {t["text"]};
+}}
+QToolButton:pressed {{
+    background: {t["track"]};
+}}
+QHeaderView::section {{
+    background: {t["surface"]};
+    color: {t["text2"]};
+    border: none;
+    border-bottom: 1px solid {t["hairline"]};
+    padding: 6px 8px;
+}}
+QSpinBox::up-button, QSpinBox::down-button, QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {{
+    border: none;
+    background: transparent;
+    width: 14px;
 }}
 QGroupBox {{
     border: 1px solid {t["hairline"]};

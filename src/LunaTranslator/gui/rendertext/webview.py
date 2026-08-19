@@ -567,7 +567,13 @@ class TextBrowser(WebviewWidget, somecommon):
         elif name == "memo":
             from gui.dialog_memory import dialog_memory
 
-            dialog_memory(gobject.base.commonstylebase)
+            d = getattr(gobject.base, "_lt_memo_dialog", None)
+            if d is None:
+                d = dialog_memory(gobject.base.commonstylebase)
+                gobject.base._lt_memo_dialog = d
+            else:
+                d.show()
+                d.raise_()
         elif name == "settings":
             gobject.base.settin_ui.realshowhide.emit(True)
         elif name == "ocrsettings":
