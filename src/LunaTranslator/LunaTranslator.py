@@ -1473,9 +1473,9 @@ class BASEOBJECT(QObject):
         self.trayclicked = print
         self.tray.show()
         version = NativeUtils.QueryVersion(getcurrexe())
-        if "load_doc_or_log" not in globalconfig:
-            os.startfile(dynamiclink(docs=True))
-
+        # Learning UI: do not auto-open the usage-instructions page on launch.
+        # The guide remains reachable via the 使用说明 links in the text-source
+        # selector and dictionary dialogs.
         globalconfig["load_doc_or_log"] = version
 
     def __trayclicked(self):
