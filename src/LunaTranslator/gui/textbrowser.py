@@ -103,6 +103,16 @@ class Textbrowser(QFrame):
         self.curr_eng = None
         self.trace = []
 
+    # Learning UI: bounded session replay — the trace is replayed in full on
+    # every style/visibility toggle (refreshcontent), so an unbounded trace
+    # grows both memory and rebuild cost (perf audit hotspot 5). Cap it.
+    TRACE_LIMIT = 2000
+
+    def _trace_append(self, item):
+        self.trace.append(item)
+        if len(self.trace) > self.TRACE_LIMIT:
+            del self.trace[: len(self.trace) - self.TRACE_LIMIT]
+
     def iter_append(
         self,
         clear,
@@ -113,7 +123,7 @@ class Textbrowser(QFrame):
         color: ColorControl,
         klass,
     ):
-        self.trace.append(
+        self._trace_append(
             (1, (clear, iter_context_class, texttype, name, text, color, klass))
         )
         self.cleared = False
@@ -151,7 +161,7 @@ class Textbrowser(QFrame):
     ):
         if clear:
             self.trace.clear()
-        self.trace.append(
+        self._trace_append(
             (
                 0,
                 (

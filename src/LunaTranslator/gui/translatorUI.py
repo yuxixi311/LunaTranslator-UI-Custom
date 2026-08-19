@@ -158,7 +158,9 @@ class TranslatorWindow(resizableframeless):
                 )
 
         t = QTimer(self)
-        t.setInterval(10)
+        # Learning UI: 20 Hz (50 ms) is visually equivalent to 100 Hz for
+        # window-following but cuts GetWindowRect/safemove UI-thread load 5x.
+        t.setInterval(50)
         t.timeout.connect(__)
         t.timeout.emit()
         t.start()
