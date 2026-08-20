@@ -17,11 +17,18 @@ from gui.usefulwidget import D_getsimpleswitch, D_getspinbox, D_getsimplecombobo
 from gui.ltwidgets import LtPanelList, LtButton, LtSegmented
 
 
-def _active_ocr_name():
-    use = globalconfig["ocr"].get("use")
-    if use and use in globalconfig["ocr"]:
-        return globalconfig["ocr"][use].get("name", use)
-    return _TR("未选择")
+def _current_input_method():
+    for key in ("texthook", "ocr", "copy"):
+        if globalconfig["sourcestatus2"][key]["use"]:
+            return key
+    return "texthook"
+
+
+def _set_input_method(key):
+    # single active text source: the selected one on, the others off
+    for k in ("texthook", "ocr", "copy"):
+        globalconfig["sourcestatus2"][k]["use"] = k == key
+    gobject.base.starttextsource()
 
 
 def setTabQuick(self, basel):
@@ -32,16 +39,17 @@ def setTabQuick(self, basel):
 
     tt = gobject.base.translation_ui.translate_text
 
-    # ---- Recognition ---------------------------------------------------
+    # ---- Text input method --------------------------------------------
     rec = LtPanelList()
+    _seg = LtSegmented(
+        [("texthook", _TR("钩子")), ("ocr", _TR("OCR")), ("copy", _TR("剪贴板"))],
+        current=_current_input_method(),
+    )
+    _seg.changed.connect(_set_input_method)
     rec.add_row(
-        title=_TR("OCR 引擎"),
-        subtitle=_active_ocr_name(),
-        control=LtButton(
-            _TR("更改…"),
-            variant="secondary",
-            clicked=lambda: self.tab_widget.setCurrentIndex(1),
-        ),
+        title=_TR("文本输入方式"),
+        subtitle=_TR("以钩子为主，可随时切换"),
+        control=_seg,
     )
     lay.addWidget(rec)
 

@@ -109,7 +109,7 @@ class LtPanel(QFrame):
 
     def __init__(self, parent=None, shadow_tier=None, radius=None):
         super().__init__(parent)
-        _ltclass(self, "surface")
+        _ltclass(self, "glass")
         _apply_qss(self)
         if radius is not None:
             self.setStyleSheet(
@@ -167,17 +167,18 @@ class LtListRow(QWidget):
         # hairline below every row by default; LtPanelList re-marks the last row
         t = lt_tokens()
         self.setStyleSheet(
-            f"QWidget {{ background: {t['surface']}; border-bottom: 1px solid {t['hairline']}; }}"
+            f"QWidget {{ background: {t['glass_surface']}; border-bottom: 1px solid {t['hairline']}; }}"
         )
 
 
 class LtPanelList(QWidget):
-    """Unified panel of hairline-separated rows."""
+    """Unified panel of hairline-separated rows (translucent glass surface)."""
 
     def __init__(self, rows=None, parent=None):
         super().__init__(parent)
-        _ltclass(self, "surface")
+        _ltclass(self, "glass")
         _apply_qss(self)
+        _shadow(self, "popup")
         self._lay = QVBoxLayout(self)
         self._lay.setContentsMargins(0, 0, 0, 0)
         self._lay.setSpacing(0)
@@ -194,10 +195,10 @@ class LtPanelList(QWidget):
         for i, _r in enumerate(self._rows):
             t = lt_tokens()
             if i == len(self._rows) - 1:
-                _r.setStyleSheet(f"QWidget {{ background: {t['surface']}; }}")
+                _r.setStyleSheet(f"QWidget {{ background: {t['glass_surface']}; }}")
             else:
                 _r.setStyleSheet(
-                    f"QWidget {{ background: {t['surface']}; border-bottom: 1px solid {t['hairline']}; }}"
+                    f"QWidget {{ background: {t['glass_surface']}; border-bottom: 1px solid {t['hairline']}; }}"
                 )
         self._lay.addWidget(row)
         return row

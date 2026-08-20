@@ -587,6 +587,8 @@ class TextBrowser(WebviewWidget, somecommon):
                 pass
         elif name == "togglepause":
             gobject.base.translation_ui.startTranslater()
+        elif name == "toggletranslate":
+            gobject.base.translation_ui.changeshowhidetrans()
         elif name == "togglemode":
             mode = "expanded" if globalconfig.get("overlay_mode", "compact") == "compact" else "compact"
             globalconfig["overlay_mode"] = mode

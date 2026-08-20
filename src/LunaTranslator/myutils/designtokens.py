@@ -41,8 +41,9 @@ LIGHT = {
     "scrim": "rgba(0, 0, 0, 0.28)",
     # surface alphas (translucent solid - the sanctioned glass substitute)
     "overlay_glass": "rgba(255, 255, 255, 0.86)",
-    # typography
-    "font_ui": '"Segoe UI Variable Text", "Segoe UI", "Microsoft YaHei UI", "Yu Gothic UI", sans-serif',
+    "glass_surface": "rgba(255, 255, 255, 0.72)",
+    # typography (CJK-first so Latin and CJK render from one coherent family)
+    "font_ui": '"Microsoft YaHei UI", "Microsoft YaHei", "SimHei", "Segoe UI", sans-serif',
     "font_jp": '"Yu Gothic UI", "Meiryo UI", "Microsoft YaHei UI", sans-serif',
     "font_mono": '"Cascadia Mono", "Consolas", monospace',
     "size_display": "22px",
@@ -105,7 +106,8 @@ DARK = {
     "live": "#32D74B",
     "scrim": "rgba(0, 0, 0, 0.45)",
     "overlay_glass": "rgba(20, 20, 22, 0.88)",
-    "font_ui": '"Segoe UI Variable Text", "Segoe UI", "Microsoft YaHei UI", "Yu Gothic UI", sans-serif',
+    "glass_surface": "rgba(44, 44, 46, 0.72)",
+    "font_ui": '"Microsoft YaHei UI", "Microsoft YaHei", "SimHei", "Segoe UI", sans-serif',
     "font_jp": '"Yu Gothic UI", "Meiryo UI", "Microsoft YaHei UI", sans-serif',
     "font_mono": '"Cascadia Mono", "Consolas", monospace',
     "size_display": "22px",
@@ -184,6 +186,12 @@ QWidget {{
 
 QFrame[ltClass="surface"], QWidget[ltClass="surface"] {{
     background: {t["surface"]};
+    border: 1px solid {t["hairline"]};
+    border-radius: {t["r_panel"]}px;
+}}
+
+QFrame[ltClass="glass"], QWidget[ltClass="glass"] {{
+    background: {t["glass_surface"]};
     border: 1px solid {t["hairline"]};
     border-radius: {t["r_panel"]}px;
 }}
