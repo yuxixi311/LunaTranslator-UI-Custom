@@ -8,7 +8,7 @@ stay in their original pages behind the Advanced tabs.
 
 import functools
 
-from qtsymbols import QWidget, QVBoxLayout, QLabel
+from qtsymbols import QWidget, QVBoxLayout, QLabel, QScrollArea, QFrame
 
 import gobject
 from myutils.config import globalconfig, _TR
@@ -144,4 +144,9 @@ def setTabQuick(self, basel):
     )
     lay.addWidget(misc)
     lay.addStretch(1)
-    basel.addWidget(page)
+    # wrap in a scroll area so the page never clips when the window is short
+    scroll = QScrollArea()
+    scroll.setWidgetResizable(True)
+    scroll.setFrameShape(QFrame.Shape.NoFrame)
+    scroll.setWidget(page)
+    basel.addWidget(scroll)

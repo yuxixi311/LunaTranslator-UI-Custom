@@ -1388,7 +1388,7 @@
             "use": true
         },
         "ocr": {
-            "use": true
+            "use": false
         },
         "copy": {
             "use": false
