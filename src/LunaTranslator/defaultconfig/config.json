@@ -552,7 +552,7 @@
                 "align": 2
             },
             "showtrans": {
-                "use": false,
+                "use": true,
                 "tip": "显示/隐藏翻译",
                 "icon": "fa.toggle-on",
                 "icon2": "fa.toggle-off",

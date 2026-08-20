@@ -8,13 +8,13 @@ stay in their original pages behind the Advanced tabs.
 
 import functools
 
-from qtsymbols import QWidget, QVBoxLayout, QLabel, QScrollArea, QFrame
+from qtsymbols import QWidget, QVBoxLayout, QLabel, QScrollArea, QFrame, QComboBox
 
 import gobject
 from myutils.config import globalconfig, _TR
 from gui.setting.display_text import mayberealtimesetfont, createtextfontcom
 from gui.usefulwidget import D_getsimpleswitch, D_getspinbox, D_getsimplecombobox
-from gui.ltwidgets import LtPanelList, LtButton, LtSegmented
+from gui.ltwidgets import LtPanelList, LtButton
 
 
 def _current_input_method():
@@ -39,17 +39,19 @@ def setTabQuick(self, basel):
 
     tt = gobject.base.translation_ui.translate_text
 
-    # ---- Text input method --------------------------------------------
-    rec = LtPanelList()
-    _seg = LtSegmented(
-        [("texthook", _TR("钩子")), ("ocr", _TR("OCR")), ("copy", _TR("剪贴板"))],
-        current=_current_input_method(),
+    # ---- Text input method (dropdown) ---------------------------------
+    _method_keys = ["texthook", "ocr", "copy"]
+    _method_combo = QComboBox()
+    _method_combo.addItems([_TR("钩子 (Hook)"), _TR("OCR"), _TR("剪贴板")])
+    _method_combo.setCurrentIndex(_method_keys.index(_current_input_method()))
+    _method_combo.currentIndexChanged.connect(
+        lambda i: _set_input_method(_method_keys[i])
     )
-    _seg.changed.connect(_set_input_method)
+    rec = LtPanelList()
     rec.add_row(
         title=_TR("文本输入方式"),
         subtitle=_TR("以钩子为主，可随时切换"),
-        control=_seg,
+        control=_method_combo,
     )
     lay.addWidget(rec)
 

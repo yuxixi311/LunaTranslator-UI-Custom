@@ -652,6 +652,7 @@ class TranslatorWindow(resizableframeless):
         "setting",
         "history",
         "searchwordW",
+        "showtrans",
         "keepontop",
         "minmize",
         "quit",

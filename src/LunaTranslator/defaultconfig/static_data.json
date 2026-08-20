@@ -18,10 +18,10 @@
     ],
     "font_type_default": {
         "default": [
-            "Segoe UI",
-            "Arial",
-            "Tahoma",
-            "Microsoft Sans Serif"
+            "Microsoft YaHei UI",
+            "Microsoft YaHei",
+            "黑体",
+            "SimHei"
         ],
         "zh": [
             "微软雅黑",
@@ -76,10 +76,10 @@
     },
     "setting_font_type_default": {
         "default": [
-            "Segoe UI",
-            "Tahoma",
-            "Microsoft Sans Serif",
-            "Arial"
+            "Microsoft YaHei UI",
+            "Microsoft YaHei",
+            "黑体",
+            "SimHei"
         ],
         "zh": {
             "xp": [
