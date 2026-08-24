@@ -15,6 +15,12 @@ Luna Translate UI 是基于 LunaTranslator 的非官方改版，重点优化日�
 
 本仓库不取代上游项目。通用功能、原版文档及新版本请访问 [HIllya51/LunaTranslator](https://github.com/HIllya51/LunaTranslator)。本仓库的 Issues 仅用于跟踪此改版引入的功能和问题。
 
+### 使用文档
+
+本项目暂不单独维护教程网站。Hook、OCR、翻译、词典和文本处理等继承自 LunaTranslator 的通用功能，请参考 [LunaTranslator 上游官方使用说明](https://docs.lunatranslator.org/)。该文档由上游项目维护，其中的界面截图、设置名称和下载链接可能与本改版不同。
+
+本改版新增功能及行为差异以本仓库 README 和 [Release Notes](../../releases) 为准。与本改版有关的问题请提交至本仓库，请勿将改版特有问题报告给上游作者。
+
 ### 主要改动
 
 - 新增“常用设置”首页，并将文本来源明确显示为 `Hook / OCR / Clipboard`。
@@ -63,6 +69,12 @@ Luna Translate UI 是基于 LunaTranslator 的非官方改版，重点优化日�
 Luna Translate UI is an unofficial LunaTranslator fork focused on Japanese visual-novel reading and language learning. It keeps the upstream Hook, OCR, clipboard, translation, dictionary, and TTS capabilities while reorganizing the common settings, floating toolbar, Japanese reading controls, and syntax-learning presentation.
 
 This repository does not replace upstream. For general functionality, upstream documentation, and official releases, visit [HIllya51/LunaTranslator](https://github.com/HIllya51/LunaTranslator). Issues in this repository should be limited to changes introduced by this fork.
+
+### Documentation
+
+This project does not currently maintain a separate documentation website. For inherited LunaTranslator features such as Hook, OCR, translation, dictionaries, and text processing, refer to the [official upstream LunaTranslator user guide](https://docs.lunatranslator.org/). That guide is maintained by the upstream project, so its screenshots, setting names, and download links may differ from this fork.
+
+Fork-specific features and behavioral differences are documented in this README and the [Release Notes](../../releases). Please report issues introduced by this fork in this repository rather than to the upstream maintainers.
 
 ### Highlights
 
