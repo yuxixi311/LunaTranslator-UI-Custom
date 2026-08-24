@@ -5,7 +5,7 @@
 - **LunaTranslator** — Copyright © HIllya51 and contributors.
 - Upstream repository: <https://github.com/HIllya51/LunaTranslator>
 - Upstream baseline used for this fork: `c7d00f7320e872f8717385e173a0d76f891aa9e9`.
-- Luna Translate UI is an unofficial modified version. It is not endorsed by or affiliated with the upstream author.
+- LunaTranslator UI Optimized Custom Edition is an unofficial modified version. It is not endorsed by or affiliated with the upstream author.
 - The combined modified work is distributed under **GNU General Public License version 3 (`GPL-3.0-only`)**. The complete license is preserved in [`LICENSE`](LICENSE).
 
 LunaTranslator 原始代码的版权属于 HIllya51 及各贡献者。本项目是非官方修改版，不代表原作者立场，也不构成官方合作或背书。整体修改版本继续依据 GPLv3 发布。

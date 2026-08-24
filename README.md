@@ -1,116 +1,159 @@
-# Luna Translate UI
+# LunaTranslator UI 优化客制版
 
-**An unofficial UI and Japanese-learning fork of [LunaTranslator](https://github.com/HIllya51/LunaTranslator).**
+**LunaTranslator UI Optimized Custom Edition**
 
-[简体中文](#简体中文) · [English](#english) · [Releases](../../releases)
+[简体中文](#简体中文) · [English](#english) · [本改版下载 / Fork releases](../../releases)
 
 > [!IMPORTANT]
-> This project is not an official LunaTranslator release and is not endorsed by the upstream author. LunaTranslator and its contributors retain copyright in the original project. This modified version is distributed under GNU GPL v3.
+> 这是一个基于 [HIllya51/LunaTranslator](https://github.com/HIllya51/LunaTranslator) 制作的个人使用向、非官方客制化分支，主要调整 UI 与日语学习辅助功能。它不是 LunaTranslator 官方版本，也无意替代原项目。首次接触 LunaTranslator、需要完整功能说明或希望获得官方版本时，请优先访问[上游项目](https://github.com/HIllya51/LunaTranslator)、[官方使用说明](https://docs.lunatranslator.org/)和[上游 Releases](https://github.com/HIllya51/LunaTranslator/releases)。
+
+---
 
 ## 简体中文
 
-### 项目简介
+### 项目定位
 
-Luna Translate UI 是基于 LunaTranslator 的非官方改版，重点优化日语视觉小说的学习和阅读体验。它保留 Hook、OCR、剪贴板、翻译、查词和语音合成等原有能力，同时重新整理常用设置、悬浮工具栏、日语朗读和句法学习界面。
+本项目最初为个人使用和日语视觉小说学习需求制作，是 LunaTranslator 的 **UI 优化与功能辅助添加版本**。Hook、OCR、剪贴板取词、翻译接口、词典框架和语音合成框架等核心能力均来自 LunaTranslator 及其贡献者；本分支主要在这些能力之上调整界面结构、交互习惯和学习辅助体验。
 
-本仓库不取代上游项目。通用功能、原版文档及新版本请访问 [HIllya51/LunaTranslator](https://github.com/HIllya51/LunaTranslator)。本仓库的 Issues 仅用于跟踪此改版引入的功能和问题。
+这个仓库适合希望尝试本分支特定界面和学习功能的用户。若你只需要通用、稳定且持续更新的 LunaTranslator，请优先使用[原项目](https://github.com/HIllya51/LunaTranslator)。
 
-### 使用文档
+### 本改版对原项目做了什么
 
-本项目暂不单独维护教程网站。Hook、OCR、翻译、词典和文本处理等继承自 LunaTranslator 的通用功能，请参考 [LunaTranslator 上游官方使用说明](https://docs.lunatranslator.org/)。该文档由上游项目维护，其中的界面截图、设置名称和下载链接可能与本改版不同。
+#### UI 与交互优化
 
-本改版新增功能及行为差异以本仓库 README 和 [Release Notes](../../releases) 为准。与本改版有关的问题请提交至本仓库，请勿将改版特有问题报告给上游作者。
+- 增加“常用设置”首页，将常用选项集中展示，并明确使用 `Hook / OCR / Clipboard` 英文名称。
+- 重新整理常用设置、词书设置的间距、层级、下拉框宽度和模型状态展示，减少拥挤感。
+- 默认使用更精简的学习型悬浮工具栏，同时保留恢复完整按钮配置的能力。
+- 将日语分词显示调整为柔和底色、圆角边界、同色悬停和句法角色色线，使学习单元更容易辨认。
 
-### 主要改动
+#### 日语朗读辅助
 
-- 新增“常用设置”首页，并将文本来源明确显示为 `Hook / OCR / Clipboard`。
-- 修复旧配置同时启用 Hook 与 OCR 时，Hook 无法正确连接游戏的问题。
-- 默认使用精简的学习型工具栏，同时保留在设置中恢复完整按钮的能力。
-- 增加喇叭按钮：左键朗读当前日文原文，右键暂停或继续。
-- 增加 `0.6X / 0.8X / 1.0X` 三档朗读速度按钮。
-- 默认使用 Nanami 日语自然女声，并保留 Keita 男声可选项；在线自然音色需要网络。
-- 朗读前将连续省略号转换为停顿，避免读成连续的“点”。
-- MeCab 继续负责词元、假名、词性和点击查词；内置 GiNZA 5.2 离线模型作为第二阶段句法增强。
-- 提供“学习分组（推荐）／文节边界／词元详情”三档显示。默认学习分组会将 `役に + 立ってたなら` 等紧邻依存结构显示为一个更容易理解的学习单元，同时保留底层文节与词元数据。
-- 采用柔和词性底色、同色圆角边界、同色悬停和句法角色色线，并重新整理词书设置与常用设置的间距和层级。
-- 关闭自动更新默认值，避免官方更新直接覆盖本改版；用户仍可在设置中重新开启。
-- 刷新定制启动器已有的 Python 摘要，避免修改后的合法文件每次启动都触发应用内部的“可能遭遇篡改”警告。
+- 在悬浮工具栏加入喇叭按钮：左键朗读当前显示的日文原文，右键暂停或继续。
+- 加入 `0.6X / 0.8X / 1.0X` 三档语速切换按钮。
+- 默认选择 Nanami 日语自然女声，并保留 Keita 男声等可选音色。
+- 将连续省略号转换为自然停顿，避免语音合成逐个读出“点”。
+
+#### 日语学习辅助
+
+- 保留 MeCab 的分词、假名、词性和点击查词能力。
+- 内置 GiNZA 5.2 离线模型，作为第二阶段句法分析辅助。
+- 提供“学习分组（推荐）／文节边界／词元详情”三档显示。
+- 默认学习分组会把相邻依存结构组合成更适合学习的单元，例如将 `役に + 立ってたなら` 作为连续结构呈现，同时保留底层文节和词元信息。
+
+#### 问题修复与改版保护
+
+- 修复旧配置同时启用 Hook 与 OCR 时，Hook 可能无法正确选择游戏文本源的问题。
+- 默认关闭自动更新，避免上游官方更新直接覆盖本改版；用户仍可在设置中重新开启。
+- 刷新客制启动器的 Python 文件摘要，避免本改版的合法文件反复触发应用内部“可能遭遇篡改”警告。
+
+### 哪些内容仍以原项目为准
+
+本改版没有重新发明 LunaTranslator 的完整翻译器能力。以下内容仍主要由上游提供和维护：
+
+- 游戏 Hook、OCR、剪贴板等文本获取基础能力；
+- 翻译器、词典、文本处理、内嵌翻译和语音合成框架；
+- 大部分引擎兼容性、资源下载和通用故障排查；
+- LunaTranslator 的长期更新与完整用户文档。
+
+请通过使用本改版的同时关注、使用并支持 [LunaTranslator 原项目](https://github.com/HIllya51/LunaTranslator)。
+
+### 使用文档与问题反馈
+
+本项目暂不单独维护教程网站。继承自 LunaTranslator 的通用功能请参考 [LunaTranslator 官方使用说明](https://docs.lunatranslator.org/)。该文档由上游维护，其中的界面截图、设置名称和下载链接可能与本改版不同。
+
+本分支新增功能和行为差异以本 README、[Release Notes](../../releases)及仓库内的修改说明为准。改版特有问题请提交到本仓库；不要把仅在本改版中出现的问题报告给上游作者。
 
 ### 下载与使用
 
-1. 从 [Releases](../../releases) 下载 `Luna-Translate-UI-x64.zip`。
-2. 校验 Release 同时提供的 `SHA256SUMS.txt`。
-3. 解压到普通可写目录，不要直接覆盖原版 LunaTranslator，也不要放入 `C:\Program Files`。
-4. 双击 `LunaTranslator.exe`。需要管理员权限连接某些游戏时，可使用 `LunaTranslator_admin.exe`。
-5. 在“设置 → 常用设置”中选择 Hook、OCR 或 Clipboard。
+1. 从[本改版 Releases](../../releases)下载 `Luna-Translate-UI-x64.zip`。首个发布包暂时保留了项目改名前的文件名。
+2. 使用 Release 提供的 `SHA256SUMS.txt` 校验文件。
+3. 解压到普通可写目录，不要覆盖 LunaTranslator 原版，也不要放入 `C:\Program Files`。
+4. 双击 `LunaTranslator.exe`；只有目标游戏确实需要管理员权限时才使用 `LunaTranslator_admin.exe`。
 
-发布包为便携版，不包含个人配置、翻译记录或缓存。建议将原版和本改版放在不同目录，首次使用前自行备份现有 `userconfig`。
+发布包为便携版，不包含个人配置、翻译记录或缓存。建议将原版和本改版放在不同目录，并在测试前备份现有 `userconfig`。
 
-### 使用注意
+### 已知限制
 
-- 定制启动器没有上游项目的私有代码签名证书，因此 Windows 可能在首次下载运行时显示 SmartScreen 提示。应用内部的摘要检查仍然保留。
-- Nanami 和 Keita 的 edgeTTS 自然音色需要网络；GiNZA 句法模型包含在发行包中，句法分析本身离线运行。
+- 客制启动器没有上游项目的私有代码签名证书，因此 Windows 可能在首次运行下载文件时显示 SmartScreen。
+- Nanami、Keita 等 edgeTTS 自然音色需要网络；内置 GiNZA 句法分析可离线运行。
 - MeCab 假名和分词仍需要可用的 MeCab 词典，例如 UniDic。
-- GiNZA 输出是统计学习提示，不是绝对正确的语法结论。日语省略主语、主题与主语差异、复杂并列等情况可能产生误判。
-- 朗读倍率从下一次合成开始生效，不会改变已经在播放的音频。
+- GiNZA 是统计模型，其结果是学习提示而不是绝对正确的语法结论。
+- 新语速从下一次语音合成开始生效，不会改变已经开始播放的音频。
 
-### 源码与许可证
+### 源码、归属与许可证
 
-本项目是 LunaTranslator 的修改版本，整体依据 **GNU General Public License version 3（GPL-3.0-only）** 发布。发布可执行文件时，同一版本标签提供完整对应源码、修改说明和打包脚本。你可以使用、研究、修改和再分发，但再分发时必须继续遵守 GPLv3。
+LunaTranslator 原始代码及贡献归 [HIllya51/LunaTranslator](https://github.com/HIllya51/LunaTranslator) 和相应贡献者所有。本项目是其非官方修改版本，不受上游作者认可或背书。
 
-详见 [LICENSE](LICENSE)、[LICENSE_AND_ATTRIBUTION.md](LICENSE_AND_ATTRIBUTION.md)、[MODIFICATIONS.md](MODIFICATIONS.md) 和 [THIRD_PARTY_SOURCE.md](THIRD_PARTY_SOURCE.md)。
+本项目整体依据 **GNU General Public License version 3（GPL-3.0-only）** 发布。发布可执行文件时，同一版本标签提供对应源码、修改说明和打包信息。详见 [LICENSE](LICENSE)、[LICENSE_AND_ATTRIBUTION.md](LICENSE_AND_ATTRIBUTION.md)、[MODIFICATIONS.md](MODIFICATIONS.md) 和 [THIRD_PARTY_SOURCE.md](THIRD_PARTY_SOURCE.md)。
 
 ---
 
 ## English
 
-### About
+### Project scope
 
-Luna Translate UI is an unofficial LunaTranslator fork focused on Japanese visual-novel reading and language learning. It keeps the upstream Hook, OCR, clipboard, translation, dictionary, and TTS capabilities while reorganizing the common settings, floating toolbar, Japanese reading controls, and syntax-learning presentation.
+LunaTranslator UI Optimized Custom Edition is a personal-use-oriented, unofficial fork of [LunaTranslator](https://github.com/HIllya51/LunaTranslator), created for Japanese visual-novel reading and study. Core capabilities—including Hook, OCR, clipboard capture, translation providers, dictionaries, and the TTS framework—come from LunaTranslator and its contributors. This fork mainly changes the interface, interaction preferences, and learning aids built on top of them.
 
-This repository does not replace upstream. For general functionality, upstream documentation, and official releases, visit [HIllya51/LunaTranslator](https://github.com/HIllya51/LunaTranslator). Issues in this repository should be limited to changes introduced by this fork.
+It is not an official release and does not replace upstream. Users who want the general, stable, continuously maintained application should prefer the [upstream project](https://github.com/HIllya51/LunaTranslator) and its [official releases](https://github.com/HIllya51/LunaTranslator/releases).
 
-### Documentation
+### Changes made by this fork
 
-This project does not currently maintain a separate documentation website. For inherited LunaTranslator features such as Hook, OCR, translation, dictionaries, and text processing, refer to the [official upstream LunaTranslator user guide](https://docs.lunatranslator.org/). That guide is maintained by the upstream project, so its screenshots, setting names, and download links may differ from this fork.
+#### UI and interaction
 
-Fork-specific features and behavioral differences are documented in this README and the [Release Notes](../../releases). Please report issues introduced by this fork in this repository rather than to the upstream maintainers.
+- Adds a Common Settings home page with explicit `Hook / OCR / Clipboard` source names.
+- Reworks spacing, hierarchy, dropdown widths, and model-status presentation in common and dictionary settings.
+- Uses a compact learning-focused floating toolbar by default while retaining the full button configuration.
+- Presents Japanese learning units with soft POS backgrounds, rounded borders, matching hover feedback, and syntax-role underlines.
 
-### Highlights
+#### Japanese reading controls
 
-- Adds a Common Settings home page with explicit `Hook / OCR / Clipboard` source selection.
-- Repairs legacy Hook+OCR configurations that could prevent Hook from selecting the correct game source.
-- Uses a compact learning-focused toolbar by default while retaining the full button configuration.
-- Adds a speaker control: left-click reads the current Japanese source text; right-click pauses or resumes.
+- Adds a speaker button: left-click reads the current Japanese source text; right-click pauses or resumes.
 - Adds a `0.6X / 0.8X / 1.0X` speech-rate cycle.
-- Selects the Nanami Japanese natural female voice by default and keeps Keita available; these online voices require network access.
-- Converts consecutive ellipsis characters to a pause before speech synthesis instead of pronouncing repeated “dot” words.
-- Keeps MeCab responsible for tokens, furigana, part of speech, and dictionary clicks, while an embedded offline GiNZA 5.2 model provides a second syntax-analysis stage.
-- Offers `Learning groups (recommended) / Bunsetsu boundaries / Token details`. The default view can group adjacent dependency structures such as `役に + 立ってたなら` into a learner-facing unit without discarding the underlying bunsetsu or token data.
-- Uses soft POS backgrounds, same-family rounded borders and hover feedback, syntax-role underlines, and less crowded dictionary/common settings layouts.
-- Disables auto-update by default so an official update does not overwrite the fork; it can still be re-enabled in Settings.
-- Refreshes the existing Python digests in the customized launcher so legitimate modified files do not trigger the application's own alteration warning on every start.
+- Selects the Nanami natural Japanese female voice by default while keeping Keita and other available voices selectable.
+- Converts consecutive ellipses into a pause instead of pronouncing repeated “dot” words.
+
+#### Japanese-learning aids
+
+- Keeps MeCab for tokens, furigana, part of speech, and dictionary clicks.
+- Bundles an offline GiNZA 5.2 model as a second syntax-analysis stage.
+- Offers `Learning groups (recommended) / Bunsetsu boundaries / Token details`.
+- Groups adjacent dependency structures into learner-facing units while preserving the underlying bunsetsu and token data.
+
+#### Repairs and fork protection
+
+- Repairs legacy Hook+OCR states that could prevent Hook from selecting the correct game source.
+- Disables auto-update by default so an upstream update does not overwrite the customized build; it can be re-enabled.
+- Refreshes the customized launcher's Python digests so legitimate fork files do not repeatedly trigger the application's alteration warning.
+
+### What remains upstream
+
+The underlying capture, translation, dictionary, text-processing, embedded-translation, TTS, engine-compatibility, resource, and general troubleshooting systems remain upstream LunaTranslator work. Please visit, use, and support the [original LunaTranslator project](https://github.com/HIllya51/LunaTranslator).
+
+### Documentation and issue routing
+
+This fork does not maintain a separate tutorial website. For inherited features, use the [official upstream LunaTranslator user guide](https://docs.lunatranslator.org/). Screenshots, setting names, and download links there may differ from this customized interface.
+
+Fork-specific behavior is documented in this README, the [Release Notes](../../releases), and the modification records in this repository. Report fork-only issues here rather than to the upstream maintainers.
 
 ### Download and run
 
-1. Download `Luna-Translate-UI-x64.zip` from [Releases](../../releases).
-2. Verify it against the accompanying `SHA256SUMS.txt`.
+1. Download `Luna-Translate-UI-x64.zip` from the [fork releases](../../releases). The first archive retains its pre-rename filename.
+2. Verify it against `SHA256SUMS.txt`.
 3. Extract it to a normal writable directory. Do not overwrite an upstream installation or place it under `C:\Program Files`.
-4. Run `LunaTranslator.exe`; use `LunaTranslator_admin.exe` only when a target game requires elevation.
-5. Choose Hook, OCR, or Clipboard in Settings → Common Settings.
+4. Run `LunaTranslator.exe`; use `LunaTranslator_admin.exe` only when the target game requires elevation.
 
-The portable release excludes personal configuration, translation records, and caches. Keep the upstream application and this fork in separate directories, and back up any existing `userconfig` before testing.
+The portable archive excludes personal configuration, translation records, and caches. Keep upstream and customized installations in separate directories and back up any existing `userconfig` before testing.
 
-### Important notes
+### Known limitations
 
-- The customized launcher cannot use the upstream project's private code-signing certificate, so Windows SmartScreen may appear on the first run of a downloaded archive. The application's internal digest checks remain enabled.
-- Nanami and Keita edgeTTS voices require a network connection. The bundled GiNZA syntax analysis runs offline.
-- MeCab furigana and segmentation still require a usable dictionary such as UniDic.
-- GiNZA output is a statistical learning hint, not an infallible grammar judgment. Omitted subjects, topic/subject distinctions, and complex coordination can be ambiguous.
-- A new speed setting applies to the next synthesis request; it does not retime audio already playing.
+- The customized launchers cannot use the upstream project's private signing certificate, so Windows SmartScreen may appear on first run.
+- Nanami, Keita, and other edgeTTS natural voices require network access; bundled GiNZA syntax analysis runs offline.
+- MeCab still needs a usable dictionary such as UniDic.
+- GiNZA provides statistical learning hints, not infallible grammar judgments.
+- A new speech-rate setting applies to the next synthesis request and does not retime audio already playing.
 
-### Source and licensing
+### Source, attribution, and license
 
-This is a modified version of LunaTranslator and the combined work is distributed under **GNU General Public License version 3 (`GPL-3.0-only`)**. Every binary release is paired with its corresponding tagged source, modification notices, and packaging scripts. You may use, study, modify, and redistribute it subject to GPLv3.
+Original LunaTranslator code and contributions belong to [HIllya51/LunaTranslator](https://github.com/HIllya51/LunaTranslator) and the respective contributors. This fork is unofficial and is not endorsed by or affiliated with the upstream author.
 
-See [LICENSE](LICENSE), [LICENSE_AND_ATTRIBUTION.md](LICENSE_AND_ATTRIBUTION.md), [MODIFICATIONS.md](MODIFICATIONS.md), and [THIRD_PARTY_SOURCE.md](THIRD_PARTY_SOURCE.md).
+The combined modified work is distributed under **GNU General Public License version 3 (`GPL-3.0-only`)**. Corresponding source, modification notices, and packaging information accompany binary releases. See [LICENSE](LICENSE), [LICENSE_AND_ATTRIBUTION.md](LICENSE_AND_ATTRIBUTION.md), [MODIFICATIONS.md](MODIFICATIONS.md), and [THIRD_PARTY_SOURCE.md](THIRD_PARTY_SOURCE.md).

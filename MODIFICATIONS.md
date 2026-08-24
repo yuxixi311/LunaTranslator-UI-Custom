@@ -6,7 +6,7 @@ This file provides the prominent modification notice required for this unofficia
 
 ## Project identity
 
-- Fork name: **Luna Translate UI**
+- Fork name: **LunaTranslator UI Optimized Custom Edition**（LunaTranslator UI 优化客制版）
 - Upstream: <https://github.com/HIllya51/LunaTranslator>
 - Upstream baseline: `c7d00f7320e872f8717385e173a0d76f891aa9e9`
 - Initial customization base: `deb32cf8384c29e5dea9d830b886ee416e555d0c`

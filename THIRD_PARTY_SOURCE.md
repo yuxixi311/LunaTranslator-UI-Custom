@@ -13,4 +13,4 @@ This document identifies the principal third-party source packages bundled in th
 
 The exact direct Python requirements are in [`src/scripts/ginza-requirements.txt`](src/scripts/ginza-requirements.txt). Transitive packages retain their package metadata and license files inside the release's `files/plugins/ginza` directory. The upstream application runtime's own license collection is preserved under `LICENSES/` in the release archive.
 
-The preferred form for modifying Luna Translate UI is this Git repository. Release tags, packaging scripts, dependency locks, and launcher-refresh tooling are included so a recipient can inspect and rebuild the modified portions.
+The preferred form for modifying LunaTranslator UI Optimized Custom Edition is this Git repository. Release tags, packaging scripts, dependency locks, and launcher-refresh tooling are included so a recipient can inspect and rebuild the modified portions.
