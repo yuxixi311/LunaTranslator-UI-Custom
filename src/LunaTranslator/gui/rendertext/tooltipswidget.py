@@ -128,6 +128,20 @@ class tooltipswidget(QMainWindow, dataget):
             tooltipcontent += " / " + word.kana
         if word.info:
             tooltipcontent += "\n" + ",".join(word.info)
+        if word.grammar_role or word.grammar_dep:
+            from myutils.ginzanlp import ROLE_LABELS
+
+            role = ROLE_LABELS.get(word.grammar_role, "未归类")
+            syntax = "GiNZA 分析：{}".format(role)
+            if word.grammar_dep:
+                syntax += " · {}".format(word.grammar_dep)
+            if word.grammar_head and word.grammar_head != word.word:
+                syntax += " → {}".format(word.grammar_head)
+            tooltipcontent += "\n" + syntax
+        if word.bunsetu_text:
+            tooltipcontent += "\n文节：" + word.bunsetu_text
+        if word.learning_unit_text and word.learning_unit_text != word.bunsetu_text:
+            tooltipcontent += "\n学习单元：" + word.learning_unit_text
         if tooltipcontent:
             return word.word + tooltipcontent
 

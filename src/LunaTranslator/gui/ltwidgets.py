@@ -141,11 +141,11 @@ class LtListRow(QWidget):
     def __init__(self, title=None, subtitle=None, control=None, parent=None):
         super().__init__(parent)
         lay = QHBoxLayout(self)
-        lay.setContentsMargins(12, 8, 12, 8)
-        lay.setSpacing(12)
+        lay.setContentsMargins(16, 12, 16, 12)
+        lay.setSpacing(16)
         if title is not None or subtitle is not None:
             txt = QVBoxLayout()
-            txt.setSpacing(2)
+            txt.setSpacing(5)
             if title is not None:
                 lbl = QLabel(title)
                 t = lt_tokens()
@@ -167,7 +167,7 @@ class LtListRow(QWidget):
         # hairline below every row by default; LtPanelList re-marks the last row
         t = lt_tokens()
         self.setStyleSheet(
-            f"QWidget {{ background: {t['glass_surface']}; border-bottom: 1px solid {t['hairline']}; }}"
+            f"LtListRow {{ background: {t['glass_surface']}; border-bottom: 1px solid {t['hairline']}; }}"
         )
 
 
@@ -195,10 +195,10 @@ class LtPanelList(QWidget):
         for i, _r in enumerate(self._rows):
             t = lt_tokens()
             if i == len(self._rows) - 1:
-                _r.setStyleSheet(f"QWidget {{ background: {t['glass_surface']}; }}")
+                _r.setStyleSheet(f"LtListRow {{ background: {t['glass_surface']}; }}")
             else:
                 _r.setStyleSheet(
-                    f"QWidget {{ background: {t['glass_surface']}; border-bottom: 1px solid {t['hairline']}; }}"
+                    f"LtListRow {{ background: {t['glass_surface']}; border-bottom: 1px solid {t['hairline']}; }}"
                 )
         self._lay.addWidget(row)
         return row

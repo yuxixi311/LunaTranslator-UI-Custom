@@ -141,6 +141,9 @@ class Textbrowser(QFrame):
         self.textbrowser.scrolltoend()
 
     def updatetext(self, texttype: TextType, text, hira, color: ColorControl):
+        self._trace_append(
+            (2, (texttype, text, copy.deepcopy(hira), color))
+        )
         self.cleared = False
         self.textbrowser.updatetext(texttype, text, mecab.parseastarget(hira), color)
         WSForEach(

@@ -124,8 +124,59 @@
     }
 
     .lunatranslator_clickword_force:hover {
-        background-color: var(--clickwordhover);
+        background-color: var(--lt-word-hover, var(--clickwordhover));
+        border-color: var(--lt-word-border, transparent);
     }
+
+    mark.lunatranslator_clickword {
+        box-sizing: border-box;
+        border: 1px solid var(--lt-word-border, transparent);
+        border-radius: 0.34em;
+        margin: 0 0.018em;
+        padding: 0 0.075em;
+        transition: background-color var(--lt-m_fast, 120)ms ease,
+                    border-color var(--lt-m_fast, 120)ms ease,
+                    box-shadow var(--lt-m_fast, 120)ms ease;
+    }
+
+    mark.lt-bunsetu-start {
+        margin-left: 0.13em;
+        border-radius: 0.46em 0.18em 0.18em 0.46em;
+    }
+    mark.lt-bunsetu-end {
+        margin-right: 0.13em;
+        border-radius: 0.18em 0.46em 0.46em 0.18em;
+    }
+    mark.lt-bunsetu-start.lt-bunsetu-end { border-radius: 0.46em; }
+    mark.lt-grammar-subject { box-shadow: inset 0 -0.13em var(--lt-grammar-subject-color, var(--lt-grammar_subject, #3478F6)); }
+    mark.lt-grammar-object { box-shadow: inset 0 -0.13em var(--lt-grammar-object-color, var(--lt-grammar_object, #A855D6)); }
+    mark.lt-grammar-predicate { box-shadow: inset 0 -0.13em var(--lt-grammar-predicate-color, var(--lt-grammar_predicate, #ED5E68)); }
+    mark.lt-grammar-modifier { box-shadow: inset 0 -0.13em var(--lt-grammar-modifier-color, var(--lt-grammar_modifier, #16A6A1)); }
+
+    .lt-syntax-group {
+        display: inline-flex;
+        align-items: flex-end;
+        white-space: nowrap;
+        margin: 0.08em 0.11em;
+        padding: 0.04em 0.10em 0.02em;
+        background: var(--lt-accent_tint, rgba(0, 113, 227, 0.08));
+        border: 1px solid var(--lt-hairline, rgba(0, 0, 0, 0.08));
+        border-radius: 0.56em;
+    }
+    .lt-syntax-group .lunatranslator_clickword {
+        margin: 0;
+        padding: 0 0.045em;
+        border-color: transparent;
+        border-radius: 0.24em;
+    }
+    .lt-syntax-group mark[class*="lt-grammar-"] { box-shadow: none; }
+    .lt-syntax-group.lt-bunsetu-only .lunatranslator_clickword {
+        background: transparent !important;
+    }
+    .lt-syntax-group.lt-group-subject { border-bottom: 2px solid var(--lt-grammar-subject-color, #3478F6); }
+    .lt-syntax-group.lt-group-object { border-bottom: 2px solid var(--lt-grammar-object-color, #A855D6); }
+    .lt-syntax-group.lt-group-predicate { border-bottom: 2px solid var(--lt-grammar-predicate-color, #ED5E68); }
+    .lt-syntax-group.lt-group-modifier { border-bottom: 2px solid var(--lt-grammar-modifier-color, #16A6A1); }
 
     .lunatranslator_wrap {
         white-space: pre-wrap;
@@ -678,7 +729,8 @@
     }
 
     .lunatranslator_clickword:hover {
-        background-color: var(--clickwordhover);
+        background-color: var(--lt-word-hover, var(--clickwordhover));
+        border-color: var(--lt-word-border, transparent);
     }  `][show]
         document.getElementById('maybeshowclick').innerHTML = css;
         drawBackgrounds()
@@ -834,6 +886,20 @@
         if (word.info) {
             tooltipcontent += '\n' + word.info
         }
+        if (word.grammar_role || word.grammar_dep) {
+            const roleLabels = {
+                subject: '主语', object: '宾语', predicate: '谓语', modifier: '修饰语'
+            }
+            let syntax = `GiNZA 分析：${roleLabels[word.grammar_role] || '未归类'}`
+            if (word.grammar_dep) syntax += ` · ${word.grammar_dep}`
+            if (word.grammar_head && word.grammar_head != word.word)
+                syntax += ` → ${word.grammar_head}`
+            tooltipcontent += '\n' + syntax
+        }
+        if (word.bunsetu_text)
+            tooltipcontent += '\n文节：' + word.bunsetu_text
+        if (word.learning_unit_text && word.learning_unit_text != word.bunsetu_text)
+            tooltipcontent += '\n学习单元：' + word.learning_unit_text
         if (!tooltipcontent) return
 
         let tooltip = null;
@@ -924,18 +990,51 @@
         let tags = JSON.parse(decodeURIComponent(tagjson))
         let color = args.color
         let kanacolor = args.kanacolor
+        let ginzaMode = args.ginza_mode ?? 0
         let ele = document.getElementById(_id)
         if (clear)
             clearparent(ele)
         ele.innerHTML = ''
+        let currentGroup = null
+        let currentGroupKey = null
         tags.forEach(word => {
             if (word.word == '\n') {
                 ele.appendChild(document.createElement('br'))
+                currentGroup = null
+                currentGroupKey = null
                 return
+            }
+            let groupId = null
+            if (ginzaMode == 0)
+                groupId = word.learning_unit_id
+            else if (ginzaMode == 1)
+                groupId = word.bunsetu_id
+            let target = ele
+            if (groupId !== null && groupId !== undefined) {
+                let groupKey = `${ginzaMode}:${groupId}`
+                if (currentGroupKey != groupKey) {
+                    currentGroup = document.createElement('span')
+                    currentGroup.classList.add('lt-syntax-group')
+                    if (ginzaMode == 1)
+                        currentGroup.classList.add('lt-bunsetu-only')
+                    currentGroup.setAttribute(
+                        'aria-label',
+                        ginzaMode == 0 ? (word.learning_unit_text || '') : (word.bunsetu_text || '')
+                    )
+                    ele.appendChild(currentGroup)
+                    currentGroupKey = groupKey
+                }
+                target = currentGroup
+                if (ginzaMode == 0 && word.grammar_role)
+                    currentGroup.classList.add('lt-group-' + word.grammar_role)
+            }
+            else {
+                currentGroup = null
+                currentGroupKey = null
             }
             let eleori = dispatch_text_style(style, styleargs, '', word.word, { color: color })
             if (word.isdeli || word.isshit) {
-                ele.appendChild(eleori)
+                target.appendChild(eleori)
                 return
             }
             eleori = makeinlineblock(eleori)//还是得用这个，没辙，不然：无法ruby-overhang:none，而且注音和文字有overlap。至于如果一个被注音文字很长，导致换行不正常的问题，暂时没办法了。
@@ -944,6 +1043,16 @@
             mark.appendChild(eleori)
             eleori = mark
             eleori.classList.add(uid)
+            eleori.style.setProperty('--lt-word-border', word.bordercolor)
+            eleori.style.setProperty('--lt-word-hover', word.hovercolor)
+            if (word.bunsetu_id !== null && word.bunsetu_id !== undefined && ginzaMode == 2) {
+                eleori.classList.add('lt-bunsetu')
+                if (word.bunsetu_start) eleori.classList.add('lt-bunsetu-start')
+                if (word.bunsetu_end) eleori.classList.add('lt-bunsetu-end')
+            }
+            if (word.grammar_role && ginzaMode == 2) {
+                eleori.classList.add('lt-grammar-' + word.grammar_role)
+            }
             let style1 = document.createElement('style')
             style1.innerHTML += `.${uid} {background: var(--${word.color}); } `
 
@@ -978,7 +1087,7 @@
                 ruby.appendChild(rt)
                 eleori = ruby
             }
-            ele.appendChild(eleori)
+            target.appendChild(eleori)
         })
         if (tags[tags.length - 1].word == '\n') {
             ele.appendChild(document.createElement('br'))
@@ -1149,11 +1258,15 @@
     function setcolorstyle(colorsjs) {
         let info = JSON.parse(decodeURIComponent(colorsjs))
         let colors = info.color
+        let grammarColors = info.grammar_colors || {}
         let style = regist_style_dynamic[info.style](info.styleargs)
         for (let klass in colors) {
             style += ` 
         --${klass}:${colors[klass]};
         `
+        }
+        for (let role in grammarColors) {
+            style += `--lt-grammar-${role}-color:${grammarColors[role]};\n`
         }
         document.getElementById('colorcontroller').innerHTML = `:root {
   ${style}

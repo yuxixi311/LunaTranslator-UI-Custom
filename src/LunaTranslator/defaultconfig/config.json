@@ -4,6 +4,7 @@
     "screenshot_savepath": "",
     "overlay_mode": "compact",
     "interface_level": "simplified",
+    "learning_ui_feature_revision": 7,
     "yuanjiao_r": 18,
     "theme3": "",
     "autoupdate": false,
@@ -351,7 +352,6 @@
             "history",
             "noundict",
             "fix",
-            "langdu",
             "backtransbutton",
             "mousetransbutton",
             "locktoolsbutton",
@@ -375,7 +375,10 @@
             "selectable",
             "minmize",
             "quit",
-            "reset_TS_status"
+            "reset_TS_status",
+            "showtrans",
+            "langdu",
+            "ttsrate"
         ],
         "buttons": {
             "luna": {
@@ -559,9 +562,15 @@
                 "align": 2
             },
             "langdu": {
-                "use": false,
-                "tip": "朗读",
-                "icon": "fa.music",
+                "use": true,
+                "tip": "朗读当前日文（右键暂停/继续）",
+                "icon": "fa.volume-up",
+                "align": 2
+            },
+            "ttsrate": {
+                "use": true,
+                "tip": "切换日语朗读速度（0.6X / 0.8X / 1.0X）",
+                "icon": "fa.gauge-high",
                 "align": 2
             },
             "copy": {
@@ -639,25 +648,32 @@
         }
     },
     "disappear_delay_tool": 1,
+    "showcixing_touming": 24,
     "cixingcolor": {
-        "形容詞": "aliceblue",
-        "形状詞": "antiquewhite",
-        "副詞": "aqua",
-        "名詞": "aquamarine",
-        "代名詞": "azure",
-        "動詞": "beige",
-        "助詞": "bisque",
-        "助動詞": "black",
-        "感動詞": "blanchedalmond",
-        "接頭辞": "blue",
-        "接尾辞": "blueviolet",
-        "接続詞": "brown",
-        "指示詞": "burlywood",
-        "連体詞": "cadetblue",
-        "判定詞": "chartreuse",
-        "補助記号": "chocolate",
-        "記号": "coral",
-        "空白": "white"
+        "形容詞": "#F2A65A",
+        "形状詞": "#D98AD4",
+        "副詞": "#38B2AC",
+        "名詞": "#4C8DFF",
+        "代名詞": "#8B6FE8",
+        "動詞": "#F06A6A",
+        "助詞": "#66A85C",
+        "助動詞": "#9B8AC4",
+        "感動詞": "#E879B9",
+        "接頭辞": "#7189A6",
+        "接尾辞": "#A17CC1",
+        "接続詞": "#2FA8CC",
+        "指示詞": "#6376D8",
+        "連体詞": "#C58A4A",
+        "判定詞": "#4AA69D",
+        "補助記号": "#A8A8AD",
+        "記号": "#A8A8AD",
+        "空白": "#C7C7CC"
+    },
+    "grammar_role_color": {
+        "subject": "#3478F6",
+        "object": "#A855D6",
+        "predicate": "#ED5E68",
+        "modifier": "#16A6A1"
     },
     "cixingcolorshow": {
         "形容詞": true,
@@ -714,7 +730,7 @@
                 "name": "显示/隐藏历史文本"
             },
             "_7": {
-                "name": "朗读"
+                "name": "朗读当前日文"
             },
             "_7_1": {
                 "name": "朗读_中断"
@@ -831,7 +847,7 @@
     },
     "reader": {
         "windowstts": {
-            "use": true,
+            "use": false,
             "name": "WindowsTTS",
             "type": "offline"
         },
@@ -898,8 +914,9 @@
             }
         },
         "edgetts": {
-            "use": false,
-            "name": "edgeTTS"
+            "use": true,
+            "name": "edgeTTS",
+            "voice": "ja-JP-NanamiNeural"
         },
         "NeoSpeech": {
             "use": false,
@@ -1139,6 +1156,10 @@
                 }
             }
         }
+    },
+    "ginza": {
+        "use": true,
+        "display_mode": 0
     },
     "cishu": {
         "mojidict": {

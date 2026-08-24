@@ -110,8 +110,26 @@ class FenciColor(ColorControl):
         color = self._randomcolor_1()
         if not color:
             color = (0, 0, 0, 0)
+        return self._rgba(color)
+
+    @staticmethod
+    def _rgba(color, alpha=None):
         r, g, b, a = color
+        if alpha is not None:
+            a = alpha
         return "rgba({}, {}, {}, {})".format(r, g, b, a)
+
+    def borderget(self):
+        color = self._randomcolor_1()
+        if not color:
+            return "rgba(0, 0, 0, 0)"
+        return self._rgba(color, min(0.78, max(0.46, color[3] + 0.26)))
+
+    def hoverget(self):
+        color = self._randomcolor_1()
+        if not color:
+            return globalconfig.get("hovercolor", "#80000000")
+        return self._rgba(color, min(0.68, max(0.40, color[3] + 0.20)))
 
     def asklass(self):
         return "ColorControl_FENCI_COLOR_{}".format(

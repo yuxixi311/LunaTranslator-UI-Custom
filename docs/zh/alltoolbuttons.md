@@ -135,12 +135,16 @@
 
     如果未进行过翻译，并从隐藏切换到显示，则会触发对当前句子的翻译。
 
-1. #### <i class="fa fa-music"></i> <i class="fa fa-icon fa-rotate-right"></i> 朗读 {#anchor-langdu}
-    左击按钮会对当前文本进行语音合成。
+1. #### <i class="fa fa-volume-up"></i> <i class="fa fa-icon fa-rotate-right"></i> 朗读当前日文 {#anchor-langdu}
+    左击按钮会对翻译器当前显示的日文原文进行语音合成，不受“朗读翻译”开关影响。
 
-    右击该按钮会中断朗读。
+    右击该按钮会暂停朗读，再次右击会从当前位置继续朗读。
 
     该朗读会无视`跳过`（如果在`语音指定`中，匹配当前文本目标为`跳过`，则使用按钮进行朗读时，会无视跳过，强制进行朗读）
+1. #### 0.6X / 0.8X / 1.0X 日语朗读速度 {#anchor-ttsrate}
+    位于朗读按钮右侧。左击会在 `0.6X → 0.8X → 1.0X` 之间循环切换，按钮文字显示当前速度，并从下一次朗读开始生效。
+
+    朗读前会把连续省略号转换成停顿，因此不会把 `……`、`...` 或连续句点读成“点点点”。
 1. #### <i class="fa fa-copy"></i> <i class="fa fa-icon fa-rotate-right"></i> 复制到剪贴板 {#anchor-copy}
     复制当前提取到的文本到剪贴板一次。如果想要自动提取到剪贴板，应当激活`文本输入`->`剪贴板`->`自动输出`->`自动输出文本`。
 1. #### <i class="fa fa-history"></i> <i class="fa fa-icon fa-rotate-right"></i> 显示/隐藏历史文本 {#anchor-history}
@@ -184,4 +188,3 @@
   
 1. #### <i class="fa fa-refresh"></i> 重置翻译状态 {#anchor-reset_TS_status}
     重置翻译状态，主要针对现在日益增长的大模型翻译需求，可以清除保存的上下文和其他信息。
-  

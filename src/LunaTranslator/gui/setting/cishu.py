@@ -33,6 +33,7 @@ import qtawesome
 from gui.dynalang import LFormLayout, LLabel, LAction, LDialog
 from gui.rendertext.tooltipswidget import tooltipssetting
 from gui.showword import cishusX
+from gui.ltwidgets import LtPanelList, LtComboBox, LtStatusDot, LtButton, lt_tokens
 
 
 @Singleton
@@ -41,7 +42,7 @@ class multicolorset(LDialog, DarkLightAutoResetIconHelper):
         super().__init__(parent, Qt.WindowType.WindowCloseButtonHint)
         self.setWindowTitle("颜色设置")
         self.setWindowIcon(qtawesome.icon("fa.paint-brush"))
-        self.resize(QSize(300, 10))
+        self.resize(QSize(420, 10))
         formLayout = LFormLayout(self)  # 配置layout
         _hori = QHBoxLayout()
         l = LLabel("不透明度")
@@ -52,7 +53,7 @@ class multicolorset(LDialog, DarkLightAutoResetIconHelper):
             d=globalconfig,
             key="showcixing_touming",
             callback=gobject.base.translation_ui.translate_text.setcolorstyle,
-            default=30,
+            default=24,
         )
         _hori.addWidget(_s)
         formLayout.addRow(_hori)
@@ -63,6 +64,7 @@ class multicolorset(LDialog, DarkLightAutoResetIconHelper):
         hori.addWidget(LLabel("词性"))
         hori.addWidget(LLabel("是否显示"))
         hori.addWidget(LLabel("颜色"))
+        formLayout.addRow(hori)
         for k in globalconfig["cixingcolor"]:
             hori = QHBoxLayout()
 
@@ -86,6 +88,27 @@ class multicolorset(LDialog, DarkLightAutoResetIconHelper):
             hori.addWidget(p)
 
             formLayout.addRow(hori)
+
+        formLayout.addRow(LLabel("GiNZA 句法角色（底部色线）"))
+        role_names = {
+            "subject": "主语",
+            "object": "宾语",
+            "predicate": "谓语",
+            "modifier": "修饰语",
+        }
+        for key, name in role_names.items():
+            role_row = QHBoxLayout()
+            role_row.addWidget(LLabel(name))
+            role_row.addStretch(1)
+            role_row.addWidget(
+                ColorButton(
+                    self,
+                    globalconfig["grammar_role_color"],
+                    key,
+                    callback=gobject.base.translation_ui.translate_text.setcolorstyle,
+                )
+            )
+            formLayout.addRow(role_row)
         self.show()
 
 
@@ -216,30 +239,87 @@ def fenciqisettings(self):
     box = LGroupBox(self)
     box.setTitle("分词器")
     lay = VisLFormLayout(box)
-    l1 = QHBoxLayout()
 
-    lay.addRow(l1)
-    l1.addWidget(QLabel("Mecab"))
+    def refresh_current_text(*_):
+        try:
+            current = getattr(gobject.base, "currenttext", "")
+            if current:
+                gobject.base.translation_ui.updateraw(current)
+        except Exception:
+            pass
+
+    mecab_control = QWidget()
+    mecab_lay = QHBoxLayout(mecab_control)
+    mecab_lay.setContentsMargins(0, 0, 0, 0)
+    mecab_lay.setSpacing(8)
     items = autoinitdialog_items(globalconfig["hirasetting"]["mecab"])
     items[-1]["callback"] = gobject.base.startmecab
-    _3 = D_getIconButton(
-        callback=functools.partial(
-            autoinitdialog,
-            self,
-            globalconfig["hirasetting"]["mecab"]["args"],
-            "Mecab",
-            800,
-            items,
-        ),
+    configure_mecab = functools.partial(
+        autoinitdialog,
+        self,
+        globalconfig["hirasetting"]["mecab"]["args"],
+        "MeCab",
+        800,
+        items,
     )
-    l1.addWidget(_3())
-    l1.addStretch(1)
-    btn = LPushButton("资源下载")
+    mecab_lay.addWidget(LtButton("配置词典", clicked=configure_mecab))
+    btn = LtButton("下载词典", variant="quiet")
     btn.setCheckable(True)
     reflist = []
     btn.clicked.connect(functools.partial(clickcallback, reflist, lay))
-    l1.addWidget(btn)
-    l1.addStretch(8)
+    mecab_lay.addWidget(btn)
+
+    ginza_switch = getsimpleswitch(
+        globalconfig["ginza"], "use", callback=refresh_current_text
+    )
+    display_mode = LtComboBox(
+        ["学习分组（推荐）", "文节边界", "词元详情"]
+    )
+    display_mode.setMinimumWidth(176)
+    display_mode.setCurrentIndex(globalconfig["ginza"].get("display_mode", 0))
+
+    def set_display_mode(index):
+        globalconfig["ginza"]["display_mode"] = index
+        refresh_current_text()
+
+    display_mode.currentIndexChanged.connect(set_display_mode)
+
+    from myutils.ginzanlp import bundle_available
+
+    model_ready = bundle_available()
+    ginza_control = QWidget()
+    status_lay = QHBoxLayout(ginza_control)
+    status_lay.setContentsMargins(0, 0, 0, 0)
+    status_lay.setSpacing(7)
+    status_dot = LtStatusDot(pulsing=False)
+    status_dot.set_live(model_ready)
+    status_lay.addWidget(status_dot)
+    status_label = QLabel("模型已就绪" if model_ready else "模型不可用")
+    status_label.setStyleSheet(
+        "QLabel { color: %s; background: transparent; }" % lt_tokens()["text2"]
+    )
+    status_lay.addWidget(status_label)
+    status_lay.addSpacing(8)
+    status_lay.addWidget(ginza_switch)
+
+    panel = LtPanelList(parent=box)
+    panel.setGraphicsEffect(None)
+    panel.add_row(
+        title="MeCab 形态分析",
+        subtitle="负责词元、假名和点击查词；通常不需要反复配置",
+        control=mecab_control,
+    )
+    panel.add_row(
+        title="GiNZA 离线句法",
+        subtitle="在后台识别短语关系；内置模型，全程离线",
+        control=ginza_control,
+    )
+    panel.add_row(
+        title="分析显示方式",
+        subtitle="推荐模式会把相邻格成分和谓语合成学习单元，例如「役に立つ」",
+        control=display_mode,
+    )
+    lay.addRow(panel)
     return box
 
 

@@ -3,6 +3,7 @@ Run: python src/tests/test_ltwidgets.py"""
 
 import os
 import sys
+import tempfile
 
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "LunaTranslator"))
@@ -10,6 +11,9 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 from qtsymbols import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QFrame
 
 app = QApplication([])
+artifacts = tempfile.TemporaryDirectory(prefix="luna-translate-ui-tests-")
+light_render = os.path.join(artifacts.name, "primitives-light.png")
+dark_render = os.path.join(artifacts.name, "primitives-dark.png")
 
 # force light/dark by monkeypatching the resolver used by ltwidgets
 import gui.ltwidgets as ltw
@@ -67,20 +71,20 @@ def render(page, path):
 ltw.lt_isdark = lambda: False
 ltw.lt_tokens = lambda: LIGHT
 page_l = build_page()
-render(page_l, r"D:\WorkSpace\LunaTranslator-Learning-UI\temp\primitives-light.png")
+render(page_l, light_render)
 
 # --- dark theme ---
 ltw.lt_isdark = lambda: True
 ltw.lt_tokens = lambda: DARK
 page_d = build_page()
-render(page_d, r"D:\WorkSpace\LunaTranslator-Learning-UI\temp\primitives-dark.png")
+render(page_d, dark_render)
 
 # --- assertions ---
-check("light render non-empty", os.path.getsize(r"D:\WorkSpace\LunaTranslator-Learning-UI\temp\primitives-light.png") > 2000)
-check("dark render non-empty", os.path.getsize(r"D:\WorkSpace\LunaTranslator-Learning-UI\temp\primitives-dark.png") > 2000)
+check("light render non-empty", os.path.getsize(light_render) > 2000)
+check("dark render non-empty", os.path.getsize(dark_render) > 2000)
 check("primary button ltClass", ltw.LtButton("x", variant="primary").property("ltClass") == "primary")
 check("quiet button ltClass", ltw.LtButton("x", variant="quiet").property("ltClass") == "quiet")
-check("panel surface ltClass", ltw.LtPanel().property("ltClass") == "surface")
+check("panel glass ltClass", ltw.LtPanel().property("ltClass") == "glass")
 
 seg = ltw.LtSegmented([("a", "A"), ("b", "B")], current="a")
 check("segmented current", seg.current() == "a")
@@ -100,4 +104,5 @@ check("panel list no hairline on last row", "border-bottom" not in panel_list._r
 
 print()
 print("RESULT:", "ALL PASS" if not failures else f"FAILURES: {failures}")
+artifacts.cleanup()
 sys.exit(0 if not failures else 1)

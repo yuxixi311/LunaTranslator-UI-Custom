@@ -30,6 +30,17 @@ class WordSegResult:
         info=None,
         isshit=False,
         specialinfo=None,
+        grammar_role=None,
+        grammar_dep=None,
+        grammar_head=None,
+        bunsetu_id=None,
+        bunsetu_text=None,
+        bunsetu_start=False,
+        bunsetu_end=False,
+        learning_unit_id=None,
+        learning_unit_text=None,
+        learning_unit_start=False,
+        learning_unit_end=False,
         **_
     ):
         self.donthighlight = donthighlight
@@ -42,6 +53,17 @@ class WordSegResult:
         self.info = info
         self.specialinfo = specialinfo
         self.isshit = isshit
+        self.grammar_role = grammar_role
+        self.grammar_dep = grammar_dep
+        self.grammar_head = grammar_head
+        self.bunsetu_id = bunsetu_id
+        self.bunsetu_text = bunsetu_text
+        self.bunsetu_start = bunsetu_start
+        self.bunsetu_end = bunsetu_end
+        self.learning_unit_id = learning_unit_id
+        self.learning_unit_text = learning_unit_text
+        self.learning_unit_start = learning_unit_start
+        self.learning_unit_end = learning_unit_end
 
     @property
     def prototype(self):
@@ -61,6 +83,17 @@ class WordSegResult:
             isshit=self.isshit,
             specialinfo=self.specialinfo,
             donthighlight=self.donthighlight,
+            grammar_role=self.grammar_role,
+            grammar_dep=self.grammar_dep,
+            grammar_head=self.grammar_head,
+            bunsetu_id=self.bunsetu_id,
+            bunsetu_text=self.bunsetu_text,
+            bunsetu_start=self.bunsetu_start,
+            bunsetu_end=self.bunsetu_end,
+            learning_unit_id=self.learning_unit_id,
+            learning_unit_text=self.learning_unit_text,
+            learning_unit_start=self.learning_unit_start,
+            learning_unit_end=self.learning_unit_end,
         )
 
     def __str__(self):
@@ -81,4 +114,15 @@ class WordSegResult:
             isshit=d.get("isshit", False),
             specialinfo=d.get("specialinfo"),
             donthighlight=d.get("donthighlight"),
+            grammar_role=d.get("grammar_role"),
+            grammar_dep=d.get("grammar_dep"),
+            grammar_head=d.get("grammar_head"),
+            bunsetu_id=d.get("bunsetu_id"),
+            bunsetu_text=d.get("bunsetu_text"),
+            bunsetu_start=d.get("bunsetu_start", False),
+            bunsetu_end=d.get("bunsetu_end", False),
+            learning_unit_id=d.get("learning_unit_id"),
+            learning_unit_text=d.get("learning_unit_text"),
+            learning_unit_start=d.get("learning_unit_start", False),
+            learning_unit_end=d.get("learning_unit_end", False),
         )

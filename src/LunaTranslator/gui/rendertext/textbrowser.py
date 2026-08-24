@@ -16,8 +16,28 @@ from gui.usefulwidget import qwidget_screen
 from gui.dynalang import LAction
 from sometypes import WordSegResult
 from gui.rendertext.tooltipswidget import tooltipswidget
+from gui.ltwidgets import lt_tokens
 
 reference: "set[QLabel]" = set()
+
+
+def _word_hover_style(word):
+    try:
+        color = FenciColor(word)
+        return (
+            "background-color: {}; border: 1px solid {}; "
+            "border-radius: 6px;"
+        ).format(color.hoverget(), color.borderget())
+    except Exception:
+        return "background-color: {}; border-radius: 6px;".format(
+            globalconfig.get("hovercolor", "#80000000")
+        )
+
+
+_transparent_word_style = (
+    "background-color: rgba(0,0,0,0.01); "
+    "border: 1px solid transparent; border-radius: 6px;"
+)
 
 
 class WordSegResultX(WordSegResult):
@@ -77,24 +97,22 @@ class Qlabel_c(QLabel_w):
     def enterEvent(self, a0) -> None:
         try:
             if self.company:
-                self.company.ref.setStyleSheet(
-                    "background-color: " + globalconfig.get("hovercolor", "#80000000")
-                )
+                self.company.ref.setStyleSheet(_word_hover_style(self.company.word))
                 reference.add(self.company.ref)
         except:
             pass
-        self.ref.setStyleSheet("background-color: " + globalconfig.get("hovercolor", "#80000000"))
+        self.ref.setStyleSheet(_word_hover_style(self.word))
         reference.add(self.ref)
         return super().enterEvent(a0)
 
     def leaveEvent(self, a0) -> None:
         try:
             if self.company:
-                self.company.ref.setStyleSheet("background-color: rgba(0,0,0,0.01);")
+                self.company.ref.setStyleSheet(_transparent_word_style)
                 reference.discard(self.company.ref)
         except:
             pass
-        self.ref.setStyleSheet("background-color: rgba(0,0,0,0.01);")
+        self.ref.setStyleSheet(_transparent_word_style)
         reference.discard(self.ref)
         tooltipswidget.hidetooltipwindow()
         return super().leaveEvent(a0)
@@ -104,20 +122,48 @@ class FenciQLabel(QLabel_w):
     def __init__(self, *argc, **kw):
         self.last = None
         self.color = None
+        self.word = None
         super().__init__(*argc, **kw)
 
-    def setColor(self, color: ColorControl):
-        style = "background-color: {};".format(color.get())
-        self.last = color.get()
+    def _style(self, color: ColorControl, word=None):
+        style = (
+            "background-color: {}; border: 1px solid {}; "
+            "border-radius: 6px;"
+        ).format(color.get(), color.borderget())
+        config = globalconfig.get("ginza", {})
+        if not config.get("use", True) or word is None:
+            return style
+        mode = config.get("display_mode", 0)
+        if mode == 1 and word.bunsetu_id is not None:
+            tokens = lt_tokens()
+            style = (
+                "background-color: {}; border: 1px solid {}; "
+                "border-radius: 8px;"
+            ).format(tokens["accent_tint"], tokens["hairline"])
+        elif mode == 0 and word.learning_unit_id is not None:
+            style += "border-radius: 8px;"
+        if mode in (0, 2) and word.grammar_role:
+            role_color = globalconfig.get("grammar_role_color", {}).get(
+                word.grammar_role
+            ) or lt_tokens().get("grammar_" + word.grammar_role)
+            if role_color:
+                style += "border-bottom: 2px solid {};".format(role_color)
+        return style
+
+    def setColor(self, color: ColorControl, word=None):
+        self.word = word
+        style = self._style(color, word)
+        self.last = style
         self.color = color
         self.setStyleSheet(style)
 
     def maybestylechanged(self):
         if not self.isVisible():
             return
-        if self.last == self.color.get():
+        style = self._style(self.color, self.word)
+        if self.last == style:
             return
-        self.setColor(self.color)
+        self.setColor(self.color, self.word)
 
 
 class QTextBrowser_1(QTextEdit):
@@ -200,10 +246,8 @@ class QTextBrowser_1(QTextEdit):
             if label.geometry().contains(ev.pos()):
                 continue
             try:
-                label.refmask.setStyleSheet("background-color: rgba(0,0,0,0.01);")
-                label.company.refmask.setStyleSheet(
-                    "background-color: rgba(0,0,0,0.01);"
-                )
+                label.refmask.setStyleSheet(_transparent_word_style)
+                label.company.refmask.setStyleSheet(_transparent_word_style)
                 reference.discard(label.refmask)
                 reference.discard(label.company.refmask)
             except:
@@ -215,10 +259,10 @@ class QTextBrowser_1(QTextEdit):
                     targetlabel.refmask.word, self.mapToGlobal(ev.pos())
                 )
                 targetlabel.refmask.setStyleSheet(
-                    "background-color: " + globalconfig.get("hovercolor", "#80000000")
+                    _word_hover_style(targetlabel.refmask.word)
                 )
                 targetlabel.company.refmask.setStyleSheet(
-                    "background-color: " + globalconfig.get("hovercolor", "#80000000")
+                    _word_hover_style(targetlabel.company.refmask.word)
                 )
                 reference.add(targetlabel.refmask)
                 reference.add(targetlabel.company.refmask)
@@ -1127,19 +1171,30 @@ class TextBrowser(QWidget, dataget):
             ql_1 = QLabel_w(ql)
             ql_1.setMouseTracking(True)
             ql.refmask = ql_1
-            ql_1.setStyleSheet("background-color: rgba(0,0,0,0.01);")
+            ql_1.setStyleSheet(_transparent_word_style)
             self.searchmasklabels_clicked.append(ql_1)
             ql = Qlabel_c(self.masklabel)
             ql.ref = ql_1
             ql.setMouseTracking(True)
-            ql.setStyleSheet("background-color: rgba(0,0,0,0.01);")
+            ql.setStyleSheet(_transparent_word_style)
             self.searchmasklabels_clicked2.append(ql)
         self.searchmasklabels_clicked[labeli].setGeometry(0, 0, pos1[2], pos1[3])
         self.searchmasklabels_clicked[labeli].word = word
         self.searchmasklabels_clicked2[labeli].setGeometry(*pos1)
         self.searchmasklabels_clicked2[labeli].word = word
-        self.searchmasklabels[labeli].setGeometry(*pos1)
-        self.searchmasklabels[labeli].setColor(color)
+        x, y, width, height = pos1
+        mode = globalconfig.get("ginza", {}).get("display_mode", 0)
+        if mode == 0 and word.learning_unit_id is not None:
+            unit_start, unit_end = word.learning_unit_start, word.learning_unit_end
+        else:
+            unit_start, unit_end = word.bunsetu_start, word.bunsetu_end
+        left_gap = 2 if unit_start else 1
+        right_gap = 2 if unit_end else 1
+        if width > left_gap + right_gap:
+            x += left_gap
+            width -= left_gap + right_gap
+        self.searchmasklabels[labeli].setGeometry(x, y, width, height)
+        self.searchmasklabels[labeli].setColor(color, word)
         self.showhideclick_i(labeli)
 
     def showhideclick(self, _=None):
@@ -1325,7 +1380,7 @@ class TextBrowser(QWidget, dataget):
     def sethovercolor(self, color):
         for _ in reference:
             try:
-                _.setStyleSheet("background-color: " + color)
+                _.setStyleSheet(_word_hover_style(getattr(_, "word", None)))
             except:
                 pass
 

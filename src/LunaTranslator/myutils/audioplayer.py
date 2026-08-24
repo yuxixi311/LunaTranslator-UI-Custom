@@ -22,6 +22,7 @@ class playonce:
     def __init__(self, fileormem, volume) -> None:
         self.handle = 0
         self.idle = True
+        self.paused = False
         self.__play(fileormem, volume)
 
     def __del__(self):
@@ -32,6 +33,25 @@ class playonce:
     @property
     def isplaying(self):
         return NativeUtils.bass_handle_isplaying(self.handle)
+
+    def pause(self):
+        if not self.handle or self.idle or self.paused:
+            return False
+        if NativeUtils.bass_handle_pause(self.handle):
+            self.paused = True
+            return True
+        return False
+
+    def resume(self):
+        if not self.handle or self.idle or not self.paused:
+            return False
+        if NativeUtils.bass_handle_resume(self.handle, False):
+            self.paused = False
+            return True
+        return False
+
+    def toggle_pause(self):
+        return self.resume() if self.paused else self.pause()
 
     @threader
     def __play(self, data: "bytes | str | types.GeneratorType[bytes]", volume):
@@ -68,6 +88,8 @@ class series_audioplayer:
         self.lock.acquire()
         self.timestamp = None
         self.lastcontext = None
+        self.current = None
+        self.current_lock = threading.Lock()
         self.__dotasks()
 
     def stop(self):
@@ -88,6 +110,12 @@ class series_audioplayer:
         except:
             pass
 
+    def toggle_pause(self):
+        with self.current_lock:
+            if self.current is None:
+                return False
+            return self.current.toggle_pause()
+
     @threader
     def __dotasks(self):
         try:
@@ -102,9 +130,11 @@ class series_audioplayer:
                 if not binary:
                     continue
                 _playonce = playonce(binary, volume)
+                with self.current_lock:
+                    self.current = _playonce
                 while _playonce.idle and not self.tasks:
                     time.sleep(0.1)
-                while _playonce.isplaying:
+                while _playonce.isplaying or _playonce.paused:
                     time.sleep(0.1)
                     if self.tasks and not (
                         globalconfig.get("ttsnointerrupt", False)
@@ -114,5 +144,8 @@ class series_audioplayer:
                 else:
                     if self.playovercallback:
                         self.playovercallback(force)
+                with self.current_lock:
+                    if self.current is _playonce:
+                        self.current = None
         except:
             print_exc()

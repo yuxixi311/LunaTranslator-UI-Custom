@@ -79,6 +79,9 @@ ocrerrorfix = tryreadconfig("ocrerrorfix.json")
 globalconfig: "dict[str, dict[str, str|dict|list] | list[str|dict] | str]" = (
     tryreadconfig("config.json")
 )
+_learning_ui_feature_revision_before_sync = globalconfig.get(
+    "learning_ui_feature_revision", 0
+)
 magpie_config = tryreadconfig_1("Magpie/config.json", pathold="magpie_config.json")
 postprocessconfig = tryreadconfig("postprocessconfig.json")
 
@@ -363,6 +366,85 @@ def syncconfig(config1, default, drop=False, deep=0):
 
 
 syncconfig(globalconfig, defaultglobalconfig)
+# Learning UI revision 2 adds the manual Japanese read button to the compact
+# toolbar.  Older user configs explicitly stored langdu.use=false, so expose it
+# once during upgrade without overriding later user customization.
+if (
+    _learning_ui_feature_revision_before_sync < 2
+    and globalconfig.get("interface_level", "simplified") == "simplified"
+):
+    globalconfig["toolbutton"]["buttons"]["langdu"]["use"] = True
+# Learning UI revision 3 replaces the music note with a speaker and places the
+# manual read action immediately after the translation-visibility action.  Move
+# both to the end so the speaker is the rightmost button in the center group.
+if _learning_ui_feature_revision_before_sync < 3:
+    globalconfig["toolbutton"]["buttons"]["langdu"]["icon"] = "fa.volume-up"
+    toolbar_rank = globalconfig["toolbutton"]["rank2"]
+    for button_name in ("showtrans", "langdu"):
+        if button_name in toolbar_rank:
+            toolbar_rank.remove(button_name)
+    toolbar_rank.extend(("showtrans", "langdu"))
+# Learning UI revision 4 selects the user-approved Japanese learning voice.
+# The advanced TTS page still exposes every engine; Common Settings switches
+# between the two Japanese neural voices provided by edgeTTS.
+if _learning_ui_feature_revision_before_sync < 4:
+    for reader_name in globalconfig["reader"]:
+        globalconfig["reader"][reader_name]["use"] = reader_name == "edgetts"
+    globalconfig["reader"]["edgetts"]["voice"] = "ja-JP-NanamiNeural"
+# Learning UI revision 5 adds the three-step Japanese speech-rate button.
+# Keep it immediately to the right of the speaker and normalize the advanced
+# rate only when it cannot represent one of the three learning presets.
+if _learning_ui_feature_revision_before_sync < 5:
+    from myutils.tts_speed import is_learning_tts_rate
+
+    if globalconfig.get("interface_level", "simplified") == "simplified":
+        globalconfig["toolbutton"]["buttons"]["ttsrate"]["use"] = True
+    toolbar_rank = globalconfig["toolbutton"]["rank2"]
+    for button_name in ("showtrans", "langdu", "ttsrate"):
+        if button_name in toolbar_rank:
+            toolbar_rank.remove(button_name)
+    toolbar_rank.extend(("showtrans", "langdu", "ttsrate"))
+    if not is_learning_tts_rate(globalconfig["ttscommon"].get("rate", 0)):
+        globalconfig["ttscommon"]["rate"] = 0
+# Learning UI revision 7 replaces the upstream named-color sample palette with
+# a semantic, study-oriented palette.  Only migrate an untouched legacy palette
+# so a user's own color choices are never overwritten.
+if _learning_ui_feature_revision_before_sync < 7:
+    legacy_cixingcolor = {
+        "形容詞": "aliceblue",
+        "形状詞": "antiquewhite",
+        "副詞": "aqua",
+        "名詞": "aquamarine",
+        "代名詞": "azure",
+        "動詞": "beige",
+        "助詞": "bisque",
+        "助動詞": "black",
+        "感動詞": "blanchedalmond",
+        "接頭辞": "blue",
+        "接尾辞": "blueviolet",
+        "接続詞": "brown",
+        "指示詞": "burlywood",
+        "連体詞": "cadetblue",
+        "判定詞": "chartreuse",
+        "補助記号": "chocolate",
+        "記号": "coral",
+        "空白": "white",
+    }
+    current_palette = globalconfig.get("cixingcolor", {})
+    untouched_legacy_palette = all(
+        current_palette.get(key) == value
+        for key, value in legacy_cixingcolor.items()
+    )
+    if untouched_legacy_palette:
+        current_palette.update(defaultglobalconfig["cixingcolor"])
+        if globalconfig.get("showcixing_touming", 30) == 30:
+            globalconfig["showcixing_touming"] = 24
+# Mark the one-time migrations complete.  syncconfig preserves existing scalar
+# values, so this must be written explicitly or a user's later voice choice
+# would be reset to Nanami on every launch.
+globalconfig["learning_ui_feature_revision"] = defaultglobalconfig[
+    "learning_ui_feature_revision"
+]
 syncconfig(transerrorfixdictconfig, defaulterrorfix)
 
 syncconfig(magpie_config, dfmagpie_config)

@@ -20,13 +20,19 @@ from NativeUtils import MenuItem
 
 
 class wordwithcolor:
-    def __init__(self, word: WordSegResult, color: str):
+    def __init__(self, word: WordSegResult, color: str, bordercolor: str, hovercolor: str):
         self.word = word
         self.color = color
+        self.bordercolor = bordercolor
+        self.hovercolor = hovercolor
 
     def as_dict(self):
         d = self.word.as_dict()
-        d.update(color=self.color)
+        d.update(
+            color=self.color,
+            bordercolor=self.bordercolor,
+            hovercolor=self.hovercolor,
+        )
         return d
 
 
@@ -294,13 +300,19 @@ class somecommon(dataget):
             tagx: "list[wordwithcolor]" = []
             for word in tag:
                 color1 = FenciColor(word)
-                wordx = wordwithcolor(word, color1.asklass())
+                wordx = wordwithcolor(
+                    word,
+                    color1.asklass(),
+                    color1.borderget(),
+                    color1.hoverget(),
+                )
                 tagx.append(wordx)
                 self._setcolors(color1)
             self._setcolors(SpecialColor.KanaColor)
             args = dict(
                 color=color.asklass(),
                 kanacolor=SpecialColor.KanaColor.asklass(),
+                ginza_mode=globalconfig.get("ginza", {}).get("display_mode", 0),
             )
             self.create_internal_rubytext(clear, style, styleargs, _id, tagx, args)
         else:
@@ -327,7 +339,12 @@ class somecommon(dataget):
             mp[color.asklass()] = color.get()
         style = self._getstylevalid()
         styleargs = globalconfig["rendertext"]["webview"][style].get("args", {})
-        infos = dict(color=mp, style=style, styleargs=styleargs)
+        infos = dict(
+            color=mp,
+            style=style,
+            styleargs=styleargs,
+            grammar_colors=globalconfig.get("grammar_role_color", {}),
+        )
         self.debugeval("setcolorstyle('{}')".format(quote(json.dumps(infos))))
 
     def setfontextra(self, klass: str):

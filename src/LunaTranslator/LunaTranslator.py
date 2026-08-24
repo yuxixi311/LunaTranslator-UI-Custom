@@ -75,6 +75,7 @@ from cishu.cishubase import cishubase
 from translator.basetranslator import basetrans
 from textio.textoutput.outputerbase import Base as outputerbase
 from myutils.updater import versioncheckthread
+from myutils.textsource_selection import select_exclusive_text_source
 from gui.qevent import DarkLightChangedEvent
 from gui.setting.translate import autostartllamacpp
 from collections import OrderedDict
@@ -1022,13 +1023,17 @@ class BASEOBJECT(QObject):
         return None
 
     @threader
-    def readcurrent(self, force=False):
+    def readcurrent(self, force=False, origin_only=False):
         if (not force) and (not globalconfig.get("autoread", False)):
             return
-        text1 = self.currentread
+        # Manual Learning UI actions use ``origin_only`` so the shortcut always
+        # reads the currently displayed Japanese source text.  Automatic TTS
+        # keeps the existing read_raw/read_trans selection behaviour.
+        text1 = self.currenttext if origin_only else self.currentread
+        isorigin = True if origin_only else self.latest_is_origin
         if not text1:
             return
-        matchitme = self.ttsskip(text1, self.__usewhich(), self.latest_is_origin)
+        matchitme = self.ttsskip(text1, self.__usewhich(), isorigin)
         reader = None
         if matchitme is None:
             reader = self.reader
@@ -1115,6 +1120,13 @@ class BASEOBJECT(QObject):
 
         if not globalconfig["sourcestatus2"]["texthook"]["use"]:
             return
+        # Never pass Hook connection parameters to an OCR/clipboard source.
+        # This also repairs a source object that was created from a stale
+        # multi-enabled config before the user opened the process selector.
+        if not isinstance(self.textsource, texthook):
+            self.starttextsource(use="texthook", checked=True)
+        if not isinstance(self.textsource, texthook):
+            return
         gameuid, reflist = findgameuidofpath(pexe)
         if gameuid:
             if not globalconfig.get("startgamenototop", True):
@@ -1126,6 +1138,21 @@ class BASEOBJECT(QObject):
         self.textsource.start(hwnd, pids, pexe, gameuid, autostart=False)
 
     def starttextsource(self, use=None, checked=True):
+        classes = {
+            "ocr": ocrtext,
+            "copy": copyboard,
+            "texthook": texthook,
+            "filetrans": filetrans,
+            "mssr": mssr,
+        }
+        if checked:
+            # Text sources are mutually exclusive.  Normalize stale configs
+            # before refreshing the UI or creating the runtime object.  Hook
+            # wins legacy Hook+OCR conflicts; explicit selections win always.
+            use = select_exclusive_text_source(
+                globalconfig["sourcestatus2"], preferred=use
+            )
+
         self.translation_ui.showhidestate = False
         self.translation_ui.refreshtooliconsignal.emit()
 
@@ -1135,26 +1162,8 @@ class BASEOBJECT(QObject):
             globalconfig["sourcestatus2"]["texthook"]["use"]
         )
         self.textsource = None
-        if checked:
-            classes = {
-                "ocr": ocrtext,
-                "copy": copyboard,
-                "texthook": texthook,
-                "filetrans": filetrans,
-                "mssr": mssr,
-            }
-            if use is None:
-                use = list(
-                    filter(
-                        lambda _: globalconfig["sourcestatus2"][_]["use"],
-                        classes.keys(),
-                    )
-                )
-                use = None if len(use) == 0 else use[0]
-            if use is None:
-                return
-            else:
-                self.textsource = classes[use]()
+        if checked and use in classes:
+            self.textsource = classes[use]()
 
     @threader
     def startmecab(self):

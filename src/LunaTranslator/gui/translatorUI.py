@@ -28,6 +28,7 @@ from myutils.utils import (
 )
 from myutils.hwnd import mouseselectwindow, grabwindow, getExeIcon, getcurrexe
 from myutils.updater import doupdate
+from myutils.tts_speed import next_tts_speed_rate, tts_speed_label
 from gui.qevent import TransparentChangedEvent
 from gui.dialog_memory import dialog_memory
 from gui.rendertext.texttype import TextType, SpecialColor
@@ -43,6 +44,7 @@ from gui.gamemanager.dialog import dialog_savedgame_integrated
 from gui.gamemanager.common import startgame
 from gui.dynalang import LAction
 from gui.buttonbar import buttonfunctions, IconLabelX, ButtonBar
+from language import Languages
 
 
 class TranslatorWindow(resizableframeless):
@@ -70,6 +72,7 @@ class TranslatorWindow(resizableframeless):
     changeshowhidetranssig = pyqtSignal()
     magpiecallback = pyqtSignal(bool)
     showMarkDownSig = pyqtSignal(str)
+    ginzaAnalysisResult = pyqtSignal(int, str, object, str)
 
     def setbuttonsizeX(self):
         self.changeextendstated()
@@ -194,6 +197,40 @@ class TranslatorWindow(resizableframeless):
         hira = gobject.base.parsehira(text)
 
         self.translate_text.updatetext(TextType.Origin, text, hira, color)
+        self._schedule_ginza_analysis(text, hira)
+
+    def _schedule_ginza_analysis(self, text, hira):
+        self._ginza_request_id += 1
+        request_id = self._ginza_request_id
+        self._ginza_current_text = text
+        if not globalconfig.get("ginza", {}).get("use", True):
+            return
+        if not text or text.isascii() or not hira:
+            return
+        if getlangsrc() not in (Languages.Auto, Languages.Japanese):
+            return
+        try:
+            if self._ginza_worker is None:
+                from myutils.ginzanlp import GinzaAnalysisWorker
+
+                self._ginza_worker = GinzaAnalysisWorker(
+                    self.ginzaAnalysisResult.emit
+                )
+            self._ginza_worker.submit(request_id, text, hira)
+        except Exception:
+            print_exc()
+
+    def _apply_ginza_analysis(self, request_id, text, words, error):
+        if request_id != self._ginza_request_id or text != self._ginza_current_text:
+            return
+        if not globalconfig.get("ginza", {}).get("use", True):
+            return
+        self._ginza_last_error = error
+        if error:
+            return
+        self.translate_text.updatetext(
+            TextType.Origin, text, words, SpecialColor.RawTextColor
+        )
 
     def showraw(self, text, updateTranslate, is_auto_run):
         color = SpecialColor.RawTextColor
@@ -209,6 +246,7 @@ class TranslatorWindow(resizableframeless):
             updateTranslate=updateTranslate,
             is_auto_run=is_auto_run,
         )
+        self._schedule_ginza_analysis(text, hira)
         # Learning UI: expose the previous sentence to the overlay chrome
         try:
             tt = getattr(self, "translate_text", None)
@@ -379,6 +417,21 @@ class TranslatorWindow(resizableframeless):
         self.refreshtoolicon()
         self.checksettop()
 
+    def currentTtsSpeedLabel(self):
+        return tts_speed_label(globalconfig["ttscommon"].get("rate", 0))
+
+    def cycleTtsSpeed(self):
+        globalconfig["ttscommon"]["rate"] = next_tts_speed_rate(
+            globalconfig["ttscommon"].get("rate", 0)
+        )
+        label = self.currentTtsSpeedLabel()
+        self.titlebar.refreshtoolicon()
+        button = self.titlebar.buttons.get("ttsrate")
+        if button:
+            tip = "日语朗读速度：{}（点击切换，下次朗读生效）".format(label)
+            button.setToolTip(tip)
+            button.setAccessibleName(tip)
+
     def addbuttons(self):
 
         functions = (
@@ -453,8 +506,17 @@ class TranslatorWindow(resizableframeless):
             (
                 "langdu",
                 buttonfunctions(
-                    clicked=lambda: gobject.base.readcurrent(force=True),
-                    rightclick=lambda: gobject.base.audioplayer.stop(),
+                    clicked=lambda: gobject.base.readcurrent(
+                        force=True, origin_only=True
+                    ),
+                    rightclick=lambda: gobject.base.audioplayer.toggle_pause(),
+                ),
+            ),
+            (
+                "ttsrate",
+                buttonfunctions(
+                    clicked=self.cycleTtsSpeed,
+                    textstate=self.currentTtsSpeedLabel,
                 ),
             ),
             (
@@ -610,6 +672,7 @@ class TranslatorWindow(resizableframeless):
 
         for __ in functions:
             btn = clicked = iconstate = colorstate = rightclick = middleclick = None
+            textstate = None
             if len(__) == 2:
                 btn, funcs = __
                 if isinstance(funcs, buttonfunctions):
@@ -618,6 +681,7 @@ class TranslatorWindow(resizableframeless):
                     middleclick = funcs.middleclick
                     iconstate = funcs.iconstate
                     colorstate = funcs.colorstate
+                    textstate = funcs.textstate
                 else:
                     clicked = funcs
             belong = (
@@ -636,6 +700,7 @@ class TranslatorWindow(resizableframeless):
                 iconstate,
                 colorstate,
                 middleclick,
+                textstate,
             )
 
     # Learning UI: simplified/full toolbar presentation levels.
@@ -653,6 +718,8 @@ class TranslatorWindow(resizableframeless):
         "history",
         "searchwordW",
         "showtrans",
+        "langdu",
+        "ttsrate",
         "keepontop",
         "minmize",
         "quit",
@@ -797,6 +864,10 @@ class TranslatorWindow(resizableframeless):
         self.isbindedwindow = False
         self.setontopthread_lock = threading.Lock()
         self.ocr_once_follow_rect = None
+        self._ginza_request_id = 0
+        self._ginza_current_text = ""
+        self._ginza_last_error = ""
+        self._ginza_worker = None
 
     def displayglobaltooltip_f(self, string):
         QToolTip.showText(QCursor.pos(), string, self)
@@ -832,6 +903,7 @@ class TranslatorWindow(resizableframeless):
         self.closesignal.connect(self.close)
         self.changeshowhiderawsig.connect(self.changeshowhideraw)
         self.changeshowhidetranssig.connect(self.changeshowhidetrans)
+        self.ginzaAnalysisResult.connect(self._apply_ginza_analysis)
 
     def safemove(self, pos: QPoint):
         screengeo = qwidget_screen(self).geometry()

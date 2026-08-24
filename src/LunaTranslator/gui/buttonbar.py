@@ -24,6 +24,7 @@ class buttonfunctions:
         middleclick=None,
         iconstate=None,
         colorstate=None,
+        textstate=None,
     ):
         (
             self.clicked,
@@ -31,7 +32,8 @@ class buttonfunctions:
             self.middleclick,
             self.iconstate,
             self.colorstate,
-        ) = (clicked, rightclick, middleclick, iconstate, colorstate)
+            self.textstate,
+        ) = (clicked, rightclick, middleclick, iconstate, colorstate, textstate)
 
 
 class IconLabelX(LLabel):
@@ -63,6 +65,8 @@ class IconLabelX(LLabel):
         self._size = QSize()
         self.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
         self.pixmap_ = None
+        self._button_text = None
+        self._button_text_color = QColor()
         self.setScaledContents(True)
         # 开启鼠标跟踪，使鼠标在按钮上移动时事件能向父窗口传播，
         # 从而让 resizableframeless 更新边框 resize 光标（按钮无显式
@@ -132,6 +136,7 @@ class IconLabelX(LLabel):
         self.setIconSize(QSize(int(h * gobject.Consts.IconSizeHW), h))
 
     def setIconStr(self, icon: str, color: str):
+        self._button_text = None
         if len(icon) > 1 and (icon == "luna" or not icon.startswith("fa.")):
             self.pixmap_ = (
                 getExeIcon(getcurrexe(), icon=False, large=True)
@@ -145,11 +150,29 @@ class IconLabelX(LLabel):
             self._icon = qtawesome.icon(icon, color=color)
         self.update()
 
+    def setButtonText(self, text: str, color: str):
+        self.pixmap_ = None
+        self._icon = None
+        self._button_text = text
+        self._button_text_color = QColor(color)
+        self.update()
+
     def setIconSize(self, size: QSize):
         self._size = size
         self.update()
 
     def paintEvent(self, a0: QPaintEvent) -> None:
+        if self._button_text is not None:
+            painter = QPainter(self)
+            painter.setRenderHint(QPainter.RenderHint.TextAntialiasing)
+            painter.setPen(self._button_text_color)
+            font = painter.font()
+            font.setBold(True)
+            font.setPixelSize(max(9, int(self.height() * 0.34)))
+            painter.setFont(font)
+            painter.drawText(self.rect(), Qt.AlignmentFlag.AlignCenter, self._button_text)
+            painter.end()
+            return
         if self.pixmap():
             return super().paintEvent(a0)
         if self._icon is None:
@@ -232,6 +255,7 @@ class ButtonBar(QFrame):
         self.stylebuttons: "dict[str, list]" = {}
         self.iconstate = {}
         self.colorstate = {}
+        self.textstate = {}
 
     def refreshtoolicon(self):
         for name in self.buttons:
@@ -243,6 +267,9 @@ class ButtonBar(QFrame):
                 )
             else:
                 color = globalconfig.get("buttoncolor", "#2e2eff")
+            if name in self.textstate:
+                self.buttons[name].setButtonText(self.textstate[name](), color)
+                continue
             if name in self.iconstate:
                 icon = (
                     globalconfig["toolbutton"]["buttons"][name]["icon"]
@@ -292,6 +319,7 @@ class ButtonBar(QFrame):
         iconstate=None,
         colorstate=None,
         middleclick=None,
+        textstate=None,
     ):
         button = IconLabelX()
 
@@ -324,6 +352,8 @@ class ButtonBar(QFrame):
             self.iconstate[name] = iconstate
         if colorstate:
             self.colorstate[name] = colorstate
+        if textstate:
+            self.textstate[name] = textstate
 
     def adjustbuttons(self):
         __ = [self._left, self._right, self._center]

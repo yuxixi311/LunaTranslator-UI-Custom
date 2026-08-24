@@ -199,7 +199,7 @@ def registrhotkeys(self):
         "_5": gobject.base.translation_ui.changeshowhiderawsig.emit,
         "_51": gobject.base.translation_ui.changeshowhidetranssig.emit,
         "_6": lambda: gobject.base.transhis.showsignal.emit(),
-        "_7": lambda: gobject.base.readcurrent(force=True),
+        "_7": lambda: gobject.base.readcurrent(force=True, origin_only=True),
         "_7_1": lambda: gobject.base.audioplayer.stop(),
         "_8": lambda: gobject.base.translation_ui.changemousetransparentstate(0),
         "_9": lambda: (

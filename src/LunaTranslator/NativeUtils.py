@@ -1214,6 +1214,17 @@ bass_handle_isplaying = utilsdll.bass_handle_isplaying
 bass_handle_isplaying.argtypes = (HSTREAM,)
 bass_handle_isplaying.restype = c_bool
 
+# NativeUtils owns the BASS stream handles. Loading the same BASS module here
+# lets the Python player pause and resume those handles without rebuilding the
+# native helper DLL. BASS_ChannelPlay(handle, False) resumes in place.
+_bassdll = CDLL(gobject.GetDllpath("bass.dll"))
+bass_handle_pause = _bassdll.BASS_ChannelPause
+bass_handle_pause.argtypes = (HSTREAM,)
+bass_handle_pause.restype = c_bool
+bass_handle_resume = _bassdll.BASS_ChannelPlay
+bass_handle_resume.argtypes = HSTREAM, c_bool
+bass_handle_resume.restype = c_bool
+
 bass_stream_handle_create = utilsdll.bass_stream_handle_create
 bass_stream_handle_create.argtypes = c_void_p, c_size_t
 bass_stream_handle_create.restype = HSTREAM

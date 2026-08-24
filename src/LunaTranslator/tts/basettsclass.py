@@ -8,6 +8,15 @@ from myutils.commonbase import commonbase
 from requests import Response
 import types
 from myutils.mimehelper import query_mime
+import re
+
+
+_ELLIPSIS_PATTERN = re.compile(r"(?:[…⋯‥︙]+|[.．。・·](?:\s*[.．。・·]){1,})")
+
+
+def normalize_tts_text(content):
+    """Keep an ellipsis as a pause without asking TTS to pronounce its dots."""
+    return _ELLIPSIS_PATTERN.sub("、", content)
 
 
 class TTSResult:
@@ -191,7 +200,7 @@ class TTSbase(commonbase):
 
     @threader
     def ttscallback(self, content, callback):
-
+        content = normalize_tts_text(content)
         if len(content) == 0:
             return
         if len(self.voicelist) == 0:
