@@ -1,6 +1,4 @@
-# LunaTranslator UI 优化客制版
-
-**LunaTranslator UI Optimized Custom Edition**
+# LunaTranslator UI Optimized Custom Edition
 
 [简体中文](#简体中文) · [English](#english) · [本改版下载 / Fork releases](../../releases)
 
