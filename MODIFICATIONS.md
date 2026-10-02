@@ -32,3 +32,11 @@ This file provides the prominent modification notice required for this unofficia
 - The fork launchers do not carry the upstream project's code-signing identity.
 
 For file-level history, review the Git commits following the upstream baseline. The complete modified source is released under GPLv3 together with every binary release.
+
+## 2026-10-02: optional local translation setup (development branch)
+
+- Added an isolated, opt-in Hy-MT2 quick setup, loopback-only provider, owned llama.cpp lifecycle, pinned size/SHA-256 model download with cancellation and atomic installation, and exact-model offline import. No model weights are bundled.
+- Preserved previous interfaces, saved keys, enable states and advanced launcher settings. Reused Sakura/Hy-MT2 prompts and the existing inference engine.
+- Modified `gui/setting/translate.py` to include the previously omitted flash-attention option without emitting a bare `auto` token.
+- Modified `translator/sakura_base.py` to correctly format non-Chinese glossary prompts.
+- Added synthetic integrity, lifecycle, configuration, transport and prompt regressions, plus setup, attribution and Windows/quality acceptance documentation. Windows execution and real-model quality remain unverified in this phase.

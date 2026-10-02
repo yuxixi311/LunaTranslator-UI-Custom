@@ -136,6 +136,20 @@ def setTabQuick(self, basel):
         _section_card("文本输入", "选择当前获取游戏文字的方式", rec)
     )
 
+    # ---- Local translation (isolated opt-in preset) --------------------
+    def open_local_translation():
+        from gui.setting.local_translation import show_local_translation
+
+        show_local_translation(self)
+
+    local = LtPanelList()
+    local.add_row(
+        title=_TR("本地翻译 · Hy-MT2"),
+        subtitle=_TR("免 API Key · 轻量模型可用 CPU · 首次需下载约 1.13 GB"),
+        control=LtButton(_TR("配置本地翻译…"), variant="secondary", clicked=open_local_translation),
+    )
+    lay.addWidget(_section_card("本地翻译", "原有翻译接口与开关保持不变", local))
+
     # ---- Typography ----------------------------------------------------
     typography = LtPanelList()
     typography.add_row(title=_TR("日文字体"), control=createtextfontcom("fonttype"))

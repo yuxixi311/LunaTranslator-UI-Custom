@@ -1746,4 +1746,11 @@ class TranslatorWindow(resizableframeless):
         except:
             print_exc()
 
+        # os._exit bypasses atexit; explicitly stop only our opt-in local server.
+        try:
+            from myutils.local_translation import local_server
+
+            local_server.stop()
+        except:
+            print_exc()
         os._exit(0)

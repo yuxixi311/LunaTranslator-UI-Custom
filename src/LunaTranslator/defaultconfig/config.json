@@ -1773,6 +1773,14 @@
             "color": "blue",
             "name": "IBM"
         },
+        "local_hymt": {
+            "use": false,
+            "type": "offline",
+            "color": "blue",
+            "name": "本地翻译（Hy-MT2）",
+            "is_gpt_like": true,
+            "useproxy": false
+        },
         "sakura": {
             "use": false,
             "type": "offline",

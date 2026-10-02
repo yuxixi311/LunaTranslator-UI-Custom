@@ -46,3 +46,11 @@ Package metadata and license files remain in their respective `.dist-info` direc
 - The customized Windows launchers are unsigned because the upstream private signing certificate is unavailable. This does not remove the GPLv3 rights or obligations.
 
 All copyright and license notices found in the upstream source are preserved. Any future bundled asset or dependency must be recorded here before release.
+
+## Optional local translation models / 可选本地翻译模型
+
+- **Tencent Hy-MT2 1.8B and 7B** — Copyright (C) 2026 Tencent. Apache License, Version 2.0.
+- Official licenses: [1.8B](https://huggingface.co/tencent/Hy-MT2-1.8B/blob/9a341cd1b679d3efd23b46e847b01745a71ed792/LICENSE.txt), [7B](https://huggingface.co/tencent/Hy-MT2-7B/blob/9b0eb4e8f001def3e5ff6469a0ac96fdb39ec223/LICENSE.txt).
+- The new preset contains only pinned download metadata; model weights and llama.cpp executables are not included by this feature. Exact official revisions, byte sizes and SHA-256 values are documented in [local setup](docs/LOCAL_TRANSLATION.md).
+- llama.cpp is an existing upstream integration; users select a separately obtained official runtime. Any future bundled runtime/model must retain its complete applicable license and NOTICE material.
+- Apache-2.0 model licensing does not change this application's GPL-3.0-only license or corresponding-source obligations. No noncommercial GalTransl weights or extreme-quantization kernels are added to this preset.
