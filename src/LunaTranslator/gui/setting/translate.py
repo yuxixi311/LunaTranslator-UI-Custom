@@ -1141,12 +1141,12 @@ def getllamaservercmd(llamaserver, gguf, version):
     if globalconfig["llama.cpp"].get("parallel-use", False):
         parallel = "--parallel {}".format(globalconfig["llama.cpp"].get("parallel", 1))
     fa = ""
+    flash_attn = globalconfig["llama.cpp"].get("flash-attn", "auto")
     if version >= 6325:
-        fa = globalconfig["llama.cpp"].get("flash-attn", "auto")
-        if globalconfig["llama.cpp"].get("flash-attn", "auto") != "auto":
-            fa = "--flash-attn {fa}".format(fa=fa)
+        if flash_attn != "auto":
+            fa = "--flash-attn {fa}".format(fa=flash_attn)
     else:
-        if globalconfig["llama.cpp"].get("flash-attn", "auto") == "on":
+        if flash_attn == "on":
             fa = "-fa"
     ngl = globalconfig["llama.cpp"].get("gpu-layers-which", "auto")
     if ngl == "number":
@@ -1172,7 +1172,7 @@ def getllamaservercmd(llamaserver, gguf, version):
         device = "--device none"
     else:
         device = "--device {}".format(device.split(":")[0])
-    cmd = '"{llamaserver}" -m "{gguf}" --host {host} --port {port} {ctx} {parallel} --gpu-layers {ngl} {load_mode} --metrics {device}'.format(
+    cmd = '"{llamaserver}" -m "{gguf}" --host {host} --port {port} {ctx} {parallel} {fa} --gpu-layers {ngl} {load_mode} --metrics {device}'.format(
         load_mode=load_mode,
         ngl=ngl,
         fa=fa,
