@@ -20,6 +20,14 @@ import uuid
 PROVIDER_ID = "local_hymt"
 DEFAULT_PORT = 18080
 DEFAULT_PRESET = "hymt2-1.8b-q4"
+# Tencent's 1.8B / 7B card, immutable revision 9a341cd1b679d3efd23b46e847b01745a71ed792.
+# llama.cpp names the repetition field repeat_penalty, unlike transformers.
+HYMT2_SAMPLING = {
+    "temperature": 0.7,
+    "top_p": 0.6,
+    "top_k": 20,
+    "repeat_penalty": 1.05,
+}
 
 
 class LocalTranslationError(Exception):
@@ -72,6 +80,14 @@ def local_args(args, port, alias):
         "model": alias,
         "prompt_version_1": "Hy-MT2",
         "customparams": [],
+        "Temperature": HYMT2_SAMPLING["temperature"],
+        "Temperature.use": True,
+        "top_p": HYMT2_SAMPLING["top_p"],
+        "top_p_use": True,
+        "top_k": HYMT2_SAMPLING["top_k"],
+        "repetition_penalty": HYMT2_SAMPLING["repeat_penalty"],
+        "repetition_penalty_use": True,
+        "frequency_penalty_use": False,
     })
     # A short-context preset must not request a million output tokens.
     result["max_tokens"] = min(1024, max(1, int(result.get("max_tokens", 512))))

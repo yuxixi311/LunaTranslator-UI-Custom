@@ -244,6 +244,9 @@ class LocalTransportTests(unittest.TestCase):
                     session.post("https://remote.example/chat", json={})
             self.assertEqual(len(seen), 1)
             self.assertEqual(seen[0][1]["model"], "owned-model")
+            for key, value in local.HYMT2_SAMPLING.items():
+                self.assertEqual(seen[0][1][key], value)
+            self.assertNotIn("repetition_penalty", seen[0][1])
             self.assertNotIn("Authorization", seen[0][2])
         finally:
             server.shutdown()

@@ -144,8 +144,8 @@ def setTabQuick(self, basel):
 
     local = LtPanelList()
     local.add_row(
-        title=_TR("本地翻译 · Hy-MT2"),
-        subtitle=_TR("免 API Key · 轻量模型可用 CPU · 首次需下载约 1.13 GB"),
+        title=_TR("本地翻译 · Hy-MT2（实验性）"),
+        subtitle=_TR("免 API Key · 首次约 1.13 GB · 可能有语义错误，质量优势未验证"),
         control=LtButton(_TR("配置本地翻译…"), variant="secondary", clicked=open_local_translation),
     )
     lay.addWidget(_section_card("本地翻译", "原有翻译接口与开关保持不变", local))

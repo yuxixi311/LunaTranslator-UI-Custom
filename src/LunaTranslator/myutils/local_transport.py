@@ -11,10 +11,22 @@ import threading
 from urllib.parse import urlsplit
 
 from myutils.local_translation import (
-    LocalTranslationError, local_server, validate_local_url,
+    HYMT2_SAMPLING, LocalTranslationError, local_server, validate_local_url,
 )
 
 _MAX_RESPONSE = 4 * 1024 * 1024
+
+
+def local_request_body(body, alias):
+    # This quick preset pins the four official 1.8B/7B sampling values even if
+    # a previous development version saved different Sakura defaults. Do not
+    # mutate those saved values or any other provider's settings.
+    result = dict(body)
+    result.pop("repetition_penalty", None)
+    result.pop("frequency_penalty", None)
+    result.update(HYMT2_SAMPLING)
+    result["model"] = alias
+    return result
 
 
 class LocalResponse:
@@ -81,8 +93,7 @@ class LocalSession:
         path = urlsplit(url).path
         if method != "POST" or path not in ("/v1/chat/completions", "/chat/completions"):
             raise LocalTranslationError("本地预设仅支持翻译请求")
-        body = dict(kwargs.get("json") or {})
-        body["model"] = alias
+        body = local_request_body(kwargs.get("json") or {}, alias)
         connection = http.client.HTTPConnection("127.0.0.1", port, timeout=3)
         try:
             connection.connect()

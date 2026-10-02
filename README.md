@@ -70,9 +70,9 @@
 
 发布包为便携版，不包含个人配置、翻译记录或缓存。建议将原版和本改版放在不同目录，并在测试前备份现有 `userconfig`。
 
-### 本地翻译（开发分支）
+### 本地翻译（实验性开发分支）
 
-新增“常用设置 → 本地翻译”独立入口，默认 Hy-MT2 1.8B Q4_K_M，另可选 7B Q4_K_M；提供显式首次下载、SHA-256/大小校验、取消与离线导入。原有接口、API Key 和开关保持不变，无自动云端回退。现阶段仅通过合成单元测试，Windows 真机推理与质量优势尚未验证。详见 [设置与许可说明](docs/LOCAL_TRANSLATION.md) 和 [验收计划](docs/LOCAL_TRANSLATION_TEST_PLAN.md)。
+新增“常用设置 → 本地翻译”独立入口，默认 Hy-MT2 1.8B Q4_K_M，另可选 7B Q4_K_M；提供显式首次下载、SHA-256/大小校验、取消与离线导入。原有接口、API Key 和开关保持不变，无自动云端回退。代码通过合成回归测试；Linux/CPU 真实模型实测及官方参数修正后的复测仍发现语义与占位符错误。轻量模型尚未证明是翻译质量升级，Windows 真机仍待验收。详见 [设置与许可说明](docs/LOCAL_TRANSLATION.md)、[实测摘要](docs/LOCAL_TRANSLATION_SMOKE_RESULT.md)和 [验收计划](docs/LOCAL_TRANSLATION_TEST_PLAN.md)。
 
 ### 已知限制
 
@@ -146,9 +146,9 @@ Fork-specific behavior is documented in this README, the [Release Notes](../../r
 
 The portable archive excludes personal configuration, translation records, and caches. Keep upstream and customized installations in separate directories and back up any existing `userconfig` before testing.
 
-### Local translation (development branch)
+### Local translation (experimental development branch)
 
-An isolated Common Settings entry offers Hy-MT2 1.8B Q4_K_M by default and optional 7B Q4_K_M, explicit first-use download, size/SHA-256 verification, cancellation and offline import. Existing provider settings and enable states are preserved; no cloud fallback is added. Synthetic tests do not establish Windows runtime compatibility or translation quality. See the [setup/license notes](docs/LOCAL_TRANSLATION.md) and [acceptance plan](docs/LOCAL_TRANSLATION_TEST_PLAN.md).
+An experimental, isolated Common Settings entry offers Hy-MT2 1.8B Q4_K_M by default and optional 7B Q4_K_M, explicit first-use download, size/SHA-256 verification, cancellation and offline import. Existing provider settings and enable states are preserved; no cloud fallback is added. Synthetic regressions pass; separate Linux/CPU checks, including the corrected protocol, still found semantic and placeholder errors. The lightweight model is not established as a quality upgrade; Windows acceptance remains pending. See the [setup/license notes](docs/LOCAL_TRANSLATION.md), [smoke-test findings](docs/LOCAL_TRANSLATION_SMOKE_RESULT.md), and [acceptance plan](docs/LOCAL_TRANSLATION_TEST_PLAN.md).
 
 ### Known limitations
 

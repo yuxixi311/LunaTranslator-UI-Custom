@@ -40,3 +40,8 @@ For file-level history, review the Git commits following the upstream baseline. 
 - Modified `gui/setting/translate.py` to include the previously omitted flash-attention option without emitting a bare `auto` token.
 - Modified `translator/sakura_base.py` to correctly format non-Chinese glossary prompts.
 - Added synthetic integrity, lifecycle, configuration, transport and prompt regressions, plus setup, attribution and Windows/quality acceptance documentation. Windows execution and real-model quality remain unverified in this phase.
+
+### Official preset fidelity correction
+
+- Limited to the new local preset: Chinese instructions now use Chinese language names; the four fixed sampling values follow the pinned official 1.8B/7B card (.7 temperature, .6 top-p, top-k 20, repetition penalty 1.05). The direct llama.cpp adapter emits `repeat_penalty`, because the generic `repetition_penalty` field was ineffective in b11349. Existing provider behavior and saved settings are unchanged.
+- Added prompt, wire-body, stale-setting and default-control regression tests. Documented real-model smoke-test semantic failures and the distinction between a configuration correction and demonstrated quality improvement.

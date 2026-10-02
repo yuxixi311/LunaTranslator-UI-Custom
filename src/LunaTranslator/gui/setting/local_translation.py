@@ -23,14 +23,14 @@ class LocalTranslationDialog(QDialog):
 
     def __init__(self, parent):
         super().__init__(parent)
-        self.setWindowTitle(_TR("本地翻译 · Hy-MT2"))
+        self.setWindowTitle(_TR("本地翻译 · Hy-MT2（实验性）"))
         self.resize(680, 620)
         self.settings = setup_config(globalconfig)
         self.busy = False
         self.cancel = threading.Event()
         layout = QVBoxLayout(self)
         intro = QLabel(_TR(
-            "免 API Key，本地推理。首次使用需自行选择官方 llama.cpp 运行库，并下载模型或导入同版本 GGUF。\n"
+            "实验性功能，翻译可能出现语义或占位符错误，尚未证明优于在线翻译。免 API Key，本地推理。首次使用需自行选择官方 llama.cpp 运行库，并下载模型或导入同版本 GGUF。\n"
             "仅本预设连接 127.0.0.1，不会自动回退到付费云端。原有接口开关保持不变；"
             "如需所有翻译均离线，请在翻译设置中手动关闭其他在线接口。"
         ))
@@ -40,7 +40,7 @@ class LocalTranslationDialog(QDialog):
         layout.addLayout(form)
         self.presets = QComboBox()
         for key, preset in MODEL_PRESETS.items():
-            self.presets.addItem(preset["title"], key)
+            self.presets.addItem(preset["title"] + _TR("（实验性）"), key)
         index = self.presets.findData(self.settings["preset"])
         self.presets.setCurrentIndex(max(0, index))
         form.addRow(_TR("模型"), self.presets)
@@ -87,7 +87,7 @@ class LocalTranslationDialog(QDialog):
         self.status.setWordWrap(True)
         form.addRow(self.status)
         controls = QHBoxLayout()
-        self.start = QPushButton(_TR("启动并启用本地翻译"))
+        self.start = QPushButton(_TR("启动并启用实验性本地翻译"))
         self.stop = QPushButton(_TR("停止本地翻译"))
         self.cancel_button = QPushButton(_TR("取消当前操作"))
         controls.addWidget(self.start)
@@ -102,7 +102,7 @@ class LocalTranslationDialog(QDialog):
         footer.addWidget(close_button)
         layout.addLayout(footer)
         note = QLabel(_TR("关闭窗口会取消未完成的下载 / 启动；已就绪的模型会继续运行。"
-                          "上下文固定为 2048，单请求；翻译效果和速度需要在实际电脑上验证。"))
+                          "上下文固定为 2048，单请求；固定采用官方四项采样参数。轻量模型可能出现语义错误，尚未证明优于在线翻译。"))
         note.setWordWrap(True)
         layout.addWidget(note)
         self.presets.currentIndexChanged.connect(self.change_preset)
@@ -141,9 +141,9 @@ class LocalTranslationDialog(QDialog):
         preset = self.preset()
         lightweight = self.presets.currentData() == "hymt2-1.8b-q4"
         hint = (
-            "轻量默认：模型约 1.13 GB；建议预留约 3–4 GB 可用内存，CPU 可运行但速度因设备而异。"
+            "轻量实验预设：模型约 1.13 GB；建议预留约 3–4 GB 可用内存，CPU 可运行但速度因设备而异。"
             if lightweight else
-            "较大可选：模型约 4.62 GB；建议预留约 6–7 GB 显存并留足系统内存。与游戏同时运行时可能不足。"
+            "较大实验预设（质量未验证）：模型约 4.62 GB；建议预留约 6–7 GB 显存并留足系统内存。与游戏同时运行时可能不足。"
         )
         self.details.setText(
             _TR(hint) + "<br>" + _TR("资源数值为短上下文规划估计，尚非本程序实测。")

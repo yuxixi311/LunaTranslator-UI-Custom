@@ -1777,7 +1777,7 @@
             "use": false,
             "type": "offline",
             "color": "blue",
-            "name": "本地翻译（Hy-MT2）",
+            "name": "本地翻译（Hy-MT2，实验性）",
             "is_gpt_like": true,
             "useproxy": false
         },
