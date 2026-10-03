@@ -52,3 +52,7 @@ Run two separate comparisons after explicit permission for any online baseline:
 - Product comparison using preceding context/glossary that was actually available at that moment. Record this as a separate factor.
 
 Do not transmit private user/game text. Keep provider/version/quantization/revision/runtime/prompt/sampling and seed fixed. Randomize blind output order and allow ties. Score semantic errors, additions/omissions, who did what to whom, relationship/name preservation, Chinese naturalness, terminology and formatting. Measure latency and memory separately. Predeclare a release threshold with clear human preference improvement, no increased major semantic errors and an acceptable hardware-specific latency target. No automated generation is proof of translation quality.
+
+## 2026-10-03 new fixed-set baseline
+
+A separate new 40-case fixture, reproducible CPU runner, raw 1.8B Q4/Q8 paired outputs and paired-review preparation tool are available in [the dated evaluation report](LOCAL_TRANSLATION_EVAL_20261003.md). This is not recovery of the historical 32+8 inputs. The 7B comparison remains unrun because cloud memory headroom was insufficient. Q8 fixes one formatting case but retains clear role/name errors; no quality-goal pass or binary-release acceptance is implied.

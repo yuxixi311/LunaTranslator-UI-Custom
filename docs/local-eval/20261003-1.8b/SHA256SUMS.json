@@ -1,0 +1,14 @@
+{
+  "tools/local_eval/run.py": "031227323794bd5da49f2fadbb2455c73998782e6c644aac940ae950ea073f8d",
+  "tools/local_eval/blind_review.py": "56af21a86264243b0ffc7d333636b8abc75b086ca051c59def26c2c9f014b973",
+  "tools/local_eval/hymt_chat_template.jinja": "b7491ec0e9c869dfce20f2176758099bf248d979dd05530ede99deb21698acee",
+  "src/tests/fixtures/local_translation_eval_20261003.json": "051d2ef38f5a067c6a9ace4ebe3e149b00211c9fb29707779b8e725d3fee84f1",
+  "docs/local-eval/20261003-1.8b/metadata.json": "61799949a4c407cbab13e0097c51a207b9d56392f308768fe8c8a0c698d0baf4",
+  "docs/local-eval/20261003-1.8b/results.jsonl": "eda8b3e4fb25839e4318873456b366d2d343a6a8b7810ebd292f2dfcdac58442",
+  "tools/local_eval/hymt7_chat_template.jinja": "788ac16c5d7bfefc28655928ad524c8f378a44cb24d24fb125d6a5859b167677",
+  "docs/local-eval/20261003-1.8b-q8/metadata.json": "e064a3b005652ae3c4f211fb554b0f01120e26039c52979f962b01b78b6f46c5",
+  "docs/local-eval/20261003-1.8b-q8/results.jsonl": "2a8e25c554c0da951b5bed17b0afddfa6cfba252164fd252bda471a4bb45daa2",
+  "docs/local-eval/20261003-q4-q8-review/scored_review.json": "0aa04d849bef7feb313eeb19188b7cd6d66a8d4e6e5fe92d0f1d24457627c53c",
+  "docs/local-eval/20261003-q4-q8-review/summary.json": "78e06d7b01a51f1c0355f8b96840849c20de0a64f33eb3df89bcf5f278b47f3d",
+  "docs/local-eval/20261003-q4-q8-review/key.json": "6db66b71d250775affc21130b5b6e158e4ca5615ae6340854917a23f6606d3b2"
+}

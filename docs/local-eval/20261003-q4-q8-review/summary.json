@@ -1,0 +1,33 @@
+{
+  "review_type": "One model-identity-blinded automated diagnostic pass; not bilingual human validation",
+  "rubric_timing": "Fixed after initial Q4 diagnostic and before this paired review; not a preregistered human benchmark",
+  "preferences": {
+    "tie": 23,
+    "1.8b": 8,
+    "1.8b-q8": 9
+  },
+  "semantics_total_out_of_120": {
+    "1.8b": 94,
+    "1.8b-q8": 94
+  },
+  "naturalness_total_out_of_80": {
+    "1.8b": 65,
+    "1.8b-q8": 73
+  },
+  "semantics_0_or_1_case_count": {
+    "1.8b": 7,
+    "1.8b-q8": 5
+  },
+  "split_preferences": {
+    "diagnostic": {
+      "tie": 10,
+      "1.8b": 5,
+      "1.8b-q8": 1
+    },
+    "holdout": {
+      "tie": 13,
+      "1.8b": 3,
+      "1.8b-q8": 8
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "fixture_sha256": "051d2ef38f5a067c6a9ace4ebe3e149b00211c9fb29707779b8e725d3fee84f1",
+  "model": "1.8b",
+  "model_sha256": "dc5f44fcf1fa496ee7ad725982c0c8c553a4de00259b53af84c4b89fb0c06699",
+  "model_revision": "b27182d810fa3ceb6ed04e7c324c54e35c0d209c",
+  "runtime_version": "version: 0.5.0-dev (build 11349, commit fb4b2737a)\nbuilt with GNU 11.4.0 for Linux x86_64\n",
+  "server_sha256": "f1fe3730c84c6fb397e6807bf6bc7b9572f322dcaa1f342ad1b4c92dca74bce8",
+  "template_sha256": "b7491ec0e9c869dfce20f2176758099bf248d979dd05530ede99deb21698acee",
+  "harness_sha256": "031227323794bd5da49f2fadbb2455c73998782e6c644aac940ae950ea073f8d",
+  "base_app_revision": "e27cd93471f06b290f6f5f427d35b66ff3c4adb1",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "memory_available_before": 5133172736,
+  "context": 2048,
+  "threads": 2,
+  "batch": 128,
+  "ubatch": 128,
+  "started_utc": "2026-10-03T05:46:37Z",
+  "status": "complete",
+  "warm_cache_load_seconds": 2.8529979239974637,
+  "peak_process_rss_bytes": 1781161984,
+  "minimum_available_ram_bytes": 4013096960,
+  "resource_guard_stopped_process": false
+}

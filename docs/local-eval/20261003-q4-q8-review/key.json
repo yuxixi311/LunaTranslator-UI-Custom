@@ -1,0 +1,202 @@
+[
+  {
+    "id": "negation-01",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "negation-02",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "negation-03",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "negation-04",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "negation-05",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "passive-01",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "passive-02",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "passive-03",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "passive-04",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "passive-05",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "relationships-01",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "relationships-02",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "relationships-03",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "relationships-04",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "relationships-05",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "boundaries-01",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "boundaries-02",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "boundaries-03",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "boundaries-04",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "boundaries-05",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "omissions-01",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "omissions-02",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "omissions-03",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "omissions-04",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "omissions-05",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "placeholders-01",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "placeholders-02",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "placeholders-03",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "placeholders-04",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "placeholders-05",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "pragmatics-01",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "pragmatics-02",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "pragmatics-03",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "pragmatics-04",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "pragmatics-05",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "literal_text-01",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "literal_text-02",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "literal_text-03",
+    "A": "1.8b",
+    "B": "1.8b-q8"
+  },
+  {
+    "id": "literal_text-04",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  },
+  {
+    "id": "literal_text-05",
+    "A": "1.8b-q8",
+    "B": "1.8b"
+  }
+]
