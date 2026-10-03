@@ -18,7 +18,7 @@ class EvalHarnessTests(unittest.TestCase):
         self.assertEqual(run.digest(run.FIXTURE), run.FIXTURE_SHA)
         for name, sha in run.TEMPLATES.values():
             self.assertEqual(run.digest(TOOLS/name), sha)
-        cases = json.loads(run.FIXTURE.read_text())['cases']
+        cases = json.loads(run.FIXTURE.read_text(encoding='utf-8'))['cases']
         self.assertEqual(len(cases), 40)
         self.assertEqual(len(set(x['id'] for x in cases)), 40)
         self.assertEqual(sum(x['split']=='holdout' for x in cases), 24)
@@ -45,7 +45,7 @@ class EvalHarnessTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             blind_review.make_sheet(folder,folder)
 
-    def test_real_matched_pair_and_current_harness(self):
+    def test_real_matched_pair_and_historical_harness(self):
         left = ROOT/'docs/local-eval/20261003-1.8b'
         right = ROOT/'docs/local-eval/20261003-1.8b-q8'
         sheet, key = blind_review.make_sheet(left, right)
@@ -53,7 +53,7 @@ class EvalHarnessTests(unittest.TestCase):
         self.assertTrue(all(set((x['A'], x['B']))=={'1.8b','1.8b-q8'} for x in key))
         for folder in (left, right):
             meta, rows = blind_review.load_run(folder)
-            self.assertEqual(meta['harness_sha256'], run.digest(TOOLS/'run.py'))
+            self.assertEqual(meta['harness_sha256'], '031227323794bd5da49f2fadbb2455c73998782e6c644aac940ae950ea073f8d')
             self.assertFalse(meta['resource_guard_stopped_process'])
             self.assertGreater(meta['peak_process_rss_bytes'], 0)
             self.assertEqual(sum(r['response']['usage']['prompt_tokens_details']['cached_tokens'] for r in rows), 0)

@@ -5,6 +5,7 @@ Uses the official Hy-MT2 chat template and general Chinese translation prompt.
 This measures model inference, not the application's Windows/Qt integration.
 """
 import argparse
+import base64
 from collections import Counter
 import hashlib
 import json
@@ -16,7 +17,7 @@ import socket
 import subprocess
 import sys
 import time
-import threading
+from resources import memory_available, RamMonitor, GpuMonitor, NvidiaProbe, stop_owned, MIB
 import urllib.request
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -45,14 +46,6 @@ def digest(path):
     return h.hexdigest()
 
 
-def memory_available():
-    if sys.platform.startswith('linux'):
-        for line in Path('/proc/meminfo').read_text().splitlines():
-            if line.startswith('MemAvailable:'):
-                return int(line.split()[1]) * 1024
-    return None
-
-
 def request_body(source, alias):
     return {'model': alias, 'messages': [{'role': 'user', 'content':
         '将以下文本翻译为简体中文，注意只需要输出翻译后的结果，不要额外解释：\n\n' + source}],
@@ -77,7 +70,14 @@ def main():
     p.add_argument('--gguf', type=Path, required=True)
     p.add_argument('--server', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
+    p.add_argument('--backend', choices=('cpu', 'cuda'), default='cpu')
+    p.add_argument('--nvidia-smi', type=Path, help='Explicit verified existing NVIDIA driver tool; required for CUDA')
+    p.add_argument('--gpu-index', type=int, default=0)
     a = p.parse_args()
+    if a.gpu_index < 0:
+        p.error('GPU index must be nonnegative')
+    if a.backend == 'cuda' and a.nvidia_smi is None:
+        p.error('CUDA requires --nvidia-smi pointing to the verified existing driver tool')
     size, sha, revision = MODELS[a.model]
     template_name, template_sha = TEMPLATES[a.model]
     template = Path(__file__).with_name(template_name)
@@ -86,13 +86,24 @@ def main():
     if a.gguf.stat().st_size != size or digest(a.gguf) != sha:
         p.error('Model bytes do not match pinned official GGUF')
     # Conservative resource gate, not a claimed universal minimum. Never bypass to force a run.
-    available = memory_available()
+    try:
+        available = memory_available()
+    except (OSError, ValueError):
+        p.error('Cannot measure available physical RAM; refusing to start')
     reserve = 2300 * 1024**2
     if available is not None and available < size + reserve:
         p.error('Insufficient available RAM for weights plus 2300 MiB working/safety reserve')
     if available is None:
-        p.error('Automatic RAM guard currently supports Linux only; Windows inference is not validated')
-    version = subprocess.check_output([str(a.server.resolve()), '--version'], stderr=subprocess.STDOUT, text=True)
+        p.error('Available physical RAM is unknown; refusing to start')
+    probe = NvidiaProbe(a.nvidia_smi, a.gpu_index) if a.backend == 'cuda' else None
+    gpu = probe.gpu() if probe else None
+    if gpu and gpu['free_bytes'] < size + 1024 * MIB:
+        p.error('Insufficient measured free VRAM for weights plus 1024 MiB reserve')
+    child_env = os.environ.copy()
+    if gpu:
+        child_env['CUDA_VISIBLE_DEVICES'] = gpu['uuid']
+    version = subprocess.check_output([str(a.server.resolve()), '--version'],
+        stderr=subprocess.STDOUT, encoding='utf-8', errors='replace', timeout=15, env=child_env)
     if 'build 11349, commit fb4b2737a' not in version:
         p.error('Use pinned official b11349 runtime; version is additional evidence, not signature verification')
     # Bind check prevents targeting an existing server; alias/readiness plus owned process check cover races.
@@ -102,9 +113,22 @@ def main():
     alias = 'luna-eval-' + a.model + '-' + str(port)
     cmd = [str(a.server.resolve()), '-m', str(a.gguf.resolve()), '--host', '127.0.0.1',
            '--port', str(port), '--alias', alias, '-c', '2048', '-t', '2', '-tb', '2',
-           '-np', '1', '-ngl', '0', '-b', '128', '-ub', '128', '--chat-template-file', str(template)]
+           '-np', '1', '-ngl', '99' if gpu else '0', '-b', '128', '-ub', '128', '--chat-template-file', str(template)]
+    if gpu:
+        cmd += ['--device', 'CUDA0']
+    runtime_files = {f.name: digest(f) for f in sorted(a.server.resolve().parent.glob('*.dll'))}
+    runtime_files[a.server.name] = digest(a.server)
+    # Keep the safety check fresh after hashing files/version probes, before launch.
+    available = memory_available()
+    fresh_gpu = probe.gpu() if probe else None
+    if available < size + reserve or (fresh_gpu and (fresh_gpu['uuid'] != gpu['uuid'] or fresh_gpu['free_bytes'] < size + 1024 * MIB)):
+        p.error('Available RAM or VRAM fell below the preflight reserve')
+    gpu = fresh_gpu
     a.out.mkdir(parents=True, exist_ok=False)
-    meta = {'fixture_sha256': FIXTURE_SHA, 'model': a.model, 'model_sha256': sha,
+    meta = {'schema_version': 2, 'backend': a.backend, 'gpu_layers': 99 if gpu else 0,
+            'gpu': gpu, 'nvidia_smi_sha256': digest(a.nvidia_smi) if probe else None, 'runtime_files_sha256': runtime_files,
+            'resource_probe_sha256': digest(Path(__file__).with_name('resources.py')),
+            'command': cmd, 'fixture_sha256': FIXTURE_SHA, 'model': a.model, 'model_sha256': sha,
             'model_revision': revision, 'runtime_version': version, 'server_sha256': digest(a.server),
             'template_sha256': template_sha, 'harness_sha256': digest(__file__),
             'base_app_revision': 'e27cd93471f06b290f6f5f427d35b66ff3c4adb1',
@@ -113,42 +137,35 @@ def main():
             'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
             'status': 'incomplete'}
     meta_path = a.out / 'metadata.json'
-    meta_path.write_text(json.dumps(meta, indent=2))
+    meta_path.write_text(json.dumps(meta, indent=2), encoding='utf-8')
     opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), NoRedirect())
-    def call(path, body=None):
+    def call(path, body=None, wire=None, timeout=180):
+        payload = None if body is None else json.dumps(body).encode('utf-8')
         req = urllib.request.Request('http://127.0.0.1:%d/%s' % (port, path),
-              data=None if body is None else json.dumps(body).encode(), headers={'Content-Type': 'application/json'})
-        with opener.open(req, timeout=180) as r:
-            return json.load(r)
-    with (a.out / 'server.log').open('w') as log:
-        proc = subprocess.Popen(cmd, stdout=log, stderr=log)
-        stop_sample = threading.Event()
-        samples = {'peak_process_rss_bytes': 0, 'minimum_available_ram_bytes': available,
-                   'resource_guard_stopped_process': False}
-        def sample_resources():
-            while not stop_sample.wait(.05):
-                try:
-                    current = memory_available()
-                    samples['minimum_available_ram_bytes'] = min(samples['minimum_available_ram_bytes'], current)
-                    for line in Path('/proc/%d/status' % proc.pid).read_text().splitlines():
-                        if line.startswith('VmRSS:'):
-                            samples['peak_process_rss_bytes'] = max(samples['peak_process_rss_bytes'], int(line.split()[1])*1024)
-                    if current < 768 * 1024**2 and proc.poll() is None:
-                        samples['resource_guard_stopped_process'] = True
-                        proc.terminate()
-                        return
-                except (OSError, TypeError):
-                    pass
-        sampler = threading.Thread(target=sample_resources, daemon=True)
-        sampler.start()
+              data=payload, headers={'Content-Type': 'application/json'})
+        with opener.open(req, timeout=timeout) as r:
+            raw = r.read()
+            if wire is not None:
+                wire.write(json.dumps({'request_base64': base64.b64encode(payload).decode('ascii'),
+                    'response_base64': base64.b64encode(raw).decode('ascii'),
+                    'request_sha256': hashlib.sha256(payload).hexdigest(),
+                    'response_sha256': hashlib.sha256(raw).hexdigest()}) + '\n')
+                wire.flush()
+            return json.loads(raw)
+    with (a.out / 'server.log').open('w', encoding='utf-8') as log:
+        proc = subprocess.Popen(cmd, stdout=log, stderr=log, env=child_env)
+        ram = RamMonitor(proc, available)
+        monitors = [ram] + ([GpuMonitor(proc, probe, gpu['uuid'])] if gpu else [])
         try:
+            for monitor in monitors:
+                monitor.thread.start()
             start = time.monotonic()
             while True:
-                if proc.poll() is not None:
-                    raise RuntimeError('Owned model process exited before readiness')
+                if proc.poll() is not None or ram.samples['resource_guard_stopped_process']:
+                    raise RuntimeError('Owned model process exited or resource guard stopped readiness')
                 try:
-                    ready = call('health')['status'] == 'ok'
-                    names = [x['id'] for x in call('v1/models')['data']]
+                    ready = call('health', timeout=5)['status'] == 'ok'
+                    names = [x['id'] for x in call('v1/models', timeout=5)['data']]
                     if ready and alias in names:
                         break
                 except (OSError, ValueError, KeyError):
@@ -157,29 +174,44 @@ def main():
                     raise TimeoutError('Model readiness timeout')
                 time.sleep(.2)
             meta['warm_cache_load_seconds'] = time.monotonic() - start
-            with (a.out / 'results.jsonl').open('w', encoding='utf-8') as out:
-                for case in json.loads(FIXTURE.read_text())['cases']:
-                    if proc.poll() is not None:
-                        raise RuntimeError('Owned model process exited')
+            with (a.out / 'results.jsonl').open('w', encoding='utf-8') as out, (a.out / 'wire.jsonl').open('w', encoding='utf-8') as wire:
+                for case in json.loads(FIXTURE.read_text(encoding='utf-8'))['cases']:
+                    if proc.poll() is not None or ram.samples['resource_guard_stopped_process']:
+                        raise RuntimeError('Owned model process exited or resource guard stopped the run')
                     body = request_body(case['source'], alias)
                     start = time.monotonic()
-                    response = call('v1/chat/completions', body)
+                    response = call('v1/chat/completions', body, wire)
                     elapsed = time.monotonic() - start
                     text = response['choices'][0]['message']['content']
                     row = {'id': case['id'], 'split': case['split'], 'request': body,
                            'response': response, 'seconds': elapsed, 'format': check_format(case['source'], text)}
                     out.write(json.dumps(row, ensure_ascii=False) + '\n'); out.flush()
                     print(case['id'], round(elapsed, 3), flush=True)
+            if ram.samples['resource_guard_stopped_process'] or proc.poll() is not None:
+                raise RuntimeError('Owned process exited or resource guard stopped the run')
             meta['status'] = 'complete'
         finally:
-            proc.terminate()
+            for monitor in monitors:
+                monitor.stop.set()
+            for monitor in monitors:
+                if monitor.thread.ident is not None:
+                    monitor.thread.join(timeout=7)
             try:
-                proc.wait(timeout=15)
-            except subprocess.TimeoutExpired:
-                proc.kill(); proc.wait()
-            stop_sample.set(); sampler.join(timeout=2)
-            meta.update(samples)
-            meta_path.write_text(json.dumps(meta, indent=2))
+                stop_owned(proc)
+            except BaseException as exc:
+                meta['status'] = 'incomplete'
+                meta['cleanup_error'] = type(exc).__name__ + ': ' + str(exc)
+                raise
+            finally:
+                for monitor in monitors:
+                    meta.update(monitor.samples)
+                if proc.poll() is None or ram.samples['resource_guard_stopped_process'] or any(m.thread.is_alive() for m in monitors):
+                    meta['status'] = 'incomplete'
+                meta_path.write_text(json.dumps(meta, indent=2), encoding='utf-8')
+                log.flush()
+                manifest = {f.name: digest(f) for f in a.out.iterdir() if f.is_file()}
+                (a.out / 'manifest.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')
+
 
 
 if __name__ == '__main__':

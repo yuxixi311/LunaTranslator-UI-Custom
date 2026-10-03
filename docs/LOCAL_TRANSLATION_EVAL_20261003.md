@@ -77,7 +77,7 @@ Q8 在 placeholders-05 正确保留了 `<b>{player}</b>` 与 `${coins}`，但三
 
 ## 复现与后续盲评
 
-从仓库根目录运行（当前运行器只支持 Linux 自动内存检查；其 MemAvailable 检查不读取容器 cgroup 限额，若运行环境存在额外限额，应先人工确认额度足够，不能只依赖此检查）：
+从仓库根目录运行（本报告实测时的运行器只支持 Linux 自动内存检查；其 MemAvailable 检查不读取容器 cgroup 限额，若运行环境存在额外限额，应先人工确认额度足够，不能只依赖此检查）：
 
 ```sh
 python -m unittest discover -s src/tests -p 'test_local*.py' -v
@@ -114,3 +114,7 @@ python tools/local_eval/blind_review.py /path/to/new-run-18 /path/to/new-run-7 /
 工具及既有本地翻译测试共 85 项通过，包含错误配对/重复/缺失/截断等拒绝检查；这不是 Windows 或比较质量验收。
 
 未发布安装包、模型权重或运行库，未合并主分支。当前实验性标记和不推荐作为已验证质量升级的结论保持不变。
+
+## Windows 便携测试工具补充（未实测）
+
+后续工具增加了 Windows 原生可用物理 RAM / 进程 RSS 检测、显式 CUDA 选择、独立的按 PID 显存采样及原始请求/响应字节清单。[Windows 操作与安全说明](LOCAL_TRANSLATION_WINDOWS_EVAL.md)记录准备步骤和边界；这不改变以上历史结果，Windows / 4070 Ti 实际推理仍为未运行，也不代表质量改善。
