@@ -1,0 +1,11 @@
+{
+  "glossary_policy.py": "5e7cbc1b9c875de6a07148e60323cdf3f8183d8007e950effa52bdde07e8173f",
+  "production_adapter.py": "efdd618ceb43032a7e30693f7192bc22942422faf3ec9b93b219f32089344183",
+  "test_glossary_policy.py": "fe1a9a6175b1bf0243c6b55606be97ca4dc6aaeb41296a0e81740a8f49bfac8e",
+  "source_pins.json": "1c6b128e529cb11c77ef3edfe49e62b0c1c2b0007977039a809be391f3d64604",
+  "README.md": "65e97d05248f695a85c9fbe5f69eb03885e6bbc23f2eb4863bf65cfba467a6b5",
+  "pinned_source/myutils/commonbase.py": "c562d635565477af7d399273aa3048879652a6e1420f861154b7c958d11c8172",
+  "pinned_source/translator/local_hymt.py": "5ea7215c0330ba43adacbb386517ed56bb5e5ab236088644196b36f8efdd98dc",
+  "pinned_source/translator/sakura_base.py": "3d9883f7965693cbe17a80db9a8d95ab95213737a782fc69acbee34cfa0ae28f",
+  "pinned_source/transoptimi/noundict.py": "d3d968c1aa3a7e54af7db804b81ea05dd19447d826db847d99f458c27115d64f"
+}
