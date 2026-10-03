@@ -117,3 +117,30 @@ Current priorities:
 
 No quality gate is relaxed. Existing providers and experimental defaults remain
 unchanged; the result report itself authorizes no new model, network or desktop run.
+
+
+## 2026-10-03 supplied-name glossary checkpoint
+
+The [completed glossary pilot](LOCAL_TRANSLATION_HY_GLOSSARY_RESULT_20261003.md)
+provides two definite fresh target-fact resolutions across distinct names and
+scenarios at passing paired cost. It remains **inconclusive, not promoted**:
+one baseline-pass source interpretation becomes uncertain. Both arms already
+use all 12 applicable canonical names correctly; spelling compliance is not
+semantic improvement. Three matched ordinary-word controls favor baseline
+naturalness despite definite fidelity passes.
+
+The next decision is whether a single source-derived lexical/name activation
+rule can avoid unnecessary glossary hints without suppressing legitimate names.
+First establish that behavior with cloud-side code/tests and explicit ambiguity
+limits. Tokenization/POS is not semantic understanding or a solution to same-word
+name ambiguity. Freeze new independent cases and dependency/resource costs before
+any further same-model GPU trial. All previously fresh cases are now seen;
+retain the uncertain case and its original criteria in regression checks. Prefer
+existing lightweight boundary rules; review licensing, size and platform approval
+before adding any tokenizer/dictionary dependency.
+The owner permits at most three rounds in this optimization series; that is a
+ceiling, not a requirement to run three. No second candidate is frozen here.
+
+Keep Hy1.8B, optional weights, experimental defaults and all prior evidence.
+Do not use further generic prompt retries, case-specific fixes, larger weights,
+training or a new online comparison to turn this checkpoint into a pass.
