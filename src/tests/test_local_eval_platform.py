@@ -184,13 +184,25 @@ class PlatformTests(unittest.TestCase):
             child.terminate.side_effect = lambda: setattr(child.poll, 'return_value', 0)
             alias = []
             def popen(cmd, **kwargs):
-                alias.append(cmd[cmd.index('--alias')+1]); return child
+                alias.append(cmd[cmd.index('--alias')+1])
+                startup = ('load: using device CUDA0 (Mock GPU) (mock-id) - 100 MiB free\n'
+                           'load_tensors: offloaded 25/25 layers to GPU\n'
+                           'load_tensors:        CUDA0 model buffer size = 100.00 MiB\n')
+                if failure == 'security':
+                    startup += 'W srv llama_server: security: no API key is set and CORS allows all origins\n'
+                elif failure == 'proof':
+                    startup = 'model loaded, listening on loopback\n'
+                kwargs['stdout'].write(startup); kwargs['stdout'].flush()
+                return child
             def response(request, timeout):
                 if request.full_url.endswith('health'):
                     data = {'status':'ok'}
                 elif request.full_url.endswith('v1/models'):
                     data = {'data':[{'id':alias[0]}]}
                 else:
+                    if failure == 'late_security':
+                        with (out/'server.log').open('a', encoding='utf-8') as log:
+                            log.write('W srv security: synthetic later warning\n')
                     data = {'model':alias[0], 'choices':[{'finish_reason':'stop','message':{'content':'合成测试'}}]}
                 return io.BytesIO(json.dumps(data, ensure_ascii=False).encode('utf-8'))
             opener = Mock(); opener.open.side_effect = response
@@ -201,7 +213,7 @@ class PlatformTests(unittest.TestCase):
             elif failure == 'guard':
                 monitor.thread.start = Mock(side_effect=lambda: monitor.samples.update(resource_guard_stopped_process=True))
             stop = Mock(side_effect=RuntimeError('cleanup failed')) if failure == 'cleanup' else resources.stop_owned
-            argv = ['run.py','--model','1.8b','--gguf',str(gguf),'--server',str(server),'--out',str(out), '--backend','cuda','--nvidia-smi',str(root/'nvidia-smi.exe')]
+            argv = ['run.py','--model','1.8b','--gguf',str(gguf),'--server',str(server),'--out',str(out), '--restrict-cors-to-loopback','--backend','cuda','--nvidia-smi',str(root/'nvidia-smi.exe')]
             with patch.object(sys,'argv',argv), patch.object(run,'digest',side_effect=digest), patch.object(run,'memory_available',return_value=10*1024**3), patch.object(resources,'memory_available',return_value=10*1024**3), patch.object(resources,'process_rss',return_value=1234), patch.object(run.NvidiaProbe,'gpu',return_value=gpu), patch.object(run.NvidiaProbe,'process_vram',return_value=None), patch.object(run.subprocess,'check_output',return_value='build 11349, commit fb4b2737a'), patch.object(run.subprocess,'Popen',side_effect=popen) as launch, patch.object(run.urllib.request,'build_opener',return_value=opener), patch('builtins.print'), patch.object(run, 'RamMonitor', return_value=monitor), patch.object(run, 'stop_owned', side_effect=stop):
                 previous = run.os.environ.get('CUDA_VISIBLE_DEVICES')
                 if failure:
@@ -214,12 +226,21 @@ class PlatformTests(unittest.TestCase):
             self.assertEqual(cmd[cmd.index('-m')+1], str(gguf.resolve()))
             self.assertEqual(launch.call_args.kwargs['env']['CUDA_VISIBLE_DEVICES'], 'GPU-test')
             self.assertEqual(cmd[cmd.index('-ngl')+1], '99')
+            self.assertLess(cmd.index('-lv'), cmd.index('--device'))
+            self.assertEqual(cmd[cmd.index('-lv')+1], '4')
+            self.assertIn('--no-warmup', cmd)
+            self.assertEqual(cmd[cmd.index('--cors-origins')+1], 'http://127.0.0.1:' + cmd[cmd.index('--port')+1])
             if failure:
                 meta = json.loads((out/'metadata.json').read_text(encoding='utf-8'))
                 self.assertEqual(meta['status'], 'incomplete')
-                if failure in ('startup', 'guard'):
+                if failure in ('startup', 'guard', 'security', 'proof'):
                     self.assertFalse((out/'results.jsonl').exists())
                     child.terminate.assert_called_once()
+                    self.assertFalse(any(c.args[0].full_url.endswith('v1/chat/completions') for c in opener.open.call_args_list))
+                elif failure == 'late_security':
+                    child.terminate.assert_called_once()
+                    self.assertEqual(sum(c.args[0].full_url.endswith('v1/chat/completions') for c in opener.open.call_args_list), 1)
+                    self.assertIn('security warning', meta['failure'])
                 else:
                     self.assertIn('cleanup failed', meta['cleanup_error'])
                 return
@@ -228,9 +249,46 @@ class PlatformTests(unittest.TestCase):
             self.assertIsNone(meta['peak_process_vram_bytes'])
             self.assertIn('ggml-cuda.dll', meta['runtime_files_sha256'])
             self.assertEqual(meta['fixture_sha256'], run.FIXTURE_SHA)
+            self.assertEqual(meta['startup_checks']['cuda_proof']['offloaded_layers'], 25)
+            self.assertEqual(meta['startup_checks']['security_warning_gate'], 'passed')
+            self.assertFalse(meta['runtime_warmup'])
+            self.assertGreater(meta['timing_clock']['resolution'], 0)
 
     def test_full_mocked_cuda_run_unicode_paths_raw_bytes_and_child_env(self):
         self.mocked_run()
+
+    def test_startup_security_warning_prevents_all_corpus_requests(self):
+        self.mocked_run('security')
+
+    def test_late_security_warning_stops_before_next_corpus_request(self):
+        self.mocked_run('late_security')
+
+    def test_missing_gpu_proof_prevents_all_corpus_requests(self):
+        self.mocked_run('proof')
+
+    def test_missing_cors_approval_stops_before_any_runtime_execution(self):
+        argv = ['run.py', '--model', '1.8b', '--gguf', 'unused', '--server', 'unused', '--out', 'unused']
+        with patch.object(sys, 'argv', argv), patch.object(run.subprocess, 'Popen') as launch, patch.object(run.subprocess, 'check_output') as probe, patch.object(sys, 'stderr', io.StringIO()):
+            with self.assertRaises(SystemExit):
+                run.main()
+        launch.assert_not_called(); probe.assert_not_called()
+
+    def test_startup_proof_rejects_enumeration_host_buffers_and_zero_offload(self):
+        good = ('using device CUDA0 (Mock) (id) - 100 MiB free\n'
+                'offloaded 25/25 layers to GPU\n'
+                'CUDA0 model buffer size = 100.00 MiB\n')
+        bad = ['', good.replace('using device CUDA0', 'Found device CUDA0'),
+               good.replace('25/25', '0/25'), good.replace('25/25', '26/25'),
+               good.replace('CUDA0 model buffer', 'CUDA_Host model buffer'),
+               good.replace('100.00', '0.00'), good + 'security: unexpected warning\n']
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp)/'server.log'
+            for value in bad:
+                path.write_text(value, encoding='utf-8')
+                with self.subTest(value=value), self.assertRaises(RuntimeError):
+                    run.check_startup_log(path, cuda=True, require_gpu=True)
+            path.write_text(good, encoding='utf-8')
+            self.assertEqual(run.check_startup_log(path, cuda=True, require_gpu=True)['offloaded_layers'], 25)
 
     def test_cleanup_failure_cannot_complete(self):
         self.mocked_run('cleanup')

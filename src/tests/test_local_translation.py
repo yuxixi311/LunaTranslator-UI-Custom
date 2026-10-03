@@ -56,6 +56,8 @@ class LocalTranslationTests(unittest.TestCase):
         self.settings = dict(runtime=str(self.exe), model=str(self.model), port=18080, device="cpu")
 
     def start(self, **kwargs):
+        # Fake children need a fake valid Windows job guard, never an OS handle.
+        kwargs.setdefault("guard_factory", lambda pid: types.SimpleNamespace(_refkep=object()))
         self.server.start(self.settings, {}, self.root / "server.log", **kwargs)
 
     def test_setup_and_toggle_preserve_all_other_settings(self):
@@ -129,7 +131,8 @@ class LocalTranslationTests(unittest.TestCase):
         def status(url, port):
             return {"status": "ok"} if url.endswith("health") else {"data": [{"id": self.server.alias}]}
         with patch("myutils.local_model_download.verify_model"), patch.object(local, "check_port_available"), patch.object(local.subprocess, "Popen", return_value=process) as popen, patch.object(local, "local_json", side_effect=status):
-            self.start()
+            with patch.object(local, "os", types.SimpleNamespace(name="nt")):
+                self.start()
             self.assertEqual(self.server.require_ready(), (18080, self.server.alias))
             self.assertFalse(popen.call_args.kwargs["shell"])
             with self.assertRaises(local.LocalTranslationError):
@@ -172,6 +175,33 @@ class LocalTranslationTests(unittest.TestCase):
                     self.start(guard_factory=lambda pid: guard)
             self.assertTrue(process.terminated)
             self.assertNotEqual(self.server.state, "ready")
+
+    def test_windows_missing_guard_factory_fails_before_readiness(self):
+        process = FakeProcess()
+        with patch("myutils.local_model_download.verify_model"), patch.object(local, "check_port_available"), patch.object(local.subprocess, "Popen", return_value=process), patch.object(local, "local_json") as health, patch.object(local, "os", types.SimpleNamespace(name="nt")):
+            with self.assertRaisesRegex(local.LocalTranslationError, "Windows 本地启动需要进程退出保护"):
+                self.start(guard_factory=None)
+            health.assert_not_called()
+        self.assertTrue(process.terminated)
+        self.assertIsNone(self.server.process)
+        self.assertIsNone(self.server.guard)
+        self.assertIsNone(self.server.log)
+        self.assertEqual(self.server.state, "error")
+
+    def test_guard_factory_failure_stops_owned_process_before_readiness(self):
+        process = FakeProcess()
+        def fail_guard(pid):
+            self.assertEqual(pid, process.pid)
+            raise OSError("synthetic job failure")
+        with patch("myutils.local_model_download.verify_model"), patch.object(local, "check_port_available"), patch.object(local.subprocess, "Popen", return_value=process), patch.object(local, "local_json") as health:
+            with self.assertRaisesRegex(OSError, "synthetic job failure"):
+                self.start(guard_factory=fail_guard)
+            health.assert_not_called()
+        self.assertTrue(process.terminated)
+        self.assertIsNone(self.server.process)
+        self.assertIsNone(self.server.guard)
+        self.assertIsNone(self.server.log)
+        self.assertEqual(self.server.state, "error")
 
     def test_status_poll_does_not_block_behind_slow_stop(self):
         waiting = threading.Event()

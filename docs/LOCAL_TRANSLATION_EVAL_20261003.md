@@ -115,6 +115,6 @@ python tools/local_eval/blind_review.py /path/to/new-run-18 /path/to/new-run-7 /
 
 未发布安装包、模型权重或运行库，未合并主分支。当前实验性标记和不推荐作为已验证质量升级的结论保持不变。
 
-## Windows 便携测试工具补充（未实测）
+## Windows 便携测试工具补充与后续审计
 
-后续工具增加了 Windows 原生可用物理 RAM / 进程 RSS 检测、显式 CUDA 选择、独立的按 PID 显存采样及原始请求/响应字节清单。[Windows 操作与安全说明](LOCAL_TRANSLATION_WINDOWS_EVAL.md)记录准备步骤和边界；这不改变以上历史结果，Windows / 4070 Ti 实际推理仍为未运行，也不代表质量改善。
+后续工具增加了 Windows 原生可用物理 RAM / 进程 RSS 检测、显式 CUDA 选择、独立的按 PID 显存采样及原始请求/响应字节清单。之后首轮 Windows 1.8B Q4 完成了 40 条请求，但日志含安全警告且缺少实际 CUDA 卸载证据，不能标为安全通过或已验证 GPU 基线。[脱敏审计](LOCAL_TRANSLATION_WINDOWS_BASELINE_AUDIT_20261003.md)记录完整性、输出差异和限制；[Windows 操作与安全说明](LOCAL_TRANSLATION_WINDOWS_EVAL.md)记录修正后的门槛与需授权重测的步骤。这不改写以上 Linux 历史结果，也不代表质量改善。

@@ -64,6 +64,27 @@ def check_format(source, translated):
             'newline_count_exact': source.count('\n') == translated.count('\n')}
 
 
+def check_startup_log(path, cuda=False, require_gpu=False):
+    """Fail closed on runtime security warnings; flags alone are not GPU proof.
+
+    These log forms are pinned to b11349. Unknown/missing CUDA evidence must stop
+    the run rather than silently relabel a CPU fallback as GPU execution.
+    """
+    text = path.read_text(encoding='utf-8', errors='replace')
+    if re.search(r'(?im)^.*\bsecurity\s*:', text):
+        raise RuntimeError('Runtime security warning: further inference refused; review server.log')
+    if require_gpu and cuda:
+        devices = re.findall(r'using device CUDA0\b', text)
+        offloads = re.findall(r'offloaded (\d+)/(\d+) layers to GPU', text)
+        buffers = re.findall(r'CUDA0\s+model buffer size\s*=\s*([0-9.]+) MiB', text)
+        positive = [(int(n), int(total)) for n, total in offloads if 0 < int(n) <= int(total)]
+        if not devices or not positive or not any(float(n) > 0 for n in buffers):
+            raise RuntimeError('CUDA loading/offload proof missing; stopped before inference; review trace server.log')
+        return {'device': 'CUDA0', 'offloaded_layers': positive[-1][0],
+                'total_layers': positive[-1][1], 'positive_model_buffer': True}
+    return None
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--model', choices=MODELS, required=True)
@@ -73,7 +94,11 @@ def main():
     p.add_argument('--backend', choices=('cpu', 'cuda'), default='cpu')
     p.add_argument('--nvidia-smi', type=Path, help='Explicit verified existing NVIDIA driver tool; required for CUDA')
     p.add_argument('--gpu-index', type=int, default=0)
+    p.add_argument('--restrict-cors-to-loopback', action='store_true',
+                   help='Explicit owner-approved process-only CORS restriction; required before launch')
     a = p.parse_args()
+    if not a.restrict_cors_to_loopback:
+        p.error('Startup blocked: explicit approval for --restrict-cors-to-loopback is required; no server started')
     if a.gpu_index < 0:
         p.error('GPU index must be nonnegative')
     if a.backend == 'cuda' and a.nvidia_smi is None:
@@ -111,9 +136,10 @@ def main():
         s.bind(('127.0.0.1', 0))
         port = s.getsockname()[1]
     alias = 'luna-eval-' + a.model + '-' + str(port)
-    cmd = [str(a.server.resolve()), '-m', str(a.gguf.resolve()), '--host', '127.0.0.1',
+    cmd = [str(a.server.resolve()), '-lv', '4', '--log-colors', 'off', '--no-log-jsonl', '--no-warmup', '-m', str(a.gguf.resolve()), '--host', '127.0.0.1',
            '--port', str(port), '--alias', alias, '-c', '2048', '-t', '2', '-tb', '2',
            '-np', '1', '-ngl', '99' if gpu else '0', '-b', '128', '-ub', '128', '--chat-template-file', str(template)]
+    cmd += ['--cors-origins', 'http://127.0.0.1:%d' % port]
     if gpu:
         cmd += ['--device', 'CUDA0']
     runtime_files = {f.name: digest(f) for f in sorted(a.server.resolve().parent.glob('*.dll'))}
@@ -135,6 +161,9 @@ def main():
             'platform': platform.platform(), 'memory_available_before': available,
             'context': 2048, 'threads': 2, 'batch': 128, 'ubatch': 128,
             'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+            'timing_clock': vars(time.get_clock_info('perf_counter')),
+            'startup_checks': {'security_warning_gate': 'pending', 'cuda_proof': None},
+            'runtime_warmup': False, 'cors_policy': 'owned loopback origin only',
             'status': 'incomplete'}
     meta_path = a.out / 'metadata.json'
     meta_path.write_text(json.dumps(meta, indent=2), encoding='utf-8')
@@ -152,36 +181,41 @@ def main():
                     'response_sha256': hashlib.sha256(raw).hexdigest()}) + '\n')
                 wire.flush()
             return json.loads(raw)
-    with (a.out / 'server.log').open('w', encoding='utf-8') as log:
+    log_path = a.out / 'server.log'
+    with log_path.open('w', encoding='utf-8') as log:
         proc = subprocess.Popen(cmd, stdout=log, stderr=log, env=child_env)
         ram = RamMonitor(proc, available)
         monitors = [ram] + ([GpuMonitor(proc, probe, gpu['uuid'])] if gpu else [])
         try:
             for monitor in monitors:
                 monitor.thread.start()
-            start = time.monotonic()
+            start = time.perf_counter()
             while True:
                 if proc.poll() is not None or ram.samples['resource_guard_stopped_process']:
                     raise RuntimeError('Owned model process exited or resource guard stopped readiness')
+                check_startup_log(log_path)
                 try:
                     ready = call('health', timeout=5)['status'] == 'ok'
                     names = [x['id'] for x in call('v1/models', timeout=5)['data']]
                     if ready and alias in names:
+                        meta['startup_checks']['cuda_proof'] = check_startup_log(log_path, cuda=bool(gpu), require_gpu=True)
+                        meta['startup_checks']['security_warning_gate'] = 'passed'
                         break
                 except (OSError, ValueError, KeyError):
                     pass
-                if time.monotonic() - start > 180:
+                if time.perf_counter() - start > 180:
                     raise TimeoutError('Model readiness timeout')
                 time.sleep(.2)
-            meta['warm_cache_load_seconds'] = time.monotonic() - start
+            meta['warm_cache_load_seconds'] = time.perf_counter() - start
             with (a.out / 'results.jsonl').open('w', encoding='utf-8') as out, (a.out / 'wire.jsonl').open('w', encoding='utf-8') as wire:
                 for case in json.loads(FIXTURE.read_text(encoding='utf-8'))['cases']:
                     if proc.poll() is not None or ram.samples['resource_guard_stopped_process']:
                         raise RuntimeError('Owned model process exited or resource guard stopped the run')
+                    check_startup_log(log_path)
                     body = request_body(case['source'], alias)
-                    start = time.monotonic()
+                    start = time.perf_counter()
                     response = call('v1/chat/completions', body, wire)
-                    elapsed = time.monotonic() - start
+                    elapsed = time.perf_counter() - start
                     text = response['choices'][0]['message']['content']
                     row = {'id': case['id'], 'split': case['split'], 'request': body,
                            'response': response, 'seconds': elapsed, 'format': check_format(case['source'], text)}
@@ -189,7 +223,11 @@ def main():
                     print(case['id'], round(elapsed, 3), flush=True)
             if ram.samples['resource_guard_stopped_process'] or proc.poll() is not None:
                 raise RuntimeError('Owned process exited or resource guard stopped the run')
+            check_startup_log(log_path)
             meta['status'] = 'complete'
+        except Exception as exc:
+            meta['failure'] = type(exc).__name__ + ': ' + str(exc)
+            raise
         finally:
             for monitor in monitors:
                 monitor.stop.set()
