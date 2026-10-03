@@ -319,6 +319,18 @@ class WireClient:
             append_json(self.wire, entry)
 
 
+def start_owned_watchdog(proc, deadline):
+    """Use the HTTP phase's absolute deadline, including pre-timer setup time."""
+    guard = InferenceDeadline(proc, seconds=max(0.0, deadline - time.perf_counter()))
+    guard.start()
+    return guard
+
+
+def budget_exceeded(guard, deadline, observed_at):
+    """A due deadline remains exceeded even if its timer callback was delayed."""
+    return guard.expired.is_set() or observed_at >= deadline
+
+
 def base_metadata(model, cases):
     spec = MODELS[model]
     return {'schema_version': 1, 'experiment': EXPERIMENT, 'status': 'incomplete', 'model': model,
@@ -363,6 +375,8 @@ def run_owned(a, cases, spec, model_record, model_info, available, probe, gpu, v
     write_json(a.out / 'metadata.json', meta)
     proc, monitors, startup_guard, inference_guard, ready_start = None, [], None, None, None
     start = time.perf_counter()
+    startup_deadline = start + STARTUP_BUDGET_SECONDS
+    inference_deadline = None
     with (a.out / 'server.log').open('w', encoding='utf-8') as log, (a.out / 'wire.jsonl').open('w', encoding='utf-8') as wire, (a.out / 'token-preflight.jsonl').open('w', encoding='utf-8') as probes_out, (a.out / 'results.jsonl').open('w', encoding='utf-8') as results:
         client = WireClient(port, wire, start)
         try:
@@ -374,8 +388,7 @@ def run_owned(a, cases, spec, model_record, model_info, available, probe, gpu, v
             if ownership is not None:
                 ownership.starting_child()
             proc = subprocess.Popen(command, stdout=log, stderr=log, stdin=subprocess.DEVNULL, env=child_env)
-            startup_guard = InferenceDeadline(proc, seconds=STARTUP_BUDGET_SECONDS)
-            startup_guard.start()
+            startup_guard = start_owned_watchdog(proc, startup_deadline)
             ram = RamMonitor(proc, fresh_ram)
             monitors = [ram, GpuMonitor(proc, probe, gpu['uuid'])]
             for monitor in monitors:
@@ -384,10 +397,10 @@ def run_owned(a, cases, spec, model_record, model_info, available, probe, gpu, v
                 if proc.poll() is not None or ram.samples['resource_guard_stopped_process']:
                     raise RuntimeError('Owned process exited or resource guard stopped execution')
                 check_startup_log(a.out / 'server.log')
-            client.deadline = start + STARTUP_BUDGET_SECONDS
+            client.deadline = startup_deadline
             while True:
                 alive()
-                if startup_guard.expired.is_set():
+                if budget_exceeded(startup_guard, startup_deadline, time.perf_counter()):
                     raise TimeoutError('Owned-process startup watchdog expired')
                 try:
                     health = client.call('health')
@@ -402,14 +415,14 @@ def run_owned(a, cases, spec, model_record, model_info, available, probe, gpu, v
                     raise TimeoutError('Model readiness timeout')
                 time.sleep(.2)
             startup_guard.close()
-            if startup_guard.expired.is_set() or startup_guard.error:
-                raise TimeoutError('Startup watchdog expired or cleanup failed')
             ready_start = time.perf_counter()
+            if budget_exceeded(startup_guard, startup_deadline, ready_start) or startup_guard.error:
+                raise TimeoutError('Startup watchdog expired or cleanup failed')
             meta['startup_seconds'] = ready_start - start
             meta['ready_at_seconds'] = ready_start - start
-            client.deadline = ready_start + INFERENCE_BUDGET_SECONDS
-            inference_guard = InferenceDeadline(proc, seconds=INFERENCE_BUDGET_SECONDS)
-            inference_guard.start()
+            inference_deadline = ready_start + INFERENCE_BUDGET_SECONDS
+            client.deadline = inference_deadline
+            inference_guard = start_owned_watchdog(proc, inference_deadline)
             def bounded_call(endpoint, body):
                 alive()
                 return client.call(endpoint, body, timeout=INFERENCE_BUDGET_SECONDS)
@@ -440,24 +453,38 @@ def run_owned(a, cases, spec, model_record, model_info, available, probe, gpu, v
                     meta['smoke_seconds'] = row['seconds']
                     meta['batch_started_at_seconds'] = time.perf_counter() - start
             alive()
-            if inference_guard.expired.is_set():
+            if budget_exceeded(inference_guard, inference_deadline, time.perf_counter()):
                 raise TimeoutError('Post-readiness watchdog expired')
             full_offload_proof(a.out / 'server.log', model_info)
+            if budget_exceeded(inference_guard, inference_deadline, time.perf_counter()):
+                raise TimeoutError('Post-readiness budget expired during final validation')
             meta['status'] = 'complete'
         except BaseException as exc:
             meta['failure'] = type(exc).__name__ + ': ' + str(exc)
             raise
         finally:
+            # Snapshot callbacks before the operation-end clock. A callback that
+            # runs during cleanup must not retroactively overrun a completed phase.
+            fired_at_end = {field: guard.expired.is_set() for guard, field in
+                            ((startup_guard, 'startup'), (inference_guard, 'inference')) if guard is not None}
             end = time.perf_counter()
             meta['post_ready_seconds'] = None if ready_start is None else end - ready_start
-            for guard, field in ((startup_guard, 'startup'), (inference_guard, 'inference')):
+            late_failure = None
+            for guard, field, deadline, observed_at in (
+                    (startup_guard, 'startup', startup_deadline, ready_start if ready_start is not None else end),
+                    (inference_guard, 'inference', inference_deadline, end)):
                 if guard is not None:
                     guard.close()
-                    meta[field + '_budget_exceeded'] = guard.expired.is_set()
+                    meta[field + '_watchdog_fired'] = guard.expired.is_set()
+                    meta[field + '_budget_exceeded'] = fired_at_end[field] or observed_at >= deadline
                     if guard.error:
                         meta[field + '_stop_error'] = guard.error
-                    if guard.expired.is_set() or guard.error:
+                    if meta[field + '_budget_exceeded'] or guard.error:
                         meta['status'] = 'incomplete'
+                        if 'failure' not in meta:
+                            late_failure = (TimeoutError(field + ' budget expired before cleanup')
+                                            if meta[field + '_budget_exceeded'] else RuntimeError(guard.error))
+                            meta['failure'] = type(late_failure).__name__ + ': ' + str(late_failure)
             for monitor in monitors:
                 monitor.stop.set()
             for monitor in monitors:
@@ -481,6 +508,8 @@ def run_owned(a, cases, spec, model_record, model_info, available, probe, gpu, v
             write_json(a.out / 'manifest.json', {f.name: digest(f) for f in a.out.iterdir() if f.is_file() and f.name != 'manifest.json'})
             if meta.get('cleanup_error') or (proc is not None and not meta['owned_process_stopped']):
                 raise OwnedProcessCleanupError('Owned process termination is unconfirmed; model lock retained; review incomplete evidence')
+            if late_failure is not None:
+                raise late_failure
 
 
 def main():

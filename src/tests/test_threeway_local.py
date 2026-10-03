@@ -1,4 +1,4 @@
-"""Synthetic-only tests: fake model/runtime/process/HTTP; no model execution."""
+"""Synthetic model/runtime/HTTP tests plus a harmless owned Python child; no model execution."""
 import ast
 import base64
 import copy
@@ -8,6 +8,7 @@ import io
 import json
 from pathlib import Path
 import struct
+import subprocess
 import sys
 import tempfile
 import threading
@@ -47,6 +48,48 @@ class FakeProcess:
     def wait(self, timeout=None): return self.returncode
 
 
+class ControlledClock:
+    def __init__(self): self.now = 100.0
+    def __call__(self): return self.now
+    def advance(self, seconds): self.now += seconds
+
+
+class ControlledTimers:
+    """Keep callbacks pending until a test explicitly schedules one."""
+    def __init__(self, clock):
+        self.clock, self.instances = clock, []
+        self.before_cancel = None
+
+    def __call__(self, seconds, callback):
+        scheduler = self
+        class Timer:
+            ident = None
+            daemon = False
+            cancelled = False
+            fired = False
+            def __init__(self):
+                self.seconds = seconds
+                self.callback = callback
+            def start(self):
+                self.ident = 1
+                self.due = scheduler.clock() + seconds
+            def cancel(self):
+                if scheduler.before_cancel is not None:
+                    scheduler.before_cancel(self)
+                self.cancelled = True
+            def join(self, timeout=None): pass
+            def is_alive(self): return self.ident is not None and not (self.cancelled or self.fired)
+            def fire(self):
+                if self.cancelled:
+                    raise AssertionError('Cannot fire a cancelled synthetic timer')
+                scheduler.clock.now = max(scheduler.clock(), self.due)
+                self.fired = True
+                self.callback()
+        timer = Timer()
+        self.instances.append(timer)
+        return timer
+
+
 class SyntheticRun:
     """Exercise the real production runner against entirely in-memory doubles."""
     def __init__(self, root, model='hy18', block=None, output=None):
@@ -54,6 +97,9 @@ class SyntheticRun:
         self.stack = ExitStack()
         self.proc = FakeProcess()
         self.calls = []
+        self.block_entered = threading.Event()
+        self.on_block = None
+        self.on_read = None
         self.gguf, self.server, self.driver = root/'model.gguf', root/'llama-server', root/'nvidia-smi'
         self.server.write_bytes(b'synthetic runtime')
         self.driver.write_bytes(b'synthetic driver')
@@ -109,7 +155,12 @@ class SyntheticRun:
             def __enter__(self): return self
             def __exit__(self, *args): pass
             def read(self, limit):
+                if owner.on_read is not None:
+                    owner.on_read(self.endpoint)
                 if self.endpoint == owner.block:
+                    owner.block_entered.set()
+                    if owner.on_block is not None:
+                        owner.on_block()
                     if not owner.proc.stopped.wait(2):
                         raise AssertionError('Watchdog did not stop blocked fake read')
                     raise TimeoutError('fake owned process stopped')
@@ -164,6 +215,9 @@ class ThreewayTests(unittest.TestCase):
         old, new = definitions(reviewed/'tools/local_eval/run_context_experiment.py'), definitions(Path(safety.__file__))
         for name in ('digest', 'check_format', 'NoRedirect', 'InferenceDeadline', 'check_startup_log'):
             self.assertEqual(old[name], new[name])
+        # The intentional new behavior is the absolute-deadline adapter and
+        # operation-end accounting in run_threeway_local, not a historical edit.
+        self.assertIs(run.InferenceDeadline, safety.InferenceDeadline)
         for relative in ('tools/local_eval/resources.py', 'src/LunaTranslator/myutils/local_translation.py', 'src/LunaTranslator/myutils/local_translation_integrity.py'):
             self.assertEqual((ROOT/relative).read_bytes(), (reviewed/relative).read_bytes())
 
@@ -255,17 +309,160 @@ class ThreewayTests(unittest.TestCase):
             with self.assertRaises(ValueError): run.check_response(bad, 'owned', 5)
 
     def test_owned_watchdogs_stop_blocked_reads_and_preserve_evidence(self):
-        for endpoint, budget in (('health', 'STARTUP_BUDGET_SECONDS'), ('apply-template', 'INFERENCE_BUDGET_SECONDS'), ('v1/chat/completions', 'INFERENCE_BUDGET_SECONDS')):
-            with self.subTest(endpoint=endpoint), tempfile.TemporaryDirectory() as tmp, SyntheticRun(Path(tmp), block=endpoint) as fixture, patch.object(run, budget, .02):
+        # Select the failure stage explicitly. No 20 ms assumption is imposed on
+        # the 98 preceding probe/flush operations on any operating system.
+        for endpoint in ('health', 'apply-template', 'v1/chat/completions'):
+            clock = ControlledClock()
+            timers = ControlledTimers(clock)
+            with self.subTest(endpoint=endpoint), tempfile.TemporaryDirectory() as tmp, SyntheticRun(Path(tmp), block=endpoint) as fixture, patch.object(run.time, 'perf_counter', clock), patch.object(safety.threading, 'Timer', timers):
+                fixture.on_block = lambda: timers.instances[-1].fire()
                 with self.assertRaises((TimeoutError, RuntimeError)): fixture.execute()
+                self.assertTrue(fixture.block_entered.is_set(), 'The requested read must actually be reached')
                 self.assertTrue(fixture.proc.stopped.is_set())
                 meta = json.loads((fixture.args.out/'metadata.json').read_text())
                 self.assertEqual(meta['status'], 'incomplete')
                 field = 'startup_budget_exceeded' if endpoint == 'health' else 'inference_budget_exceeded'
                 self.assertTrue(meta[field])
+                self.assertTrue(meta[field.replace('budget_exceeded', 'watchdog_fired')])
+                if endpoint == 'v1/chat/completions':
+                    self.assertEqual(fixture.calls, ['health', 'v1/models'] + ['apply-template', 'tokenize']*49 + ['v1/chat/completions'])
                 wires = validator.read_jsonl(fixture.args.out/'wire.jsonl')
-                self.assertTrue(any(w.get('error') for w in wires))
+                self.assertTrue(any(w['endpoint'] == endpoint and w.get('error') for w in wires))
                 self.assertTrue((fixture.args.out/'manifest.json').is_file())
+
+    def test_real_timer_stops_only_its_harmless_owned_python_child(self):
+        # This is a real Timer and owned OS child, not llama.cpp or any model.
+        proc = subprocess.Popen([sys.executable, '-c', 'import threading; threading.Event().wait()'],
+                                stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        guard = safety.InferenceDeadline(proc, seconds=.02)
+        try:
+            guard.start()
+            self.assertTrue(guard.expired.wait(5), 'Real watchdog callback did not run')
+            guard.close()
+            self.assertIsNotNone(proc.poll(), 'Owned Python child was not stopped')
+            self.assertIsNone(guard.error)
+        finally:
+            guard.close()
+            safety.stop_owned(proc)
+
+    def test_synchronous_inference_deadline_records_expiry_with_callback_pending(self):
+        clock = ControlledClock()
+        timers = ControlledTimers(clock)
+        original = run.preflight_tokens
+        def finish_probes_then_exhaust_budget(*args):
+            result = original(*args)
+            clock.advance(run.INFERENCE_BUDGET_SECONDS)
+            return result
+        with tempfile.TemporaryDirectory() as tmp, SyntheticRun(Path(tmp)) as fixture, patch.object(run.time, 'perf_counter', clock), patch.object(safety.threading, 'Timer', timers), patch.object(run, 'preflight_tokens', side_effect=finish_probes_then_exhaust_budget):
+            with self.assertRaisesRegex(TimeoutError, 'request budget exhausted'):
+                fixture.execute()
+            meta = json.loads((fixture.args.out/'metadata.json').read_text())
+            self.assertTrue(meta['inference_budget_exceeded'])
+            self.assertFalse(meta['inference_watchdog_fired'])
+            self.assertFalse(meta['startup_budget_exceeded'])
+            self.assertEqual(meta['post_ready_seconds'], run.INFERENCE_BUDGET_SECONDS)
+            self.assertEqual(meta['status'], 'incomplete')
+            self.assertTrue(meta['owned_process_stopped'])
+            self.assertEqual(fixture.calls.count('tokenize'), 49)
+            self.assertEqual(fixture.calls.count('v1/chat/completions'), 0)
+            self.assertFalse(any(timer.fired for timer in timers.instances))
+            self.assertTrue(all(timer.cancelled for timer in timers.instances))
+
+    def test_startup_uses_same_absolute_deadline_despite_late_timer_setup(self):
+        clock = ControlledClock()
+        timers = ControlledTimers(clock)
+        def resource_probe():
+            clock.advance(run.STARTUP_BUDGET_SECONDS)
+            return 10*1024**3
+        with tempfile.TemporaryDirectory() as tmp, SyntheticRun(Path(tmp)) as fixture, patch.object(run.time, 'perf_counter', clock), patch.object(safety.threading, 'Timer', timers), patch.object(run, 'memory_available', side_effect=resource_probe):
+            with self.assertRaises(TimeoutError): fixture.execute()
+            meta = json.loads((fixture.args.out/'metadata.json').read_text())
+            self.assertTrue(meta['startup_budget_exceeded'])
+            self.assertFalse(meta['startup_watchdog_fired'])
+            self.assertEqual(timers.instances[0].seconds, 0)
+            self.assertEqual(fixture.calls, [])
+            self.assertTrue(meta['owned_process_stopped'])
+
+    def test_final_successful_response_cannot_return_success_after_deadline(self):
+        clock = ControlledClock()
+        timers = ControlledTimers(clock)
+        with tempfile.TemporaryDirectory() as tmp, SyntheticRun(Path(tmp)) as fixture, patch.object(run.time, 'perf_counter', clock), patch.object(safety.threading, 'Timer', timers):
+            def on_read(endpoint):
+                if endpoint == 'v1/chat/completions' and fixture.calls.count(endpoint) == 49:
+                    clock.advance(run.INFERENCE_BUDGET_SECONDS)
+            fixture.on_read = on_read
+            with self.assertRaisesRegex(TimeoutError, 'Post-readiness watchdog expired'):
+                fixture.execute()
+            meta = json.loads((fixture.args.out/'metadata.json').read_text())
+            self.assertEqual(fixture.calls.count('v1/chat/completions'), 49)
+            self.assertTrue(meta['inference_budget_exceeded'])
+            self.assertFalse(meta['inference_watchdog_fired'])
+            self.assertEqual(meta['status'], 'incomplete')
+
+    def test_cleanup_duration_cannot_overrun_completed_operation(self):
+        clock = ControlledClock()
+        timers = ControlledTimers(clock)
+        original_stop = run.stop_owned
+        with tempfile.TemporaryDirectory() as tmp, SyntheticRun(Path(tmp)) as fixture, patch.object(run.time, 'perf_counter', clock), patch.object(safety.threading, 'Timer', timers):
+            def slow_cleanup(proc):
+                clock.advance(500)
+                original_stop(proc)
+            with patch.object(run, 'stop_owned', side_effect=slow_cleanup):
+                fixture.execute()
+            meta = json.loads((fixture.args.out/'metadata.json').read_text())
+            self.assertEqual(meta['status'], 'complete')
+            self.assertEqual(meta['post_ready_seconds'], 0)
+            self.assertFalse(meta['startup_budget_exceeded'])
+            self.assertFalse(meta['inference_budget_exceeded'])
+
+    def test_budget_crossing_after_final_check_is_terminal(self):
+        clock = ControlledClock()
+        timers = ControlledTimers(clock)
+        original = run.budget_exceeded
+        with tempfile.TemporaryDirectory() as tmp, SyntheticRun(Path(tmp)) as fixture, patch.object(run.time, 'perf_counter', clock), patch.object(safety.threading, 'Timer', timers):
+            final_checks = 0
+            def cross_after_final_check(guard, deadline, observed_at):
+                nonlocal final_checks
+                result = original(guard, deadline, observed_at)
+                if fixture.calls.count('v1/chat/completions') == 49:
+                    final_checks += 1
+                    if final_checks == 2:
+                        clock.advance(run.INFERENCE_BUDGET_SECONDS)
+                return result
+            with patch.object(run, 'budget_exceeded', side_effect=cross_after_final_check), self.assertRaisesRegex(TimeoutError, 'inference budget expired before cleanup'):
+                fixture.execute()
+            meta = json.loads((fixture.args.out/'metadata.json').read_text())
+            self.assertEqual(final_checks, 2)
+            self.assertEqual(meta['status'], 'incomplete')
+            self.assertTrue(meta['inference_budget_exceeded'])
+            self.assertFalse(meta['inference_watchdog_fired'])
+            self.assertTrue(meta['failure'].startswith('TimeoutError:'))
+
+    def test_callback_firing_during_cleanup_cannot_retroactively_overrun_run(self):
+        clock = ControlledClock()
+        timers = ControlledTimers(clock)
+        with tempfile.TemporaryDirectory() as tmp, SyntheticRun(Path(tmp)) as fixture, patch.object(run.time, 'perf_counter', clock), patch.object(safety.threading, 'Timer', timers):
+            def callback_during_cleanup(timer):
+                if len(timers.instances) == 2 and timer is timers.instances[1] and not timer.cancelled:
+                    timer.fire()
+            timers.before_cancel = callback_during_cleanup
+            fixture.execute()
+            meta = json.loads((fixture.args.out/'metadata.json').read_text())
+            self.assertEqual(meta['status'], 'complete')
+            self.assertEqual(meta['post_ready_seconds'], 0)
+            self.assertTrue(meta['inference_watchdog_fired'])
+            self.assertFalse(meta['inference_budget_exceeded'])
+
+    def test_absolute_watchdog_adapter_deducts_preparation_time(self):
+        clock = ControlledClock()
+        timers = ControlledTimers(clock)
+        with patch.object(run.time, 'perf_counter', clock), patch.object(safety.threading, 'Timer', timers):
+            deadline = clock() + 180
+            clock.advance(17)
+            guard = run.start_owned_watchdog(FakeProcess(), deadline)
+            self.assertEqual(timers.instances[0].seconds, 163)
+            self.assertEqual(timers.instances[0].due, deadline)
+            guard.close()
 
     def test_evidence_tampering_and_incomplete_rows_rejected(self):
         mutations = [lambda m: m.update(status='incomplete'), lambda m: m.update(owned_process_stopped=False),
