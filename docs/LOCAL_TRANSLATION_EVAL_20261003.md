@@ -118,3 +118,6 @@ python tools/local_eval/blind_review.py /path/to/new-run-18 /path/to/new-run-7 /
 ## Windows 便携测试工具补充与后续审计
 
 后续工具增加了 Windows 原生可用物理 RAM / 进程 RSS 检测、显式 CUDA 选择、独立的按 PID 显存采样及原始请求/响应字节清单。之后首轮 Windows 1.8B Q4 完成了 40 条请求，但日志含安全警告且缺少实际 CUDA 卸载证据，不能标为安全通过或已验证 GPU 基线。[脱敏审计](LOCAL_TRANSLATION_WINDOWS_BASELINE_AUDIT_20261003.md)记录完整性、输出差异和限制；[Windows 操作与安全说明](LOCAL_TRANSLATION_WINDOWS_EVAL.md)记录修正后的门槛与需授权重测的步骤。这不改写以上 Linux 历史结果，也不代表质量改善。
+
+
+随后使用精确提交 `398afc2` 完成的严格 Windows 重测，已记录首条输入之前 CUDA0 的实际选择、33/33 层卸载与正值模型缓冲区，安全警告检查通过，111 项 Windows 测试通过。该次 40 条译文与首轮 Windows 结果逐字一致，人物关系和占位符错误仍在，因此只是独立运行器的安全/GPU 证据检查点，不是翻译质量提升。详见[严格重测审计](LOCAL_TRANSLATION_WINDOWS_BASELINE_AUDIT_20261003.md#strict-retest-of-398afc2)和[后续验收门槛](LOCAL_TRANSLATION_TEST_PLAN.md#2026-10-03-strict-windowscuda-checkpoint-and-next-gates)。历史 Linux 和首次 Windows 计时均保持独立。

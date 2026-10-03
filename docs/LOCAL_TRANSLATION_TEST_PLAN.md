@@ -56,3 +56,30 @@ Do not transmit private user/game text. Keep provider/version/quantization/revis
 ## 2026-10-03 new fixed-set baseline
 
 A separate new 40-case fixture, reproducible CPU runner, raw 1.8B Q4/Q8 paired outputs and paired-review preparation tool are available in [the dated evaluation report](LOCAL_TRANSLATION_EVAL_20261003.md). This is not recovery of the historical 32+8 inputs. The 7B comparison remains unrun because cloud memory headroom was insufficient. Q8 fixes one formatting case but retains clear role/name errors; no quality-goal pass or binary-release acceptance is implied.
+
+
+## 2026-10-03 strict Windows/CUDA checkpoint and next gates
+
+Completed evidence checkpoint: exact runner commit `398afc2` passed 111 Windows
+unit tests and completed the frozen 40-case 1.8B Q4 standalone run. Fresh trace logs
+prove CUDA0 selection, 33/33 layer offload and a positive CUDA0 model buffer before
+the first fixture. The security-warning gate passed under the owner-approved
+process-only exact-loopback CORS policy; cleanup was recorded. See the
+[strict sanitized audit](LOCAL_TRANSLATION_WINDOWS_BASELINE_AUDIT_20261003.md#strict-retest-of-398afc2).
+This does not close the translation-quality or application-release gates.
+
+Next gates, in order:
+1. Preserve the exact fixture, prior outputs and distinct timing definitions. The
+   first baseline is not retroactively repaired by the strict run. Keep per-PID
+   VRAM explicitly unmeasured and the tokenizer warning visible
+2. Plan a distinct-model quality comparison only after confirming its authorization,
+   official provenance/template and current RAM/VRAM headroom. Do not infer that
+   a successful 1.8B run licenses a 7B launch or makes its memory reserve sufficient
+3. Compare candidates under matched reviewed runtime settings, then obtain blinded
+   bilingual semantic/format adjudication with diagnostic/holdout results separate.
+   Throughput and `stop` completions cannot satisfy the quality target
+4. Complete the Windows application/Qt, configuration-preservation, offline/game-load
+   and packaging checks above before any binary-release acceptance
+
+This checkpoint adds no preset recommendation, changes no user configuration,
+and authorizes no further model, paid API, driver, release or desktop action.

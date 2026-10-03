@@ -1,4 +1,10 @@
-# First Windows 1.8B Q4 evidence audit (2026-10-03)
+# Windows 1.8B Q4 evidence audits (2026-10-03)
+
+The first-run audit below remains historical. A separately identified strict retest
+now verifies CUDA placement and the runner security gate; see the [strict retest](#strict-retest-of-398afc2).
+Translation-quality acceptance is still not established.
+
+## Historical first baseline
 
 **Not a safety-passed GPU baseline, a semantic pass, or a model quality upgrade.**
 The first Windows run completed 40 synthetic requests, but retained a startup
@@ -97,3 +103,77 @@ code review found no blocking defect. Review verified the pinned upstream log fo
 logging levels/order, no-warmup flag and CORS semantics. Windows retest, verified CUDA
 placement, per-PID VRAM measurement, app/Qt integration and quality acceptance
 remain unverified. No real model or paid API was executed in this cloud audit.
+
+
+## Strict retest of 398afc2
+
+This is a separate owner-approved run of exact kit commit
+`398afc2be55da05815c0757029e9d2e031f94d31`, not a rewrite of the first baseline.
+The private strict evidence ZIP is 457,070 bytes, SHA-256
+`a7ae607d3b9242aef3111307dcff4e075c201f9de038f295cc2347d6b5a6e504`.
+The ZIP and this sanitized summary have distinct identities. No raw private log,
+local path, computer name, GPU UUID, runtime binary or weight is published here.
+
+### Independently verified execution checkpoint
+
+- All 33 frozen-kit files in the archive byte-match the exact repository commit;
+  the recorded runner SHA-256 matches the committed runner
+- Windows tests: 111 tests pass; captured test and runner processes exit with code 0
+- Command has trace verbosity before CUDA device selection, no startup warmup,
+  loopback-only binding and the approved exact loopback browser origin restriction
+- At process-log time 0.474881 s: actual CUDA0 device selection
+- At 0.633782 s: 33/33 model layers offloaded to GPU
+- At 0.633787 s: positive CUDA0 model buffer of 1075.74 MiB
+- First fixture task starts at 1.143094 s, after all three placement proofs;
+  the log contains 40 fixture tasks and 40 prompt timing records
+- No `security:` warning appears in the captured log; startup gate records passed
+- The tokenizer `special_eos_id`/`special_eog_ids` warning is retained, not suppressed
+- Archived post-run observation at 08:41:39 UTC reports no matching task processes
+  or listener on the test port; this is a historical cleanup check, not a current scan
+
+This establishes actual model-layer CUDA placement on the tested RTX 4070 Ti and
+successful completion of this runner's security gate. It does not prove every
+operation ran on GPU or that an unauthenticated loopback server is universally safe.
+CORS remains browser-response read control, not authentication or Origin rejection.
+The residual tokenizer warning is an open compatibility observation; these 40
+`stop` completions do not prove its absence of impact on other inputs.
+
+### Separate strict-run timing and resources
+
+Recomputed from the 40 raw results: median 69.1309 ms; nearest-rank P95 93.3574 ms;
+first fixture 75.4463 ms. Warm-file-cache readiness is 1.1472615 s, with startup
+warmup disabled. The recorded clock is QueryPerformanceCounter with a 100 ns
+reported resolution; that is a clock property, not demonstrated measurement precision.
+Sampled process RSS peaks at 1,642,655,744 bytes (about 1.53 GiB). Per-PID VRAM is
+null with zero samples, not zero usage. The 1075.74 MiB model-buffer log is a distinct
+allocation observation and must not be relabeled peak process VRAM. No low-RAM
+resource guard stop was recorded.
+
+Do not pool this run with the first baseline or infer a speed improvement from
+69.13 versus 78.125 ms: logging, warmup and timing clock definitions differ. Both
+are single sequential synthetic short-text runs, not game/OCR load measurements.
+
+### Quality and remaining work
+
+All 78 unique archive manifest entries independently match size and SHA-256.
+All 40 raw wire exchanges pass strict base64 decoding, byte hashes and JSON-object
+equality against recorded results. Requests/IDs/order/splits match the unchanged
+frozen fixture and sampling; compared runs differ only in ephemeral model alias.
+
+Strict output content is exactly identical to the prior Windows output in 40/40
+cases (16/16 diagnostic, 24/24 holdout). Against frozen Linux Q4, equality remains
+30/40 (11/16 diagnostic, 19/24 holdout), with the same ten differing IDs listed above.
+Token-multiset preservation is 39/40; newline-count preservation is 40/40.
+`placeholders-05` still translates `{player}` to `{玩家}`. The previously described
+causative/waiting-role errors, recipient-name corruption, never-again mistranslation,
+age-boundary imprecision and speech-act change all remain in these identical outputs.
+
+This is non-blind source-based diagnostic comparison, not a bilingual-human
+adjudication or model win rate. The strict runtime correction supplies missing
+safety/GPU evidence; it has not improved the observed translations.
+
+The standalone Windows/CUDA evidence checkpoint is complete. The quality target,
+7B/different-model comparison, bilingual-human blinded adjudication, app/PyQt
+integration, offline/game-load behavior and release acceptance remain open.
+See the [acceptance roadmap](LOCAL_TRANSLATION_TEST_PLAN.md#2026-10-03-strict-windowscuda-checkpoint-and-next-gates).
+No additional model or desktop execution was performed by this cloud audit.

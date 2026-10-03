@@ -1,11 +1,12 @@
 # Portable Windows evaluation kit (not a quality result)
 
 This extends the frozen 2026-10-03 standalone model experiment to Windows.
-**A first Windows 1.8B Q4 run exists, but is not a safety-passed GPU baseline:**
-its log contains a security warning and lacks actual CUDA offload evidence.
-See the [sanitized audit](LOCAL_TRANSLATION_WINDOWS_BASELINE_AUDIT_20261003.md).
-The corrected runner and its GPU proof gate still require a new Windows retest.
-Linux-hosted unit tests and platform mocks do not prove hardware execution.
+**The strict 1.8B Q4 retest of 398afc2 now verifies actual CUDA placement and the
+runner security gate on the tested Windows/RTX 4070 Ti setup.** The earlier run
+remains a failed safety baseline with unverified offload. See the
+[sanitized audits](LOCAL_TRANSLATION_WINDOWS_BASELINE_AUDIT_20261003.md).
+The strict run completes 40 requests, but translation-quality acceptance, app/Qt
+integration and the larger-model comparison remain unverified.
 Application providers, defaults, saved configuration and historical result files
 are unchanged. This kit is not an app release or Windows/Qt acceptance test.
 
@@ -154,4 +155,5 @@ helper supplies a synthetic guard; explicit regressions still reject missing,
 invalid, and throwing guards. The production guard is unchanged. New runner tests
 cover missing CORS opt-in, security warnings before/after the first fixture, missing
 or false CUDA proof, command ordering, and cleanup. See the sanitized audit for
-final cloud validation; these checks do not replace the required Windows retest.
+cloud validation and the completed 111-test Windows retest. Neither the tests nor
+standalone inference replace app/Qt or translation-quality acceptance.
