@@ -1,6 +1,11 @@
 # Existing 1.8B boundary-placement experiment v2
 
-Status: preregistered, NOT EXECUTED. The candidate wording/placement was fixed
+Execution update: the frozen kit completed on Windows. Mechanical gates passed,
+but the blind semantic review found new critical regressions; do not promote.
+See the [audited result](../../LOCAL_TRANSLATION_PROMPT_V2_RESULT_20261003.md).
+The original preregistration below is preserved as historical text.
+
+Original status: preregistered, NOT EXECUTED. The candidate wording/placement was fixed
 before the new validation worker generated cases; the prompt designer has not
 inspected new validation sources or private criteria.
 
