@@ -29,7 +29,7 @@ Use a disposable portable installation and backed-up synthetic `userconfig`. Rec
 6. Disable all other online translation providers manually. Disconnect external networking after setup. Translate synthetic Japanese into Chinese; inspect outbound connections and verify there are no cloud requests or paid fallback. Online TTS/dictionaries must be assessed separately.
 7. Test glossary, context on/off, stream on/off, model switch and language switch. Ensure switching model/restarting cannot reuse old-model cached output. Open advanced provider settings and verify setup-owned endpoint/prompt fields cannot defeat loopback-only behavior.
 8. Repeat CPU and CUDA/Vulkan paths at 100%, 150% and 200% scaling, light/dark mode, small screen, keyboard-only navigation and close/ESC behavior. Check status does not remain “ready” after a crash.
-9. Try optional 7B only with adequate free memory. Record cold load, p50/p95 per-line latency and peak RAM/VRAM both alone and beside a representative game. Keep results separate by hardware/runtime/model; no universal minimum or speed promise.
+9. Measure the existing 1.8B model with adequate free memory: record cold load, p50/p95 per-line latency and peak RAM/VRAM both alone and beside a representative game. Keep results separate by hardware/runtime/model; no universal minimum or speed promise. The former optional-7B test is outside the current Hy1.8B-only scope and is not a release requirement.
 10. Packaging: preserve GPL source and notices; include any bundled dependency licenses; exclude caches, weights, user configuration, logs and translation records; refresh the customized launcher integrity digests using the project's documented build procedure. This development work does not run inherited signing/release workflows or publish a binary.
 
 ## Separate Linux/CPU smoke check and protocol correction
@@ -83,3 +83,37 @@ Next gates, in order:
 
 This checkpoint adds no preset recommendation, changes no user configuration,
 and authorizes no further model, paid API, driver, release or desktop action.
+
+## 2026-10-03 terminal three-way pilot and current roadmap
+
+The later [terminal pilot and exploratory review](LOCAL_TRANSLATION_THREEWAY_RESULT_20261003.md)
+supersedes the earlier checkpoint's proposed next experiment sequence; earlier
+records remain historical. Both local48 runs completed, but Google stopped at
+40/48 after three failed transport attempts across explicitly authorized
+segments. Keep the one-shot claim and all failures. The formal comparison remains
+incomplete, with no winner, fourth-arm trigger or automatic further collection.
+
+Current priorities:
+
+1. Retain Hy-MT2-1.8B Q4 as the experimental local reference. In the primary masked
+   local48 review, Hy had four definite fidelity failures and seven uncertain
+   cases; the tested Qwen3.5-2B Q4 policy had 27 and four. Qwen was also slower and
+   used about twice the measured process RSS. Do not switch defaults on this evidence
+2. Preserve the separately labeled common40 exploration and full local48 review.
+   Missing Google fresh cases are category-skewed. Do not treat the subset as a
+   completed acceptance test, merge repeated local ratings or pick favorable scores
+3. Keep the low-resource goal explicit: weights remain optional, first-use
+   download/import requires the user's choice, and the 1.13-GB requirement has not
+   been reduced. No bundled weights, silent online fallback or unsupported claim
+   of a smaller model follows from these results
+4. Next quality work targets the existing Hy 1.8B model only. First design one
+   narrow, independently testable intervention for explicit names/terms or
+   source-supported role preservation. Generic prompt/context iterations already failed; a glossary
+   cannot be presumed to solve causative grammar. Freeze new validation and cost
+   limits before any run. Fine-tuning is a separate unperformed data/hardware project
+5. Preserve uncertainty and obtain human bilingual adjudication before a
+   release-level quality claim. Complete remaining Windows application/Qt,
+   configuration-preservation, offline/game-load and packaging acceptance above
+
+No quality gate is relaxed. Existing providers and experimental defaults remain
+unchanged; the result report itself authorizes no new model, network or desktop run.
