@@ -1,5 +1,11 @@
 # Existing 1.8B minimal-prompt experiment v1
 
+Execution update (2026-10-03): the exact historical kit completed its Windows
+paired run, but the candidate failed the unchanged latency/structure gates.
+See the [sanitized result](../../LOCAL_TRANSLATION_PROMPT_V1_RESULT_20261003.md).
+The original preregistration below is preserved as historical text; it is not
+permission to repeat the run or promote the candidate.
+
 Status: preregistered, NOT EXECUTED. Frozen before the prompt designer inspected
 any independent fresh source cases or private semantic criteria.
 
