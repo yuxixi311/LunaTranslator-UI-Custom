@@ -1,0 +1,19 @@
+{
+  "model": "Qwen3.5-2B-Q4_K_M",
+  "filename": "Qwen3.5-2B-Q4_K_M.gguf",
+  "bytes": 1280835840,
+  "sha256": "aaf42c8b7c3cab2bf3d69c355048d4a0ee9973d48f16c731c0520ee914699223",
+  "repository": "unsloth/Qwen3.5-2B-GGUF",
+  "revision": "f6d5376be1edb4d416d56da11e5397a961aca8ae",
+  "download_url": "https://huggingface.co/unsloth/Qwen3.5-2B-GGUF/resolve/f6d5376be1edb4d416d56da11e5397a961aca8ae/Qwen3.5-2B-Q4_K_M.gguf",
+  "official_base": "Qwen/Qwen3.5-2B",
+  "base_revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+  "license": "Apache-2.0",
+  "license_url": "https://huggingface.co/Qwen/Qwen3.5-2B/blob/15852e8c16360a2fea060d615a32b45270f8a8fc/LICENSE",
+  "template_file": "tools/local_eval/qwen35_chat_template.jinja",
+  "template_sha256": "273d8e0e683b885071fb17e08d71e5f2a5ddfb5309756181681de4f5a1822d80",
+  "runtime_tag": "b11349",
+  "runtime_commit": "fb4b2737a808a3fb7c2117a498f43815dc9be53e",
+  "weights_bundled": false,
+  "fourth_arm_download_authorized_now": false
+}
