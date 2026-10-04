@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "PUBLIC ILLUSTRATIVE DIAGNOSTICS; NOT EXECUTED; NOT HELD OUT",
+  "scope": "Sixteen synthetic lexical mechanism examples with intended decisions, not general language accuracy or translation-quality evidence",
+  "offset_convention": "Zero-based Unicode code-point offsets into exact source; start inclusive, end exclusive",
+  "category_counts": {
+    "explicit_person": 4,
+    "ordinary_word": 4,
+    "mixed_same_key": 4,
+    "partial_word": 2,
+    "no_match": 2
+  },
+  "source_count": 16,
+  "max_source_unicode_characters": 29,
+  "total_literal_occurrences": 21,
+  "decision_role": "Assessment-only; never consumed by lexical_policy or tokenization",
+  "files": {
+    "canon.json": {
+      "bytes": 432,
+      "sha256": "7cc5bdb3626dd4e781070dca708428c0ef81048d72b067a71f9e15c795814337"
+    },
+    "diagnostics.sources.json": {
+      "bytes": 2474,
+      "sha256": "5a02d97443f724e974a12aa18a972138314440f36f358c488df151c4aebea9e9"
+    },
+    "diagnostics.expected.json": {
+      "bytes": 6488,
+      "sha256": "db51c5ea2efd5f20729809ca21cbd4a3fdb900521029218d7c673c7003e349db"
+    }
+  }
+}

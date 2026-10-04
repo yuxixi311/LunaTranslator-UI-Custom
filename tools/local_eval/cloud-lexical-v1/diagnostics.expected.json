@@ -1,0 +1,264 @@
+[
+  {
+    "id": "LEX-P01",
+    "category": "explicit_person",
+    "expected_admitted_canon_keys": [
+      "光"
+    ],
+    "occurrences": [
+      {
+        "key": "光",
+        "start": 6,
+        "end": 7,
+        "type": "person"
+      }
+    ],
+    "explanation": "「新任の教師」と敬称「さん」が光を人物名として明示している。"
+  },
+  {
+    "id": "LEX-P02",
+    "category": "explicit_person",
+    "expected_admitted_canon_keys": [
+      "翼"
+    ],
+    "occurrences": [
+      {
+        "key": "翼",
+        "start": 4,
+        "end": 5,
+        "type": "person"
+      }
+    ],
+    "explanation": "「受付係」と敬称「さん」が翼を人物名として明示している。"
+  },
+  {
+    "id": "LEX-P03",
+    "category": "explicit_person",
+    "expected_admitted_canon_keys": [
+      "蓮"
+    ],
+    "occurrences": [
+      {
+        "key": "蓮",
+        "start": 4,
+        "end": 5,
+        "type": "person"
+      }
+    ],
+    "explanation": "「書店員」と敬称「さん」が蓮を人物名として明示している。"
+  },
+  {
+    "id": "LEX-P04",
+    "category": "explicit_person",
+    "expected_admitted_canon_keys": [
+      "桜",
+      "泉",
+      "遥"
+    ],
+    "occurrences": [
+      {
+        "key": "桜",
+        "start": 3,
+        "end": 4,
+        "type": "person"
+      },
+      {
+        "key": "泉",
+        "start": 7,
+        "end": 8,
+        "type": "person"
+      },
+      {
+        "key": "遥",
+        "start": 15,
+        "end": 16,
+        "type": "person"
+      }
+    ],
+    "explanation": "桜と泉は同僚、遥は通訳として書かれ、三者とも敬称「さん」が付く人物名である。"
+  },
+  {
+    "id": "LEX-O01",
+    "category": "ordinary_word",
+    "expected_admitted_canon_keys": [],
+    "occurrences": [
+      {
+        "key": "光",
+        "start": 7,
+        "end": 8,
+        "type": "ordinary"
+      }
+    ],
+    "explanation": "光は窓から差し込んで机を照らす明かりを指す。"
+  },
+  {
+    "id": "LEX-O02",
+    "category": "ordinary_word",
+    "expected_admitted_canon_keys": [],
+    "occurrences": [
+      {
+        "key": "翼",
+        "start": 9,
+        "end": 10,
+        "type": "ordinary"
+      }
+    ],
+    "explanation": "翼は鳥が広げる体の一部を指す。"
+  },
+  {
+    "id": "LEX-O03",
+    "category": "ordinary_word",
+    "expected_admitted_canon_keys": [],
+    "occurrences": [
+      {
+        "key": "蓮",
+        "start": 2,
+        "end": 3,
+        "type": "ordinary"
+      }
+    ],
+    "explanation": "蓮は池に生え、つぼみと葉を持つ植物を指す。"
+  },
+  {
+    "id": "LEX-O04",
+    "category": "ordinary_word",
+    "expected_admitted_canon_keys": [],
+    "occurrences": [
+      {
+        "key": "泉",
+        "start": 4,
+        "end": 5,
+        "type": "ordinary"
+      },
+      {
+        "key": "桜",
+        "start": 13,
+        "end": 14,
+        "type": "ordinary"
+      }
+    ],
+    "explanation": "泉は山あいの湧き水の場所、桜は一本と数えられて満開になる樹木を指す。"
+  },
+  {
+    "id": "LEX-M01",
+    "category": "mixed_same_key",
+    "expected_admitted_canon_keys": [],
+    "occurrences": [
+      {
+        "key": "光",
+        "start": 4,
+        "end": 5,
+        "type": "person"
+      },
+      {
+        "key": "光",
+        "start": 23,
+        "end": 24,
+        "type": "ordinary"
+      }
+    ],
+    "explanation": "最初の光は敬称の付いた照明係の人物名、二番目の光は舞台に差す青い明かりである。同じキーに普通名詞の用例があるため全体を保留する。"
+  },
+  {
+    "id": "LEX-M02",
+    "category": "mixed_same_key",
+    "expected_admitted_canon_keys": [],
+    "occurrences": [
+      {
+        "key": "翼",
+        "start": 4,
+        "end": 5,
+        "type": "person"
+      },
+      {
+        "key": "翼",
+        "start": 16,
+        "end": 17,
+        "type": "ordinary"
+      }
+    ],
+    "explanation": "最初の翼は敬称の付いた飼育員の人物名、二番目の翼は鳥の体の一部である。同じキーに普通名詞の用例があるため全体を保留する。"
+  },
+  {
+    "id": "LEX-M03",
+    "category": "mixed_same_key",
+    "expected_admitted_canon_keys": [],
+    "occurrences": [
+      {
+        "key": "蓮",
+        "start": 4,
+        "end": 5,
+        "type": "person"
+      },
+      {
+        "key": "蓮",
+        "start": 14,
+        "end": 15,
+        "type": "ordinary"
+      }
+    ],
+    "explanation": "最初の蓮は敬称の付いた園芸係の人物名、二番目の蓮は池に咲く植物である。同じキーに普通名詞の用例があるため全体を保留する。"
+  },
+  {
+    "id": "LEX-M04",
+    "category": "mixed_same_key",
+    "expected_admitted_canon_keys": [],
+    "occurrences": [
+      {
+        "key": "桜",
+        "start": 4,
+        "end": 5,
+        "type": "person"
+      },
+      {
+        "key": "桜",
+        "start": 15,
+        "end": 16,
+        "type": "ordinary"
+      }
+    ],
+    "explanation": "最初の桜は敬称の付いた案内役の人物名、二番目の桜は道沿いの樹木である。同じキーに普通名詞の用例があるため全体を保留する。"
+  },
+  {
+    "id": "LEX-E01",
+    "category": "partial_word",
+    "expected_admitted_canon_keys": [],
+    "occurrences": [
+      {
+        "key": "泉",
+        "start": 14,
+        "end": 15,
+        "type": "embedded"
+      }
+    ],
+    "explanation": "泉は温泉街という語の内部に現れる一文字で、独立した人物名ではない。"
+  },
+  {
+    "id": "LEX-E02",
+    "category": "partial_word",
+    "expected_admitted_canon_keys": [],
+    "occurrences": [
+      {
+        "key": "遥",
+        "start": 8,
+        "end": 9,
+        "type": "embedded"
+      }
+    ],
+    "explanation": "遥は距離の大きさを表す「遥か」の一部で、独立した人物名ではない。"
+  },
+  {
+    "id": "LEX-N01",
+    "category": "no_match",
+    "expected_admitted_canon_keys": [],
+    "occurrences": [],
+    "explanation": "かぎ括弧と疑問符を含むが、六つのキーのいずれも文字列として現れない。"
+  },
+  {
+    "id": "LEX-N02",
+    "category": "no_match",
+    "expected_admitted_canon_keys": [],
+    "occurrences": [],
+    "explanation": "範囲記号、丸括弧、中点を含むが、六つのキーのいずれも文字列として現れない。"
+  }
+]

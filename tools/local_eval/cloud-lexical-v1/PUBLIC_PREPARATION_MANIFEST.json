@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "status": "PUBLIC SOURCE PREPARATION ONLY; NOT EXECUTED",
+  "pipeline_execution_ready": false,
+  "identity": "Distinct sanitized public snapshot; not equivalent to another frozen execution manifest",
+  "files": {
+    "README.md": {
+      "bytes": 3498,
+      "sha256": "c214497552f9f58757d7a8f6e0f9abf1bd19802b97b66094fa435ba815d8aac4"
+    },
+    "PLAN.md": {
+      "bytes": 3557,
+      "sha256": "b10499804708c2e8d09ed623a94db1a400e0e8c07f92f274427402cc18f322e8"
+    },
+    "PYPI_PINS.json": {
+      "bytes": 4493,
+      "sha256": "06d834b8c68ad0b58916b19696810a87a654d384132d1dda07cb17fa4c87f5d5"
+    },
+    "SOURCE_VERIFICATION.md": {
+      "bytes": 2441,
+      "sha256": "18c8260390b2310541e7f051be186ff4a23983ba8983002aefcdd5fa5cc8d6b8"
+    },
+    "canon.json": {
+      "bytes": 432,
+      "sha256": "7cc5bdb3626dd4e781070dca708428c0ef81048d72b067a71f9e15c795814337"
+    },
+    "diagnostics.expected.json": {
+      "bytes": 6488,
+      "sha256": "db51c5ea2efd5f20729809ca21cbd4a3fdb900521029218d7c673c7003e349db"
+    },
+    "diagnostics.manifest.json": {
+      "bytes": 1127,
+      "sha256": "295e652baa140d33b47502e314702fec9086a20f09656cd51543db6bbce4048a"
+    },
+    "diagnostics.sources.json": {
+      "bytes": 2474,
+      "sha256": "5a02d97443f724e974a12aa18a972138314440f36f358c488df151c4aebea9e9"
+    },
+    "lexical_policy.py": {
+      "bytes": 1993,
+      "sha256": "a81041b985a10077cf4745bd220ad9219fd4070201352a87623f5325117d1523"
+    },
+    "seen.sources.json": {
+      "bytes": 7290,
+      "sha256": "51bdc8829a59b50e2ac3c82932b9421734dada333dcc6c6ef58fde78974ab72d"
+    },
+    "test_lexical_policy.py": {
+      "bytes": 1563,
+      "sha256": "06d97e623a6a8f6301797fd205c0bc3e24a07f9f76fede61508186e8fd06f39c"
+    },
+    "FIXTURE_PROVENANCE.json": {
+      "bytes": 2433,
+      "sha256": "747651dca7791e223d884a2bdcd5176f446b6fde05b9eacdd86aa9b857c12ebd"
+    }
+  },
+  "diagnostic_sources": 16,
+  "seen_sources": 32,
+  "total_parser_calls_planned": 48
+}

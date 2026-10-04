@@ -40,7 +40,11 @@ The new preset now uses Chinese language names for Chinese instructions and the 
 
 Passing inference or correcting this protocol does not establish a translation-quality upgrade. No paid or Google baseline, private-text test, Windows UI run or 7B comparison has been performed by these changes.
 
-## Comparative translation-quality evaluation (not yet run)
+## Original comparative translation-quality proposal (historical)
+
+This section preserves the original proposal before evaluation. Later dated
+checkpoints below record completed local runs, incomplete Google coverage and the
+current Hy-only investigation; they supersede its proposed experiment sequence.
 
 The intended improvement over the existing Google online interface is a hypothesis. Do not claim a measured advantage over Google or DeepSeek from model-card averages or smoother prose alone.
 
@@ -144,3 +148,20 @@ ceiling, not a requirement to run three. No second candidate is frozen here.
 Keep Hy1.8B, optional weights, experimental defaults and all prior evidence.
 Do not use further generic prompt retries, case-specific fixes, larger weights,
 training or a new online comparison to turn this checkpoint into a pass.
+
+## 2026-10-04 cloud lexical preparation and current blocker
+
+The [current development checkpoint](LOCAL_TRANSLATION_CHECKPOINT_20261004.md)
+consolidates completed source work, the inconclusive glossary result, cloud launch
+failures and the next decision path. The lexical probe has not run: startup failed
+before its claim/output creation, with no package installation or tokenizer calls.
+Pure/fake tests validate preparation code only. They do not establish dictionary
+behavior, native compatibility, resource cost or translation improvement.
+
+Continue only the frozen cloud lexical feasibility probe through the supported
+route. Windows fallback is cancelled. If the probe supports the proposed single
+activation rule, preregister a new independent semantic holdout and bounded Hy1.8B
+round two; otherwise retain baseline and report the mechanism's limits. Preserve
+all old cases as seen regressions, including uncertainty and matched negatives.
+The three-round maximum is unchanged. No default promotion follows from lexical
+matching alone, and no larger model or weight training is planned.

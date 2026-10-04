@@ -1,0 +1,5 @@
+The v0.6.11 API was checked against its versioned type stubs and Rust implementation before execution. Dictionary accepts an absolute dictionary path and JSON config. create supports SplitMode.C and projection='surface'. raw_surface returns original substrings; begin/end use Unicode codepoint offsets; POS has six fields; OOV dictionary_id is-1.
+
+An explicit userDict=[]/projection='surface' config still falls back to the package's bundled default analyzer plugins. The frozen requirement to preserve source means no harness-level rewriting and exact returned raw slices; it does not claim that the analyzer internally disables normalization. Keep default plugin behavior and bind its installed bytes to the verified wheel. Do not alter plugins to improve diagnostic outcomes.
+
+Sources: https://raw.githubusercontent.com/WorksApplications/sudachi.rs/v0.6.11/python/py_src/sudachipy/sudachipy.pyi ; https://raw.githubusercontent.com/WorksApplications/sudachi.rs/v0.6.11/python/src/dictionary.rs ; https://raw.githubusercontent.com/WorksApplications/sudachi.rs/v0.6.11/python/src/morpheme.rs

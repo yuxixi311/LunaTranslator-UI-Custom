@@ -1,0 +1,82 @@
+[
+  {
+    "id": "LEX-P01",
+    "category": "explicit_person",
+    "source": "新任の教師、光さんが黒板に今日の日付を書いた。"
+  },
+  {
+    "id": "LEX-P02",
+    "category": "explicit_person",
+    "source": "受付係の翼さんは、予約した客を奥の席へ案内した。"
+  },
+  {
+    "id": "LEX-P03",
+    "category": "explicit_person",
+    "source": "書店員の蓮さんが、取り寄せた本を私に渡した。"
+  },
+  {
+    "id": "LEX-P04",
+    "category": "explicit_person",
+    "source": "同僚の桜さんと泉さんは、通訳の遥さんに会議の予定を伝えた。"
+  },
+  {
+    "id": "LEX-O01",
+    "category": "ordinary_word",
+    "source": "窓から差し込む光が、机の端を明るく照らしている。"
+  },
+  {
+    "id": "LEX-O02",
+    "category": "ordinary_word",
+    "source": "傷ついた鳥は片方の翼を広げ、草の上でじっとしていた。"
+  },
+  {
+    "id": "LEX-O03",
+    "category": "ordinary_word",
+    "source": "池の蓮はまだつぼみで、丸い葉だけが水面に浮かんでいる。"
+  },
+  {
+    "id": "LEX-O04",
+    "category": "ordinary_word",
+    "source": "山あいの泉のそばで、一本の桜が満開になっていた。"
+  },
+  {
+    "id": "LEX-M01",
+    "category": "mixed_same_key",
+    "source": "照明係の光さんがスイッチを入れると、舞台に青い光が差した。"
+  },
+  {
+    "id": "LEX-M02",
+    "category": "mixed_same_key",
+    "source": "飼育員の翼さんは、けがをした鳥の翼をそっと支えた。"
+  },
+  {
+    "id": "LEX-M03",
+    "category": "mixed_same_key",
+    "source": "園芸係の蓮さんは、池に咲いた蓮の花を一輪ずつ数えた。"
+  },
+  {
+    "id": "LEX-M04",
+    "category": "mixed_same_key",
+    "source": "案内役の桜さんは、道沿いに並ぶ桜の木を指さした。"
+  },
+  {
+    "id": "LEX-E01",
+    "category": "partial_word",
+    "source": "旅館の案内には、露天風呂と温泉街の地図が載っていた。"
+  },
+  {
+    "id": "LEX-E02",
+    "category": "partial_word",
+    "source": "港を離れた船は、遥か遠くの島を目指して進んだ。"
+  },
+  {
+    "id": "LEX-N01",
+    "category": "no_match",
+    "source": "「忘れ物はありませんか？」と係員がたずねた。"
+  },
+  {
+    "id": "LEX-N02",
+    "category": "no_match",
+    "source": "受付時間は九時〜十七時（土・日・祝日を除く）。"
+  }
+]

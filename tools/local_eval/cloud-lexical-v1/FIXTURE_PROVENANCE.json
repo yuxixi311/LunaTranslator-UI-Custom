@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "verified_date_utc": "2026-10-04",
+  "repository": "yuxixi311/LunaTranslator-UI-Custom",
+  "visibility_verified": "public",
+  "verified_revision": "fa1c3ce39830685953e0bbcf4d2a72e48902775a",
+  "public_sources": [
+    {
+      "url": "https://github.com/yuxixi311/LunaTranslator-UI-Custom/blob/fa1c3ce39830685953e0bbcf4d2a72e48902775a/tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-independent/sources.json",
+      "git_blob_sha": "5757eb561ae4dd07506ee4af8e3995cc0757d327"
+    },
+    {
+      "url": "https://github.com/yuxixi311/LunaTranslator-UI-Custom/blob/fa1c3ce39830685953e0bbcf4d2a72e48902775a/src/tests/fixtures/local_translation_eval_20261003.json",
+      "git_blob_sha": "dcab4727c8964a7cd7a16bec76e1e160f70819f0"
+    },
+    {
+      "url": "https://github.com/yuxixi311/LunaTranslator-UI-Custom/blob/fa1c3ce39830685953e0bbcf4d2a72e48902775a/tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-independent/canon.json",
+      "git_blob_sha": "c6b2fb544d8faab5584d471032871f3880b1bf69"
+    }
+  ],
+  "seen32": {
+    "status": "All 32 exact source texts were compared with public repository records; all are seen regression material",
+    "first_eight_ids": [
+      "passive-02",
+      "passive-05",
+      "relationships-02",
+      "relationships-05",
+      "boundaries-02",
+      "omissions-05",
+      "placeholders-05",
+      "literal_text-01"
+    ],
+    "first_eight_source": "src/tests/fixtures/local_translation_eval_20261003.json",
+    "remaining_24_source": "tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-independent/sources.json",
+    "transformation": "Retain id and exact source; category=regression for the first eight and original stratum for the other 24; mark every record seen",
+    "no_private_criteria_or_model_outputs_included": true
+  },
+  "canon": {
+    "source": "tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-independent/canon.json",
+    "equal_to_public_json": true
+  },
+  "synthetic16": {
+    "status": "Public illustrative synthetic lexical diagnostics, authored before analyzer execution; not held-out translation evaluation",
+    "source_file": "diagnostics.sources.json",
+    "decisions_file": "diagnostics.expected.json",
+    "decision_role": "Assessment-only intended source-sense decisions, not observed analyzer output or proof that POS identifies meaning",
+    "fixture_text_and_decisions_unchanged_in_public_export": true
+  }
+}

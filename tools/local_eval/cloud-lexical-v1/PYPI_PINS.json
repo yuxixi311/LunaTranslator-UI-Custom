@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "metadata_verification_date_utc": "2026-10-03",
+  "status": "NOT EXECUTED; exported public package metadata, not a fresh download or runtime verification",
+  "target_platform": {
+    "python_implementation": "CPython",
+    "python_version": "3.12.14",
+    "os": "Linux",
+    "machine": "x86_64",
+    "minimum_glibc": "2.17"
+  },
+  "packages": [
+    {
+      "name": "SudachiPy",
+      "version": "0.6.11",
+      "filename": "sudachipy-0.6.11-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "url": "https://files.pythonhosted.org/packages/49/ee/f7c20d6e17619c83f5ffa3ed7bd1582174809fd8b396fb9250f24210dd57/sudachipy-0.6.11-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "size_bytes": 1628277,
+      "sha256": "9d024efea4ff8b5bd0709f1afbb8e8f230ebd4ec83f9cd76f47b0542b7c22e91",
+      "yanked": false,
+      "uploaded_at_utc": "2026-04-13T05:26:44.335622Z",
+      "release_metadata_url": "https://pypi.org/pypi/SudachiPy/0.6.11/json",
+      "simple_metadata_url": "https://pypi.org/simple/sudachipy/",
+      "wheel_core_metadata_url": "https://files.pythonhosted.org/packages/49/ee/f7c20d6e17619c83f5ffa3ed7bd1582174809fd8b396fb9250f24210dd57/sudachipy-0.6.11-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata",
+      "wheel_core_metadata_size_bytes": 12853,
+      "wheel_core_metadata_sha256": "46c993656ca7e4d78e433737b49eb7708d1eea67d0968176d210746724b288f9",
+      "wheel_core_metadata_hash_matches_pypi": true,
+      "requires_python": null,
+      "requires_dist": [
+        "tokenizers; extra == \"tests\"",
+        "sudachidict_core; extra == \"tests\""
+      ],
+      "selected_extras": [],
+      "license_declared": "Apache-2.0"
+    },
+    {
+      "name": "SudachiDict-core",
+      "version": "20260723",
+      "filename": "sudachidict_core-20260723-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/46/fe/68a146fced55319af40d25a4fe19b94c3a988406ce4674a8b2f0237fbc9f/sudachidict_core-20260723-py3-none-any.whl",
+      "size_bytes": 72275897,
+      "sha256": "b3869ce6b12b4bfa09575dc19030703bb669ab41bac12a74cafcbb28c6be2498",
+      "yanked": false,
+      "uploaded_at_utc": "2026-07-24T05:41:52.520104Z",
+      "release_metadata_url": "https://pypi.org/pypi/SudachiDict-core/20260723/json",
+      "simple_metadata_url": "https://pypi.org/simple/sudachidict-core/",
+      "wheel_core_metadata_url": "https://files.pythonhosted.org/packages/46/fe/68a146fced55319af40d25a4fe19b94c3a988406ce4674a8b2f0237fbc9f/sudachidict_core-20260723-py3-none-any.whl.metadata",
+      "wheel_core_metadata_size_bytes": 2657,
+      "wheel_core_metadata_sha256": "e102a6879ab09b732ce9b291aec71552a0cd0186df7e1d7eef99d737b4f40a12",
+      "wheel_core_metadata_hash_matches_pypi": true,
+      "requires_python": null,
+      "requires_dist": [
+        "SudachiPy<0.7,>=0.5"
+      ],
+      "selected_extras": [],
+      "license_declared": "Apache-2.0",
+      "license_file_declared": "LICENSE-2.0.txt"
+    }
+  ],
+  "combined_compressed_size_bytes": 73904174,
+  "license_sources": [
+    {
+      "subject": "Sudachi.rs / SudachiPy 0.6.11 Apache-2.0 license text",
+      "url": "https://raw.githubusercontent.com/WorksApplications/sudachi.rs/v0.6.11/LICENSE",
+      "size_bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "subject": "SudachiDict 20260723 Apache-2.0 license text",
+      "url": "https://raw.githubusercontent.com/WorksApplications/SudachiDict/v20260723/LICENSE-2.0.txt",
+      "size_bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "subject": "SudachiDict 20260723 additional UniDic and NEologd legal notices",
+      "url": "https://raw.githubusercontent.com/WorksApplications/SudachiDict/v20260723/LEGAL",
+      "size_bytes": 6037,
+      "sha256": "725a8776b38e058b185e905594bc9a2437dbf3787df022fffeefedb9a84e4665"
+    }
+  ],
+  "dictionary_target": {
+    "filename": "system.dic",
+    "size_bytes": 217466039,
+    "sha256": "53fa281d11eef3769712fe1c3c892117338f9892bee6daf4dad51daa5281bb6f",
+    "status": "Required byte target only; uncompressed dictionary bytes and RECORD have not been checked against the selected wheel",
+    "official_metadata_publishes_this_dictionary_sha256": false,
+    "binary_identity_verified": false
+  },
+  "native_import_tested": false,
+  "tokenization_tested": false,
+  "download_or_execution_authorized_by_this_file": false
+}
