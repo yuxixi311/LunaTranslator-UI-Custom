@@ -1,7 +1,7 @@
 from qtsymbols import *
 import functools
-import gobject, NativeUtils
-from myutils.config import globalconfig
+import gobject, NativeUtils, windows
+from myutils.config import globalconfig, _TR
 from gui.usefulwidget import (
     ColorButton,
     getspinbox,
@@ -235,7 +235,21 @@ class dialog_syssetting(LDialog):
 class WordViewTooltip(resizableframeless, DraggableQWidget):
 
     def close(self):
+        self._dismiss_lookup()
         self.hide()
+
+    def _dismiss_lookup(self):
+        # Dictionary workers may finish after the popup has been dismissed.
+        # Keep readyData for the full-window/Anki buttons, but reject callbacks.
+        self._dismissed_hover_key = self._lookup_key
+        self._lookup_key = None
+        self._focus_dismissed_key = None
+        self._focus_dismissed_token = None
+        self._awaiting_source_press = False
+        self.__f.stop()
+        self.__savestatus = None
+        if self.__state == 2:
+            self.view.cancel_search()
         self.lastword = None
 
     @property
@@ -253,12 +267,28 @@ class WordViewTooltip(resizableframeless, DraggableQWidget):
             focused_widget = QApplication.focusWidget()
             if (
                 focused_widget
-                and focused_widget.window()
-                and (self in (focused_widget, focused_widget.window().parent() == self))
+                and (focused_widget is self or self.isAncestorOf(focused_widget))
             ):
                 pass
             else:
+                # Focus can leave on mouse press, while the renderer dispatches
+                # the lookup on release. Remember only this source interaction;
+                # leaving/changing the hovered word clears the one-use marker.
+                source = gobject.base.translation_ui.translate_text
+                same_source_press = (
+                    self._lookup_key is not None
+                    and source.rect().contains(source.mapFromGlobal(QCursor.pos()))
+                    and (
+                        windows.GetAsyncKeyState(windows.VK_LBUTTON) < 0
+                        or windows.GetAsyncKeyState(windows.VK_RBUTTON) < 0
+                    )
+                )
+                key = self._lookup_key if same_source_press else None
                 self.close()
+                self._focus_dismissed_key = key
+                if key is not None:
+                    self._focus_dismissed_token = self._source_pressed_token
+                    self._awaiting_source_press = self._source_pressed_token is None
         return super().focusOutEvent(a0)
 
     def doResize(self):
@@ -333,14 +363,61 @@ class WordViewTooltip(resizableframeless, DraggableQWidget):
         )
         self.__state = 0
         gobject.base.hover_search_word.connect(self.searchword)
+        gobject.base.click_search_word.connect(self._click_searchword)
+        gobject.base.lookup_source_pressed.connect(self.source_press)
+        gobject.base.lookup_source_released.connect(self.source_release)
         self.__f = QTimer(self)
         self.__f.setInterval(50)
         self.__f.timeout.connect(self.__detectkey)
         self.__savestatus = None
+        self._lookup_key = None
+        self._dismissed_hover_key = None
+        self._source_hover_key = None
+        self._focus_dismissed_key = None
+        self._focus_dismissed_token = None
+        self._awaiting_source_press = False
+        self._source_pressed_token = None
+        self._source_latest_token = None
+        self._source_consumed_token = None
 
-    def Leave(self):
+    def source_press(self, token):
+        if token == self._source_latest_token:
+            return  # The same Qt event can propagate through child/parent.
+        self._source_latest_token = token
+        self._source_pressed_token = token
+        if self._awaiting_source_press:
+            self._focus_dismissed_token = token
+            self._awaiting_source_press = False
+        else:
+            self._focus_dismissed_key = None
+            self._focus_dismissed_token = None
+
+    def source_release(self, token):
+        if token == self._source_pressed_token:
+            self._source_pressed_token = None
+
+    def _click_searchword(self, word, sentence, append, token):
+        self.searchword(word, sentence, append, click_token=token)
+
+    def observe_source_word(self, word, sentence):
+        key = (word.strip(), sentence)
+        if key != self._source_hover_key:
+            self._focus_dismissed_key = None
+            self._focus_dismissed_token = None
+            self._awaiting_source_press = False
+        self._source_hover_key = key
+
+    def Leave(self, source_left=True):
         self.__f.stop()
+        self.__savestatus = None
         self.lastword = None
+        self._dismissed_hover_key = None
+        if source_left:
+            self._source_hover_key = None
+            self._source_pressed_token = None
+            self._focus_dismissed_key = None
+            self._focus_dismissed_token = None
+            self._awaiting_source_press = False
 
     def setupUi(self):
         self.lastword = None
@@ -379,6 +456,7 @@ class WordViewTooltip(resizableframeless, DraggableQWidget):
             )
         )
         self.wordlabel = QLabel()
+        self.wordlabel.setTextFormat(Qt.TextFormat.PlainText)
         self.wordlabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         buttons.addWidget(self.wordlabel)
         searchword = lambda anki: (
@@ -417,7 +495,7 @@ class WordViewTooltip(resizableframeless, DraggableQWidget):
         self.setCentralWidget(w)
         self.view.first_result_shown.connect(self.showresult)
         self.view.from_webview_search_word.connect(
-            lambda t: (self.view.searchword(t), self.wordlabel.setText(t))
+            self._search_from_popup
         )
         self.view.from_webview_search_word_in_new_window.connect(
             lambda w: gobject.base.searchwordW.searchwinnewwindow(w)
@@ -429,7 +507,7 @@ class WordViewTooltip(resizableframeless, DraggableQWidget):
         )
 
     def __detectkey(self):
-        if not globalconfig.get("usesearchword_S_hover", False):
+        if not self.__savestatus or not globalconfig.get("usesearchword_S_hover", False):
             self.__f.stop()
             return
         result = gobject.base.checkkeypresssatisfy("searchword_S_hover", False)
@@ -439,8 +517,31 @@ class WordViewTooltip(resizableframeless, DraggableQWidget):
             self.searchword(*self.__savestatus)
 
     def closeEvent(self, event):
-        self.lastword = None
+        self._dismiss_lookup()
         return super().closeEvent(event)
+
+    def _set_word_status(self, word, completed=False):
+        self.wordlabel.setText(
+            "{} · {}".format(word, _TR("已查词" if completed else "查询中"))
+        )
+
+    def _search_from_popup(self, word):
+        # Dictionary links/selection menus remain explicit searches, not toggles.
+        # Moving to another entry also ends the previous source-word identity.
+        if self._lookup_key is None:
+            return
+        word = word.strip()
+        if not word:
+            return
+        self.__f.stop()
+        self.__savestatus = None
+        self._lookup_key = (word, None)
+        self._dismissed_hover_key = None
+        self._focus_dismissed_key = None
+        self._focus_dismissed_token = None
+        self._awaiting_source_press = False
+        self._set_word_status(word)
+        self.view.searchword(word)
 
     def searchword(
         self,
@@ -450,28 +551,69 @@ class WordViewTooltip(resizableframeless, DraggableQWidget):
         fromhover=False,
         show=False,
         force=False,
+        click_token="",
     ):
         self.__load()
         if self.__state != 2:
             return
+        word = word.strip()
+        if not word:
+            return
+        key = (word, sentence)
+        if not fromhover and click_token:
+            # Renderer events precede the threaded click callback. Reject an
+            # older/duplicate release after a newer navigation or gesture.
+            if (
+                click_token != self._source_latest_token
+                or click_token == self._source_consumed_token
+            ):
+                return
+            self._source_consumed_token = click_token
+        if (
+            not fromhover
+            and key == self._focus_dismissed_key
+            and click_token == self._focus_dismissed_token
+        ):
+            self._focus_dismissed_key = None
+            self._focus_dismissed_token = None
+            return
+        if not fromhover and key == self._lookup_key:
+            # Right click normally appends. Toggle before append and auto-TTS,
+            # including while the first dictionary response is still pending.
+            self.close()
+            return
+        if fromhover and key == self._dismissed_hover_key:
+            return
         if fromhover and not force:
-            if word == self.lastword:
+            if key == self.lastword:
                 return self.moveresult_1()
-            self.lastword = word
+            self.lastword = key
             if not show:
                 self.__savestatus = word, sentence, append, fromhover, True, True
                 self.__f.start()
                 return
+        self.__f.stop()
+        self.__savestatus = None
+        self._dismissed_hover_key = None
+        self._focus_dismissed_key = None
+        self._focus_dismissed_token = None
+        self._awaiting_source_press = False
+        self._lookup_key = key
+        if not fromhover:
+            self._source_hover_key = key
         self.savepos = QCursor.pos()
         if globalconfig.get("is_search_word_auto_tts_2", False):
             gobject.base.read_text(word)
         if append:
             word = self.view.currWord + word
         unuse = globalconfig[("ignoredict_S_click", "ignoredict_S_hover")[fromhover]]
-        self.wordlabel.setText(word)
+        self._set_word_status(word)
         self.view.searchword(word, sentence, unuse=unuse)
 
     def showresult(self):
+        if self._lookup_key is None:
+            return
+        self._set_word_status(self.view.currWord, completed=True)
         size = globalconfig.get("WordViewTooltip2")
         if size:
             self.resize(size[0], size[1])
@@ -481,7 +623,7 @@ class WordViewTooltip(resizableframeless, DraggableQWidget):
         self.setFocus()
         from gui.rendertext.tooltipswidget import tooltipswidget
 
-        tooltipswidget.hidetooltipwindow()
+        tooltipswidget.hidetooltipwindow(source_left=False)
 
     def moveresult_1(self):
         if not self.isVisible():

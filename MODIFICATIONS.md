@@ -32,3 +32,9 @@ This file provides the prominent modification notice required for this unofficia
 - The fork launchers do not carry the upstream project's code-signing identity.
 
 For file-level history, review the Git commits following the upstream baseline. The complete modified source is released under GPLv3 together with every binary release.
+
+## v1.0.1 popup-only hotfix — 2026-10-04
+
+Based strictly on released v1.0.0 (87d125adc2cc528b5781d87d5610c2615f68efe2). The runtime changes are limited to the seven dictionary-popup/source-renderer files identified by `src/scripts/package_popup_hotfix.py`. Repeated left/right clicks close the current source-word lookup; the header reports the queried word; late results and canceled gestures cannot reopen stale lookups. Existing other dictionary actions and user settings are preserved.
+
+The two customized launchers have only their existing Python digest slots refreshed; they remain unsigned. Existing GiNZA, OCR and Python/Qt runtime files are retained byte-for-byte. No unfinished local-translation model work or new model weights are included. Headless regression and package-integrity checks passed; native Windows GUI acceptance for this hotfix remains unrun.

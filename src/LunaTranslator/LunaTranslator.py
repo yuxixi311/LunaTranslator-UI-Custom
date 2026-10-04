@@ -139,6 +139,9 @@ class BASEOBJECT(QObject):
     versiontextsignal = pyqtSignal(str)
     clipboardcallback = pyqtSignal(bool, str)
     hover_search_word = pyqtSignal(str, str, bool, bool, bool)
+    click_search_word = pyqtSignal(str, str, bool, str)
+    lookup_source_pressed = pyqtSignal(str)
+    lookup_source_released = pyqtSignal(str)
     settin_ui_showsignal = pyqtSignal()
     showandsolvesig = pyqtSignal(str, str)
     selecthookbuttonstatus = pyqtSignal(bool)
@@ -1374,7 +1377,7 @@ class BASEOBJECT(QObject):
         os.startfile(link)
 
     @threader
-    def clickwordcallback(self, wordd: dict, append=False):
+    def clickwordcallback(self, wordd: dict, append=False, click_token=""):
         if isinstance(wordd, WordSegResult):
             word = wordd
         elif isinstance(wordd, dict):
@@ -1401,8 +1404,8 @@ class BASEOBJECT(QObject):
                 word1, sentence, append
             ),
             "openlink": __openlink,
-            "searchword_S": lambda word1: threader(gobject.base.hover_search_word.emit)(
-                word1, sentence, append, False, False
+            "searchword_S": lambda word1: self.click_search_word.emit(
+                word1, sentence, append, click_token
             ),
         }
         noneedkeys = []

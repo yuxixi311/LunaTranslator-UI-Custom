@@ -1,0 +1,66 @@
+{
+  "release": "v1.0.1",
+  "source_tag": "v1.0.1",
+  "source_repository": "https://github.com/yuxixi311/LunaTranslator-UI-Custom",
+  "baseline_commit": "87d125adc2cc528b5781d87d5610c2615f68efe2",
+  "baseline_archive_sha256": "aafdbcadee8f75054ea3aa6783f6efb18b5cc0697690cdf9311a311f4115d19a",
+  "baseline_archive_bytes": 251214174,
+  "runtime_strategy": "Retain v1.0.0 runtime; replace only seven popup source files and refresh their existing launcher digests",
+  "native_windows_gui_test": "NOT RUN; headless method/bridge and package integrity checks only",
+  "unfinished_translation_model_work_included": false,
+  "base_entries": 4921,
+  "unchanged_base_entries": 4909,
+  "changed_entries": {
+    "LunaTranslator.exe": "15d02508b653c868b983a27f28a580ed34e1ba1b27fc91c3be67df434becbf6d",
+    "LunaTranslator/LunaTranslator.py": "29fc28868ca43e1d22d31b7049da81b65a40173912b3376f79ff5f388f73a404",
+    "LunaTranslator/gui/flowsearchword.py": "8b36b693a3a62f795a2782cc999eda2c808a91105874784fa2e935d649f756ef",
+    "LunaTranslator/gui/rendertext/textbrowser.py": "036e8495790a181b4cb72e288c0fa2b62253e04a19e9e7207ba70566a89e02d0",
+    "LunaTranslator/gui/rendertext/tooltipswidget.py": "3a6a1373301c5153387f59367d69a2aef829992235fc179f6733708f56a1f287",
+    "LunaTranslator/gui/rendertext/webview.py": "9bf3b6a95302348d49ac66003c29f7d41a9a72c676294c9f556fb0618e08b0a1",
+    "LunaTranslator/gui/showword.py": "f05846464e298093da3ba31456ac661807cca3ddabda14eee44958b25063f15b",
+    "LunaTranslator/htmlcode/uiwebview/mainui.html": "45958ddab820b86dac5f4da5eb0772707fd452e1fe76dbd346ca77aeabf9c848",
+    "LunaTranslator_admin.exe": "122b43da89ad4e4825db64e7cdb9f2e11285482cdb3e7e11dc92896b7b75ad4f",
+    "MODIFICATIONS.md": "381aad53ad814661e421d3a6bf118e5468f871c57312217ad01ca6e68e8bd495",
+    "README.txt": "8d80c91df6e2ba91dda4b93ef19b912a834becc6009b60a4ce01d858bdb339e3",
+    "THIRD_PARTY_SOURCE.md": "648c1a2c9301dc037cf3b23b9562ac96e69154583a3735b2ead61ead0b63decb"
+  },
+  "added_entries": {
+    "RELEASE_NOTES.md": "900d176b115c0a739ee937aa425c1739ccb3b2883907876bc23b67e0a5767c2c"
+  },
+  "launcher_checks": {
+    "LunaTranslator.exe": {
+      "sha256": "15d02508b653c868b983a27f28a580ed34e1ba1b27fc91c3be67df434becbf6d",
+      "updated_python_digests": [
+        "LunaTranslator/LunaTranslator.py",
+        "LunaTranslator/gui/flowsearchword.py",
+        "LunaTranslator/gui/rendertext/textbrowser.py",
+        "LunaTranslator/gui/rendertext/tooltipswidget.py",
+        "LunaTranslator/gui/rendertext/webview.py",
+        "LunaTranslator/gui/showword.py"
+      ],
+      "stale_digests_after_refresh": 0,
+      "unsigned_custom_launcher": true,
+      "unchanged_nonembedded_file_count": 6
+    },
+    "LunaTranslator_admin.exe": {
+      "sha256": "122b43da89ad4e4825db64e7cdb9f2e11285482cdb3e7e11dc92896b7b75ad4f",
+      "updated_python_digests": [
+        "LunaTranslator/LunaTranslator.py",
+        "LunaTranslator/gui/flowsearchword.py",
+        "LunaTranslator/gui/rendertext/textbrowser.py",
+        "LunaTranslator/gui/rendertext/tooltipswidget.py",
+        "LunaTranslator/gui/rendertext/webview.py",
+        "LunaTranslator/gui/showword.py"
+      ],
+      "stale_digests_after_refresh": 0,
+      "unsigned_custom_launcher": true,
+      "unchanged_nonembedded_file_count": 6
+    }
+  },
+  "artifact": {
+    "filename": "LunaTranslator-UI-Custom-v1.0.1-x64.zip",
+    "bytes": 243563643,
+    "sha256": "68ac9892c7776482288c6c1ec01ec315aa70bbfdb202edecbf7980a09e20400b",
+    "entries": 4923
+  }
+}

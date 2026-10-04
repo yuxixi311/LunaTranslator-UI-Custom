@@ -71,6 +71,11 @@ class QLabel_w(QLabel):
 
 class Qlabel_c(QLabel_w):
     def mousePressEvent(self, ev):
+        self.lookup_click_token = "qt:{}:{}".format(
+            ev.timestamp(), ev.button() == Qt.MouseButton.RightButton
+        )
+        if ev.button() in (Qt.MouseButton.LeftButton, Qt.MouseButton.RightButton):
+            gobject.base.lookup_source_pressed.emit(self.lookup_click_token)
         self.pr = True
         return super().mousePressEvent(ev)
 
@@ -84,14 +89,19 @@ class Qlabel_c(QLabel_w):
                 try:
                     if self.pr:
                         if event.button() == Qt.MouseButton.LeftButton:
-                            gobject.base.clickwordcallback(self.word, False)
+                            gobject.base.clickwordcallback(
+                                self.word, False, self.lookup_click_token
+                            )
                         elif event.button() == Qt.MouseButton.RightButton:
-                            gobject.base.clickwordcallback(self.word, True)
+                            gobject.base.clickwordcallback(
+                                self.word, True, self.lookup_click_token
+                            )
                 except:
                     print_exc()
             self.pr = False
         except:
             print_exc()
+        gobject.base.lookup_source_released.emit(getattr(self, "lookup_click_token", ""))
         return super().mouseReleaseEvent(event)
 
     def enterEvent(self, a0) -> None:
@@ -188,6 +198,11 @@ class QTextBrowser_1(QTextEdit):
             return label
 
     def mousePressEvent(self, ev: QMouseEvent):
+        self.lookup_click_token = "qt:{}:{}".format(
+            ev.timestamp(), ev.button() == Qt.MouseButton.RightButton
+        )
+        if ev.button() in (Qt.MouseButton.LeftButton, Qt.MouseButton.RightButton):
+            gobject.base.lookup_source_pressed.emit(self.lookup_click_token)
         if ev.button() == Qt.MouseButton.LeftButton:
             c = self.textCursor()
             c.clearSelection()
@@ -199,19 +214,34 @@ class QTextBrowser_1(QTextEdit):
             self.ignorecount += 1
             ev.ignore()
 
+    def mouseDoubleClickEvent(self, ev: QMouseEvent):
+        self.lookup_click_token = "qt:{}:{}".format(
+            ev.timestamp(), ev.button() == Qt.MouseButton.RightButton
+        )
+        if ev.button() in (Qt.MouseButton.LeftButton, Qt.MouseButton.RightButton):
+            gobject.base.lookup_source_pressed.emit(self.lookup_click_token)
+        self.prpos = ev.pos()
+        return super().mouseDoubleClickEvent(ev)
+
     def mouseReleaseEvent(self, event: QMouseEvent) -> None:
         try:
             label = self.getcurrlabel(event.pos())
             if label and label.refmask.word:
                 if event.button() == Qt.MouseButton.LeftButton:
                     if self.prpos == event.pos() or not self.pr:
-                        gobject.base.clickwordcallback(label.refmask.word, False)
+                        gobject.base.clickwordcallback(
+                            label.refmask.word, False, self.lookup_click_token
+                        )
                 elif event.button() == Qt.MouseButton.RightButton:
                     if not self.pr:
-                        gobject.base.clickwordcallback(label.refmask.word, True)
+                        gobject.base.clickwordcallback(
+                            label.refmask.word, True, self.lookup_click_token
+                        )
                         return event.ignore()
         except:
             pass
+        finally:
+            gobject.base.lookup_source_released.emit(getattr(self, "lookup_click_token", ""))
         if self.ignorecount:
             self.ignorecount -= 1
             event.ignore()
@@ -233,7 +263,8 @@ class QTextBrowser_1(QTextEdit):
         return rect1.contains(ev.pos())
 
     def focusOutEvent(self, e):
-        tooltipswidget.hidetooltipwindow()
+        # Losing keyboard focus to the lookup popup is not a pointer leave.
+        tooltipswidget.hidetooltipwindow(source_left=False)
         return super().focusOutEvent(e)
 
     def mouseMoveEvent(self, ev: QMouseEvent):

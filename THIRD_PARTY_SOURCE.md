@@ -1,6 +1,6 @@
 # Third-Party Source Reference
 
-This document identifies the principal third-party source packages bundled in the `v1.0.0` Windows release. It supplements, and does not replace, the license texts and package metadata included in the archive.
+This document identifies the principal third-party source packages bundled in the `v1.0.0` and popup-only `v1.0.1` Windows releases. It supplements, and does not replace, the license texts and package metadata included in the archive.
 
 | Component | Version | Source / project page | License |
 |---|---:|---|---|
@@ -14,3 +14,5 @@ This document identifies the principal third-party source packages bundled in th
 The exact direct Python requirements are in [`src/scripts/ginza-requirements.txt`](src/scripts/ginza-requirements.txt). Transitive packages retain their package metadata and license files inside the release's `files/plugins/ginza` directory. The upstream application runtime's own license collection is preserved under `LICENSES/` in the release archive.
 
 The preferred form for modifying LunaTranslator UI Optimized Custom Edition is this Git repository. Release tags, packaging scripts, dependency locks, and launcher-refresh tooling are included so a recipient can inspect and rebuild the modified portions.
+
+The v1.0.1 hotfix preserves all v1.0.0 third-party payloads byte-for-byte. Its reproducible overlay/repack procedure is in `src/scripts/package_popup_hotfix.py`; there are no new dependencies.

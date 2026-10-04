@@ -194,13 +194,19 @@ class tooltipswidget(QMainWindow, dataget):
         self.show()
 
     @staticmethod
-    def hidetooltipwindow():
+    def hidetooltipwindow(source_left=True):
         if tooltipswidget.tooltipwindow:
             tooltipswidget.tooltipwindow.hide()
-        gobject.base.WordViewTooltip.Leave()
+        gobject.base.WordViewTooltip.Leave(source_left=source_left)
 
     @staticmethod
     def tracetooltipwindow(word: WordSegResult, pos):
+        clickword = (word.word, word.prototype)[
+            globalconfig["usewordoriginfor"].get("searchword_S", False)
+        ]
+        gobject.base.WordViewTooltip.observe_source_word(
+            clickword, gobject.base.currenttext
+        )
         skip = False
         if globalconfig.get("usesearchword_S_hover", False):
             result = gobject.base.checkkeypresssatisfy("searchword_S_hover", False)

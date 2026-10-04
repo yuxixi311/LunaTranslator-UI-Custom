@@ -63,7 +63,7 @@
 
 ### 下载与使用
 
-1. 从[本改版 Releases](../../releases)下载 `Luna-Translate-UI-x64.zip`。首个发布包暂时保留了项目改名前的文件名。
+1. 从[本改版 Releases](../../releases)下载 `LunaTranslator-UI-Custom-v1.0.1-x64.zip`。v1.0.1 是仅含小窗口查词体验优化的完整便携热修复包；不包含开发中的本地翻译模型。
 2. 使用 Release 提供的 `SHA256SUMS.txt` 校验文件。
 3. 解压到普通可写目录，不要覆盖 LunaTranslator 原版，也不要放入 `C:\Program Files`。
 4. 双击 `LunaTranslator.exe`；只有目标游戏确实需要管理员权限时才使用 `LunaTranslator_admin.exe`。
@@ -71,6 +71,8 @@
 发布包为便携版，不包含个人配置、翻译记录或缓存。建议将原版和本改版放在不同目录，并在测试前备份现有 `userconfig`。
 
 ### 已知限制
+
+- v1.0.1 的无界面测试及包完整性检查已通过，本次 Windows 原生界面/焦点回归尚未运行；详见 [验证说明](docs/LOOKUP_POPUP_TOGGLE.md)。
 
 - 客制启动器没有上游项目的私有代码签名证书，因此 Windows 可能在首次运行下载文件时显示 SmartScreen。
 - Nanami、Keita 等 edgeTTS 自然音色需要网络；内置 GiNZA 句法分析可离线运行。
@@ -135,7 +137,7 @@ Fork-specific behavior is documented in this README, the [Release Notes](../../r
 
 ### Download and run
 
-1. Download `Luna-Translate-UI-x64.zip` from the [fork releases](../../releases). The first archive retains its pre-rename filename.
+1. Download `LunaTranslator-UI-Custom-v1.0.1-x64.zip` from the [fork releases](../../releases). v1.0.1 is a complete portable popup-only hotfix; unfinished local-translation model work is excluded.
 2. Verify it against `SHA256SUMS.txt`.
 3. Extract it to a normal writable directory. Do not overwrite an upstream installation or place it under `C:\Program Files`.
 4. Run `LunaTranslator.exe`; use `LunaTranslator_admin.exe` only when the target game requires elevation.
@@ -143,6 +145,8 @@ Fork-specific behavior is documented in this README, the [Release Notes](../../r
 The portable archive excludes personal configuration, translation records, and caches. Keep upstream and customized installations in separate directories and back up any existing `userconfig` before testing.
 
 ### Known limitations
+
+- v1.0.1 passed headless regressions and package-integrity checks; native Windows GUI/focus regression has not been run for this hotfix.
 
 - The customized launchers cannot use the upstream project's private signing certificate, so Windows SmartScreen may appear on first run.
 - Nanami, Keita, and other edgeTTS natural voices require network access; bundled GiNZA syntax analysis runs offline.
