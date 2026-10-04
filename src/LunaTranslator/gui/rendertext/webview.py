@@ -6,7 +6,7 @@ from gui.rendertext.texttype import (
     SpecialColor,
     FenciColor,
 )
-import gobject, windows, json, os, functools, time
+import gobject, windows, json, os, functools
 import hashlib, NativeUtils
 from urllib.parse import quote
 from myutils.config import globalconfig, static_data, _TR
@@ -438,16 +438,33 @@ class TextBrowser(WebviewWidget, somecommon):
             self.__starttrans0checker(a0.transparent_value())
         return super().event(a0)
 
+    def _cancel_lookup_mouse(self):
+        self._lookup_poll_generation += 1
+        pending = self._lookup_mouse_pending
+        self._lookup_mouse_pending = None
+        if pending:
+            gobject.base.lookup_source_released.emit(pending[0])
+        tooltipswidget.hidetooltipwindow()
+
     def __starttrans0checker(self, transparent_value):
-        if transparent_value == 0:
+        self._cancel_lookup_mouse()
+        self._lookup_poll_enabled = transparent_value == 0
+        if self._lookup_poll_enabled:
             self.trans0checker.start(50)
         else:
             self.trans0checker.stop()
 
     def __checkmousestate(self):
-        if not self.geometry().contains(self.mapFromGlobal(QCursor.pos())):
+        if not self.rect().contains(self.mapFromGlobal(QCursor.pos())):
+            self._cancel_lookup_mouse()
             return
-        self.eval("report_clickword_positions()", self.__callback)
+        self._lookup_poll_serial += 1
+        self.eval(
+            "report_clickword_positions()",
+            functools.partial(
+                self.__callback, self._lookup_poll_generation, self._lookup_poll_serial
+            ),
+        )
 
     def getundermouseword(self, result):
 
@@ -464,33 +481,49 @@ class TextBrowser(WebviewWidget, somecommon):
                 continue
             return ww["word"]
 
-    @threader
-    def __callback(self, result):
-        word = self.getundermouseword(result)
-        if not word:
-            self.__tooltipshelper.emit(tooltipswidget.hidetooltipwindow)
-            return
+    def __callback(self, generation, serial, result):
+        # WebView completions may arrive off-thread or out of order. All input
+        # state and Qt operations are serialized on the renderer's UI thread.
         self.__tooltipshelper.emit(
-            functools.partial(
-                tooltipswidget.tracetooltipwindow,
-                WordSegResult.from_dict(word),
-                QCursor.pos(),
-            )
+            functools.partial(self._handle_lookup_mouse, generation, serial, result)
         )
-        lb = windows.GetKeyState(windows.VK_LBUTTON) < 0
-        rb1 = windows.GetKeyState(windows.VK_RBUTTON) < 0
-        if not lb and not rb1:
+
+    def _handle_lookup_mouse(self, generation, serial, result):
+        if (
+            not self._lookup_poll_enabled
+            or generation != self._lookup_poll_generation
+            or serial <= self._lookup_poll_handled
+        ):
             return
-        uid = uuid.uuid4()
-        self.trans0checkercheck = uid
-        time.sleep(0.05)
-        if uid != self.trans0checkercheck:
+        self._lookup_poll_handled = serial
+        try:
+            word = self.getundermouseword(result)
+        except (TypeError, ValueError, KeyError):
+            # A WebView that is loading/replacing its document can return an
+            # empty or incomplete eval payload. Do not fail its Qt signal slot.
+            self._cancel_lookup_mouse()
             return
-        lb = windows.GetKeyState(windows.VK_LBUTTON) < 0
-        rb = windows.GetKeyState(windows.VK_RBUTTON) < 0
+        if not word:
+            self._cancel_lookup_mouse()
+            return
+        tooltipswidget.tracetooltipwindow(
+            WordSegResult.from_dict(word), QCursor.pos()
+        )
+        lb = windows.GetAsyncKeyState(windows.VK_LBUTTON) < 0
+        rb = windows.GetAsyncKeyState(windows.VK_RBUTTON) < 0
+        # One token spans the entire press, however many polls a long hold takes.
         if lb or rb:
+            if self._lookup_mouse_pending is None:
+                token = "transparent:" + uuid.uuid4().hex
+                self._lookup_mouse_pending = (token, rb)
+                gobject.base.lookup_source_pressed.emit(token)
             return
-        gobject.base.clickwordcallback(word, rb1)
+        pending = self._lookup_mouse_pending
+        self._lookup_mouse_pending = None
+        if pending:
+            token, append = pending
+            gobject.base.lookup_source_released.emit(token)
+            gobject.base.clickwordcallback(word, append, token)
 
     @threader
     def menusearchword(self, w: str):
@@ -509,6 +542,8 @@ class TextBrowser(WebviewWidget, somecommon):
         self.setMouseTracking(globalconfig.get("dragable", True))
         self.bind("callwheelEvent", gobject.base.wheelhistory.emit)
         self.bind("calllunaclickedword", gobject.base.clickwordcallback)
+        self.bind("calllunaSourcePressed", gobject.base.lookup_source_pressed.emit)
+        self.bind("calllunaSourceReleased", gobject.base.lookup_source_released.emit)
         self.bind("calllunaMouseMove", self.calllunaMouseMove)
         self.bind("calllunaMousePress", self.calllunaMousePress)
         self.bind("calllunaMouseRelease", self.calllunaMouseRelease)
@@ -533,7 +568,11 @@ class TextBrowser(WebviewWidget, somecommon):
         )
         self.loadex()
         self.__tooltipshelper.connect(lambda f: f())
-        self.trans0checkercheck = None
+        self._lookup_mouse_pending = None
+        self._lookup_poll_enabled = False
+        self._lookup_poll_generation = 0
+        self._lookup_poll_serial = 0
+        self._lookup_poll_handled = 0
         self.trans0checker = QTimer(self)
         self.trans0checker.timeout.connect(self.__checkmousestate)
         # Learning UI: recognition-status push (1 Hz, push only on change)

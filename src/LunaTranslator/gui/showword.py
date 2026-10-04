@@ -1431,6 +1431,11 @@ class WordViewer(QWidget):
     def currWord(self):
         return self.__curr_word
 
+    def cancel_search(self):
+        # Invalidate only this viewer's callbacks, without mutating shared
+        # dictionary engines or clearing results used when opening a full view.
+        self.current = None
+
     def searchword(
         self, word: str, sentence: str = None, readydata: dict = None, unuse=None
     ):

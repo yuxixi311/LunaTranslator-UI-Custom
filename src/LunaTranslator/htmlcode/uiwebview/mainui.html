@@ -459,9 +459,10 @@
     }
 
     const urlParams = new URLSearchParams(window.location.search);
+    var luna_source_click_token = '';
     function safe_calllunaclickedword(e, word, app) {
         if (window.LUNAJSObject)
-            LUNAJSObject.calllunaclickedword(word, app)
+            LUNAJSObject.calllunaclickedword(word, app, luna_source_click_token)
         else {
             const url = new URL('/page/dictionary', window.location.origin);
             url.searchParams.append('word', word['word'])
@@ -1143,6 +1144,11 @@
 
     });
     document.addEventListener('mousedown', function (e) {
+        if (e.button == 0 || e.button == 2) {
+            luna_source_click_token = _simpleuid();
+            if (window.LUNAJSObject)
+                LUNAJSObject.calllunaSourcePressed(luna_source_click_token)
+        }
         if (e.button == 0)
             window.getSelection().removeAllRanges()
         // 当 Qt 已接管光标（鼠标处于窗口边框 resize 区）时，按下必须交给
@@ -1160,11 +1166,14 @@
         }
     });
     document.addEventListener('mouseup', function (e) {
+        if (window.LUNAJSObject && (e.button == 0 || e.button == 2))
+            LUNAJSObject.calllunaSourceReleased(luna_source_click_token)
         if (window.LUNAJSObject)
             LUNAJSObject.calllunaMouseRelease(e.button, e.clientX, e.clientY)
     });
     document.addEventListener('mouseleave', function (e) {
         if (window.LUNAJSObject) {
+            LUNAJSObject.calllunaSourceReleased(luna_source_click_token)
             LUNAJSObject.calllunaMouseRelease(e.button, e.clientX, e.clientY)
             LUNAJSObject.calllunaLeave()
         }
