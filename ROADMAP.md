@@ -15,6 +15,13 @@ See [popup behavior, verification and remaining acceptance](docs/LOOKUP_POPUP_TO
 
 ## Local translation
 
-The popup work does not change translation providers, model settings, lexical experiments or quality conclusions. Hy1.8B remains experimental; the supplied-glossary round remains inconclusive. The separate cloud lexical feasibility probe is blocked before execution.
+Hy1.8B remains experimental; the supplied-glossary round remains **inconclusive**. The separate cloud lexical probe has now completed 48 CPU parsing calls, but its frozen lexical gate **failed at 14/16 (required 16/16)**. Workflow success records execution, not quality acceptance. No new translation or GPU comparison ran.
 
-Continue the existing [local-translation decision path](docs/LOCAL_TRANSLATION_CHECKPOINT_20261004.md#next-development-path) and [acceptance plan](docs/LOCAL_TRANSLATION_TEST_PLAN.md). Do not promote a model, run a new comparison, switch execution routes, or treat UI tests as translation-quality evidence.
+See the [2026-10-05 lexical result and decision](docs/LOCAL_TRANSLATION_LEXICAL_RESULT_20261005.md), including the three separate Actions attempts, measured costs and evidence limits. The [2026-10-04 checkpoint](docs/LOCAL_TRANSLATION_CHECKPOINT_20261004.md) remains the historical source/launch record; its blocked-execution status is superseded by the new result.
+
+- [x] Complete the fixed 16-diagnostic / 32-seen CPU lexical probe and record its failed gate
+- [ ] Analyze whether a materially different general mechanism is justified; no supported low-cost replacement is ready yet, and the frozen failures and seen regressions must be preserved
+- [ ] Only for a justified new candidate, preregister the rule, costs, unchanged 16/16 diagnostic gate and a new independently authored semantic holdout before considering a reviewed same-model GPU trial
+- [ ] Complete the remaining [translation acceptance plan](docs/LOCAL_TRANSLATION_TEST_PLAN.md) before any release-level claims
+
+Do not promote or schedule GPU evaluation of the unchanged failed lexical rule. The maximum of three Hy optimization rounds is a ceiling, not a quota; the three Actions setup/execution attempts are not three semantic optimization rounds. Keeping baseline is a valid decision. The popup's native Windows acceptance remains pending, and UI tests provide no translation-quality evidence.
