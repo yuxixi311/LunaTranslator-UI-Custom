@@ -1,0 +1,82 @@
+name: Luna Fixed49 Archive Audit v1 20261005
+run-name: Luna Fixed49 Archive Audit at ${{ github.sha }}
+
+on:
+  push:
+    branches: ['experiment/luna-actions-lexical-20261005']
+    paths: ['.github/workflows/luna-wheel-structure-audit-v1.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: luna-actions-wheel-structure-20261005-v1
+  cancel-in-progress: false
+
+jobs:
+  archive-audit:
+    if: >-
+      github.repository == 'yuxixi311/LunaTranslator-UI-Custom' &&
+      github.event.repository.private == false &&
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/experiment/luna-actions-lexical-20261005' &&
+      github.event.before == '6a8da3a9a00ec942c0e87376338b04a0d71ec416' &&
+      github.event.created == false && github.event.deleted == false &&
+      github.event.forced == false && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      LUNA_SOURCE_COMMIT: '6a8da3a9a00ec942c0e87376338b04a0d71ec416'
+      LUNA_INVENTORY_SHA: 'ebb3b55ea8402d45bac598bffacd7f568a76a9abf2d953bcc5fa3be25d56dd39'
+      LUNA_GUARD_SHA: 'c6820e431fe3043427a455ab9d90ce62cb7fc26747c0ea81c4afb7a56391eb72'
+      LUNA_BOOTSTRAP_SHA: '9b8005bc2cbfd127e550e59b82b60160b59e53b61d345d28d99ec69700c4894c'
+      LUNA_PROJECT: tools/local_eval/actions-wheel-structure-v1
+      PYTHONDONTWRITEBYTECODE: '1'
+      CUDA_VISIBLE_DEVICES: ''
+      NVIDIA_VISIBLE_DEVICES: 'none'
+    steps:
+      - name: Checkout exact triggering commit
+        timeout-minutes: 2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 3
+          fetch-tags: false
+          persist-credentials: false
+          submodules: false
+          lfs: false
+          show-progress: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/local_eval/actions-wheel-structure-v1/
+            /.github/workflows/luna-wheel-structure-audit-v1.yml
+      - name: Verify cached interpreter, reviewed source and one-shot event
+        timeout-minutes: 1
+        shell: bash
+        run: |
+          set -euo pipefail
+          runtime_root="$RUNNER_TOOL_CACHE/Python/3.12.14/x64"
+          if [[ ! -x "$runtime_root/bin/python" || ! -f "$runtime_root/../x64.complete" ]]; then
+            printf '%s\n' 'Required pinned cached interpreter unavailable; no audit attempt released'
+            exit 1
+          fi
+          runtime_executable="$(readlink -f -- "$runtime_root/bin/python" 2>/dev/null)"
+          [[ "${runtime_executable%/*}" == "$runtime_root/bin" && -f "$runtime_executable" && -x "$runtime_executable" ]]
+          [[ "$(stat -c %s "$runtime_executable" 2>/dev/null)" == 17752 ]]
+          printf '%s  %s\n' 'bef88f140b625959f8af25c7b75cce2cd5d4b29cc2f2b079befd7f68eda4dba0' "$runtime_executable" | sha256sum --check --status 2>/dev/null
+          printf '%s  %s\n' "$LUNA_GUARD_SHA" "$LUNA_PROJECT/event_guard.py" | sha256sum --check --status 2>/dev/null
+          printf '%s  %s\n' "$LUNA_INVENTORY_SHA" "$LUNA_PROJECT/PREPARATION_INVENTORY.json" | sha256sum --check --status 2>/dev/null
+          printf '%s  %s\n' "$LUNA_BOOTSTRAP_SHA" "$LUNA_PROJECT/source_bootstrap.py" | sha256sum --check --status 2>/dev/null
+          /usr/bin/python3 -I -S -B "$LUNA_PROJECT/event_guard.py"
+      - name: Run one fixed49 acquisition and nonexecuting archive audit
+        timeout-minutes: 16
+        shell: bash
+        run: |
+          set -euo pipefail
+          runtime_root="$RUNNER_TOOL_CACHE/Python/3.12.14/x64"
+          runtime_executable="$(readlink -f -- "$runtime_root/bin/python" 2>/dev/null)"
+          [[ "${runtime_executable%/*}" == "$runtime_root/bin" && -f "$runtime_executable" && -x "$runtime_executable" ]]
+          [[ "$(stat -c %s "$runtime_executable" 2>/dev/null)" == 17752 ]]
+          printf '%s  %s\n' 'bef88f140b625959f8af25c7b75cce2cd5d4b29cc2f2b079befd7f68eda4dba0' "$runtime_executable" | sha256sum --check --status 2>/dev/null
+          export LD_LIBRARY_PATH="$runtime_root/lib"
+          timeout --signal=TERM --kill-after=5s 930s "$runtime_root/bin/python" -I -S -B "$LUNA_PROJECT/source_bootstrap.py" --inventory-sha256 "$LUNA_INVENTORY_SHA" --entrypoint actions_audit.py -- --inventory-sha256 "$LUNA_INVENTORY_SHA"
