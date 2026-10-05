@@ -1,0 +1,6 @@
+{
+  "protocol_sha256": "75bf059dc779868d8b2ee41084cd765534688d270ff3bd7e834c3c163fcd9bf1",
+  "status": "frozen_before_fake_tests",
+  "approved_scope": "source_and_synthetic_tests_only",
+  "real_acquisition": "not_authorized"
+}

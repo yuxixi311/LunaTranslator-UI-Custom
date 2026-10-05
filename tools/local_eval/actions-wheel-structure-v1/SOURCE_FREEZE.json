@@ -1,0 +1,9 @@
+{
+  "helper_sha256": "a697eea878fa369863a38bfd3bd53821a48849a6de68df1b1e386c460ee06aed",
+  "live_acquisition_authorized": false,
+  "manifest_sha256": "c04f4e31641594e90b9a6436625ad20d0de550b5f8543d70d5d70f46458d3401",
+  "protocol_sha256": "75bf059dc779868d8b2ee41084cd765534688d270ff3bd7e834c3c163fcd9bf1",
+  "schema": "exact49-source-freeze-v1",
+  "scope": "source_and_synthetic_tests_only",
+  "tests_sha256": "791080a7e0e3647d981c68071411c49df71e845297cfca81a4828fdee85d5343"
+}
