@@ -1,0 +1,13 @@
+{
+  "source_parent": "08cc4d1183cbd5e57b00a826e85a3eac065f468b",
+  "attempt_id": "9264730f60b74230bcffe12a1ac74788",
+  "commitments": {
+    "source_plan": "070873265484084f456509906e40c2e6fd7bc4fcd7558cd2588f2ab4cb5e0c26",
+    "source_author_receipt": "53e24685ed0a29057042ed2e11f8774b778d9ed81759408661e854cc436d57d9",
+    "literal_audit_receipt": "84e9fe20834635a9f524460ac7d1d1cae67558973c9b7c0806656c051301f9b0",
+    "parent_preregistration": "c2b26faab257087ca5c8a1c629b60174f66dd6db32e20434a4470aef295648e3",
+    "redirect_policy": "e25f05b118991409636e9a7f769abbded2a4546224b713e1dc3c99a311c31ed2",
+    "license_notice_evidence": "7d58466fea3fd99523e7310b56fea8e489df60595b75dff08d280b68f0c55cb4",
+    "criteria_commitment": "9601ffd2fed2ffb85223ef49c03366a82e6cc02e749128a66115cc3203b545f7"
+  }
+}

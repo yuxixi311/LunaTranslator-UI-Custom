@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "tests": 204,
+  "guarded_native_starts": 0,
+  "network_calls": 0,
+  "live_host_probes": 0,
+  "model_calls": 0,
+  "real_claims": 0,
+  "private_criteria_read": false,
+  "fresh_source_semantics_displayed": false,
+  "external_activation_performed": false,
+  "accepted_actions_source_sha256": "b28f49faa2d33255c1486c407aadbf88d4a4f752a82e469d929f3fb42fb12c2b",
+  "accepted_dot_snapshot_sha256": "316f679cd8dd1cedcea57652401db0220c64db1560ed1b057c187d59103be1a6",
+  "byte_identical_modules_and_data": [
+    "frozen_renderer.py",
+    "evidence_validation.py",
+    "attempt_control.py",
+    "audited/resources.py",
+    "audited/myutils/__init__.py",
+    "audited/myutils/local_translation.py",
+    "audited/myutils/local_translation_integrity.py",
+    "audited/hymt_chat_template.jinja",
+    "inputs/SOURCES48.json",
+    "inputs/PUBLIC_REGRESSION40_REFERENCE.json",
+    "inputs/runtimelexicon.json",
+    "SCIENTIFIC_PROTOCOL.md"
+  ],
+  "scientific_core_comparison": "all functions/classes identical except the declared claim-plan validator",
+  "acquisition_comparison": "all functions/classes identical; module description updated",
+  "helper_comparison": "benchmark and result validation identical; owned-worker gate added",
+  "publication_path_scan": "no private absolute workspace, home or root path markers in listed payloads",
+  "conditional_admission": "prepared in source; no real context/claim/worker admitted"
+}
