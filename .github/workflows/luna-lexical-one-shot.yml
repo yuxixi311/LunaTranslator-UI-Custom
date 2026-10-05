@@ -1,0 +1,68 @@
+name: Luna lexical experiment 20261005
+run-name: Luna lexical experiment at ${{ github.sha }}
+
+on:
+  push:
+    branches: ['experiment/luna-actions-lexical-20261005']
+    paths: ['.github/workflows/luna-lexical-one-shot.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: luna-actions-lexical-20261005-v1
+  cancel-in-progress: false
+
+jobs:
+  lexical:
+    if: >-
+      github.repository == 'yuxixi311/LunaTranslator-UI-Custom' &&
+      github.event.repository.private == false &&
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/experiment/luna-actions-lexical-20261005' &&
+      github.event.before == 'b9ec9e9cdac848f180cef6fa10aed219a09b4bb0' &&
+      github.event.created == false && github.event.deleted == false &&
+      github.event.forced == false && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      LUNA_SOURCE_COMMIT: 'b9ec9e9cdac848f180cef6fa10aed219a09b4bb0'
+      LUNA_MANIFEST_SHA: '95337ab40fe29c86ce04edd8c6612c5c768454d548b72c976fcafdedfd87c591'
+      LUNA_GUARD_SHA: 'b4ebd86870affe36d98e539d0b1d26a29c87c6f8166af19b4dd14dcdd6055687'
+      LUNA_PROJECT: tools/local_eval/actions-lexical-v1
+      PYTHONDONTWRITEBYTECODE: '1'
+      CUDA_VISIBLE_DEVICES: ''
+    steps:
+      - name: Checkout exact triggering commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+          fetch-tags: false
+          persist-credentials: false
+          submodules: false
+          lfs: false
+          show-progress: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/local_eval/actions-lexical-v1/
+            /tools/local_eval/cloud-lexical-v1/
+            /.github/workflows/luna-lexical-one-shot.yml
+      - name: Verify reviewed source and event
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$LUNA_GUARD_SHA" "$LUNA_PROJECT/event_guard.py" | sha256sum --check --status
+          printf '%s  %s\n' "$LUNA_MANIFEST_SHA" "$LUNA_PROJECT/SOURCE_MANIFEST.json" | sha256sum --check --status
+          /usr/bin/python3 -I -B "$LUNA_PROJECT/event_guard.py"
+      - name: Run fixed lexical experiment with existing official CPython
+        shell: bash
+        run: |
+          set -euo pipefail
+          runtime_root="$RUNNER_TOOL_CACHE/Python/3.12.14/x64"
+          if [[ ! -x "$runtime_root/bin/python" || ! -f "$runtime_root/../x64.complete" ]]; then
+            printf '%s\n' 'Required official CPython 3.12.14 cache entry unavailable; stopped before wheel acquisition'
+            exit 1
+          fi
+          export LD_LIBRARY_PATH="$runtime_root/lib"
+          "$runtime_root/bin/python" -I -B "$LUNA_PROJECT/actions_runner.py" run --manifest-sha256 "$LUNA_MANIFEST_SHA"
