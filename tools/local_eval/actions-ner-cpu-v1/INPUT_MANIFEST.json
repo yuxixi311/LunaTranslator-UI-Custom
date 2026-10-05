@@ -1,0 +1,27 @@
+{
+  "diagnostic_sources": {
+    "bytes": 2474,
+    "path": "diagnostics.sources.json",
+    "sha256": "5a02d97443f724e974a12aa18a972138314440f36f358c488df151c4aebea9e9"
+  },
+  "fresh_canon": {
+    "bytes": 244,
+    "path": "fresh.canon.frozen.json",
+    "sha256": "12b81554051ff4c0456315a4de834224ca46708acf677eba90e32de7755d62b0"
+  },
+  "fresh_sources": {
+    "bytes": 3105,
+    "path": "fresh.sources.frozen.json",
+    "sha256": "2dfdd379e98bc210dfe04073081c4051809ce05216ee25c3baef74bac242662c"
+  },
+  "old_canon": {
+    "bytes": 432,
+    "path": "canon.json",
+    "sha256": "7cc5bdb3626dd4e781070dca708428c0ef81048d72b067a71f9e15c795814337"
+  },
+  "seen_sources": {
+    "bytes": 7290,
+    "path": "seen.sources.json",
+    "sha256": "51bdc8829a59b50e2ac3c82932b9421734dada333dcc6c6ef58fde78974ab72d"
+  }
+}
