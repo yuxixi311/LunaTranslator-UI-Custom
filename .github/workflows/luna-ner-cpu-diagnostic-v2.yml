@@ -1,0 +1,70 @@
+name: Luna CPU NER diagnostic v2 20261005
+run-name: Luna CPU NER diagnostic v2 at ${{ github.sha }}
+
+on:
+  push:
+    branches: ['experiment/luna-actions-lexical-20261005']
+    paths: ['.github/workflows/luna-ner-cpu-diagnostic-v2.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: luna-actions-ner-cpu-diagnostic-20261005-v2
+  cancel-in-progress: false
+
+jobs:
+  ner:
+    if: >-
+      github.repository == 'yuxixi311/LunaTranslator-UI-Custom' &&
+      github.event.repository.private == false &&
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/experiment/luna-actions-lexical-20261005' &&
+      github.event.before == 'b9bb623849882931b25987957643e4ab04d61227' &&
+      github.event.created == false && github.event.deleted == false &&
+      github.event.forced == false && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      LUNA_SOURCE_COMMIT: 'b9bb623849882931b25987957643e4ab04d61227'
+      LUNA_INVENTORY_SHA: 'a9cc410c5e19cedf8efdb0418ab7acf94a7be788146f02e407ba6f6ea4f8fb62'
+      LUNA_GUARD_SHA: '6f40f78f7ea3657627e7834cb5b135267d51309aee2e6c66e53b9b60524d9766'
+      LUNA_BOOTSTRAP_SHA: 'a71301ab7a635fcee0d138c6d21ddc13c70d8094e6d88aaa56ffa8da3858c5b0'
+      LUNA_PROJECT: tools/local_eval/actions-ner-cpu-diagnostic-v2
+      PYTHONDONTWRITEBYTECODE: '1'
+      CUDA_VISIBLE_DEVICES: ''
+    steps:
+      - name: Checkout exact triggering commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 3
+          fetch-tags: false
+          persist-credentials: false
+          submodules: false
+          lfs: false
+          show-progress: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/local_eval/actions-ner-cpu-diagnostic-v2/
+            /.github/workflows/luna-ner-cpu-diagnostic-v2.yml
+      - name: Verify reviewed source and event
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$LUNA_GUARD_SHA" "$LUNA_PROJECT/event_guard.py" | sha256sum --check --status
+          printf '%s  %s\n' "$LUNA_INVENTORY_SHA" "$LUNA_PROJECT/PREPARATION_INVENTORY.json" | sha256sum --check --status
+          printf '%s  %s\n' "$LUNA_BOOTSTRAP_SHA" "$LUNA_PROJECT/source_bootstrap.py" | sha256sum --check --status
+          /usr/bin/python3 -I -B "$LUNA_PROJECT/event_guard.py"
+      - name: Run fixed CPU NER attempt using existing official CPython
+        shell: bash
+        run: |
+          set -euo pipefail
+          runtime_root="$RUNNER_TOOL_CACHE/Python/3.12.14/x64"
+          if [[ ! -x "$runtime_root/bin/python" || ! -f "$runtime_root/../x64.complete" ]]; then
+            printf '%s\n' 'Required official CPython 3.12.14 cache entry unavailable; stopped before wheel acquisition'
+            exit 1
+          fi
+          printf '%s  %s\n' 'bef88f140b625959f8af25c7b75cce2cd5d4b29cc2f2b079befd7f68eda4dba0' "$runtime_root/bin/python" | sha256sum --check --status
+          export LD_LIBRARY_PATH="$runtime_root/lib"
+          "$runtime_root/bin/python" -I -B "$LUNA_PROJECT/source_bootstrap.py" --inventory-sha256 "$LUNA_INVENTORY_SHA" --entrypoint actions_runner.py -- run --inventory-sha256 "$LUNA_INVENTORY_SHA"
