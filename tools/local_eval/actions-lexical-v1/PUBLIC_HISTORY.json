@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "purpose": "Digest-only historical reference; no prior state is an execution input",
+  "old_attempts": [
+    {
+      "kind": "cloud_recovery",
+      "manifest_sha256": "cbfea01d1aa95f1ce9215a0237ed39b1a747c7317bc6100bff842029f9eb6b61",
+      "terminal_state": "terminal_failure",
+      "error_category": "dns_failure",
+      "phase": "download",
+      "parser_calls": 0,
+      "result_sha256": "15e630fd3a658e8f62312132a49629da6ecd6065e29f141045e1c079ee270829"
+    },
+    {
+      "kind": "cloud_staged_readiness",
+      "manifest_sha256": "9ebf404afafa4ded957f1469bdd54f34a3e6cb7193c19107085327c614fda2be",
+      "terminal_state": "terminal_failure",
+      "error_category": "dns_failure",
+      "phase": "readiness",
+      "acquisition_created": false,
+      "evaluation_claim_created": false,
+      "claim_sha256": "70d3c843cd521c4c6f426ffb019dcfc095eb2a19ab67fcc26e7225339a9c4fb1"
+    }
+  ],
+  "claims_reset_or_retried": false,
+  "private_archives_logs_and_host_paths_included": false,
+  "new_actions_execution_authorized_by_this_file": false
+}
