@@ -1,0 +1,61 @@
+# SOURCE-ONLY TEMPLATE. Root releases I first, then replaces placeholders and
+# removes the explicit false guard in J. Do not publish or trigger this file.
+name: Luna plac 1.4.7 metadata preflight v1 20261005
+run-name: Luna plac 1.4.7 preflight v1 at ${{ github.sha }}
+
+on:
+  push:
+    branches: ['experiment/luna-actions-lexical-20261005']
+    paths: ['.github/workflows/luna-plac147-preflight-v1.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: luna-actions-plac147-preflight-20261005-v1
+  cancel-in-progress: false
+
+jobs:
+  metadata:
+    if: >-
+      github.repository == 'yuxixi311/LunaTranslator-UI-Custom' &&
+      github.event.repository.private == false &&
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/experiment/luna-actions-lexical-20261005' &&
+      github.event.before == '52a9ae3dd30a790a847e08681c7eb4de37e8db8b' &&
+      github.event.created == false && github.event.deleted == false &&
+      github.event.forced == false && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      LUNA_SOURCE_COMMIT: '52a9ae3dd30a790a847e08681c7eb4de37e8db8b'
+      LUNA_MANIFEST_SHA: '02098adb874e1066dabdc3e41628f2e7c743d51bfba4c12db9d9e4ff5c43d790'
+      LUNA_GUARD_SHA: 'b9e3d1756b660cfb663a9a778620a624e3e1e8e261c7e742e5f4d4425df81144'
+      LUNA_PROJECT: tools/local_eval/actions-plac147-preflight-v1
+    steps:
+      - name: Checkout exact triggering commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # Existing reviewed pin
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+          fetch-tags: false
+          persist-credentials: false
+          submodules: false
+          lfs: false
+          show-progress: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/local_eval/actions-plac147-preflight-v1/
+            /.github/workflows/luna-plac147-preflight-v1.yml
+      - name: Verify reviewed metadata source and exact I to J event
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$LUNA_GUARD_SHA" "$LUNA_PROJECT/plac147_event_guard.py" | sha256sum --check --status
+          printf '%s  %s\n' "$LUNA_MANIFEST_SHA" "$LUNA_PROJECT/SOURCE_MANIFEST.json" | sha256sum --check --status
+          /usr/bin/python3 -I -B "$LUNA_PROJECT/plac147_event_guard.py"
+      - name: Read fixed plac 1.4.7 metadata once with existing system Python
+        shell: bash
+        run: |
+          set -euo pipefail
+          /bin/sh "$LUNA_PROJECT/run_preflight_review.sh"
