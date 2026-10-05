@@ -1,0 +1,101 @@
+{
+  "files": {
+    "ja_ginza/__init__.py": {
+      "bytes": 237,
+      "sha256": "c8eb57079c03fc4157c227f641781fbcb3e9d11439abe1bf0b72e4c0fa78a38d"
+    },
+    "ja_ginza/ja_ginza-5.2.0/README.md": {
+      "bytes": 5268,
+      "sha256": "4b5df85a916844a368889157abd3a931682417a58b1fd1435e90dd45a87650c0"
+    },
+    "ja_ginza/ja_ginza-5.2.0/attribute_ruler/patterns": {
+      "bytes": 1,
+      "sha256": "9e076ceaf246b6003d9c2680a2b4cf0bffd069805902b0b5edeebf49039fe4bd"
+    },
+    "ja_ginza/ja_ginza-5.2.0/compound_splitter/cfg": {
+      "bytes": 23,
+      "sha256": "27edcd2388bf8c1090f7fab30a3bb93e0d0a47593641c20224dd5420dcbdbfcf"
+    },
+    "ja_ginza/ja_ginza-5.2.0/config.cfg": {
+      "bytes": 3935,
+      "sha256": "8d2a3ad3a0be5664cf07a9270bcd0c262f3cff47519a5d58ad606325a8d82db9"
+    },
+    "ja_ginza/ja_ginza-5.2.0/meta.json": {
+      "bytes": 28675,
+      "sha256": "287371de6fd2209d930e9de0185941ac84ac35a7759637432e4c7eba17cc0b4c"
+    },
+    "ja_ginza/ja_ginza-5.2.0/morphologizer/cfg": {
+      "bytes": 719,
+      "sha256": "85c86ab1e296992e25aa53313f9bf1d04f31bae19ca2981963f81e93b6425933"
+    },
+    "ja_ginza/ja_ginza-5.2.0/morphologizer/model": {
+      "bytes": 17861,
+      "sha256": "beed40480a61c4e9dfe50cdc1694e44cdfdc3ce0f0eef224ac72fc7ccc99d27a"
+    },
+    "ja_ginza/ja_ginza-5.2.0/ner/cfg": {
+      "bytes": 221,
+      "sha256": "a7172edadafba9f472e9ac0f2660eec04b6405e471be9e20267b79c67288d22d"
+    },
+    "ja_ginza/ja_ginza-5.2.0/ner/model": {
+      "bytes": 364005,
+      "sha256": "71106b0c2fab24b338cf6ef3cfb2f4ca68e887b251a71ed8435094ce2d6664c0"
+    },
+    "ja_ginza/ja_ginza-5.2.0/ner/moves": {
+      "bytes": 12720,
+      "sha256": "b6bdbcdeed53a0141891901c61b0ddf79d1dbe6456030a0a42364398aed8ddd7"
+    },
+    "ja_ginza/ja_ginza-5.2.0/parser/cfg": {
+      "bytes": 222,
+      "sha256": "e2a240ef01f95e58f5dd4c9d6e90d61f597b8d998966570d3009dd81e8879780"
+    },
+    "ja_ginza/ja_ginza-5.2.0/parser/model": {
+      "bytes": 1742792,
+      "sha256": "539a1c8371f793036c17c29ec8a51334f246ed512e2a34c8df271ad202db0b9c"
+    },
+    "ja_ginza/ja_ginza-5.2.0/parser/moves": {
+      "bytes": 779,
+      "sha256": "2227c7b7b9cceb4a97f563375cf1fb45b54bc54ce4c5b99b8544516f85ae4716"
+    },
+    "ja_ginza/ja_ginza-5.2.0/tok2vec/cfg": {
+      "bytes": 4,
+      "sha256": "f8a5a26e3056eb6fb06deeb3dbccfd88ae74900200c98c70b5966bbb7ec9d4de"
+    },
+    "ja_ginza/ja_ginza-5.2.0/tok2vec/model": {
+      "bytes": 29276330,
+      "sha256": "0d2565e2b575f66c0a8cd1884640d89bc035def85ef71036c7addb632eda1185"
+    },
+    "ja_ginza/ja_ginza-5.2.0/tokenizer/cfg": {
+      "bytes": 22,
+      "sha256": "46d7a43c3a9b73ee357664eb46231728021dc7e2399cf5712b3d18163f92b2ac"
+    },
+    "ja_ginza/ja_ginza-5.2.0/vocab/key2row": {
+      "bytes": 5763073,
+      "sha256": "dee5b86de2f94dac1f48db1115ad21a94755e370debb78b5cc46dbcf3950cad0"
+    },
+    "ja_ginza/ja_ginza-5.2.0/vocab/lookups.bin": {
+      "bytes": 1,
+      "sha256": "76be8b528d0075f7aae98d6fa57a6d3c83ae480a8469e668d7b0af968995ac71"
+    },
+    "ja_ginza/ja_ginza-5.2.0/vocab/strings.json": {
+      "bytes": 17754472,
+      "sha256": "b3ed16035cd82356d54c68b5c933f30a3ec931d67abb853a2bf2c6433f6c7b80"
+    },
+    "ja_ginza/ja_ginza-5.2.0/vocab/vectors": {
+      "bytes": 24000128,
+      "sha256": "8c16f062e90069d86fc58df57af9c9c948aae9b0033684332c99538fbdcff4bf"
+    },
+    "ja_ginza/ja_ginza-5.2.0/vocab/vectors.cfg": {
+      "bytes": 22,
+      "sha256": "ff4359091952c8cd16f1f0482f5770fb82d1707368d5cca3c46aa501f552e3c5"
+    },
+    "ja_ginza/meta.json": {
+      "bytes": 28675,
+      "sha256": "287371de6fd2209d930e9de0185941ac84ac35a7759637432e4c7eba17cc0b4c"
+    }
+  },
+  "model": "ja_ginza",
+  "release_sha256": "68ac9892c7776482288c6c1ec01ec315aa70bbfdb202edecbf7980a09e20400b",
+  "scope": "Static existing release only; prospective official wheel and installed-byte comparison required",
+  "total_bytes": 79000185,
+  "version": "5.2.0"
+}
