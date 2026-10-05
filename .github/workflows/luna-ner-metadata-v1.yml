@@ -1,0 +1,61 @@
+# SOURCE-ONLY TEMPLATE. Root releases G first, then replaces placeholders and
+# removes the explicit false guard in H. Do not publish or trigger this file.
+name: Luna official metadata facts v1 20261005
+run-name: Luna metadata facts v1 at ${{ github.sha }}
+
+on:
+  push:
+    branches: ['experiment/luna-actions-lexical-20261005']
+    paths: ['.github/workflows/luna-ner-metadata-v1.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: luna-actions-ner-metadata-20261005-v1
+  cancel-in-progress: false
+
+jobs:
+  metadata:
+    if: >-
+      github.repository == 'yuxixi311/LunaTranslator-UI-Custom' &&
+      github.event.repository.private == false &&
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/experiment/luna-actions-lexical-20261005' &&
+      github.event.before == 'ce7e771202c64c3cbb1e5d32584917b485db8caf' &&
+      github.event.created == false && github.event.deleted == false &&
+      github.event.forced == false && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      LUNA_SOURCE_COMMIT: 'ce7e771202c64c3cbb1e5d32584917b485db8caf'
+      LUNA_MANIFEST_SHA: '73774ff4afc8f8d43e9a662228c0e00ca7cebdf01a1ffcd857f60318d65c05c9'
+      LUNA_GUARD_SHA: '5a797cce6614c6ad85747bfa0a2d42a548be6925b5467767c2fec2f9428ee8d0'
+      LUNA_PROJECT: tools/local_eval/actions-ner-metadata-v1
+    steps:
+      - name: Checkout exact triggering commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # Existing reviewed pin
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+          fetch-tags: false
+          persist-credentials: false
+          submodules: false
+          lfs: false
+          show-progress: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/local_eval/actions-ner-metadata-v1/
+            /.github/workflows/luna-ner-metadata-v1.yml
+      - name: Verify reviewed metadata source and exact G to H event
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$LUNA_GUARD_SHA" "$LUNA_PROJECT/ner_metadata_event_guard_review.py" | sha256sum --check --status
+          printf '%s  %s\n' "$LUNA_MANIFEST_SHA" "$LUNA_PROJECT/SOURCE_MANIFEST.json" | sha256sum --check --status
+          /usr/bin/python3 -I -B "$LUNA_PROJECT/ner_metadata_event_guard_review.py"
+      - name: Read fixed official metadata once with existing system Python
+        shell: bash
+        run: |
+          set -euo pipefail
+          /bin/sh "$LUNA_PROJECT/ner_metadata_job_wrapper_review.sh"
