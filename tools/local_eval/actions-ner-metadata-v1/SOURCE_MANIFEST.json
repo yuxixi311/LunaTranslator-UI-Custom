@@ -1,0 +1,30 @@
+{
+  "files": {
+    "tools/local_eval/actions-ner-metadata-v1/ner_metadata_event_guard_review.py": {
+      "bytes": 4830,
+      "sha256": "5a797cce6614c6ad85747bfa0a2d42a548be6925b5467767c2fec2f9428ee8d0"
+    },
+    "tools/local_eval/actions-ner-metadata-v1/ner_metadata_fetcher_review.py": {
+      "bytes": 18867,
+      "sha256": "5a1faf62d278276c0d2ca9045c6d59e673d3f81c84ba1eda304b785368a6c887"
+    },
+    "tools/local_eval/actions-ner-metadata-v1/ner_metadata_job_wrapper_review.sh": {
+      "bytes": 2407,
+      "sha256": "d4ae9fac3b560b773c5c371b7cf6ba89912f9ea5bccaeb00890997fd1cb576e8"
+    },
+    "tools/local_eval/actions-ner-metadata-v1/test_ner_metadata_event_guard_review.py": {
+      "bytes": 6480,
+      "sha256": "dd5beb711c6a10f740145365d132a1eea88e55507028b4c5b1dd1f429032e6f5"
+    },
+    "tools/local_eval/actions-ner-metadata-v1/test_ner_metadata_fetcher_review.py": {
+      "bytes": 17485,
+      "sha256": "e2ba1acc4c13d72d08a64b0021bc000f2bdf382121d6ba29a8fda3a2c7a6ca46"
+    },
+    "tools/local_eval/actions-ner-metadata-v1/test_ner_metadata_wrapper_review.py": {
+      "bytes": 4647,
+      "sha256": "33a2e154dd3c3043c0146cf98c0cab780651c7f6b20f7405820bb2bcbb5fb1fe"
+    }
+  },
+  "protocol": "luna-actions-ner-metadata-20261005-v1",
+  "public_base": "d2dd972c5242c1c81e3e04a1df2b22bffe6eac9f"
+}
