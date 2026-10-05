@@ -1,0 +1,42 @@
+{
+  "files": {
+    "tools/local_eval/actions-plac147-preflight-v1/BASE48.json": {
+      "bytes": 37139,
+      "sha256": "5ac01b1ebf8f4ead351cbca6d071627376a9863f5c1cff364e1ab2c6e18d7ac4"
+    },
+    "tools/local_eval/actions-plac147-preflight-v1/metadata-summary.json": {
+      "bytes": 74099,
+      "sha256": "f4c97284225254d04d82efd4d60daa609c26755e302d335dabcb5d7346f3537e"
+    },
+    "tools/local_eval/actions-plac147-preflight-v1/plac147_event_guard.py": {
+      "bytes": 4845,
+      "sha256": "b9e3d1756b660cfb663a9a778620a624e3e1e8e261c7e742e5f4d4425df81144"
+    },
+    "tools/local_eval/actions-plac147-preflight-v1/plac147_preflight.py": {
+      "bytes": 10366,
+      "sha256": "ae506abf73c11a817551f96eb461e85e154a0eef2dfa6b3ac1803cb69d6814e6"
+    },
+    "tools/local_eval/actions-plac147-preflight-v1/reviewed_metadata_framework.py": {
+      "bytes": 18866,
+      "sha256": "de59208f9428e5713bb6a878f11a780d04955d6be5082f69b7f9620c432de8a6"
+    },
+    "tools/local_eval/actions-plac147-preflight-v1/run_preflight_review.sh": {
+      "bytes": 2397,
+      "sha256": "61af378bcbc707293078d9299d6f31ed4903087697ef77f3e86536e034ed9c48"
+    },
+    "tools/local_eval/actions-plac147-preflight-v1/test_plac147_event_guard.py": {
+      "bytes": 6468,
+      "sha256": "799b3a72b9cf3b3267026ad9df5b6b9acb84fce2aa1ec3a18fd6e922e07caebd"
+    },
+    "tools/local_eval/actions-plac147-preflight-v1/test_plac147_preflight.py": {
+      "bytes": 9992,
+      "sha256": "de69b9d7ed6aa213f43eedc76214623780963980d84e56f18a52aafc66721320"
+    },
+    "tools/local_eval/actions-plac147-preflight-v1/test_plac147_wrapper.py": {
+      "bytes": 4626,
+      "sha256": "9977d90422e95df8fd22d8a660dcd751616d1116a4da312b70a62617ef05ae14"
+    }
+  },
+  "protocol": "luna-actions-plac147-preflight-20261005-v1",
+  "public_base": "86ac7e7494e7098c09fb0ba4c08dc90e747b6fbf"
+}

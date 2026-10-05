@@ -1,0 +1,1700 @@
+{
+  "aggregate_selected_wheel_bytes": null,
+  "allowlist_sha256": "f0b7257edda573cf15b4de193c571ca858444a0a9e8b7fda8b9ac9a05c151517",
+  "attempted_gets": 49,
+  "body_bytes_received": 1571108,
+  "code": null,
+  "dependency_closure": "unresolved_pending_source_review",
+  "elapsed_ms": 1164,
+  "licence_text_review": "pending_before_package_execution",
+  "metadata_bytes": 1571108,
+  "metadata_url_template": "https://pypi.org/pypi/{name}/{version}/json",
+  "per_wheel_metadata_consistency": "unverified_release_JSON_only",
+  "reader_implementation": "cpython",
+  "reader_python": "3.12.3",
+  "records": [
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "MIT",
+        "legacy": null
+      },
+      "name": "annotated-doc",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "1aab691a5f37dd292e6d93ab53f7da5d839f56ba605345f017022ec75eb643af",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": ">=3.9",
+      "selected": {
+        "bytes": 5302,
+        "core_metadata_sha256": "8c24d70c5d9153d22123353a906042fd7603df2d15c2196290b0f8a962558c46",
+        "filename": "annotated_doc-0.0.5-py3-none-any.whl",
+        "requires_python": ">=3.9",
+        "sha256": "117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101",
+        "url": "https://files.pythonhosted.org/packages/3e/30/e900b21425a860e195f32e37657aa1f7c7f2b1bfb26f03ca209b90933c06/annotated_doc-0.0.5-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "0.0.5"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": "MIT",
+        "legacy": null
+      },
+      "name": "annotated-types",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "a6e8e5b10c8fd2f596bba53e015cd37f6279fb5cec26ce0c5e9968625be4fefa",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": ">=3.10",
+      "selected": {
+        "bytes": 13427,
+        "core_metadata_sha256": "614985b278f601b8ef863f82783b991cc3ada4b89f592eb71c7c48c5f2ef2298",
+        "filename": "annotated_types-0.8.0-py3-none-any.whl",
+        "requires_python": ">=3.10",
+        "sha256": "f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0",
+        "url": "https://files.pythonhosted.org/packages/99/91/8acff4f5e50511b911bbccb72b8628a49c68ce14148cd9f6431094859a90/annotated_types-0.8.0-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "0.8.0"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "MIT",
+        "legacy": null
+      },
+      "name": "anyio",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "db8486b090bcf9977cd53888ffcd558fdf646d47887f656ab2eeeb0e9bb4cd06",
+      "requires_dist": [
+        "exceptiongroup>=1.0.2; python_version < \"3.11\"",
+        "idna>=2.8",
+        "typing_extensions>=4.5; python_version < \"3.13\"",
+        "trio>=0.32.0; extra == \"trio\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.10",
+      "selected": {
+        "bytes": 125813,
+        "core_metadata_sha256": "c5e6fc4dfd833319913b287be7a30d9935e9208c7ef917630621855aaac4d419",
+        "filename": "anyio-4.14.2-py3-none-any.whl",
+        "requires_python": ">=3.10",
+        "sha256": "9f505dda5ac9f0c8309b5e8bd445a8c2bf7246f3ce950121e45ea15bc41d1494",
+        "url": "https://files.pythonhosted.org/packages/da/35/f2287558c17e29fafc8ef3daf819bb9834061cfa43bff8014f7df7f63bdc/anyio-4.14.2-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "4.14.2"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: BSD License"
+        ],
+        "expression": null,
+        "legacy": "BSD"
+      },
+      "name": "blis",
+      "other_candidate_filenames": [
+        "blis-1.3.3-cp312-cp312-musllinux_1_2_x86_64.whl"
+      ],
+      "release_json_sha256": "d117b6b2ce1674ecde7c18184c2993bfd6a1f60d53e52fdb2043dfbd116f82f9",
+      "requires_dist": [
+        "numpy<3.0.0,>=1.15.0; python_version < \"3.9\"",
+        "numpy<3.0.0,>=1.19.0; python_version >= \"3.9\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": "<3.15,>=3.9",
+      "selected": {
+        "bytes": 11366550,
+        "core_metadata_sha256": "535aa94ba125115b4c5af94f067168f0bb38f227bfa7d1b5dccf56e66ff66cb4",
+        "filename": "blis-1.3.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "requires_python": "<3.15,>=3.9",
+        "sha256": "1ef6d6e2b599a3a2788eb6d9b443533961265aa4ec49d574ed4bb846e548dcdb",
+        "url": "https://files.pythonhosted.org/packages/d5/ad/58deaa3ad856dd3cc96493e40ffd2ed043d18d4d304f85a65cde1ccbf644/blis-1.3.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "1.3.3"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "catalogue",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "42a9192718849ef9b0ce47a9b40fd74350872ce7372d11d949ef5cbba2e219c6",
+      "requires_dist": [
+        "zipp >=0.5 ; python_version < \"3.8\"",
+        "typing-extensions >=3.6.4 ; python_version < \"3.8\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.6",
+      "selected": {
+        "bytes": 17325,
+        "core_metadata_sha256": "570324cbd96a88587fd07f0cc7c29e0bc3c92b6d097d32e09775f8fcdd6576d2",
+        "filename": "catalogue-2.0.10-py3-none-any.whl",
+        "requires_python": ">=3.6",
+        "sha256": "58c2de0020aa90f4a2da7dfad161bf7b3b054c86a5f09fcedc0b2b740c109a9f",
+        "url": "https://files.pythonhosted.org/packages/9e/96/d32b941a501ab566a16358d68b6eb4e4acc373fab3c3c4d7d9e649f7b4bb/catalogue-2.0.10-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "2.0.10"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+        ],
+        "expression": null,
+        "legacy": "MPL-2.0"
+      },
+      "name": "certifi",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "c6fe912677e373608eab51e324946005998faeb0fa999e6ddada24676e3556d3",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": ">=3.7",
+      "selected": {
+        "bytes": 136983,
+        "core_metadata_sha256": "ef5af1638fbb23676ac3c5777dfcfc2cd9c348fe4172ed5ba3d277655b248090",
+        "filename": "certifi-2026.7.22-py3-none-any.whl",
+        "requires_python": ">=3.7",
+        "sha256": "62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775",
+        "url": "https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "2026.7.22"
+    },
+    {
+      "candidate_files_for_review": [
+        {
+          "bytes": 248801,
+          "core_metadata_sha256": "955c93827d59f1280f6d6a76b1e11bfb999cc65a55df83a6f9b28b7bc0e467f6",
+          "filename": "charset_normalizer-3.5.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "requires_python": ">=3.7",
+          "sha256": "b9af956078716df40d985fb0dfeb2c2120c5ca92ba4ff4b388acfd01cdc14d08",
+          "url": "https://files.pythonhosted.org/packages/6f/89/bb5108dc6c3651dca963f2b0a3ba19bbcb370c94e1b6d3e0e844a58e6dca/charset_normalizer-3.5.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "yanked": false
+        },
+        {
+          "bytes": 68658,
+          "core_metadata_sha256": "955c93827d59f1280f6d6a76b1e11bfb999cc65a55df83a6f9b28b7bc0e467f6",
+          "filename": "charset_normalizer-3.5.1-py3-none-any.whl",
+          "requires_python": ">=3.7",
+          "sha256": "6df0ec430f9a831772c23ca5a224cba36517a58a84bb32c32bb59a9fa67c47f6",
+          "url": "https://files.pythonhosted.org/packages/cc/61/d01fc49b8dea277640b55a9e15960dbca9fdc8c9fde18e572d39c59f4019/charset_normalizer-3.5.1-py3-none-any.whl",
+          "yanked": false
+        },
+        {
+          "bytes": 250562,
+          "core_metadata_sha256": "955c93827d59f1280f6d6a76b1e11bfb999cc65a55df83a6f9b28b7bc0e467f6",
+          "filename": "charset_normalizer-3.5.1-cp312-cp312-musllinux_1_2_x86_64.whl",
+          "requires_python": ">=3.7",
+          "sha256": "ba501e667c17d8411f98e67a022d9604ef179aff0e459b7e292c796837c13573",
+          "url": "https://files.pythonhosted.org/packages/b7/52/643d11ffd60e9ac2fd1fb87e167a19285b9eefeff4a40e63c87cbfbeab36/charset_normalizer-3.5.1-cp312-cp312-musllinux_1_2_x86_64.whl",
+          "yanked": false
+        },
+        {
+          "bytes": 253057,
+          "core_metadata_sha256": "955c93827d59f1280f6d6a76b1e11bfb999cc65a55df83a6f9b28b7bc0e467f6",
+          "filename": "charset_normalizer-3.5.1-cp37-abi3-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+          "requires_python": ">=3.7",
+          "sha256": "a6dac12ff6b846103483683f60c5f8fee205121adc58ffd87e90a90a3af69e99",
+          "url": "https://files.pythonhosted.org/packages/9f/2f/fe3f187327aac18e2d54e9d2b08e15d27bf9b642d9e51c219f130fc34d1a/charset_normalizer-3.5.1-cp37-abi3-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+          "yanked": false
+        },
+        {
+          "bytes": 254846,
+          "core_metadata_sha256": "955c93827d59f1280f6d6a76b1e11bfb999cc65a55df83a6f9b28b7bc0e467f6",
+          "filename": "charset_normalizer-3.5.1-cp37-abi3-musllinux_1_2_x86_64.whl",
+          "requires_python": ">=3.7",
+          "sha256": "e199fb99720074809a7720f1c0b4d919eea8b87e88713e0f8f602f7bef543d9d",
+          "url": "https://files.pythonhosted.org/packages/80/c2/a7379b840292d0c1ab9fbd17d1f3967aa81794dc95bc74be8999d7fedcf7/charset_normalizer-3.5.1-cp37-abi3-musllinux_1_2_x86_64.whl",
+          "yanked": false
+        }
+      ],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "charset-normalizer",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "d023a4c812bc4478f294dbb8b9c7e5699c62a98ed0516129c22982f983d47f95",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": ">=3.7",
+      "selected": null,
+      "selection_status": "ambiguous_source_review_required",
+      "version": "3.5.1"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "BSD-3-Clause",
+        "legacy": null
+      },
+      "name": "click",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "7460231d6577b1efcbbbd987ad21979770b09c4e377cbac428875ddc81812491",
+      "requires_dist": [
+        "colorama; platform_system == \"Windows\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.10",
+      "selected": {
+        "bytes": 119243,
+        "core_metadata_sha256": "194c9dd81d567f9081f026c7e401060fbafa7bc147c8e0a58b3668b40a64c031",
+        "filename": "click-8.4.2-py3-none-any.whl",
+        "requires_python": ">=3.10",
+        "sha256": "e6f9f66136c816745b9d65817da91d61d957fb16e02e4dcd0552553c5a197b76",
+        "url": "https://files.pythonhosted.org/packages/fb/e2/79c688af8b210d232694e31e59da9f6ec747bae31c3f5946e4e9b98860d5/click-8.4.2-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "8.4.2"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": null
+      },
+      "name": "cloudpathlib",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "c9681ea6c2257bca169737edac9722dbea4674f65b3811a65e00019e9dd5a179",
+      "requires_dist": [
+        "typing-extensions>4; python_version < \"3.11\"",
+        "cloudpathlib[azure]; extra == \"all\"",
+        "cloudpathlib[gs]; extra == \"all\"",
+        "cloudpathlib[s3]; extra == \"all\"",
+        "azure-storage-blob>=12; extra == \"azure\"",
+        "azure-storage-file-datalake>=12; extra == \"azure\"",
+        "google-cloud-storage; extra == \"gs\"",
+        "boto3>=1.34.0; extra == \"s3\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.9",
+      "selected": {
+        "bytes": 63214,
+        "core_metadata_sha256": "9d662ea44a30515c79ea6dbd8f0acff9635652113dc894a24324c9cc833a1f02",
+        "filename": "cloudpathlib-0.24.0-py3-none-any.whl",
+        "requires_python": ">=3.9",
+        "sha256": "b1c51e2d2ec7dc4fed6538991f4aea849d6cf11a7e6b9069f86e461aa1f9b5b4",
+        "url": "https://files.pythonhosted.org/packages/c2/5b/ba933f896d9b0b07608d575a8501e2b4e32166b60d84c430a4a7285ebe64/cloudpathlib-0.24.0-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "0.24.0"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "confection",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "7ee13b8e9cdf87f3552051414b1edfbdbcdf4724c85747edd6c227f9fa4983b9",
+      "requires_dist": [
+        "typing_extensions<5.0,>=4.0; python_version < \"3.11\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.10",
+      "selected": {
+        "bytes": 35902,
+        "core_metadata_sha256": "19791218537d8fe97ed57409c2784f7c7c7e7f443df2d08d7042187e32effad3",
+        "filename": "confection-1.3.3-py3-none-any.whl",
+        "requires_python": ">=3.10",
+        "sha256": "b9fef9ee84b237ef4611ec3eb5797b70e13063e6310ad9f15536373f5e313c82",
+        "url": "https://files.pythonhosted.org/packages/8d/e4/d66708bdf0d92fb4d49b22cdff4b10cec38aca5dcd7e81d909bb55c65cd7/confection-1.3.3-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "1.3.3"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "cymem",
+      "other_candidate_filenames": [
+        "cymem-2.0.13-cp312-cp312-musllinux_1_2_x86_64.whl"
+      ],
+      "release_json_sha256": "50a1b0feef18b19db687e7a3d4d1687be0ac7746b1d020a908b01b0e10ef1fef",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": "<3.15,>=3.9",
+      "selected": {
+        "bytes": 260843,
+        "core_metadata_sha256": "615faac88aa1a2a800731e4add6f0be60967502a37a9c9b3bfd8feed5cc4f99a",
+        "filename": "cymem-2.0.13-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "requires_python": "<3.15,>=3.9",
+        "sha256": "f190a92fe46197ee64d32560eb121c2809bb843341733227f51538ce77b3410d",
+        "url": "https://files.pythonhosted.org/packages/eb/12/678d16f7aa1996f947bf17b8cfb917ea9c9674ef5e2bd3690c04123d5680/cymem-2.0.13-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "2.0.13"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "ginza",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "193479e25538194235218587603741704e9b1961bedbce3cd2734cbfc2e1b20c",
+      "requires_dist": [
+        "spacy<4.0.0,>=3.4.4",
+        "plac>=1.3.3",
+        "SudachiPy<0.7.0,>=0.6.2",
+        "SudachiDict-core>=20210802"
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.8",
+      "selected": {
+        "bytes": 21203,
+        "core_metadata_sha256": "9da041501f7b3008f3a871721a8886b7e720fff9a1dbe775c2a32089b5168d76",
+        "filename": "ginza-5.2.0-py3-none-any.whl",
+        "requires_python": ">=3.8",
+        "sha256": "0c81e69fc34070cdba583f6c35b701b0aa60ef486d73a052fe32917c47e55125",
+        "url": "https://files.pythonhosted.org/packages/7e/6f/beaaeac69a027d88064a450466d2f88d329d360dfbc54c78d0af4796a62d/ginza-5.2.0-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "5.2.0"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "h11",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "97f4efb9cc00826f0408076983adc1a1e48e8f2cabf403aaf250f724e081440d",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": ">=3.8",
+      "selected": {
+        "bytes": 37515,
+        "core_metadata_sha256": "28f326098ac09fcba79b8f180f96087c841fe2456215cb7b872a9c7d5cd19d64",
+        "filename": "h11-0.16.0-py3-none-any.whl",
+        "requires_python": ">=3.8",
+        "sha256": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86",
+        "url": "https://files.pythonhosted.org/packages/04/4b/29cac41a4d98d144bf5f6d33995617b185d14b22401f75ca86f384e87ff1/h11-0.16.0-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "0.16.0"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: BSD License"
+        ],
+        "expression": "BSD-3-Clause",
+        "legacy": null
+      },
+      "name": "httpcore",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "e26eca5c3d288fe9e6446af9bcbca1038ba688629d5c8a2886c47d74718d87a2",
+      "requires_dist": [
+        "certifi",
+        "h11>=0.16",
+        "anyio<5.0,>=4.0; extra == \"asyncio\"",
+        "h2<5,>=3; extra == \"http2\"",
+        "socksio==1.*; extra == \"socks\"",
+        "trio<1.0,>=0.22.0; extra == \"trio\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.8",
+      "selected": {
+        "bytes": 78784,
+        "core_metadata_sha256": "fe2d4fda6199128978779e0cf27f3c045c531863fcdd987eacc74f3a18d41c21",
+        "filename": "httpcore-1.0.9-py3-none-any.whl",
+        "requires_python": ">=3.8",
+        "sha256": "2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55",
+        "url": "https://files.pythonhosted.org/packages/7e/f5/f66802a942d491edb555dd61e3a9961140fd64c90bce1eafd741609d334d/httpcore-1.0.9-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "1.0.9"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: BSD License"
+        ],
+        "expression": null,
+        "legacy": "BSD-3-Clause"
+      },
+      "name": "httpx",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "293bfab7bf587fcd0825f1bd8eed8e6303285ba14801b15659853827cbe30796",
+      "requires_dist": [
+        "anyio",
+        "certifi",
+        "httpcore==1.*",
+        "idna",
+        "brotli; platform_python_implementation == \"CPython\" and extra == \"brotli\"",
+        "brotlicffi; platform_python_implementation != \"CPython\" and extra == \"brotli\"",
+        "click==8.*; extra == \"cli\"",
+        "pygments==2.*; extra == \"cli\"",
+        "rich<14,>=10; extra == \"cli\"",
+        "h2<5,>=3; extra == \"http2\"",
+        "socksio==1.*; extra == \"socks\"",
+        "zstandard>=0.18.0; extra == \"zstd\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.8",
+      "selected": {
+        "bytes": 73517,
+        "core_metadata_sha256": "febb9b0f8f3e80d57c8199c304f35c4336e8581d1d18d7983c92766b82793b25",
+        "filename": "httpx-0.28.1-py3-none-any.whl",
+        "requires_python": ">=3.8",
+        "sha256": "d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad",
+        "url": "https://files.pythonhosted.org/packages/2a/39/e50c7c3a983047577ee07d2a9e53faf5a69493943ec3f6a384bdc792deb2/httpx-0.28.1-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "0.28.1"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "BSD-3-Clause",
+        "legacy": null
+      },
+      "name": "idna",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "cf4ff5d748a88fe6e9d75ffbcc19b946d304b334dd10baa21bd90fb5566dfa44",
+      "requires_dist": [
+        "ruff>=0.16.0; extra == \"all\"",
+        "mypy>=1.11.2; extra == \"all\"",
+        "ty>=0.0.37; extra == \"all\"",
+        "pytest>=8.3.2; extra == \"all\"",
+        "hypothesis>=6.141.1; extra == \"all\"",
+        "coverage>=7.10.0; extra == \"all\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.9",
+      "selected": {
+        "bytes": 68550,
+        "core_metadata_sha256": "4d113161aca8582e8d28fddf3ea50f19b607209c2b3e4364379a163454680084",
+        "filename": "idna-3.19-py3-none-any.whl",
+        "requires_python": ">=3.9",
+        "sha256": "815e7be7a7806d54abb586dc943addc79e8b2ee16915059658cbeff4b1b43bf4",
+        "url": "https://files.pythonhosted.org/packages/57/b0/0e52c878c53f245edd3a11020f20979b3f490f245af532c7cae3027754b5/idna-3.19-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "3.19"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": null,
+        "legacy": "MIT License"
+      },
+      "name": "ja-ginza",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "3fb99f77db7a275286d380b8cda1c2b92e83ee3938a83167863f3ac51b6244e8",
+      "requires_dist": [
+        "spacy<4.0.0,>=3.4.4",
+        "sudachipy<0.7.0,>=0.6.2",
+        "sudachidict-core>=20210802",
+        "ginza<5.3.0,>=5.2.0"
+      ],
+      "requires_dist_complete": true,
+      "requires_python": null,
+      "selected": {
+        "bytes": 59112919,
+        "core_metadata_sha256": "7a593437e6ee3265bcce105a3d665c4bc7331bec133069f139d9f5a38128d801",
+        "filename": "ja_ginza-5.2.0-py3-none-any.whl",
+        "requires_python": null,
+        "sha256": "c31a2ac57a7c2a1440f7e58111e37306c20dfaf08fd5a3f6f065948ff126cb30",
+        "url": "https://files.pythonhosted.org/packages/f0/f8/d1bbc8bd545e61cacb7c0f0fedcfc041e2853e573ec4825136a8bd85e586/ja_ginza-5.2.0-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "5.2.0"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: BSD License"
+        ],
+        "expression": null,
+        "legacy": null
+      },
+      "name": "jinja2",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "1bc757d7065f3e67d3a49e72ebc731d0774055575732592eede9820c136329cc",
+      "requires_dist": [
+        "MarkupSafe>=2.0",
+        "Babel>=2.7; extra == \"i18n\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.7",
+      "selected": {
+        "bytes": 134899,
+        "core_metadata_sha256": "68c5548fb67c4132a13898d9b31ec50c6bea2abdd915d921f214355c3a6499c8",
+        "filename": "jinja2-3.1.6-py3-none-any.whl",
+        "requires_python": ">=3.7",
+        "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+        "url": "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "3.1.6"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": null
+      },
+      "name": "markdown-it-py",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "62affba459c80b1279b5759735f7da3e9c7d24966086ff81ec0303c94512b966",
+      "requires_dist": [
+        "mdurl~=0.1",
+        "psutil; extra == \"benchmarking\"",
+        "pytest; extra == \"benchmarking\"",
+        "pytest-benchmark; extra == \"benchmarking\"",
+        "commonmark~=0.9; extra == \"compare\"",
+        "markdown~=3.4; extra == \"compare\"",
+        "mistletoe~=1.0; extra == \"compare\"",
+        "mistune~=3.0; extra == \"compare\"",
+        "panflute~=2.3; extra == \"compare\"",
+        "markdown-it-pyrs; extra == \"compare\"",
+        "linkify-it-py<3,>=1; extra == \"linkify\"",
+        "mdit-py-plugins>=0.5.0; extra == \"plugins\"",
+        "gprof2dot; extra == \"profiling\"",
+        "mdit-py-plugins>=0.5.0; extra == \"rtd\"",
+        "myst-parser; extra == \"rtd\"",
+        "pyyaml; extra == \"rtd\"",
+        "sphinx; extra == \"rtd\"",
+        "sphinx-copybutton; extra == \"rtd\"",
+        "sphinx-design; extra == \"rtd\"",
+        "sphinx-book-theme~=1.0; extra == \"rtd\"",
+        "jupyter_sphinx; extra == \"rtd\"",
+        "ipykernel; extra == \"rtd\"",
+        "coverage; extra == \"testing\"",
+        "pytest; extra == \"testing\"",
+        "pytest-cov; extra == \"testing\"",
+        "pytest-regressions; extra == \"testing\"",
+        "pytest-timeout; extra == \"testing\"",
+        "requests; extra == \"testing\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.10",
+      "selected": {
+        "bytes": 91687,
+        "core_metadata_sha256": "72c36ff516755443b1ecb61e17b2567a990230b49a504b0eb0c42d5f82448a9c",
+        "filename": "markdown_it_py-4.2.0-py3-none-any.whl",
+        "requires_python": ">=3.10",
+        "sha256": "9f7ebbcd14fe59494226453aed97c1070d83f8d24b6fc3a3bcf9a38092641c4a",
+        "url": "https://files.pythonhosted.org/packages/b3/81/4da04ced5a082363ecfa159c010d200ecbd959ae410c10c0264a38cac0f5/markdown_it_py-4.2.0-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "4.2.0"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "BSD-3-Clause",
+        "legacy": null
+      },
+      "name": "markupsafe",
+      "other_candidate_filenames": [
+        "markupsafe-3.0.3-cp312-cp312-musllinux_1_2_x86_64.whl"
+      ],
+      "release_json_sha256": "0de4f18187d0fc2318de8504c4178f2297bc7cfa7a55adfb6d013190aff8cff4",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": ">=3.9",
+      "selected": {
+        "bytes": 22947,
+        "core_metadata_sha256": "12b4cc61a7fa288cf7667ee3f213786d9619db57fb33ff6f934afbcb5c12ec81",
+        "filename": "markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "requires_python": ">=3.9",
+        "sha256": "d6dd0be5b5b189d31db7cda48b91d7e0a9795f31430b7f271219ab30f1d3ac9d",
+        "url": "https://files.pythonhosted.org/packages/3c/2e/8d0c2ab90a8c1d9a24f0399058ab8519a3279d1bd4289511d74e909f060e/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "3.0.3"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": ""
+      },
+      "name": "mdurl",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "c7baac0b363d92cf55f1f3a313f4bb0564bff27343e6a0a4e9d7ff03afc8a6c7",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": ">=3.7",
+      "selected": {
+        "bytes": 9979,
+        "core_metadata_sha256": "b53b29d48f499367053fda3c81e7ce27d2558380ebbf83e66023b02eb7ddd25d",
+        "filename": "mdurl-0.1.2-py3-none-any.whl",
+        "requires_python": ">=3.7",
+        "sha256": "84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8",
+        "url": "https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "0.1.2"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "murmurhash",
+      "other_candidate_filenames": [
+        "murmurhash-1.0.15-cp312-cp312-musllinux_1_2_x86_64.whl"
+      ],
+      "release_json_sha256": "8cbecba52bdd06c82b35a448c1d3f19828d650c21e001ca614b1e876af97d341",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": "<3.15,>=3.6",
+      "selected": {
+        "bytes": 134088,
+        "core_metadata_sha256": "e3b1f1ffa44da7ce73e64ece028991d1c9c52b5d466b2586575ea822a03dfd6e",
+        "filename": "murmurhash-1.0.15-cp312-cp312-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl",
+        "requires_python": "<3.15,>=3.6",
+        "sha256": "5a301decfaccfec70fe55cb01dde2a012c3014a874542eaa7cc73477bb749616",
+        "url": "https://files.pythonhosted.org/packages/ff/30/ea8f601a9bf44db99468696efd59eb9cff1157cd55cb586d67116697583f/murmurhash-1.0.15-cp312-cp312-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "1.0.15"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+        "legacy": null
+      },
+      "name": "numpy",
+      "other_candidate_filenames": [
+        "numpy-2.5.2-cp312-cp312-musllinux_1_2_x86_64.whl"
+      ],
+      "release_json_sha256": "e0c2397586ef70cb96ba74e306dd896d70c409daff74a7263ce2c833a71eab91",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": ">=3.12",
+      "selected": {
+        "bytes": 16722264,
+        "core_metadata_sha256": "9a895d801184d2176f926af84eb47f2db1af2756afac99d64a2bf482d5d5e024",
+        "filename": "numpy-2.5.2-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+        "requires_python": ">=3.12",
+        "sha256": "3cdec01fa790a186d430433fdd4d4ffb70eed6f0eeb4bf05c8dbe2dce0a9bcb8",
+        "url": "https://files.pythonhosted.org/packages/3a/5f/62d28cf019460c7f1394105b4d49d9911a9c444cb77ab0bd95a204c5a6de/numpy-2.5.2-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "2.5.2"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "Apache-2.0 OR BSD-2-Clause",
+        "legacy": null
+      },
+      "name": "packaging",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "4f190d2f0b312b3086058cee64ab4333bf3ce67fb78b4c2bdb43899049b29f4d",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": ">=3.9",
+      "selected": {
+        "bytes": 129956,
+        "core_metadata_sha256": "70fdb89fc4d4a9a043bf7372b8972bcc883fddff34ab55e9cf80d73875384763",
+        "filename": "packaging-26.3-py3-none-any.whl",
+        "requires_python": ">=3.9",
+        "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+        "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "26.3"
+    },
+    {
+      "candidate_files_for_review": [
+        {
+          "bytes": 22588,
+          "core_metadata_sha256": "4435f59498611f7e56676b645d1f2a4a3c8c5ef9bfb8348039f1387026d40312",
+          "filename": "plac-1.4.6-py2.py3-none-any.whl",
+          "requires_python": null,
+          "sha256": "a79928f7a15dcdd0766d0d6b7c245151917556007aec8210180311d0674b4649",
+          "url": "https://files.pythonhosted.org/packages/c0/52/5c48811b9dc0c30dae1c962ffe3ac6847eb67313622363f9bbc38368cc3f/plac-1.4.6-py2.py3-none-any.whl",
+          "yanked": true
+        }
+      ],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: BSD License"
+        ],
+        "expression": null,
+        "legacy": "BSD License"
+      },
+      "name": "plac",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "25f1ded49d658ca2def9a73fed96051549ab7c27a592443453750cebd45bc094",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": null,
+      "selected": null,
+      "selection_status": "yanked_source_review_required",
+      "version": "1.4.6"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "preshed",
+      "other_candidate_filenames": [
+        "preshed-3.0.13-cp312-cp312-musllinux_1_2_x86_64.whl"
+      ],
+      "release_json_sha256": "df331a9126085f16647427f99ac9bb9169cae3e3b700b61c128eb306225a4022",
+      "requires_dist": [
+        "cymem<2.1.0,>=2.0.2",
+        "murmurhash<1.1.0,>=0.28.0"
+      ],
+      "requires_dist_complete": true,
+      "requires_python": "<3.15,>=3.9",
+      "selected": {
+        "bytes": 868988,
+        "core_metadata_sha256": "52df36fb1dc14a7d67da1bf440d7198214c688b53a571da0a443d531b387eb88",
+        "filename": "preshed-3.0.13-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "requires_python": "<3.15,>=3.9",
+        "sha256": "8b8de3f58043070a354477995acdd98626ce43e4193c708ebd0f694e467f5155",
+        "url": "https://files.pythonhosted.org/packages/51/94/8c9bc48a6ea4903f53a1a0031ce8e35687526949f25821762ef21493c007/preshed-3.0.13-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "3.0.13"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "MIT",
+        "legacy": null
+      },
+      "name": "pydantic",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "dad70ccb2a7199669b2e3f3330cdc5a441ebfeeba24c7654330bce3e9eba27f0",
+      "requires_dist": [
+        "annotated-types>=0.6.0",
+        "pydantic-core==2.46.4",
+        "typing-extensions>=4.14.1",
+        "typing-inspection>=0.4.2",
+        "email-validator>=2.0.0; extra == \"email\"",
+        "tzdata; (python_version >= \"3.9\" and platform_system == \"Windows\") and extra == \"timezone\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.9",
+      "selected": {
+        "bytes": 472262,
+        "core_metadata_sha256": "d1e56c3412492512fb6b59a9dfc25ab7af2a8204585cd7bca000513023133394",
+        "filename": "pydantic-2.13.4-py3-none-any.whl",
+        "requires_python": ">=3.9",
+        "sha256": "45a282cde31d808236fd7ea9d919b128653c8b38b393d1c4ab335c62924d9aba",
+        "url": "https://files.pythonhosted.org/packages/fd/7b/122376b1fd3c62c1ed9dc80c931ace4844b3c55407b6fb2d199377c9736f/pydantic-2.13.4-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "2.13.4"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "MIT",
+        "legacy": null
+      },
+      "name": "pydantic-core",
+      "other_candidate_filenames": [
+        "pydantic_core-2.46.4-cp312-cp312-musllinux_1_1_x86_64.whl"
+      ],
+      "release_json_sha256": "920c478510fef6759549c64083db9317d5a37100b4f7d270824ba9e751906f50",
+      "requires_dist": [
+        "typing-extensions>=4.14.1"
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.9",
+      "selected": {
+        "bytes": 2094516,
+        "core_metadata_sha256": "135fa8b2f89473e9191c7078c2164e3ec6c8927a61c2379c2fddcc07f11f3bae",
+        "filename": "pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "requires_python": ">=3.9",
+        "sha256": "926c9541b14b12b1681dca8a0b75feb510b06c6341b70a8e500c2fdcff837cce",
+        "url": "https://files.pythonhosted.org/packages/5f/97/2aab507d3d00ca626e8e57c1eac6a79e4e5fbcc63eb99733ff55d1717f65/pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "2.46.4"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "BSD-2-Clause",
+        "legacy": null
+      },
+      "name": "pygments",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "330104a10adc8a587e3f98f4e207557125ca0c1d489e129334da5acb2b813a03",
+      "requires_dist": [
+        "colorama>=0.4.6; extra == \"windows-terminal\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.9",
+      "selected": {
+        "bytes": 1250147,
+        "core_metadata_sha256": "1dde075570136774c706bf0009183a793fe0ee262e4a5590cc6eff8453eedd43",
+        "filename": "pygments-2.21.0-py3-none-any.whl",
+        "requires_python": ">=3.9",
+        "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9",
+        "url": "https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "2.21.0"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: Apache Software License"
+        ],
+        "expression": null,
+        "legacy": "Apache-2.0"
+      },
+      "name": "requests",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "8622e50ffd295ed759ec793f2a009172a4ed0204bbc5e948de23111bc3d2aeae",
+      "requires_dist": [
+        "charset_normalizer<4,>=2",
+        "idna<4,>=2.5",
+        "urllib3<3,>=1.26",
+        "certifi>=2023.5.7",
+        "PySocks!=1.5.7,>=1.5.6; extra == \"socks\"",
+        "chardet<8,>=3.0.2; extra == \"use-chardet-on-py3\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.10",
+      "selected": {
+        "bytes": 73075,
+        "core_metadata_sha256": "8c384ba3e979480faae2859d3c5e6c1276dd2c3616e322e124d52c8cfc556f27",
+        "filename": "requests-2.34.2-py3-none-any.whl",
+        "requires_python": ">=3.10",
+        "sha256": "2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0",
+        "url": "https://files.pythonhosted.org/packages/a0/f4/c67b0b3f1b9245e8d266f0f112c500d50e5b4e83cb6f3b71b6528104182a/requests-2.34.2-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "2.34.2"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "rich",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "455015cb0b237a24819d91236152ad0e71b2be39a83cbe6afa0e29ea8aafa550",
+      "requires_dist": [
+        "ipywidgets<9,>=7.5.1; extra == \"jupyter\"",
+        "markdown-it-py>=2.2.0",
+        "pygments<3.0.0,>=2.13.0"
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.9.0",
+      "selected": {
+        "bytes": 310654,
+        "core_metadata_sha256": "fad34fc603fac4481bf81f8dd629492fc302c0ec31909c86644751512afb2e3b",
+        "filename": "rich-15.0.0-py3-none-any.whl",
+        "requires_python": ">=3.9.0",
+        "sha256": "33bd4ef74232fb73fe9279a257718407f169c09b78a87ad3d296f548e27de0bb",
+        "url": "https://files.pythonhosted.org/packages/82/3b/64d4899d73f91ba49a8c18a8ff3f0ea8f1c1d75481760df8c68ef5235bf5/rich-15.0.0-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "15.0.0"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "MIT",
+        "legacy": null
+      },
+      "name": "setuptools",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "24d07932459261bbf9e66e5cfdebfeba23a977234ab24bf9c3a1df053c53ba21",
+      "requires_dist": [
+        "pytest!=8.1.*,>=6; extra == \"test\"",
+        "virtualenv>=13.0.0; extra == \"test\"",
+        "wheel>=0.44.0; extra == \"test\"",
+        "pip>=19.1; extra == \"test\"",
+        "packaging>=24.2; extra == \"test\"",
+        "jaraco.envs>=2.2; extra == \"test\"",
+        "pytest-xdist>=3; extra == \"test\"",
+        "jaraco.path>=3.7.2; extra == \"test\"",
+        "build[virtualenv]>=1.0.3; extra == \"test\"",
+        "filelock>=3.4.0; extra == \"test\"",
+        "ini2toml[lite]>=0.14; extra == \"test\"",
+        "tomli-w>=1.0.0; extra == \"test\"",
+        "pytest-timeout; extra == \"test\"",
+        "pytest-perf; sys_platform != \"cygwin\" and extra == \"test\"",
+        "jaraco.develop>=7.21; (python_version >= \"3.9\" and sys_platform != \"cygwin\") and extra == \"test\"",
+        "pytest-home>=0.5; extra == \"test\"",
+        "pytest-subprocess; extra == \"test\"",
+        "pyproject-hooks!=1.1; extra == \"test\"",
+        "jaraco.test>=5.5; extra == \"test\"",
+        "sphinx>=3.5; extra == \"doc\"",
+        "jaraco.packaging>=9.3; extra == \"doc\"",
+        "rst.linker>=1.9; extra == \"doc\"",
+        "furo; extra == \"doc\"",
+        "sphinx-lint; extra == \"doc\"",
+        "jaraco.tidelift>=1.4; extra == \"doc\"",
+        "pygments-github-lexers==0.0.5; extra == \"doc\"",
+        "sphinx-favicon; extra == \"doc\"",
+        "sphinx-inline-tabs; extra == \"doc\"",
+        "sphinx-reredirects; extra == \"doc\"",
+        "sphinxcontrib-towncrier; extra == \"doc\"",
+        "sphinx-notfound-page<2,>=1; extra == \"doc\"",
+        "pyproject-hooks!=1.1; extra == \"doc\"",
+        "towncrier<24.7; extra == \"doc\"",
+        "packaging>=24.2; extra == \"core\"",
+        "more_itertools>=8.8; extra == \"core\"",
+        "jaraco.text>=3.7; extra == \"core\"",
+        "importlib_metadata>=6; python_version < \"3.10\" and extra == \"core\"",
+        "tomli>=2.0.1; python_version < \"3.11\" and extra == \"core\"",
+        "wheel>=0.43.0; extra == \"core\"",
+        "jaraco.functools>=4; extra == \"core\"",
+        "more_itertools; extra == \"core\"",
+        "pytest-checkdocs>=2.14; extra == \"check\"",
+        "pytest-ruff>=0.2.1; sys_platform != \"cygwin\" and extra == \"check\"",
+        "ruff>=0.13.0; sys_platform != \"cygwin\" and extra == \"check\"",
+        "pytest-cov; extra == \"cover\"",
+        "pytest-enabler>=3.4; extra == \"enabler\"",
+        "pytest-mypy>=1.0.1; platform_python_implementation != \"PyPy\" and extra == \"type\"",
+        "mypy==1.18.*; extra == \"type\"",
+        "importlib_metadata>=7.0.2; python_version < \"3.10\" and extra == \"type\"",
+        "jaraco.develop>=7.21; sys_platform != \"cygwin\" and extra == \"type\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.10",
+      "selected": {
+        "bytes": 818216,
+        "core_metadata_sha256": "3ef2975718dd31cabdd5829455e9b868ca14dbf79ed8fed2de0af4e87347006e",
+        "filename": "setuptools-84.0.0-py3-none-any.whl",
+        "requires_python": ">=3.10",
+        "sha256": "51a52592b3b99e102b609654876bd65f19f999935166d1352678931132b0c670",
+        "url": "https://files.pythonhosted.org/packages/95/9c/c510029fc6ef33a6275cd2c5d3cecd6613dfd6aa401d57c54f1c18852ccf/setuptools-84.0.0-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "84.0.0"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: ISC License (ISCL)"
+        ],
+        "expression": null,
+        "legacy": "ISC License"
+      },
+      "name": "shellingham",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "9381443cd6295d50fc7f7bd34a457243b0f3a54732cde45b0fc2d0994b61f3af",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": ">=3.7",
+      "selected": {
+        "bytes": 9755,
+        "core_metadata_sha256": "183d80220a37493262795739dd357cc5bb3f49bd390cc9198d5180e5451a07fa",
+        "filename": "shellingham-1.5.4-py2.py3-none-any.whl",
+        "requires_python": ">=3.7",
+        "sha256": "7ecfff8f2fd72616f7481040475a65b2bf8af90a56c89140852d1120324e8686",
+        "url": "https://files.pythonhosted.org/packages/e0/f9/0595336914c5619e5f28a1fb793285925a8cd4b432c9da0a987836c7f822/shellingham-1.5.4-py2.py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "1.5.4"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": null
+      },
+      "name": "smart-open",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "7848cf9c4cd26c8a8a0cc318c39714ff349becfbf4b370a1cb646e743b9ef1be",
+      "requires_dist": [
+        "wrapt",
+        "smart_open[azure,gcs,http,lz4,s3,ssh,webhdfs,zst]; extra == \"all\"",
+        "azure-storage-blob>=12.7.0; extra == \"azure\"",
+        "azure-common; extra == \"azure\"",
+        "azure-core; extra == \"azure\"",
+        "google-cloud-storage>=2.6.0; extra == \"gcs\"",
+        "requests; extra == \"http\"",
+        "lz4; extra == \"lz4\"",
+        "boto3>=1.9.17; extra == \"s3\"",
+        "paramiko; extra == \"ssh\"",
+        "smart_open[all]; extra == \"dev\"",
+        "moto[server]; extra == \"dev\"",
+        "responses; extra == \"dev\"",
+        "pre-commit; extra == \"dev\"",
+        "pytest; extra == \"dev\"",
+        "pytest-rerunfailures; extra == \"dev\"",
+        "pytest_benchmark; extra == \"dev\"",
+        "pytest-timeout; extra == \"dev\"",
+        "pytest-xdist[psutil]; extra == \"dev\"",
+        "awscli; extra == \"dev\"",
+        "pyopenssl; extra == \"dev\"",
+        "numpy; extra == \"dev\"",
+        "boto3-stubs[s3]; extra == \"dev\"",
+        "typing_extensions; extra == \"dev\"",
+        "requests; extra == \"webhdfs\"",
+        "backports.zstd>=1.0.0; python_version < \"3.14\" and extra == \"zst\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": "<4.0,>=3.10",
+      "selected": {
+        "bytes": 73504,
+        "core_metadata_sha256": "794b2eb5b9b5b7588de7325d808b5f819c2fc2f5d3299643f3469309c2f7bef9",
+        "filename": "smart_open-8.0.1-py3-none-any.whl",
+        "requires_python": "<4.0,>=3.10",
+        "sha256": "3e97f90e92a952cb57863dfe132082c400a52eeeb27c067692fb51dbcc5b0089",
+        "url": "https://files.pythonhosted.org/packages/c3/96/325b8c507ccecc50421fecc0345a502ee6e4a44785af3c4e6ecbadad624a/smart_open-8.0.1-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "8.0.1"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "spacy",
+      "other_candidate_filenames": [
+        "spacy-3.8.15-cp312-cp312-musllinux_1_2_x86_64.whl"
+      ],
+      "release_json_sha256": "1e49065d020eea125da77676ecc74000bcae25857428b6f86639d425ba7e7af2",
+      "requires_dist": [
+        "spacy-legacy<3.1.0,>=3.0.11",
+        "spacy-loggers<2.0.0,>=1.0.0",
+        "murmurhash<1.1.0,>=0.28.0",
+        "cymem<2.1.0,>=2.0.2",
+        "preshed<3.1.0,>=3.0.2",
+        "thinc<8.4.0,>=8.3.12",
+        "wasabi<1.2.0,>=0.9.1",
+        "srsly<3.0.0,>=2.5.3",
+        "catalogue<2.1.0,>=2.0.6",
+        "weasel<2.0.0,>=1.0.0",
+        "confection<2.0.0,>=1.3.2",
+        "typer<1.0.0,>=0.3.0",
+        "click<9.0.0,>=8.2.1",
+        "tqdm<5.0.0,>=4.38.0",
+        "numpy>=1.15.0; python_version < \"3.9\"",
+        "numpy>=1.19.0; python_version >= \"3.9\"",
+        "requests<3.0.0,>=2.13.0",
+        "pydantic<3.0.0,>=2.0.0",
+        "jinja2",
+        "setuptools",
+        "packaging>=20.0",
+        "spacy_lookups_data<1.1.0,>=1.0.3; extra == \"lookups\"",
+        "spacy_transformers<1.4.0,>=1.1.2; extra == \"transformers\"",
+        "cupy<13.0.0,>=5.0.0b4; extra == \"cuda\"",
+        "cupy-cuda80<13.0.0,>=5.0.0b4; extra == \"cuda80\"",
+        "cupy-cuda90<13.0.0,>=5.0.0b4; extra == \"cuda90\"",
+        "cupy-cuda91<13.0.0,>=5.0.0b4; extra == \"cuda91\"",
+        "cupy-cuda92<13.0.0,>=5.0.0b4; extra == \"cuda92\"",
+        "cupy-cuda100<13.0.0,>=5.0.0b4; extra == \"cuda100\"",
+        "cupy-cuda101<13.0.0,>=5.0.0b4; extra == \"cuda101\"",
+        "cupy-cuda102<13.0.0,>=5.0.0b4; extra == \"cuda102\"",
+        "cupy-cuda110<13.0.0,>=5.0.0b4; extra == \"cuda110\"",
+        "cupy-cuda111<13.0.0,>=5.0.0b4; extra == \"cuda111\"",
+        "cupy-cuda112<13.0.0,>=5.0.0b4; extra == \"cuda112\"",
+        "cupy-cuda113<13.0.0,>=5.0.0b4; extra == \"cuda113\"",
+        "cupy-cuda114<13.0.0,>=5.0.0b4; extra == \"cuda114\"",
+        "cupy-cuda115<13.0.0,>=5.0.0b4; extra == \"cuda115\"",
+        "cupy-cuda116<13.0.0,>=5.0.0b4; extra == \"cuda116\"",
+        "cupy-cuda117<13.0.0,>=5.0.0b4; extra == \"cuda117\"",
+        "cupy-cuda11x<13.0.0,>=11.0.0; extra == \"cuda11x\"",
+        "cupy-cuda12x<13.0.0,>=11.5.0; extra == \"cuda12x\"",
+        "cupy-wheel<13.0.0,>=11.0.0; extra == \"cuda-autodetect\"",
+        "thinc-apple-ops<2.0.0,>=1.0.0; extra == \"apple\"",
+        "sudachipy!=0.6.1,>=0.5.2; extra == \"ja\"",
+        "sudachidict_core>=20211220; extra == \"ja\"",
+        "natto-py>=0.9.0; extra == \"ko\"",
+        "pythainlp>=2.0; extra == \"th\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": "<3.15,>=3.9",
+      "selected": {
+        "bytes": 32695414,
+        "core_metadata_sha256": "07e7b27ec4fda84e10f690b063b043fb75a2b821ac3401104e816500e891d223",
+        "filename": "spacy-3.8.15-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+        "requires_python": "<3.15,>=3.9",
+        "sha256": "fa9df68fc8887c0a6440b84d1d307980e594d99b45f19a37d733e58caa9a6682",
+        "url": "https://files.pythonhosted.org/packages/49/3d/88004d9518c912c30140e47f930abcbc9e7240d4c2aebe52c05b7f70df79/spacy-3.8.15-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "3.8.15"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "spacy-legacy",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "8b096f50363d6a190a1a0c757930d6144336d1eafe55757a774ebe8e9433096e",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": ">=3.6",
+      "selected": {
+        "bytes": 29971,
+        "core_metadata_sha256": "d7d8fd88b4c1a701001877c575575049a22449481344d7e798b2637a2555dfd2",
+        "filename": "spacy_legacy-3.0.12-py2.py3-none-any.whl",
+        "requires_python": ">=3.6",
+        "sha256": "476e3bd0d05f8c339ed60f40986c07387c0a71479245d6d0f4298dbd52cda55f",
+        "url": "https://files.pythonhosted.org/packages/c3/55/12e842c70ff8828e34e543a2c7176dac4da006ca6901c9e8b43efab8bc6b/spacy_legacy-3.0.12-py2.py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "3.0.12"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "spacy-loggers",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "6b54dbc909d4c4d722081dc351144af1f5549b5fc6acdff4b7324a179ae057f1",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": ">=3.6",
+      "selected": {
+        "bytes": 22343,
+        "core_metadata_sha256": "18a091c9186a04bc9032859fd2ad3f853101ebe5aabff066391f0e584e692b73",
+        "filename": "spacy_loggers-1.0.5-py3-none-any.whl",
+        "requires_python": ">=3.6",
+        "sha256": "196284c9c446cc0cdb944005384270d775fdeaf4f494d8e269466cfa497ef645",
+        "url": "https://files.pythonhosted.org/packages/33/78/d1a1a026ef3af911159398c939b1509d5c36fe524c7b644f34a5146c4e16/spacy_loggers-1.0.5-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "1.0.5"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "srsly",
+      "other_candidate_filenames": [
+        "srsly-2.5.3-cp312-cp312-musllinux_1_2_x86_64.whl"
+      ],
+      "release_json_sha256": "ace1785d5027ee2fb987a7367a69e8f843b97278de72420b956c898ca74a0e1a",
+      "requires_dist": [
+        "catalogue<2.1.0,>=2.0.3"
+      ],
+      "requires_dist_complete": true,
+      "requires_python": "<3.15,>=3.9",
+      "selected": {
+        "bytes": 1180873,
+        "core_metadata_sha256": "9820d9aeff1394724211ce5cff45b122160a13f4888cdf23f11acf28a87b94d3",
+        "filename": "srsly-2.5.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "requires_python": "<3.15,>=3.9",
+        "sha256": "99026bcd9cbd3211cc36517400b04ca0fc5d3e412b14daf84ee6e65f67d9a2d8",
+        "url": "https://files.pythonhosted.org/packages/4e/c9/741e29f534919a944a16da4184924b1d3404c4bf60716ab2b91be771d1e3/srsly-2.5.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "2.5.3"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": null,
+        "legacy": "Apache-2.0"
+      },
+      "name": "sudachidict-core",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "74104af1e690fc8b23d033e932349a69442a574badefc4e7a9b479db803b6754",
+      "requires_dist": [
+        "SudachiPy<0.7,>=0.5"
+      ],
+      "requires_dist_complete": true,
+      "requires_python": null,
+      "selected": {
+        "bytes": 72275897,
+        "core_metadata_sha256": "e102a6879ab09b732ce9b291aec71552a0cd0186df7e1d7eef99d737b4f40a12",
+        "filename": "sudachidict_core-20260723-py3-none-any.whl",
+        "requires_python": null,
+        "sha256": "b3869ce6b12b4bfa09575dc19030703bb669ab41bac12a74cafcbb28c6be2498",
+        "url": "https://files.pythonhosted.org/packages/46/fe/68a146fced55319af40d25a4fe19b94c3a988406ce4674a8b2f0237fbc9f/sudachidict_core-20260723-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "20260723"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": null,
+        "legacy": "Apache-2.0"
+      },
+      "name": "sudachipy",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "6ead748a3992c822dce715ff6e40a977b6a7e2b63be377acfd261341958adf2d",
+      "requires_dist": [
+        "tokenizers; extra == \"tests\"",
+        "sudachidict_core; extra == \"tests\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": null,
+      "selected": {
+        "bytes": 1628277,
+        "core_metadata_sha256": "46c993656ca7e4d78e433737b49eb7708d1eea67d0968176d210746724b288f9",
+        "filename": "sudachipy-0.6.11-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "requires_python": null,
+        "sha256": "9d024efea4ff8b5bd0709f1afbb8e8f230ebd4ec83f9cd76f47b0542b7c22e91",
+        "url": "https://files.pythonhosted.org/packages/49/ee/f7c20d6e17619c83f5ffa3ed7bd1582174809fd8b396fb9250f24210dd57/sudachipy-0.6.11-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "0.6.11"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "thinc",
+      "other_candidate_filenames": [
+        "thinc-8.3.13-cp312-cp312-musllinux_1_2_x86_64.whl"
+      ],
+      "release_json_sha256": "607220833390a7c3c89efcbba345352769ef7a727f91b0bd1af10eed64f19a1d",
+      "requires_dist": [
+        "blis<1.4.0,>=1.3.0",
+        "murmurhash<1.1.0,>=1.0.2",
+        "cymem<2.1.0,>=2.0.2",
+        "preshed<3.1.0,>=3.0.2",
+        "wasabi<1.2.0,>=0.8.1",
+        "srsly<3.1.0,>=2.4.0",
+        "catalogue<2.1.0,>=2.0.4",
+        "confection<2.0.0,>=1.1.0",
+        "setuptools",
+        "numpy<3.0.0,>=1.21.0",
+        "pydantic<3.0.0,>=2.0.0",
+        "packaging>=20.0",
+        "cupy>=5.0.0b4; extra == \"cuda\"",
+        "cupy-cuda80>=5.0.0b4; extra == \"cuda80\"",
+        "cupy-cuda90>=5.0.0b4; extra == \"cuda90\"",
+        "cupy-cuda91>=5.0.0b4; extra == \"cuda91\"",
+        "cupy-cuda92>=5.0.0b4; extra == \"cuda92\"",
+        "cupy-cuda100>=5.0.0b4; extra == \"cuda100\"",
+        "cupy-cuda101>=5.0.0b4; extra == \"cuda101\"",
+        "cupy-cuda102>=5.0.0b4; extra == \"cuda102\"",
+        "cupy-cuda110>=5.0.0b4; extra == \"cuda110\"",
+        "cupy-cuda111>=5.0.0b4; extra == \"cuda111\"",
+        "cupy-cuda112>=5.0.0b4; extra == \"cuda112\"",
+        "cupy-cuda113>=5.0.0b4; extra == \"cuda113\"",
+        "cupy-cuda114>=5.0.0b4; extra == \"cuda114\"",
+        "cupy-cuda115>=5.0.0b4; extra == \"cuda115\"",
+        "cupy-cuda116>=5.0.0b4; extra == \"cuda116\"",
+        "cupy-cuda117>=5.0.0b4; extra == \"cuda117\"",
+        "cupy-cuda11x>=11.0.0; extra == \"cuda11x\"",
+        "cupy-cuda12x>=11.5.0; extra == \"cuda12x\"",
+        "cupy-wheel>=11.0.0; extra == \"cuda-autodetect\"",
+        "ml_datasets<0.3.0,>=0.2.0; extra == \"datasets\"",
+        "torch>=1.6.0; extra == \"torch\"",
+        "tensorflow<2.6.0,>=2.0.0; extra == \"tensorflow\"",
+        "mxnet<1.6.0,>=1.5.1; extra == \"mxnet\"",
+        "thinc-apple-ops<2.0.0,>=1.0.0; extra == \"apple\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": "<3.15,>=3.10",
+      "selected": {
+        "bytes": 3903307,
+        "core_metadata_sha256": "151e4f7732eb618431031e5945aef62898bd729c32e2a28c8378af15809df1f0",
+        "filename": "thinc-8.3.13-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "requires_python": "<3.15,>=3.10",
+        "sha256": "4b5ec9ff313819e7d8667794a3559463fa89ff45aaa73e3fd8d6273b1e0d7a7f",
+        "url": "https://files.pythonhosted.org/packages/f9/ff/6914bf370bd1d604d89e6dfb46b97d10cd9b00d42ff8c036283e92314a8c/thinc-8.3.13-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "8.3.13"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": null,
+        "legacy": "MPL-2.0 AND MIT"
+      },
+      "name": "tqdm",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "2e987cad04ce7745797a04286ed00e2dc9bf4833e974dadce9913a0da753063d",
+      "requires_dist": [
+        "colorama; platform_system == \"Windows\"",
+        "requests; extra == \"discord\"",
+        "envwrap; extra == \"discord\"",
+        "slack-sdk; extra == \"slack\"",
+        "envwrap; extra == \"slack\"",
+        "requests; extra == \"telegram\"",
+        "envwrap; extra == \"telegram\"",
+        "ipywidgets>=6; extra == \"notebook\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.8",
+      "selected": {
+        "bytes": 80184,
+        "core_metadata_sha256": "0d95b85b90428f8776afc4a92b17c5094f78ee98d150b3255acbcdf4e9d57941",
+        "filename": "tqdm-4.70.0-py3-none-any.whl",
+        "requires_python": ">=3.8",
+        "sha256": "7f585706bfddbdebf89daac705b2dfcc16890130727d3197ca62c732b4310953",
+        "url": "https://files.pythonhosted.org/packages/f9/1c/01bfd571a64e7f270e6bab5e33777debe0edc56759233ce84f27dec92d14/tqdm-4.70.0-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "4.70.0"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "MIT",
+        "legacy": null
+      },
+      "name": "typer",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "bd0006f1ccb832d50b8bb32a49e24d0bbe99cc1e41d7daed655d045513bcda86",
+      "requires_dist": [
+        "shellingham>=1.3.0",
+        "rich>=13.8.0",
+        "annotated-doc>=0.0.2",
+        "colorama; platform_system == \"Windows\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.10",
+      "selected": {
+        "bytes": 122874,
+        "core_metadata_sha256": "d71011dc4b250b9670d91fbae7882d707a9ef93b22a527d90992a962a5759601",
+        "filename": "typer-0.27.1-py3-none-any.whl",
+        "requires_python": ">=3.10",
+        "sha256": "53150287edd11baeb4e4722c8e394fcdf8181c0ae89485cba8d25c778d5edd56",
+        "url": "https://files.pythonhosted.org/packages/43/89/9518bc0c3929bee36b3a4a8e3daddd6e03f92f9961c66d4983b837160543/typer-0.27.1-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "0.27.1"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "PSF-2.0",
+        "legacy": null
+      },
+      "name": "typing-extensions",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "2140da00d62dde967f52d0be0ae28444f1d6a3fe603f52c83c23988c32122d5a",
+      "requires_dist": null,
+      "requires_dist_complete": true,
+      "requires_python": ">=3.9",
+      "selected": {
+        "bytes": 45571,
+        "core_metadata_sha256": "b05084ca1d50879865178d9fff9fabeab61bdfb1f361bfbde95421ffc8f9be46",
+        "filename": "typing_extensions-4.16.0-py3-none-any.whl",
+        "requires_python": ">=3.9",
+        "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+        "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "4.16.0"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "MIT",
+        "legacy": null
+      },
+      "name": "typing-inspection",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "0605416f2f37f2df04e45360cf5ce4ca5eeca6d414bb6ddb1ec5a9893c62ac30",
+      "requires_dist": [
+        "typing-extensions>=4.15.0"
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.10",
+      "selected": {
+        "bytes": 14750,
+        "core_metadata_sha256": "bad3d9e6342ef6750cf5128ec942327b8bebdce0b6e4d6f67cb15b27ae5118da",
+        "filename": "typing_inspection-0.4.4-py3-none-any.whl",
+        "requires_python": ">=3.10",
+        "sha256": "65b8397ba37ccbce054456aaccddfc91e6e3083c92824df348d96ca832f3f147",
+        "url": "https://files.pythonhosted.org/packages/67/81/4add07e5172b7ac40d8ed5ff580409a7801a4fe26d529bdd915401dabfbe/typing_inspection-0.4.4-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "0.4.4"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "MIT",
+        "legacy": null
+      },
+      "name": "urllib3",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "54db1e362e04e390c23c2182dd425a6b3f0c1a73c5bd3f3e40611c3590c7a43a",
+      "requires_dist": [
+        "brotli>=1.2.0; platform_python_implementation == \"CPython\" and extra == \"brotli\"",
+        "brotlicffi>=1.2.0.0; platform_python_implementation != \"CPython\" and extra == \"brotli\"",
+        "h2<5,>=4; extra == \"h2\"",
+        "pysocks!=1.5.7,<2.0,>=1.5.6; extra == \"socks\"",
+        "backports-zstd>=1.0.0; python_version < \"3.14\" and extra == \"zstd\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.10",
+      "selected": {
+        "bytes": 131087,
+        "core_metadata_sha256": "66147856d30bbb6bed01c6ce3326d0f48d84ed5f286ac177633a1486b82eace5",
+        "filename": "urllib3-2.7.0-py3-none-any.whl",
+        "requires_python": ">=3.10",
+        "sha256": "9fb4c81ebbb1ce9531cce37674bbc6f1360472bc18ca9a553ede278ef7276897",
+        "url": "https://files.pythonhosted.org/packages/7f/3e/5db95bcf282c52709639744ca2a8b149baccf648e39c8cc87553df9eae0c/urllib3-2.7.0-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "2.7.0"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "wasabi",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "0f3b0b9d55a5e4cba171734824809b8978d425b0e391b598313272a01fa280f5",
+      "requires_dist": [
+        "typing-extensions<5.0.0,>=3.7.4.1; python_version < \"3.8\"",
+        "colorama>=0.4.6; sys_platform == \"win32\" and python_version >= \"3.7\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.6",
+      "selected": {
+        "bytes": 27880,
+        "core_metadata_sha256": "428dba3283ea8a4059eff38495ac22d58f9c29b7c9ff12df3e796c209a96d069",
+        "filename": "wasabi-1.1.3-py3-none-any.whl",
+        "requires_python": ">=3.6",
+        "sha256": "f76e16e8f7e79f8c4c8be49b4024ac725713ab10cd7f19350ad18a8e3f71728c",
+        "url": "https://files.pythonhosted.org/packages/06/7c/34330a89da55610daa5f245ddce5aab81244321101614751e7537f125133/wasabi-1.1.3-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "1.1.3"
+    },
+    {
+      "candidate_files_for_review": [],
+      "licence_declared_by_registry": {
+        "classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "expression": null,
+        "legacy": "MIT"
+      },
+      "name": "weasel",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "7a0ec6037101aeeeaf56919e9f8d056fcb24dc2f668039eddd5912bfb60e01d6",
+      "requires_dist": [
+        "confection>=1.0.0",
+        "packaging>=20.0",
+        "wasabi>=0.9.1",
+        "srsly>=2.4.3",
+        "typer>=0.3.0",
+        "cloudpathlib>=0.7.0",
+        "smart-open>=5.2.1",
+        "httpx>=0.24.0",
+        "pydantic>=2.0.0"
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.7",
+      "selected": {
+        "bytes": 50713,
+        "core_metadata_sha256": "a16824512ee2fec38c83720e7c7f0fcbaabff69e047820953418088bf4adc6b0",
+        "filename": "weasel-1.0.0-py3-none-any.whl",
+        "requires_python": ">=3.7",
+        "sha256": "89518acee027f49d743126c3502d35e6dd14f5768be5c37c9af47c171b6005cc",
+        "url": "https://files.pythonhosted.org/packages/0a/07/57ebf7a6798b016c064bd0ca81b4c6a99daa4dc377b898bc7b41eb6b5af0/weasel-1.0.0-py3-none-any.whl",
+        "yanked": false
+      },
+      "selection_status": "single_file_under_limited_policy_not_runtime_verified",
+      "version": "1.0.0"
+    },
+    {
+      "candidate_files_for_review": [
+        {
+          "bytes": 172381,
+          "core_metadata_sha256": "bed8a0620d9d2a6779427fcecabcbc642f6fa68b107ab583faa01a6dabcafaef",
+          "filename": "wrapt-2.3.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+          "requires_python": ">=3.9",
+          "sha256": "5d221a6e6ddd302b8397433184e96b59f259f50024b854db1c411a881586b6b8",
+          "url": "https://files.pythonhosted.org/packages/28/7f/cfd9bc4b1f5e424eeea83d0493e43f3b1b02707ce8e50c47945873982bd5/wrapt-2.3.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+          "yanked": false
+        },
+        {
+          "bytes": 61866,
+          "core_metadata_sha256": "bed8a0620d9d2a6779427fcecabcbc642f6fa68b107ab583faa01a6dabcafaef",
+          "filename": "wrapt-2.3.0-py3-none-any.whl",
+          "requires_python": ">=3.9",
+          "sha256": "d8c7ed08477429752b8c44991f40ad7838b18332a160698740a6bfbc10d998a2",
+          "url": "https://files.pythonhosted.org/packages/00/39/3daf9f47be208606586de4568ba6713db53ebc8fd7a575aea1fe57983b69/wrapt-2.3.0-py3-none-any.whl",
+          "yanked": false
+        },
+        {
+          "bytes": 170530,
+          "core_metadata_sha256": "bed8a0620d9d2a6779427fcecabcbc642f6fa68b107ab583faa01a6dabcafaef",
+          "filename": "wrapt-2.3.0-cp312-cp312-musllinux_1_2_x86_64.whl",
+          "requires_python": ">=3.9",
+          "sha256": "3da470536bf9645143323dd41b32db55c6f4304ad382094c1a1da8a92061e10d",
+          "url": "https://files.pythonhosted.org/packages/ca/ee/82f1fc9e431b5c2c5a6d201aa865dbeae3984c311c6d11a185f0c8367cf6/wrapt-2.3.0-cp312-cp312-musllinux_1_2_x86_64.whl",
+          "yanked": false
+        }
+      ],
+      "licence_declared_by_registry": {
+        "classifiers": [],
+        "expression": "BSD-2-Clause",
+        "legacy": null
+      },
+      "name": "wrapt",
+      "other_candidate_filenames": [],
+      "release_json_sha256": "32e6de96f18bd09684cd6ea8f9946ba38e3124ebd29513e6374f5e978df42ae6",
+      "requires_dist": [
+        "pytest; extra == \"dev\"",
+        "setuptools; extra == \"dev\""
+      ],
+      "requires_dist_complete": true,
+      "requires_python": ">=3.9",
+      "selected": null,
+      "selection_status": "ambiguous_source_review_required",
+      "version": "2.3.0"
+    }
+  ],
+  "status": "metadata_reads_complete",
+  "target": "linux-x86_64-cpython-3.12.14-no-extras"
+}
