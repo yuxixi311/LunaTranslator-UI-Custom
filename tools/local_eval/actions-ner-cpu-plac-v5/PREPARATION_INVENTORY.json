@@ -1,0 +1,118 @@
+{
+  "files": {
+    "INPUT_MANIFEST.json": {
+      "bytes": 808,
+      "sha256": "381f03b2e43379c6990d0624876e1837664261a0a64d2a23bd2742ffabda27e3"
+    },
+    "MODEL_INVENTORY.json": {
+      "bytes": 3902,
+      "sha256": "c0aa477f9d06dd46e41c25aec7af4a7544ad1a34a6d92453fdff9df61d0301c5"
+    },
+    "PLAC_PREFLIGHT_RECEIPT.json": {
+      "bytes": 40960,
+      "sha256": "17c82e5bbdab151772b37169834b16012348b95db1042bfceee74b16ee39dfb9"
+    },
+    "SudachiDict-20260723-LEGAL": {
+      "bytes": 6037,
+      "sha256": "725a8776b38e058b185e905594bc9a2437dbf3787df022fffeefedb9a84e4665"
+    },
+    "SudachiDict-20260723-LICENSE-2.0.txt": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "SudachiPy-0.6.11-LICENSE": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "WHEELS49.frozen.json": {
+      "bytes": 30148,
+      "sha256": "c04f4e31641594e90b9a6436625ad20d0de550b5f8543d70d5d70f46458d3401"
+    },
+    "WORKFLOW_TEMPLATE.yml.in": {
+      "bytes": 3099,
+      "sha256": "c3aad70b3f1628191791b5df7bf20b1a081e546220deb552aaf72fc25adb241a"
+    },
+    "actions_runner.py": {
+      "bytes": 22397,
+      "sha256": "9dba6ddcde5d329c54f58c1fab2997c0bc42e410d7a66d0e6b1c8267bede9e60"
+    },
+    "canon.json": {
+      "bytes": 432,
+      "sha256": "7cc5bdb3626dd4e781070dca708428c0ef81048d72b067a71f9e15c795814337"
+    },
+    "diagnostics.sources.json": {
+      "bytes": 2474,
+      "sha256": "5a02d97443f724e974a12aa18a972138314440f36f358c488df151c4aebea9e9"
+    },
+    "event_guard.py": {
+      "bytes": 6724,
+      "sha256": "1b96cf35e618f5b306d5fa80217bf9b188093b79331afdaf3a4813f4f56599d1"
+    },
+    "evidence_io.py": {
+      "bytes": 12224,
+      "sha256": "4fe6d414ded422e7798a1d98845a8cd7a2cf9225c5502e700d73b27837c9f1eb"
+    },
+    "finalized_manifest.py": {
+      "bytes": 1097,
+      "sha256": "0e7c59043d706112ad84e29c6aeb1fa80a03711f2b2758c267322c5db716f2d6"
+    },
+    "fresh.canon.frozen.json": {
+      "bytes": 244,
+      "sha256": "12b81554051ff4c0456315a4de834224ca46708acf677eba90e32de7755d62b0"
+    },
+    "fresh.sources.frozen.json": {
+      "bytes": 3105,
+      "sha256": "2dfdd379e98bc210dfe04073081c4051809ce05216ee25c3baef74bac242662c"
+    },
+    "ner_adapter.py": {
+      "bytes": 12974,
+      "sha256": "8f2dcd18890a0e1b3382d813964b21ce02e8abc20063ea4ef7936c6664a6b789"
+    },
+    "ner_entry_policy.py": {
+      "bytes": 7391,
+      "sha256": "cf439dac564b81cd04a22c2172435ec42082b4a38ee8e76ac222167483060363"
+    },
+    "offline_setup.py": {
+      "bytes": 21660,
+      "sha256": "ea28274af84fe3f56c2bb84aedc7833ca2564d9a2acdca27106fb3c861b59b31"
+    },
+    "owned_lifecycle.py": {
+      "bytes": 4652,
+      "sha256": "1af18a7cd9c5ae5771f9d4ea010515bc1818b40eeec1727d40fdffbd44c20799"
+    },
+    "parser_child.py": {
+      "bytes": 2995,
+      "sha256": "563e160431b268b3e1cf6c366546d3497b674186aed9b69dfb3de73f0877bcb6"
+    },
+    "runner_control.py": {
+      "bytes": 11592,
+      "sha256": "557235609c67f846a4d8047c229882f5f9fa3f8eaed31e70c16b011a0e0b82ee"
+    },
+    "safe_diagnostics.py": {
+      "bytes": 8598,
+      "sha256": "4913685a9f3be27fbe97c182828ba98f19f382c0069341b54f902ddbfd320a7d"
+    },
+    "seen.sources.json": {
+      "bytes": 7290,
+      "sha256": "51bdc8829a59b50e2ac3c82932b9421734dada333dcc6c6ef58fde78974ab72d"
+    },
+    "source_bootstrap.py": {
+      "bytes": 5792,
+      "sha256": "a71301ab7a635fcee0d138c6d21ddc13c70d8094e6d88aaa56ffa8da3858c5b0"
+    },
+    "validator_bootstrap.py": {
+      "bytes": 5339,
+      "sha256": "d16fd9e187b4266e37024dd6f2ff714a17450c3324e4a3518e006d03bc98a111"
+    },
+    "wheel_validation.py": {
+      "bytes": 100454,
+      "sha256": "920a19dcf8236edefacb28fd7ec0722d1ea7bce5d7028b643c88e242d5c42105"
+    },
+    "wheel_validation_codes.py": {
+      "bytes": 5392,
+      "sha256": "0ef31cf3f37fce7e2e8a7a9f765c9bbb9c8b396f5d7ed3b4b4c9a21af20fb7f5"
+    }
+  },
+  "protocol": "luna-ner-cpu-plac-v5",
+  "source_parent": "e8713691d8c8814fc407eaa014252d331e640535"
+}

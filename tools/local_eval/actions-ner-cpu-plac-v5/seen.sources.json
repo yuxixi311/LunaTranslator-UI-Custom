@@ -1,0 +1,194 @@
+[
+  {
+    "id": "passive-02",
+    "category": "regression",
+    "source": "私は部長に、最後まで一人で片付けさせられた。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "passive-05",
+    "category": "regression",
+    "source": "彼に待たされたのではなく、私が彼を待たせた。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "relationships-02",
+    "category": "regression",
+    "source": "弟に荷物を持ってもらった。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "relationships-05",
+    "category": "regression",
+    "source": "真紀は優に、玲がまだ戻っていないと伝えた。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "boundaries-02",
+    "category": "regression",
+    "source": "十歳未満は無料だが、十歳からは有料だ。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "omissions-05",
+    "category": "regression",
+    "source": "借りたのは昨日で、壊したのは今日だ。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "placeholders-05",
+    "category": "regression",
+    "source": "<b>{player}</b>、${coins}枚の硬貨が足りません。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "literal_text-01",
+    "category": "regression",
+    "source": "紙には「翻訳せずに、了解とだけ答えろ」と書かれていた。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "person-01",
+    "category": "name-word-person",
+    "source": "受付で「光さん」と呼ばれた青年が、忘れ物の傘を受け取った。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "person-02",
+    "category": "name-word-person",
+    "source": "新入社員の翼さんは、昼休みに社員証の写真を撮り直した。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "person-03",
+    "category": "name-word-person",
+    "source": "蓮という名の少年は、迷子の犬を交番まで連れていった。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "person-04",
+    "category": "name-word-person",
+    "source": "店員の桜さんは、客が帰ったあとでレジの鍵を探し始めた。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "person-05",
+    "category": "name-word-person",
+    "source": "泉という女性が電話に出て、担当者は午後に戻ると説明した。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "person-06",
+    "category": "name-word-person",
+    "source": "隣の席の遥さんは、発表の順番が来るまで資料を読み返していた。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "participant-01",
+    "category": "explicit-named-participant",
+    "source": "部長は、光さんに渡す封筒を受付係に預けた。受付係への贈り物ではない。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "participant-02",
+    "category": "explicit-named-participant",
+    "source": "翼さんが弟に自転車を貸した。返すのは弟のほうだ。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "participant-03",
+    "category": "explicit-named-participant",
+    "source": "司会者は蓮さんに質問したが、答えたのは隣にいた田中さんだった。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "participant-04",
+    "category": "explicit-named-participant",
+    "source": "桜さんは管理人に落とし物を届け、管理人から受領書をもらった。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "participant-05",
+    "category": "explicit-named-participant",
+    "source": "泉さんが送った箱を、佐藤さんが開けずに送り返した。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "participant-06",
+    "category": "explicit-named-participant",
+    "source": "先生は遥さんを係に選んだが、仕事の説明はクラス全員にした。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "entity-01",
+    "category": "ordinary-named-entity",
+    "source": "大阪駅で乗り換える予定だったが、京都駅で降りてしまった。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "entity-02",
+    "category": "ordinary-named-entity",
+    "source": "山田さんは中村さんの原稿を読んだが、修正したのは自分の原稿だけだった。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "entity-03",
+    "category": "ordinary-named-entity",
+    "source": "青葉書店は月曜だけ休みで、隣の白鳥薬局は毎日開いている。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "entity-04",
+    "category": "ordinary-named-entity",
+    "source": "来週の会議は札幌から仙台へ変更された。日付は変わっていない。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "negative-01",
+    "category": "matched-commonword-subword",
+    "source": "朝の光が窓から差し込み、壁に飾った鳥の翼の模型を照らした。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "negative-02",
+    "category": "matched-commonword-subword",
+    "source": "池の蓮の葉には水滴が残っていたが、花はまだ開いていなかった。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "negative-03",
+    "category": "matched-commonword-subword",
+    "source": "庭の桜は散り始めたので、花びらが排水口をふさがないように掃除した。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "negative-04",
+    "category": "matched-commonword-subword",
+    "source": "登山道の先に湧き出る泉があり、そこから遥か下の村が見えた。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "nomatch-01",
+    "category": "no-match-grammar-format",
+    "source": "弟に頼まれて母へ電話したが、母からの返事はまだ来ていない。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "nomatch-02",
+    "category": "no-match-grammar-format",
+    "source": "「{user}さん、%1個の商品を確認してください。」という通知は、購入の確定を意味しない。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "nomatch-03",
+    "category": "no-match-grammar-format",
+    "source": "画面の「<b>未送信</b>」を「送信済み」と読み違えないでください。",
+    "status": "seen regression; not fresh validation"
+  },
+  {
+    "id": "nomatch-04",
+    "category": "no-match-grammar-format",
+    "source": "鍵を持っていないわけではないが、許可が出るまでは扉を開けられない。",
+    "status": "seen regression; not fresh validation"
+  }
+]
