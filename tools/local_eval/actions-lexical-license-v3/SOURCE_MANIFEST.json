@@ -1,0 +1,158 @@
+{
+  "branch": "experiment/luna-actions-lexical-20261005",
+  "files": {
+    "tools/local_eval/actions-lexical-license-v3/PROTOCOL.md": {
+      "bytes": 14058,
+      "sha256": "dc28bd3b41993147a87421d6d7cbc68be0ea995213016a857cc7c37a71e51f59"
+    },
+    "tools/local_eval/actions-lexical-license-v3/actions_runner.py": {
+      "bytes": 20753,
+      "sha256": "c0e679d24cd83785dc603a3fe0e36a052a9b6063ffb767370859a3481f997085"
+    },
+    "tools/local_eval/actions-lexical-license-v3/event_guard.py": {
+      "bytes": 5378,
+      "sha256": "36964e44483fdadfa9ac20112fa61ff7bd37e4393987a3a275a475b30367fe64"
+    },
+    "tools/local_eval/actions-lexical-license-v3/license_policy.py": {
+      "bytes": 12349,
+      "sha256": "15ba123dba36bf00ac717c3ed0cf2aa6e582601c814cf5b12080aca5586353f8"
+    },
+    "tools/local_eval/actions-lexical-license-v3/owned_lifecycle.py": {
+      "bytes": 4652,
+      "sha256": "1af18a7cd9c5ae5771f9d4ea010515bc1818b40eeec1727d40fdffbd44c20799"
+    },
+    "tools/local_eval/actions-lexical-license-v3/run_fake_tests.py": {
+      "bytes": 1556,
+      "sha256": "2173b0bd0fd76ba5415942459bf5a6c51f30eddfd8b4a5ffee009ce86548eb26"
+    },
+    "tools/local_eval/actions-lexical-license-v3/setup_diagnostics.py": {
+      "bytes": 15866,
+      "sha256": "420811b86e46a0a0f8fb66698106aa356a7001ff812c717973294850a9918306"
+    },
+    "tools/local_eval/actions-lexical-license-v3/test_actions_runner.py": {
+      "bytes": 10752,
+      "sha256": "4fcba88bc42d0817e87ad4bc879c4f268d78893e3efe74468e7de0c6a387f345"
+    },
+    "tools/local_eval/actions-lexical-license-v3/test_cli_activation.py": {
+      "bytes": 5564,
+      "sha256": "19c81522591dea62904cfee2bbdfe3ed51c0d9901542a4c2fb5892bb58b51af7"
+    },
+    "tools/local_eval/actions-lexical-license-v3/test_license_policy.py": {
+      "bytes": 16929,
+      "sha256": "2e9165b5f008bd3f17ef0387e26b4ce7f1ace610faeac1555932376b07d0fa31"
+    },
+    "tools/local_eval/actions-lexical-license-v3/test_setup_diagnostics.py": {
+      "bytes": 34819,
+      "sha256": "fb7c9beeacda0d7d1bf12e546df9b00294538d16915a698426ded2feda53cc27"
+    },
+    "tools/local_eval/cloud-lexical-v1/.gitignore": {
+      "bytes": 118,
+      "sha256": "cca94da8f03491ccb3ecfbcac5662c45f6cad94e555fd19f3c7148db8504984b"
+    },
+    "tools/local_eval/cloud-lexical-v1/API_NOTES.md": {
+      "bytes": 1092,
+      "sha256": "7ca428187de9d081502ac906117b72b91d4abec0d2639ab6514e73f040b77877"
+    },
+    "tools/local_eval/cloud-lexical-v1/FIXTURE_PROVENANCE.json": {
+      "bytes": 2433,
+      "sha256": "747651dca7791e223d884a2bdcd5176f446b6fde05b9eacdd86aa9b857c12ebd"
+    },
+    "tools/local_eval/cloud-lexical-v1/PLAN.md": {
+      "bytes": 3557,
+      "sha256": "b10499804708c2e8d09ed623a94db1a400e0e8c07f92f274427402cc18f322e8"
+    },
+    "tools/local_eval/cloud-lexical-v1/PUBLIC_PREPARATION_MANIFEST.json": {
+      "bytes": 1997,
+      "sha256": "2e91dbaa43b627df1b15f03e4f81b998dd34f62a308df49d2ab88e5af0990ab9"
+    },
+    "tools/local_eval/cloud-lexical-v1/PUBLIC_SOURCE_MANIFEST.json": {
+      "bytes": 3393,
+      "sha256": "f1c42c5f3550d4ac736de2582c175de6812ae464bf9d5778619a822f9e598ce3"
+    },
+    "tools/local_eval/cloud-lexical-v1/PYPI_PINS.json": {
+      "bytes": 4493,
+      "sha256": "06d834b8c68ad0b58916b19696810a87a654d384132d1dda07cb17fa4c87f5d5"
+    },
+    "tools/local_eval/cloud-lexical-v1/README.md": {
+      "bytes": 3498,
+      "sha256": "c214497552f9f58757d7a8f6e0f9abf1bd19802b97b66094fa435ba815d8aac4"
+    },
+    "tools/local_eval/cloud-lexical-v1/RUNNER.md": {
+      "bytes": 4481,
+      "sha256": "2054ea5758d17c5d29eeffe50c6409b1294fd6f960bb6cea1b1841cf307190d8"
+    },
+    "tools/local_eval/cloud-lexical-v1/SOURCE_VERIFICATION.md": {
+      "bytes": 2441,
+      "sha256": "18c8260390b2310541e7f051be186ff4a23983ba8983002aefcdd5fa5cc8d6b8"
+    },
+    "tools/local_eval/cloud-lexical-v1/canon.json": {
+      "bytes": 432,
+      "sha256": "7cc5bdb3626dd4e781070dca708428c0ef81048d72b067a71f9e15c795814337"
+    },
+    "tools/local_eval/cloud-lexical-v1/diagnostics.expected.json": {
+      "bytes": 6488,
+      "sha256": "db51c5ea2efd5f20729809ca21cbd4a3fdb900521029218d7c673c7003e349db"
+    },
+    "tools/local_eval/cloud-lexical-v1/diagnostics.manifest.json": {
+      "bytes": 1127,
+      "sha256": "295e652baa140d33b47502e314702fec9086a20f09656cd51543db6bbce4048a"
+    },
+    "tools/local_eval/cloud-lexical-v1/diagnostics.sources.json": {
+      "bytes": 2474,
+      "sha256": "5a02d97443f724e974a12aa18a972138314440f36f358c488df151c4aebea9e9"
+    },
+    "tools/local_eval/cloud-lexical-v1/lexical_policy.py": {
+      "bytes": 1993,
+      "sha256": "a81041b985a10077cf4745bd220ad9219fd4070201352a87623f5325117d1523"
+    },
+    "tools/local_eval/cloud-lexical-v1/license_sources/SudachiDict-20260723-LEGAL": {
+      "bytes": 6037,
+      "sha256": "725a8776b38e058b185e905594bc9a2437dbf3787df022fffeefedb9a84e4665"
+    },
+    "tools/local_eval/cloud-lexical-v1/license_sources/SudachiDict-20260723-LICENSE-2.0.txt": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "tools/local_eval/cloud-lexical-v1/license_sources/SudachiPy-0.6.11-LICENSE": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "tools/local_eval/cloud-lexical-v1/pilot_runner.py": {
+      "bytes": 31015,
+      "sha256": "e7dcabc66c3e27d54ee220a344e2e6b2d62e6383c4d5d6fbe911760c277f846d"
+    },
+    "tools/local_eval/cloud-lexical-v1/seen.sources.json": {
+      "bytes": 7290,
+      "sha256": "51bdc8829a59b50e2ac3c82932b9421734dada333dcc6c6ef58fde78974ab72d"
+    },
+    "tools/local_eval/cloud-lexical-v1/test_lexical_policy.py": {
+      "bytes": 1563,
+      "sha256": "06d97e623a6a8f6301797fd205c0bc3e24a07f9f76fede61508186e8fd06f39c"
+    },
+    "tools/local_eval/cloud-lexical-v1/test_pilot_runner.py": {
+      "bytes": 14303,
+      "sha256": "6d86896ca7ff39eabdab0a97a3143cf47ea654387246a3625dd29e178d834ab3"
+    },
+    "tools/local_eval/cloud-lexical-v1/test_public_snapshot.py": {
+      "bytes": 1804,
+      "sha256": "ec2f9f4ad2990dabcea2c5cf9c682a802b1569e9ac7fe1fd04dc2ac7535dd6fd"
+    }
+  },
+  "job_limit_minutes": 15,
+  "parser_calls_planned": 48,
+  "phase_limits_seconds": {
+    "assess": 60,
+    "download": 240,
+    "parse": 60,
+    "setup": 60
+  },
+  "prior_trigger_D2": "2bf3da881b74023ed46750e982991c9423a3bf15",
+  "protocol": "luna-actions-lexical-license-20261005-v3",
+  "public_base": "d452ac242211991ddd3439cd451c39e5d988c249",
+  "repository": "yuxixi311/LunaTranslator-UI-Custom",
+  "runtime": "preinstalled official tool-cache CPython3.12.14 only; no fallback",
+  "schema": 1,
+  "sealed_license_inventory_sha256": "61518e07bd305d742485d45099f0dce99cac4c20792d20ad5e9b723109e6ad5a",
+  "status": "SOURCE-ONLY ACTIVATION PREPARATION; FINAL REVIEW AND RELEASE PENDING",
+  "workflow": ".github/workflows/luna-lexical-license-v3.yml"
+}
