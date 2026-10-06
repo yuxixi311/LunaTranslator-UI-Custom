@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "reviewed_at_utc": "2026-10-06T14:13:00Z",
+  "verdict": "PASS_EXACT_PUBLIC_RUNTIME_INPUT_PROJECTIONS",
+  "execution_authorized": false,
+  "projections": {
+    "sources87.json": {
+      "sha256": "6eab3320dac90c215bb4cefad4dd50d5b1a09a1f1c028ec9ba90be4fe12c8ac7",
+      "bytes": 9753,
+      "rows": 87,
+      "exact_projection": true,
+      "duplicate_keys_or_nonfinite_json": false
+    },
+    "fresh_coverage32.json": {
+      "sha256": "1733788dbcb99885cf0278227eea92e5ee23309a5b67a8aa190745342a088e24",
+      "bytes": 5427,
+      "rows": 32,
+      "exact_projection": true,
+      "duplicate_keys_or_nonfinite_json": false
+    },
+    "schedule87.json": {
+      "sha256": "ac0f27a8e2d2632d7f8c1643a3088e5c53c6ea004584ab06df609591cf2ffe55",
+      "bytes": 6354,
+      "rows": 87,
+      "exact_projection": true,
+      "duplicate_keys_or_nonfinite_json": false
+    }
+  },
+  "source_bindings": {
+    "fresh_sources": {
+      "relative_file": "luna-sparse-example-fixtures-20261006/SOURCES.frozen.json",
+      "sha256": "bb66052d9e860473a80e728dfdf5c91106c73146838321e4064a030ea0ed4480",
+      "bytes": 7072
+    },
+    "regression55": {
+      "relative_file": "luna-sparse-example-design-20261006/REGRESSION55_SOURCES.json",
+      "sha256": "7b01d892e62579fd7c592cc8f532a0f7391ef129891021ba60744c2da58529f8",
+      "bytes": 15714
+    },
+    "schedule_v2": {
+      "relative_file": "luna-sparse-example-design-20261006/PAIR_SCHEDULE_V2.json",
+      "sha256": "90a9612036d884b939ef9c79930e6258ea11b8e13f908f73b99d41a99a871e17",
+      "bytes": 20950
+    }
+  },
+  "verified": [
+    "All 87 source IDs and strings preserve exact original order and bytes with no rewriting.",
+    "All 32 coverage rows preserve family, role and challenge_primary_type; only the two declared control-enum aliases are applied.",
+    "Carrier and challenge surface expectations are surface_eligible; control expectations preserve their declared observable reason.",
+    "All 87 schedule records exactly project the separately reviewed v2 id/arm_order sequence.",
+    "Strict row schemas contain no answers, private criteria, private paths or extra fields.",
+    "Pretty-file hashes are byte hashes; no assumption was made that they equal the core canonical-serialization hashes."
+  ],
+  "review_boundary": {
+    "semantic_grading": false,
+    "private_criteria_read": false,
+    "model_tokenizer_network_or_child_process_calls": 0,
+    "source_files_modified": false
+  }
+}

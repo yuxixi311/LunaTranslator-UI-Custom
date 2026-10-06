@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "reviewed_at_utc": "2026-10-06T15:05:00Z",
+  "verdict": "SUPPORTED_NARROW_OPERATIONAL_CLARIFICATION_FOR_SEPARATE_ENABLED_DERIVATIVE_REVIEW",
+  "execution_or_publication_authorized": false,
+  "accepted_contract": [
+    "Use only the already selected standard GitHub-hosted Ubuntu 24.04 VM, retaining the 30-minute job timeout and dedicated per-job VM lifecycle as outer residual containment.",
+    "Normal owned-child cleanup must still be confirmed within the unchanged 20-second reserve. Every helper resource/time and scientific success gate remains unchanged, including the 600-second owned lifetime.",
+    "Uncertain pre-exec/spawn, uninterruptible OS or reap outcomes remain failed/incomplete with cleanup unconfirmed. The platform backstop cannot convert them into a successful 20-second cleanup or 600-second gate pass.",
+    "Do not claim an exact VM teardown timestamp, a custom process-group/cgroup guarantee, or verified termination of an unknown PID.",
+    "Keep the current minimal environments. No RUNNER_TRACKING_ID change, custom containment, installation or new permission is part of this clarification."
+  ],
+  "primary_sources": [
+    {
+      "url": "https://docs.github.com/en/actions/how-tos/manage-runners/github-hosted-runners/use-github-hosted-runners",
+      "supports": "GitHub provisions a VM for a hosted job and decommissions it after the job finishes."
+    },
+    {
+      "url": "https://docs.github.com/en/actions/concepts/runners/github-hosted-runners",
+      "supports": "Standard non-single-CPU GitHub-hosted runners are new VMs; single-CPU runners are a distinct shared-VM container case."
+    },
+    {
+      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idtimeout-minutes",
+      "supports": "The job timeout triggers automatic cancellation. It does not state a precise physical teardown deadline."
+    },
+    {
+      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-cancellation",
+      "supports": "Cancellation has staged signal/escalation handling and a service cancellation period. It is not an owned-child reap receipt."
+    },
+    {
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Runner.Common/Constants.cs#L39",
+      "supports": "The process-tracking environment key is RUNNER_TRACKING_ID."
+    },
+    {
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Runner.Worker/JobExtension.cs#L536-L550",
+      "supports": "The examined runner initializes a per-job marker and a pre-job process snapshot when process cleanup is enabled."
+    },
+    {
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Runner.Worker/JobExtension.cs#L803-L847",
+      "supports": "Final marker-based cleanup selects matching new processes, catches failures and has no explicit wait/reap confirmation in that loop."
+    },
+    {
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Runner.Common/ProcessExtensions.cs#L267-L290",
+      "supports": "The Linux marker lookup reads the target process environment; an omitted marker cannot match."
+    },
+    {
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Runner.Sdk/ProcessInvoker.cs#L774-L812",
+      "supports": "The examined Unix cancellation implementation targets its tracked process; its method name is not proof of an independently verified orphan-descendant cleanup."
+    }
+  ],
+  "runner_source_version_limit": "Implementation references examine release v2.337.0, commit 397b032cbf865e9c3ddfab89d533ec19325e1273. They do not verify the version installed in any future job.",
+  "local_source_findings": {
+    "provider": "Pinned actions_policy requires github-hosted/Linux/X64/ubuntu-24.04/ubuntu24 and excludes job containers and namespace wrappers.",
+    "workflow": "The inherited WORKFLOW_TEMPLATE.yml.in specifies runs-on ubuntu-24.04 and timeout-minutes 30. The actual new workflow must separately retain and bind those values.",
+    "owner_controller": "OwnedSupervisor retains the first failure time and attempts known handles under its cleanup deadline. AttemptControl reports unresolved blocking/coordinator outcomes as incomplete and cleanup_confirmed=false.",
+    "tracking_marker": "The new helper environment contains LANG/LC_ALL only; inherited child_spec contains LANG/LC_ALL/TZ only. Neither forwards RUNNER_TRACKING_ID, so marker-based cleanup is excluded from this containment argument.",
+    "child_guard": "The reviewed child alarm/EOF guard begins once Python reaches the bootstrap body. It does not establish pre-exec or uninterruptible-kernel containment."
+  },
+  "minimal_options": [
+    {
+      "selected": true,
+      "option": "Retain current minimal child environments and explicitly rely only on the documented hosted-job/VM lifecycle as residual platform containment, while preserving strict owned success gates and cleanup-unknown failures."
+    },
+    {
+      "selected": false,
+      "option": "A future separately reviewed narrow allowlist change could preserve the inherited tracking marker as an additional best-effort cleanup aid. It would still not prove the 20-second or 600-second gates and is not needed for the selected VM-lifecycle argument."
+    }
+  ],
+  "required_enabled_derivative_checks": [
+    "Bind the exact standard hosted-runner/provider evidence and immutable workflow with the retained 30-minute timeout; do not substitute a self-hosted, single-CPU shared-container or custom runner.",
+    "Preserve cleanup_confirmed=false on every unknown outcome and keep normal success gates unchanged.",
+    "Review exact new claim/host/worker packet/dependency closure and source changes before activation; do not infer activation permission from this research."
+  ],
+  "local_bindings": {
+    "guarded_runtime.py": {
+      "relative_file": "luna-sense-v5-verified-activation-20261006/published_source/guarded_runtime.py",
+      "sha256": "1c7df0ca69a2f62c8ff472846452e8f9158320eba6ad6cefccccee853f22cd91",
+      "bytes": 43011
+    },
+    "attempt_control.py": {
+      "relative_file": "luna-sense-v5-verified-activation-20261006/published_source/attempt_control.py",
+      "sha256": "b4bac79f03e8ed9d9c368e9e0f64177f84a544cc30c952ff344735779ea1cf12",
+      "bytes": 6411
+    },
+    "actions_policy.py": {
+      "relative_file": "luna-sense-v5-verified-activation-20261006/published_source/actions_policy.py",
+      "sha256": "8ab5898785ef1327fe474accacd2a36b910de95c07d7605cdf16318c0727b63b",
+      "bytes": 4097
+    },
+    "actions_entry.py": {
+      "relative_file": "luna-sense-v5-verified-activation-20261006/published_source/actions_entry.py",
+      "sha256": "28744f887c41434b192db30f980debd6f9d94222df6a4e70ba6640a3ff6800d3",
+      "bytes": 8834
+    },
+    "verified_bootstrap.py": {
+      "relative_file": "luna-sense-v5-verified-activation-20261006/published_source/verified_bootstrap.py",
+      "sha256": "bd96db27c30612eff2544b2d40292f885dce0af5ccbb1560504920d2f8c64d6f",
+      "bytes": 5872
+    },
+    "cpu_harness.py": {
+      "relative_file": "luna-sense-v5-verified-activation-20261006/published_source/cpu_harness.py",
+      "sha256": "6a806157942c5d3701fe4a94afd8aabdf73914ed23570c2a99c466de817f4d92",
+      "bytes": 44806
+    },
+    "WORKFLOW_TEMPLATE.yml.in": {
+      "relative_file": "luna-sense-v5-verified-activation-20261006/published_source/WORKFLOW_TEMPLATE.yml.in",
+      "sha256": "a761a23deadb7c880cbb9a273eb96ba11dfa7c4a516778962f56201b3efaaecd",
+      "bytes": 2045
+    }
+  },
+  "review_boundary": {
+    "read_only_primary_source_research": true,
+    "live_process_network_probes": 0,
+    "actions_dispatches_or_model_calls": 0,
+    "private_criteria_read": false,
+    "guard_removal_or_environment_changes": false,
+    "custom_processgroup_cgroup_or_security_changes": false
+  }
+}

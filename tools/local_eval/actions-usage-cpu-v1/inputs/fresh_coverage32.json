@@ -1,0 +1,290 @@
+[
+  {
+    "id": "N001",
+    "family": "wb01",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N002",
+    "family": "wb01",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N003",
+    "family": "wb01",
+    "role": "challenge",
+    "challenge_type": "participant_assignment",
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N004",
+    "family": "wb01",
+    "role": "control",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "competing_full_anchors"
+    ]
+  },
+  {
+    "id": "N005",
+    "family": "wb02",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N006",
+    "family": "wb02",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N007",
+    "family": "wb02",
+    "role": "challenge",
+    "challenge_type": "polarity",
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N008",
+    "family": "wb02",
+    "role": "control",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "protected_structure"
+    ]
+  },
+  {
+    "id": "N009",
+    "family": "wb03",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N010",
+    "family": "wb03",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N011",
+    "family": "wb03",
+    "role": "challenge",
+    "challenge_type": "metalinguistic",
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N012",
+    "family": "wb03",
+    "role": "control",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "selected_focus_outside_anchor"
+    ]
+  },
+  {
+    "id": "N013",
+    "family": "wb04",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N014",
+    "family": "wb04",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N015",
+    "family": "wb04",
+    "role": "challenge",
+    "challenge_type": "source_ambiguity",
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N016",
+    "family": "wb04",
+    "role": "control",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "repeated_anchor"
+    ]
+  },
+  {
+    "id": "N017",
+    "family": "wb05",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N018",
+    "family": "wb05",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N019",
+    "family": "wb05",
+    "role": "challenge",
+    "challenge_type": "literal",
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N020",
+    "family": "wb05",
+    "role": "control",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "no_match"
+    ]
+  },
+  {
+    "id": "N021",
+    "family": "wb06",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N022",
+    "family": "wb06",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N023",
+    "family": "wb06",
+    "role": "challenge",
+    "challenge_type": "participant_assignment",
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N024",
+    "family": "wb06",
+    "role": "control",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "competing_full_anchors"
+    ]
+  },
+  {
+    "id": "N025",
+    "family": "wb07",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N026",
+    "family": "wb07",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N027",
+    "family": "wb07",
+    "role": "challenge",
+    "challenge_type": "otherwise_inappropriate",
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N028",
+    "family": "wb07",
+    "role": "control",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "selected_focus_outside_anchor"
+    ]
+  },
+  {
+    "id": "N029",
+    "family": "wb08",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N030",
+    "family": "wb08",
+    "role": "carrier",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N031",
+    "family": "wb08",
+    "role": "challenge",
+    "challenge_type": "polarity",
+    "expected_surface_reasons": [
+      "surface_eligible"
+    ]
+  },
+  {
+    "id": "N032",
+    "family": "wb08",
+    "role": "control",
+    "challenge_type": null,
+    "expected_surface_reasons": [
+      "no_match"
+    ]
+  }
+]

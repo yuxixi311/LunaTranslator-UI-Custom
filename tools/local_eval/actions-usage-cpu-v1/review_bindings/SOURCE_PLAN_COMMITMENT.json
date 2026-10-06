@@ -1,0 +1,48 @@
+{
+  "schema": "luna-usage-source-plan-commitment-v1",
+  "status": "pre_output_scientific_and_operational_scope",
+  "bindings": {
+    "scientific_proposal": {
+      "filename": "PROTOCOL_PROPOSAL.md",
+      "sha256": "9e2061fbe68c6607e90cb5c8c80195e81c9539ba0faa10b532307f3a7184cf43"
+    },
+    "scope_selection": {
+      "filename": "EXECUTION_SCOPE_SELECTION.md",
+      "sha256": "bef7a4952d675fd8bc853b819ac455803a7543d992a5eaec80692249b0fbdd64"
+    },
+    "exact_inventory": {
+      "filename": "FINAL_SOURCE_INVENTORY_SELECTION.md",
+      "sha256": "7b3dcedd7dbb384d025c870f41f9f3ca5ee4b53e42981260a8cc2f3518aab34f"
+    },
+    "operational_definitions": {
+      "filename": "OPERATIONAL_BINDING_DRAFT.md",
+      "sha256": "f618235adcfd2169c3bf021fe1c75167ef4db2baf33e48e6013fd46a74b5703f"
+    },
+    "schedule": {
+      "filename": "PAIR_SCHEDULE_V2.json",
+      "sha256": "90a9612036d884b939ef9c79930e6258ea11b8e13f908f73b99d41a99a871e17"
+    },
+    "platform_containment_review": {
+      "filename": "PLATFORM_CONTAINMENT_REVIEW.json",
+      "sha256": "1a777e5b4a5fb5dbd8a74504f4e02cad5c8c299277ff2c1a3eacf0fdb3c7563a"
+    },
+    "persistent_helper_proposal": {
+      "filename": "PERSISTENT_HELPER_AMENDMENT_PROPOSAL.md",
+      "sha256": "f5fc65a31677360f5125365d55e5f050aec16ad5c27ed9dfa72543b33d5a65ac"
+    },
+    "persistent_helper_review": {
+      "filename": "PERSISTENT_HELPER_OPERATIONAL_REVIEW.json",
+      "sha256": "c5a73d8db0093e4ae173e93749cdfaa38e0f1b15870f6dd9d6d0d101ce1195bd"
+    }
+  },
+  "frozen_runtime_bank_sha256": "9ef164ee324785815158ff04025ee3fb14fbf01a461257834060cbd96d257b8a",
+  "frozen_policy_sha256": "f94a9af78a2c1694f432c4a12850fd0e27e0c6d067180810e1dc87064d650df9",
+  "private_criteria_commitment": "95a06135e32cd5f55d17b93ca986c80c9881b88c1ecd4f38661240178335b3a2",
+  "limits": {
+    "pairs": 87,
+    "completions": 174,
+    "loopback_requests": 398,
+    "surface_eligible": 24
+  },
+  "execution_release": false
+}

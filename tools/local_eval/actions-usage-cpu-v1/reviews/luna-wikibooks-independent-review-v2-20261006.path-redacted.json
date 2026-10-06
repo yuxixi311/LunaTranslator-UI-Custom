@@ -1,0 +1,335 @@
+{
+  "review_id": "luna-wikibooks-independent-bilingual-source-review-v2-20261006",
+  "written_at_utc": "2026-10-06T13:07:22.764261+00:00",
+  "reviewer_class": "Independent model-assisted review; not professional human validation",
+  "reviewed_bank": {
+    "path": "bank.draft.json",
+    "sha256": "6e001e0fc8b73ed90656eb925811f46e43813c5224b026080517950cdf70156e"
+  },
+  "supersedes_operational_verdict_of": {
+    "path": "luna-wikibooks-independent-review-20261006.json",
+    "sha256": "5830ccfd7bbbb25e6e852c3dea09261ff6c72356dc8bedf452f8fa2e5aa2ac8f",
+    "prior_wb08": "UNCERTAIN with incomplete focus metadata",
+    "revision_reason": "A real modal-containing anchor and fixed modal focus are now present and independently verified. Parent clarified that the protocol preserves alternative source-permitted readings and never treats the bank-selected lexical sense as uniquely correct. Prior source-pair fidelity and the pretty/clean limitation were retained, not contradicted."
+  },
+  "scope": "Source and bilingual findings inherit the bounded two-page-plus-license read-only verification in the prior receipt. This revision reads only the updated bank package and this reviewer’s own prior receipt. No old heldout data, ratings, private criteria, root reviews, fixtures, model/tokenizer, install, download or publication was used. The draft package was not modified.",
+  "current_read_artifact_hashes": {
+    "bank.draft.json": "6e001e0fc8b73ed90656eb925811f46e43813c5224b026080517950cdf70156e",
+    "runtime_bank.json": "11b6a4c253e849477bcf05ede095c0b859ee57a9d9bfeec0296b5e51e215cf89",
+    "projection-binding.json": "662648e8a39ebdbbd43f00dae9430268bd5a4435a5f2df980acf8e63877ab188",
+    "selection-report.md": "6c9c91d8a9a48ec681220409c85a63ed0af4e73c15550e1a294636e3853101b1"
+  },
+  "source_and_license_verdict": "ACCEPT with the same explicit cached-current-page, displayed-revision, uninspected-history and visible-import-notice limitations as prior receipt. No immutable-byte verification or fresh-origin claim. Preserve source/history URLs, CC BY-SA 4.0 link, attribution, conversion notice and applicable visible imported-source notices.",
+  "per_pair": [
+    {
+      "id": "wb01",
+      "verdict": "ACCEPT",
+      "reason": "Complete natural clauses preserve the cinema location and film-watching action. Both languages leave the subject implicit; Chinese does not force a tense absent from the Japanese nonpast context.",
+      "source_pair_hash_unchanged_and_recomputed": true,
+      "source_excerpt_hash_unchanged_and_recomputed": true,
+      "converted_target_reconstructed_from_previously_reviewed_changes_and_unchanged": true,
+      "all_positions_and_target_offsets_exact": true,
+      "mapped_position_count": 8,
+      "anchor": "映画館で映画",
+      "designated_focus": "で",
+      "offset_convention": "Unicode code points, 0-based half-open in original Japanese, including punctuation",
+      "anchor_span": [
+        0,
+        6
+      ],
+      "focus_span_in_source": [
+        3,
+        4
+      ],
+      "focus_span_within_anchor": [
+        3,
+        4
+      ],
+      "anchor_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_anchor": 1,
+      "focus_nested_in_anchor": true,
+      "anchor_contains_context_beyond_focus": true,
+      "anchor_matches_only_own_record": true,
+      "codepoint_caps_pass": true
+    },
+    {
+      "id": "wb02",
+      "verdict": "ACCEPT",
+      "reason": "Complete natural causal sequence preserves cold as the reason and completed window-closing, including Japanese past and Chinese 了. No material addition or omission.",
+      "source_pair_hash_unchanged_and_recomputed": true,
+      "source_excerpt_hash_unchanged_and_recomputed": true,
+      "converted_target_reconstructed_from_previously_reviewed_changes_and_unchanged": true,
+      "all_positions_and_target_offsets_exact": true,
+      "mapped_position_count": 11,
+      "anchor": "寒いので、窓",
+      "designated_focus": "ので",
+      "offset_convention": "Unicode code points, 0-based half-open in original Japanese, including punctuation",
+      "anchor_span": [
+        0,
+        6
+      ],
+      "focus_span_in_source": [
+        2,
+        4
+      ],
+      "focus_span_within_anchor": [
+        2,
+        4
+      ],
+      "anchor_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_anchor": 1,
+      "focus_nested_in_anchor": true,
+      "anchor_contains_context_beyond_focus": true,
+      "anchor_matches_only_own_record": true,
+      "codepoint_caps_pass": true
+    },
+    {
+      "id": "wb03",
+      "verdict": "ACCEPT",
+      "reason": "Complete conditional plus consequent preserves eating conditional on good taste. Implicit subject and object are permissible in both languages; Chinese 就 naturally marks the consequence.",
+      "source_pair_hash_unchanged_and_recomputed": true,
+      "source_excerpt_hash_unchanged_and_recomputed": true,
+      "converted_target_reconstructed_from_previously_reviewed_changes_and_unchanged": true,
+      "all_positions_and_target_offsets_exact": true,
+      "mapped_position_count": 9,
+      "anchor": "おいしければ",
+      "designated_focus": "ば",
+      "offset_convention": "Unicode code points, 0-based half-open in original Japanese, including punctuation",
+      "anchor_span": [
+        0,
+        6
+      ],
+      "focus_span_in_source": [
+        5,
+        6
+      ],
+      "focus_span_within_anchor": [
+        5,
+        6
+      ],
+      "anchor_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_anchor": 1,
+      "focus_nested_in_anchor": true,
+      "anchor_contains_context_beyond_focus": true,
+      "anchor_matches_only_own_record": true,
+      "codepoint_caps_pass": true
+    },
+    {
+      "id": "wb04",
+      "verdict": "ACCEPT",
+      "reason": "Complete negative statement preserves emphatic zero degree of cold. Chinese 一點也不 naturally conveys 少しも plus negation; the politeness of ありません need not be lexicalized in this neutral Chinese clause.",
+      "source_pair_hash_unchanged_and_recomputed": true,
+      "source_excerpt_hash_unchanged_and_recomputed": true,
+      "converted_target_reconstructed_from_previously_reviewed_changes_and_unchanged": true,
+      "all_positions_and_target_offsets_exact": true,
+      "mapped_position_count": 6,
+      "anchor": "少しも寒く",
+      "designated_focus": "少しも",
+      "offset_convention": "Unicode code points, 0-based half-open in original Japanese, including punctuation",
+      "anchor_span": [
+        0,
+        5
+      ],
+      "focus_span_in_source": [
+        0,
+        3
+      ],
+      "focus_span_within_anchor": [
+        0,
+        3
+      ],
+      "anchor_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_anchor": 1,
+      "focus_nested_in_anchor": true,
+      "anchor_contains_context_beyond_focus": true,
+      "anchor_matches_only_own_record": true,
+      "codepoint_caps_pass": true
+    },
+    {
+      "id": "wb05",
+      "verdict": "ACCEPT",
+      "reason": "Complete comparison preserves apples as the compared subject, mandarins as the standard, and sweetness as the property. 橘子 is a natural equivalent of みかん in this educational example.",
+      "source_pair_hash_unchanged_and_recomputed": true,
+      "source_excerpt_hash_unchanged_and_recomputed": true,
+      "converted_target_reconstructed_from_previously_reviewed_changes_and_unchanged": true,
+      "all_positions_and_target_offsets_exact": true,
+      "mapped_position_count": 7,
+      "anchor": "みかんより甘い",
+      "designated_focus": "より",
+      "offset_convention": "Unicode code points, 0-based half-open in original Japanese, including punctuation",
+      "anchor_span": [
+        4,
+        11
+      ],
+      "focus_span_in_source": [
+        7,
+        9
+      ],
+      "focus_span_within_anchor": [
+        3,
+        5
+      ],
+      "anchor_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_anchor": 1,
+      "focus_nested_in_anchor": true,
+      "anchor_contains_context_beyond_focus": true,
+      "anchor_matches_only_own_record": true,
+      "codepoint_caps_pass": true
+    },
+    {
+      "id": "wb06",
+      "verdict": "ACCEPT",
+      "reason": "Complete statement preserves morning, restriction to bread, and completed eating. The Chinese only-scope naturally attaches to the food in this context; no sentence-text adaptation is proposed.",
+      "source_pair_hash_unchanged_and_recomputed": true,
+      "source_excerpt_hash_unchanged_and_recomputed": true,
+      "converted_target_reconstructed_from_previously_reviewed_changes_and_unchanged": true,
+      "all_positions_and_target_offsets_exact": true,
+      "mapped_position_count": 8,
+      "anchor": "パンだけ食べ",
+      "designated_focus": "だけ",
+      "offset_convention": "Unicode code points, 0-based half-open in original Japanese, including punctuation",
+      "anchor_span": [
+        3,
+        9
+      ],
+      "focus_span_in_source": [
+        5,
+        7
+      ],
+      "focus_span_within_anchor": [
+        2,
+        4
+      ],
+      "anchor_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_anchor": 1,
+      "focus_nested_in_anchor": true,
+      "anchor_contains_context_beyond_focus": true,
+      "anchor_matches_only_own_record": true,
+      "codepoint_caps_pass": true
+    },
+    {
+      "id": "wb07",
+      "verdict": "ACCEPT",
+      "reason": "Complete concessive relation preserves having time despite not studying. The source immediately presents this example under concessive ながら; 儘管…卻 is aligned. All six simplifications are unambiguous here, including 儘→尽 in 儘管.",
+      "source_pair_hash_unchanged_and_recomputed": true,
+      "source_excerpt_hash_unchanged_and_recomputed": true,
+      "converted_target_reconstructed_from_previously_reviewed_changes_and_unchanged": true,
+      "all_positions_and_target_offsets_exact": true,
+      "mapped_position_count": 11,
+      "anchor": "時間がありながら",
+      "designated_focus": "ながら",
+      "offset_convention": "Unicode code points, 0-based half-open in original Japanese, including punctuation",
+      "anchor_span": [
+        0,
+        8
+      ],
+      "focus_span_in_source": [
+        5,
+        8
+      ],
+      "focus_span_within_anchor": [
+        5,
+        8
+      ],
+      "anchor_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_anchor": 1,
+      "focus_nested_in_anchor": true,
+      "anchor_contains_context_beyond_focus": true,
+      "anchor_matches_only_own_record": true,
+      "codepoint_caps_pass": true
+    },
+    {
+      "id": "wb08",
+      "verdict": "ACCEPT",
+      "reason": "ACCEPT as an intact natural source-permitted rendering and modal-context exemplar. The original Chinese selects a valid pretty/attractive reading; it is not invented or demonstrably wrong. The revised anchor contains the modal でしょう and concrete bag/predicate context, matching conjecture_confirmation. 綺麗 still permits pretty/attractive and clean. This acceptance neither claims unique lexical disambiguation nor licenses treating another source-permitted baseline reading as wrong.",
+      "source_pair_hash_unchanged_and_recomputed": true,
+      "source_excerpt_hash_unchanged_and_recomputed": true,
+      "converted_target_reconstructed_from_previously_reviewed_changes_and_unchanged": true,
+      "all_positions_and_target_offsets_exact": true,
+      "mapped_position_count": 10,
+      "anchor": "バッグ、綺麗でしょう",
+      "designated_focus": "でしょう",
+      "offset_convention": "Unicode code points, 0-based half-open in original Japanese, including punctuation",
+      "anchor_span": [
+        2,
+        12
+      ],
+      "focus_span_in_source": [
+        8,
+        12
+      ],
+      "focus_span_within_anchor": [
+        6,
+        10
+      ],
+      "anchor_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_source": 1,
+      "focus_occurrences_in_own_anchor": 1,
+      "focus_nested_in_anchor": true,
+      "anchor_contains_context_beyond_focus": true,
+      "anchor_matches_only_own_record": true,
+      "codepoint_caps_pass": true
+    }
+  ],
+  "cross_anchor_and_focus_findings": {
+    "all_full_anchors_distinct_and_locally_unique": true,
+    "no_anchor_contained_in_another": true,
+    "literal_cross_record_focus_occurrences": {
+      "wb01_focus_で": {
+        "wb02_source_offsets": [
+          3,
+          4
+        ],
+        "wb05_source_offsets": [
+          11,
+          12
+        ],
+        "wb08_source_offsets": [
+          8,
+          9
+        ]
+      }
+    },
+    "scope_warning": "These extra で occurrences are inside ので, です, and でしょう. They must not be silently treated as a different morphological form if the protocol promises literal matching. The candidate-specific outside-anchor rule needs consistent selected-candidate scope; broader abstention must be explicitly intended. Full anchors themselves remain distinct.",
+    "semantic_limit": "A literal anchor can occur in an inappropriate, modified or competing context. Local uniqueness is not proof of semantic applicability. wb04 anchor omits the full negative ending; wb07 concession relies on the complete sentence; wb08 retains lexical ambiguity. Matched-inappropriate and ambiguous controls remain necessary, and another valid baseline reading must remain acceptable."
+  },
+  "runtime_projection": {
+    "verdict": "ACCEPT",
+    "sha256": "11b6a4c253e849477bcf05ede095c0b859ee57a9d9bfeec0296b5e51e215cf89",
+    "bytes": 1602,
+    "all_eight_records_preserved": true,
+    "fields_exactly_match_full_bank": true,
+    "projection_binding_hashes_and_size_verified": true,
+    "complete_position_maps_verified": 70
+  },
+  "metadata_only_note": "wb08 source_section should be understood as the 推量形 table row inside 形容動詞的簡體、敬體及其應用; it is not a nested heading there. Anchor/focus offsets are explicitly recorded in this receipt; draft fields themselves identify text rather than storing those offsets.",
+  "remaining_gates": [
+    "Final bank and protocol freeze must precede any new fixtures.",
+    "This receipt does not certify the matcher implementation or frozen protocol, which was outside the permitted local read scope.",
+    "The entire actual rendered prefix still needs deployment-tokenizer measurement of <=16 tokens AND <=40% of exact baseline prompt. Character counts and 1,602-byte runtime size do not establish token feasibility."
+  ],
+  "summary": {
+    "ACCEPT": [
+      "wb01",
+      "wb02",
+      "wb03",
+      "wb04",
+      "wb05",
+      "wb06",
+      "wb07",
+      "wb08"
+    ],
+    "REJECT": [],
+    "UNCERTAIN": [],
+    "source_bilingual_and_fixed_cue_metadata_accepted": true,
+    "model_use_or_fixture_creation_authorized_by_this_receipt": false,
+    "draft_frozen_by_this_review": false
+  }
+}

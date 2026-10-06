@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "root": "../luna-sense-v5-verified-activation-20261006/published_source",
+  "use": "Exact reused operational guard source; prior scientific/row-specific entry points must not be invoked for this experiment. No old source fixtures are loaded.",
+  "files": [
+    {
+      "file": "cpu_harness.py",
+      "bytes": 44806,
+      "sha256": "6a806157942c5d3701fe4a94afd8aabdf73914ed23570c2a99c466de817f4d92"
+    },
+    {
+      "file": "guarded_runtime.py",
+      "bytes": 43011,
+      "sha256": "1c7df0ca69a2f62c8ff472846452e8f9158320eba6ad6cefccccee853f22cd91"
+    },
+    {
+      "file": "isolated_helper.py",
+      "bytes": 3749,
+      "sha256": "276a7a63d69b70b8810f6acdde97fb795b6671eb176d467c533d8f4d8f088366"
+    },
+    {
+      "file": "evidence_validation.py",
+      "bytes": 7879,
+      "sha256": "c41506ecd9aee069e3edacbde8ec29b257bfe4910a3bef6338a32b94ec1f210a"
+    },
+    {
+      "file": "public_exports.py",
+      "bytes": 11316,
+      "sha256": "328a4bdc4533bfe64157f6bf6c1ca4533f85deae2b2808d0768df03f00e54003"
+    },
+    {
+      "file": "private_exports_source.py",
+      "bytes": 2161,
+      "sha256": "6056e1b14aa7bdf017ad7b0fc7ca4f76a01b16e57931333f5186e9a2ddcd6157"
+    },
+    {
+      "file": "final_coordinator.py",
+      "bytes": 23621,
+      "sha256": "072d1ffc43364657f8ab52e855eb0179f495ed5c3448f6e3dc8719d536d74605"
+    },
+    {
+      "file": "kit_worker.py",
+      "bytes": 4503,
+      "sha256": "dcba45c8aef1468696db2f9500cb22a52652756739a65182277f2f0b4ad204b3"
+    },
+    {
+      "file": "attempt_control.py",
+      "bytes": 6411,
+      "sha256": "b4bac79f03e8ed9d9c368e9e0f64177f84a544cc30c952ff344735779ea1cf12"
+    },
+    {
+      "file": "actions_policy.py",
+      "bytes": 4097,
+      "sha256": "8ab5898785ef1327fe474accacd2a36b910de95c07d7605cdf16318c0727b63b"
+    },
+    {
+      "file": "activation_scope.py",
+      "bytes": 7794,
+      "sha256": "1b45eea22486cd917a48220f102b9237a5da53ed2504320c8457cbb9c04cc6a4"
+    },
+    {
+      "file": "verified_bootstrap.py",
+      "bytes": 5872,
+      "sha256": "bd96db27c30612eff2544b2d40292f885dce0af5ccbb1560504920d2f8c64d6f"
+    },
+    {
+      "file": "actions_entry.py",
+      "bytes": 8834,
+      "sha256": "28744f887c41434b192db30f980debd6f9d94222df6a4e70ba6640a3ff6800d3"
+    },
+    {
+      "file": "acquisition_source.py",
+      "bytes": 18787,
+      "sha256": "990a5983aa1e903cb8f67f1e056c8612bb2a6be7f70436d7fdcbef1e73e05d41"
+    },
+    {
+      "file": "host_validation_source.py",
+      "bytes": 11943,
+      "sha256": "559252807da85e9370ec9fc67bcb045a1da939673274e772bc754248fc03a870"
+    },
+    {
+      "file": "diagnostics.py",
+      "bytes": 13753,
+      "sha256": "4fbfd8a738ebdbf007fdc86c02ecb4c5d1ba99ecdc102b63b55e293215d6e955"
+    },
+    {
+      "file": "BASE_OPERATIONAL_CONTRACT.md",
+      "bytes": 5812,
+      "sha256": "913df31c9ac6c83e040587e784bcc3d0bf9b54fc56bb1c35fd9554135ecf3b13"
+    },
+    {
+      "file": "ACTIONS_EXECUTION_AMENDMENT.md",
+      "bytes": 15977,
+      "sha256": "ecebb70e442bc3504de892681716abfffe46c16e81dc71f0206029516d14cb32"
+    },
+    {
+      "file": "ACTIONS_TEST_RESULT.json",
+      "bytes": 1594,
+      "sha256": "a723bc1ae857d3e6f324c47be6d269a9a8137f6bf54ac8bb0fe382c6763e8436"
+    },
+    {
+      "file": "OPENSSL_HOST_POLICY_AMENDMENT.md",
+      "bytes": 2615,
+      "sha256": "5b40e0568680a029de222974c01c90f4cfe33892232bd59cbcc69862dddf5b95"
+    },
+    {
+      "file": "audited/hymt_chat_template.jinja",
+      "bytes": 654,
+      "sha256": "b7491ec0e9c869dfce20f2176758099bf248d979dd05530ede99deb21698acee"
+    },
+    {
+      "file": "audited/resources.py",
+      "bytes": 7408,
+      "sha256": "35d69a8339ad2773e4fe0b89acba2092a2710568ff08da58e62e524af900dfbe"
+    },
+    {
+      "file": "audited/myutils/local_translation.py",
+      "bytes": 10925,
+      "sha256": "585983e55e7ede288085b10f8bced19fd519d9e02fd718a9f2abf9c9214d4fa0"
+    },
+    {
+      "file": "audited/myutils/local_translation_integrity.py",
+      "bytes": 4560,
+      "sha256": "74b9e650d51e38f46db25f26b2018ae4dad2a3d4cbaa086110e0e4fffdbd22de"
+    },
+    {
+      "file": "frozen_renderer.py",
+      "bytes": 8563,
+      "sha256": "799eb1e9a0c07a9451cb8afc53ae7b1c907e0472aa818358342f00645927c8ac"
+    },
+    {
+      "file": "audited/myutils/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "closed_local_python_import_graph_verified": true
+}

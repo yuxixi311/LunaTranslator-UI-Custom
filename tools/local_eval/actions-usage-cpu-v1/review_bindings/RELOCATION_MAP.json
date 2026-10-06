@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "records": [
+    {
+      "source_plan_binding": "scientific_proposal",
+      "original_filename": "PROTOCOL_PROPOSAL.md",
+      "bundle_path": "review_bindings/PROTOCOL_PROPOSAL.md",
+      "sha256": "9e2061fbe68c6607e90cb5c8c80195e81c9539ba0faa10b532307f3a7184cf43"
+    },
+    {
+      "source_plan_binding": "scope_selection",
+      "original_filename": "EXECUTION_SCOPE_SELECTION.md",
+      "bundle_path": "review_bindings/EXECUTION_SCOPE_SELECTION.md",
+      "sha256": "bef7a4952d675fd8bc853b819ac455803a7543d992a5eaec80692249b0fbdd64"
+    },
+    {
+      "source_plan_binding": "exact_inventory",
+      "original_filename": "FINAL_SOURCE_INVENTORY_SELECTION.md",
+      "bundle_path": "review_bindings/FINAL_SOURCE_INVENTORY_SELECTION.md",
+      "sha256": "7b3dcedd7dbb384d025c870f41f9f3ca5ee4b53e42981260a8cc2f3518aab34f"
+    },
+    {
+      "source_plan_binding": "operational_definitions",
+      "original_filename": "OPERATIONAL_BINDING_DRAFT.md",
+      "bundle_path": "review_bindings/OPERATIONAL_BINDING_DRAFT.md",
+      "sha256": "f618235adcfd2169c3bf021fe1c75167ef4db2baf33e48e6013fd46a74b5703f"
+    },
+    {
+      "source_plan_binding": "schedule",
+      "original_filename": "PAIR_SCHEDULE_V2.json",
+      "bundle_path": "review_bindings/PAIR_SCHEDULE_V2.json",
+      "sha256": "90a9612036d884b939ef9c79930e6258ea11b8e13f908f73b99d41a99a871e17"
+    },
+    {
+      "source_plan_binding": "platform_containment_review",
+      "original_filename": "PLATFORM_CONTAINMENT_REVIEW.json",
+      "bundle_path": "review_bindings/PLATFORM_CONTAINMENT_REVIEW.json",
+      "sha256": "1a777e5b4a5fb5dbd8a74504f4e02cad5c8c299277ff2c1a3eacf0fdb3c7563a"
+    },
+    {
+      "source_plan_binding": "persistent_helper_proposal",
+      "original_filename": "PERSISTENT_HELPER_AMENDMENT_PROPOSAL.md",
+      "bundle_path": "review_bindings/PERSISTENT_HELPER_AMENDMENT_PROPOSAL.md",
+      "sha256": "f5fc65a31677360f5125365d55e5f050aec16ad5c27ed9dfa72543b33d5a65ac"
+    },
+    {
+      "source_plan_binding": "persistent_helper_review",
+      "original_filename": "PERSISTENT_HELPER_OPERATIONAL_REVIEW.json",
+      "bundle_path": "review_bindings/PERSISTENT_HELPER_OPERATIONAL_REVIEW.json",
+      "sha256": "c5a73d8db0093e4ae173e93749cdfaa38e0f1b15870f6dd9d6d0d101ce1195bd"
+    }
+  ],
+  "source_author_original_absolute_source_path_is_historical": true,
+  "source_author_source_bundle_path": "source_history/SOURCES.frozen.json",
+  "opaque_parent_preregistration_only": true,
+  "private_preregistration_content_or_path_included": false,
+  "public_author_receipt_projection": "review_bindings/FREEZE_MANIFEST.path-redacted.json",
+  "projection_map": "PUBLIC_PATH_PROJECTIONS.json"
+}

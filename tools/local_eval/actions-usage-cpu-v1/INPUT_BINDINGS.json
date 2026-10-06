@@ -1,0 +1,25 @@
+{
+  "status": "PUBLIC_SOURCE_ONLY_BINDINGS_VERIFIED",
+  "pairs": 87,
+  "fresh": 32,
+  "historical": 40,
+  "seen": 15,
+  "surface_eligible": 24,
+  "exact_http_requests": 398,
+  "preflight_http_counts": 174,
+  "measured_http_counts": 48,
+  "completions": 174,
+  "helper_parent_commands": 224,
+  "helper_ready_responses": 1,
+  "actual_token_counts_performed": 0,
+  "generations_performed": 0,
+  "raw_file_sha256": {
+    "sources87.json": "6eab3320dac90c215bb4cefad4dd50d5b1a09a1f1c028ec9ba90be4fe12c8ac7",
+    "fresh_coverage32.json": "1733788dbcb99885cf0278227eea92e5ee23309a5b67a8aa190745342a088e24",
+    "schedule87.json": "ac0f27a8e2d2632d7f8c1643a3088e5c53c6ea004584ab06df609591cf2ffe55"
+  },
+  "canonical_source_sha256": "7dd5501ee9c513157dbcaf51ab7c32c0c993da612a925e61757fc664438c34d1",
+  "canonical_metadata_sha256": "9ded964f44b6649a306a8c781b0c62c58fed11f0cdbe410648a60c5faf4a7012",
+  "canonical_schedule_sha256": "84432b5c12b99783ba80f580ddde724a432a8d4aafb4f8a34b89a4f3720724fd",
+  "actual_active_membership": "unknown_until_real_token_preflight"
+}

@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "scope": "Closed fictional-source usage experiment outputs; no raw/private export",
+  "files": [
+    "sources.json",
+    "translations.json",
+    "accounting.json",
+    "metrics.json",
+    "diagnostic.json",
+    "manifest.json"
+  ],
+  "pair_count": 87,
+  "completion_count": 174,
+  "planned_http": 398,
+  "preflight_receipt": "Existing finite LUNA_PREFLIGHT_JSON stdout receipt at174 counts +2 readiness, before any completion",
+  "helper_lifecycle_fields": [
+    "active_work_ns",
+    "worker_cpu_ns",
+    "lifetime_ns",
+    "startup_ns",
+    "finish_ns",
+    "commands",
+    "parent_setup_ns",
+    "parent_setup_cpu_ns"
+  ],
+  "helper_lifecycle_types": "Exact closed object, nonnegative plain integers, commands≤224; complete requires 224. Unknown observations remain absent/null, never invented.",
+  "cleanup": "Protocol reconciliation is distinct from cleanup confirmation. A complete terminal result requires protocol_complete=true AND cleanup_confirmed=true; unknown cleanup cannot pass.",
+  "timing": "Fixed all-row membership; paired row-wise ratios; exact integer-nanosecond/seconds binding; every valid positive observation retained; no noise exclusion.",
+  "not_exported": [
+    "private criteria",
+    "reviewer ratings",
+    "pending-review arm keys",
+    "real user text",
+    "credentials",
+    "signed redirect URLs",
+    "headers",
+    "environment values",
+    "host/process dumps",
+    "raw exception strings",
+    "full private IPC payloads"
+  ],
+  "privacy_projection": "Only the explicit selected fields in usage_public_exports.py; no generic dictionary copying of private runtime state.",
+  "per_public_export_byte_cap": 16777216,
+  "whole_evidence_byte_cap": 67108864,
+  "quality_claim": null,
+  "treatment_identities_public": true,
+  "guaranteed_treatment_blinding": false,
+  "helper_prepare_samples": "Ordered prefix of 87 exact {row,elapsed_ns} positive integer samples; complete only at 87; preserve first measured sample separately without claiming it is cold. Full 87 quantiles are derived from all observed samples; partial quantiles remain null."
+}

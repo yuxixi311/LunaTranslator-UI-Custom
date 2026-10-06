@@ -1,0 +1,251 @@
+{
+  "schema": 1,
+  "status": "source_prepared_pending_final_independent_review",
+  "execution_released": false,
+  "prepared_at_utc": "2026-10-06T14:45:27Z",
+  "source_scope": {
+    "pairs": 87,
+    "fresh": 32,
+    "historical": 40,
+    "seen": 15,
+    "surface_eligible": 24,
+    "http_requests": 398,
+    "completions": 174,
+    "helper_parent_commands": 224,
+    "helper_ready_responses": 1,
+    "token_active_membership": "unknown_until_real_token_preflight"
+  },
+  "guard_removal_or_native_execution_requires_separate_review": true,
+  "native_limit": "Uncertain process creation or uninterruptible OS state remains terminal cleanup-unconfirmed; no outer group-kill receipt is claimed.",
+  "runtime_bank_bytes": 1562,
+  "bounded_provenance_including_component_manifest_bytes": 57982,
+  "separate_unchanged_review_report_bytes": 20794,
+  "bank_review_cap_scope": "As frozen SOURCE_FREEZE: data/attribution/provenance are bounded separately; full independent reviews are retained as other kit artifacts.",
+  "upstream_dependency_closure": {
+    "manifest": "UPSTREAM_PINS.json",
+    "root": "../luna-sense-v5-verified-activation-20261006/published_source",
+    "all_pinned_files_verified": true,
+    "local_python_import_closure_checked": true,
+    "ambient_workspace_import_authorized": false
+  },
+  "test_result": "TEST_RESULTS.json",
+  "files": [
+    {
+      "file": "INPUT_BINDINGS.json",
+      "bytes": 1059,
+      "sha256": "a3cb7a59d650e81bcf449f240897fa2177133f04a9f0618269bc664d7e3787db"
+    },
+    {
+      "file": "INTEGRATION_PLAN.md",
+      "bytes": 3819,
+      "sha256": "de9dfb21fab6de134f149c25bc53f90d4d425e0e42a1c201a46dc719ce20a3f8"
+    },
+    {
+      "file": "LICENSE_NOTICES.md",
+      "bytes": 1514,
+      "sha256": "a7acf8dc56ab8dae94560603666bce1bac8e7cd0a77d550d425627179fdb640f"
+    },
+    {
+      "file": "NATIVE_BRIDGE_AMENDMENT.md",
+      "bytes": 8885,
+      "sha256": "4360d276b8d66f683b672ed58840f1aec0a24db391eeafff65e726bc1309aac1"
+    },
+    {
+      "file": "PERSISTENT_HELPER_AMENDMENT_PROPOSAL.md",
+      "bytes": 7652,
+      "sha256": "f5fc65a31677360f5125365d55e5f050aec16ad5c27ed9dfa72543b33d5a65ac"
+    },
+    {
+      "file": "PERSISTENT_HELPER_OPERATIONAL_REVIEW.json",
+      "bytes": 3767,
+      "sha256": "c5a73d8db0093e4ae173e93749cdfaa38e0f1b15870f6dd9d6d0d101ce1195bd"
+    },
+    {
+      "file": "README.md",
+      "bytes": 8024,
+      "sha256": "24a6d8992f6d635d28d1e049a210c9616249784141ffa274324aaa10d59c1207"
+    },
+    {
+      "file": "TEST_RESULTS.json",
+      "bytes": 1154,
+      "sha256": "7b1b24709cfd2ca8fc09374aecdb348489014f1370af39498ccfa067ca4e9d5b"
+    },
+    {
+      "file": "UPSTREAM_PINS.json",
+      "bytes": 4440,
+      "sha256": "36afd98f7f267d21914c3f2965d1a7f562be9f9094370452cda9d031e15ca294"
+    },
+    {
+      "file": "bank_provenance/ATTRIBUTION.frozen.md",
+      "bytes": 4673,
+      "sha256": "f5b981186f5b49fed24915dbc09019928b28cae9bb91ed5979f8c30ac80c9653"
+    },
+    {
+      "file": "bank_provenance/COMPONENT_MANIFEST.json",
+      "bytes": 2637,
+      "sha256": "58d64440278df10fd977bbd27497c70ccfc747e8cbdb8424cb98ca0f953bdaf1"
+    },
+    {
+      "file": "bank_provenance/SOURCE_FREEZE.json",
+      "bytes": 2359,
+      "sha256": "4ee27a30566950154f3d0c74e4a99d99d20f0f02a81a279ece342c191c110024"
+    },
+    {
+      "file": "bank_provenance/bank.frozen.json",
+      "bytes": 39422,
+      "sha256": "948d7b8c4e12298185a8bf662be2b2a6b7f609c7bd355a7fbf7aaa3d26350ef1"
+    },
+    {
+      "file": "bank_provenance/source-adjectival-nouns-excerpts.txt",
+      "bytes": 637,
+      "sha256": "a9e4b0743301127fa47a337e9da19e6b9ed1711c868ebf5648d1d620107586be"
+    },
+    {
+      "file": "bank_provenance/source-capture-metadata.json",
+      "bytes": 7139,
+      "sha256": "ad63c22f6d2b703bbe47160fb2f8120295f62836bfb5bb126dd482f9a36e8d27"
+    },
+    {
+      "file": "bank_provenance/source-particles-excerpts.txt",
+      "bytes": 1115,
+      "sha256": "61a91703f527b40786c48ee1ac16d5eebe3bc271c5fcd2328a52c4116af01403"
+    },
+    {
+      "file": "inputs/fresh_coverage32.json",
+      "bytes": 5427,
+      "sha256": "1733788dbcb99885cf0278227eea92e5ee23309a5b67a8aa190745342a088e24"
+    },
+    {
+      "file": "inputs/schedule87.json",
+      "bytes": 6354,
+      "sha256": "ac0f27a8e2d2632d7f8c1643a3088e5c53c6ea004584ab06df609591cf2ffe55"
+    },
+    {
+      "file": "inputs/sources87.json",
+      "bytes": 9753,
+      "sha256": "6eab3320dac90c215bb4cefad4dd50d5b1a09a1f1c028ec9ba90be4fe12c8ac7"
+    },
+    {
+      "file": "policy/_integrity_guard.py",
+      "bytes": 2281,
+      "sha256": "bbbecdb62ff12030428d5da662beb537d7fe6aba49357d641f78d3e84e6554a7"
+    },
+    {
+      "file": "policy/runtime_bank.frozen.json",
+      "bytes": 1562,
+      "sha256": "9ef164ee324785815158ff04025ee3fb14fbf01a461257834060cbd96d257b8a"
+    },
+    {
+      "file": "policy/usage_example_policy.py",
+      "bytes": 11510,
+      "sha256": "f94a9af78a2c1694f432c4a12850fd0e27e0c6d067180810e1dc87064d650df9"
+    },
+    {
+      "file": "reviews/luna-wikibooks-independent-review-v2-20261006.json",
+      "bytes": 15307,
+      "sha256": "1929e8d600ea7a376938ced5aa7cd7cde8d8bf7d1ada1a6d4d2538ba3c30677d"
+    },
+    {
+      "file": "reviews/luna-wikibooks-source-review-20261006.json",
+      "bytes": 5487,
+      "sha256": "96c1183944ff9bb9858f8ecfb62412b491626455d41f82a5b5a94fe13e314eb5"
+    },
+    {
+      "file": "source_history/PAIR_SCHEDULE_V2.json",
+      "bytes": 20950,
+      "sha256": "90a9612036d884b939ef9c79930e6258ea11b8e13f908f73b99d41a99a871e17"
+    },
+    {
+      "file": "source_history/REGRESSION55_SOURCES.json",
+      "bytes": 15714,
+      "sha256": "7b01d892e62579fd7c592cc8f532a0f7391ef129891021ba60744c2da58529f8"
+    },
+    {
+      "file": "source_history/SHA256SUMS.original.frozen",
+      "bytes": 961,
+      "sha256": "d1f3729f4c102f27a2f933b789767ff9d130f677f347fcf473c852ec6a28a018"
+    },
+    {
+      "file": "source_history/SOURCES.frozen.json",
+      "bytes": 7072,
+      "sha256": "bb66052d9e860473a80e728dfdf5c91106c73146838321e4064a030ea0ed4480"
+    },
+    {
+      "file": "source_history/freeze_source_bank.py",
+      "bytes": 10604,
+      "sha256": "ab4e8a345fdece8fd3cf2a196d9f1a261522f580e2049a2973f81fbf1f51cdc9"
+    },
+    {
+      "file": "test_support.py",
+      "bytes": 3868,
+      "sha256": "601d70354dbea279738aaeabf0ad93ee241838da4cecf42fb25611033ec704c4"
+    },
+    {
+      "file": "test_usage_helper_bridge.py",
+      "bytes": 27840,
+      "sha256": "188a186518810aa5eb54f19dcead77caf551035b43d850a49b460a8baca77d0a"
+    },
+    {
+      "file": "test_usage_runner.py",
+      "bytes": 22374,
+      "sha256": "f5e4c507282eb77f9a5003a59c2841ffc46e7e16f16f0518c56fb894bd8a3a0a"
+    },
+    {
+      "file": "usage_evidence_validation.py",
+      "bytes": 6622,
+      "sha256": "2c5cc12e78236b75a7025d738cbaacb4b86b1b7b8745da4b93a3ec559a0e7aef"
+    },
+    {
+      "file": "usage_helper_bridge.py",
+      "bytes": 28107,
+      "sha256": "6840ed2d86be0aec2d5a2e17982eeca5fd91e0b423ad61bd35398f2111908a0e"
+    },
+    {
+      "file": "usage_helper_source.py",
+      "bytes": 2209,
+      "sha256": "ffe7f72fd6ad755ac2873ea6f8fc73aeffed152d8164122ea22593383db64612"
+    },
+    {
+      "file": "usage_native_adapter.py",
+      "bytes": 7524,
+      "sha256": "d09ed8604540fc3ccf733412dc0c2c6b713b6ccdff76365c13396b3adb2abc9f"
+    },
+    {
+      "file": "usage_policy_worker.py",
+      "bytes": 9857,
+      "sha256": "0d073fff625b8c3c8a5275905a499811409faa1adafe95513cca998f5ca63c73"
+    },
+    {
+      "file": "usage_public_exports.py",
+      "bytes": 9221,
+      "sha256": "8d89d60044f51e9908a17b1b85db8f948b3a283a8b784a364f2d044667b4a518"
+    },
+    {
+      "file": "usage_runner_core.py",
+      "bytes": 20058,
+      "sha256": "156e9eed42db4a0407dc1b463da54b40228bc7969ba72f8b6217e0c4158aedf3"
+    },
+    {
+      "file": "usage_runner_source.py",
+      "bytes": 9705,
+      "sha256": "0172242c7096cbdac70230bc7817d9f75c44e870f2b54bbe5873dd690915d521"
+    },
+    {
+      "file": "usage_worker_client.py",
+      "bytes": 4653,
+      "sha256": "4e5ee5b36c98d0eaba63092ded1b7d04cde623967735c0d9f2bd1cce379c4b19"
+    },
+    {
+      "file": "usage_worker_entry.py",
+      "bytes": 15547,
+      "sha256": "7c6fd0198d72baceacb86289bad75fdfdd4a56c04ca96f5cc66aac499bbabbff"
+    },
+    {
+      "file": "verified_inputs.py",
+      "bytes": 3724,
+      "sha256": "4b19da7b4f11e61b51891a2fc15340406d2a282867e1c7615d6a51a344a47658"
+    }
+  ],
+  "total_listed_file_bytes": 382587,
+  "supersedes_manifest_sha256": "3dd362ace210ec6f8ee84f93ea6432083b3512a3a768dc3112a3b99f58485453"
+}

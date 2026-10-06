@@ -1,0 +1,42 @@
+{
+  "source_path": "source_history/SOURCES.frozen.json",
+  "source_sha256": "bb66052d9e860473a80e728dfdf5c91106c73146838321e4064a030ea0ed4480",
+  "row_count": 32,
+  "family_count": 8,
+  "role_counts": {
+    "carrier": 16,
+    "challenge": 8,
+    "control": 8
+  },
+  "challenge_primary_type_counts": {
+    "participant_assignment": 2,
+    "polarity": 2,
+    "metalinguistic": 1,
+    "source_ambiguity": 1,
+    "literal": 1,
+    "otherwise_inappropriate": 1
+  },
+  "repeated_challenge_types": [
+    "polarity",
+    "participant_assignment"
+  ],
+  "control_expectation_counts": {
+    "competing_records": 2,
+    "protected_structure": 1,
+    "designated_focus_outside_anchor": 2,
+    "repeated_anchor": 1,
+    "no_match": 2
+  },
+  "source_character_range": [
+    16,
+    37
+  ],
+  "opaque_private_commitment_sha256": "95a06135e32cd5f55d17b93ca986c80c9881b88c1ecd4f38661240178335b3a2",
+  "preparation_input_sha256": {
+    "PROTOCOL_PROPOSAL.md": "9e2061fbe68c6607e90cb5c8c80195e81c9539ba0faa10b532307f3a7184cf43",
+    "EXECUTION_SCOPE_SELECTION.md": "bef7a4952d675fd8bc853b819ac455803a7543d992a5eaec80692249b0fbdd64",
+    "runtime_bank.frozen.json": "9ef164ee324785815158ff04025ee3fb14fbf01a461257834060cbd96d257b8a"
+  },
+  "supplied_policy_sha256_not_read": "f94a9af78a2c1694f432c4a12850fd0e27e0c6d067180810e1dc87064d650df9",
+  "validation": "32 unique sources; exact family/role/type counts; no full bank source sentence copied; all 24 carrier/challenge rows have exactly one exact bank anchor once and no designated-focus occurrence outside it; all 8 controls have their stated observable trigger. Production protected-structure predicate, token admission, and all models remain uncalled."
+}

@@ -1,0 +1,50 @@
+name: Luna CPU sense candidate 20261005
+run-name: Luna CPU sense candidate at ${{ github.sha }}
+on:
+  push:
+    branches: ['experiment/luna-actions-lexical-20261005']
+    paths: ['.github/workflows/luna-sense-cpu-v5.yml']
+permissions:
+  contents: read
+concurrency:
+  group: luna-actions-sense-cpu-20261005-v5
+  cancel-in-progress: false
+jobs:
+  sense:
+    if: >-
+      github.repository == 'yuxixi311/LunaTranslator-UI-Custom' &&
+      github.event.repository.private == false && github.event_name == 'push' &&
+      github.ref == 'refs/heads/experiment/luna-actions-lexical-20261005' &&
+      github.event.before == '__REVIEWED_SOURCE_COMMIT_A__' &&
+      github.event.created == false && github.event.deleted == false &&
+      github.event.forced == false && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      LUNA_SOURCE_COMMIT: '__REVIEWED_SOURCE_COMMIT_A__'
+      LUNA_MANIFEST_SHA: '__KIT_MANIFEST_SHA256__'
+      LUNA_BOOTSTRAP_SHA: '__BOOTSTRAP_SHA256__'
+      LUNA_PROJECT: tools/local_eval/actions-sense-cpu-v5
+      PYTHONDONTWRITEBYTECODE: '1'
+      CUDA_VISIBLE_DEVICES: ''
+    steps:
+      - name: Checkout exact triggering commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 3
+          fetch-tags: false
+          persist-credentials: false
+          submodules: false
+          lfs: false
+          show-progress: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/local_eval/actions-sense-cpu-v5/
+            /.github/workflows/luna-sense-cpu-v5.yml
+      - name: Validate exact source and perform the fixed attempt
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$LUNA_BOOTSTRAP_SHA" "$LUNA_PROJECT/verified_bootstrap.py" | sha256sum --check --status
+          /usr/bin/python3 -I -B "$LUNA_PROJECT/verified_bootstrap.py" "$LUNA_PROJECT/KIT_MANIFEST.json" "$LUNA_MANIFEST_SHA" actions unused

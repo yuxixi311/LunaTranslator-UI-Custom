@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "frozen_files_unchanged": true,
+  "base_provenance_bytes": 55345,
+  "review_report_bytes_outside_provenance_cap": 20692,
+  "cap_scope": "Captured originals, mapping, attribution, source metadata/excerpts, SOURCE_FREEZE and this component manifest. Independent unchanged review reports and historical build source remain separate kit artifacts, as the original freeze receipt required. All files count toward the overall kit/evidence envelope.",
+  "frozen_references_are_data_not_paths_to_follow": true,
+  "relocations": [
+    {
+      "original_reference": "../luna-wikibooks-source-review-20261006.json",
+      "target": "reviews/luna-wikibooks-source-review-20261006.json",
+      "sha256": "96c1183944ff9bb9858f8ecfb62412b491626455d41f82a5b5a94fe13e314eb5"
+    },
+    {
+      "original_reference": "../luna-wikibooks-independent-review-v2-20261006.json",
+      "target": "reviews/luna-wikibooks-independent-review-v2-20261006.path-redacted.json",
+      "sha256": "5b26ab009360e33336b601333085b8af45724e25fce9d1964b5a9ceff2c9ea66",
+      "original_sha256": "1929e8d600ea7a376938ced5aa7cd7cde8d8bf7d1ada1a6d4d2538ba3c30677d",
+      "target_kind": "path_redacted_public_projection",
+      "projection_map": "PUBLIC_PATH_PROJECTIONS.json"
+    },
+    {
+      "original_reference": "SHA256SUMS.frozen",
+      "target": "source_history/SHA256SUMS.original.frozen",
+      "sha256": "d1f3729f4c102f27a2f933b789767ff9d130f677f347fcf473c852ec6a28a018"
+    },
+    {
+      "original_reference": "freeze_source_bank.py",
+      "target": "source_history/freeze_source_bank.py",
+      "sha256": "ab4e8a345fdece8fd3cf2a196d9f1a261522f580e2049a2973f81fbf1f51cdc9"
+    },
+    {
+      "original_reference": "runtime_bank.frozen.json",
+      "target": "policy/runtime_bank.frozen.json",
+      "sha256": "9ef164ee324785815158ff04025ee3fb14fbf01a461257834060cbd96d257b8a"
+    }
+  ],
+  "files": [
+    {
+      "file": "bank.frozen.json",
+      "bytes": 39422,
+      "sha256": "948d7b8c4e12298185a8bf662be2b2a6b7f609c7bd355a7fbf7aaa3d26350ef1"
+    },
+    {
+      "file": "ATTRIBUTION.frozen.md",
+      "bytes": 4673,
+      "sha256": "f5b981186f5b49fed24915dbc09019928b28cae9bb91ed5979f8c30ac80c9653"
+    },
+    {
+      "file": "source-capture-metadata.json",
+      "bytes": 7139,
+      "sha256": "ad63c22f6d2b703bbe47160fb2f8120295f62836bfb5bb126dd482f9a36e8d27"
+    },
+    {
+      "file": "source-particles-excerpts.txt",
+      "bytes": 1115,
+      "sha256": "61a91703f527b40786c48ee1ac16d5eebe3bc271c5fcd2328a52c4116af01403"
+    },
+    {
+      "file": "source-adjectival-nouns-excerpts.txt",
+      "bytes": 637,
+      "sha256": "a9e4b0743301127fa47a337e9da19e6b9ed1711c868ebf5648d1d620107586be"
+    },
+    {
+      "file": "SOURCE_FREEZE.json",
+      "bytes": 2359,
+      "sha256": "4ee27a30566950154f3d0c74e4a99d99d20f0f02a81a279ece342c191c110024"
+    }
+  ],
+  "original_review_report_bytes": 20794,
+  "review_handling": "The first report is byte-identical; the second is a clearly named path-redacted public projection. Its original digest remains an opaque commitment. All substantive review and license fields remain unchanged."
+}

@@ -1,0 +1,236 @@
+{
+  "schema_version": "1.0",
+  "fixture_set_id": "luna-sparse-example-fresh-v1-20261006",
+  "status": "source_authoring_frozen_pending_root_semantic_review",
+  "provenance": "New fictional sources independently authored after the supplied bank and policy freeze; not translations, observed user content, or sourced quotations. Required anchor overlap is intentional.",
+  "repeated_challenge_types": [
+    "polarity",
+    "participant_assignment"
+  ],
+  "rows": [
+    {
+      "id": "N001",
+      "family": "wb01",
+      "role": "carrier",
+      "source_ja": "映画館で映画祭の受付を任された。"
+    },
+    {
+      "id": "N002",
+      "family": "wb01",
+      "role": "carrier",
+      "source_ja": "映画館で映画監督の忘れ物を預かった。"
+    },
+    {
+      "id": "N003",
+      "family": "wb01",
+      "role": "challenge",
+      "source_ja": "映画館で映画監督に傘を返したのは姉だ。",
+      "challenge_primary_type": "participant_assignment"
+    },
+    {
+      "id": "N004",
+      "family": "wb01",
+      "role": "control",
+      "source_ja": "映画館で映画祭の係がパンだけ食べ残した。",
+      "control_expectation": [
+        "competing_records"
+      ]
+    },
+    {
+      "id": "N005",
+      "family": "wb02",
+      "role": "carrier",
+      "source_ja": "寒いので、窓際の席を客に勧めるのはやめた。"
+    },
+    {
+      "id": "N006",
+      "family": "wb02",
+      "role": "carrier",
+      "source_ja": "寒いので、窓の修理は春まで待ってほしい。"
+    },
+    {
+      "id": "N007",
+      "family": "wb02",
+      "role": "challenge",
+      "source_ja": "寒いので、窓を閉めたくないわけではない。",
+      "challenge_primary_type": "polarity"
+    },
+    {
+      "id": "N008",
+      "family": "wb02",
+      "role": "control",
+      "source_ja": "<b>寒いので、窓のそばを空けて。</b>\n{name}さんの席はこちら。",
+      "control_expectation": [
+        "protected_structure"
+      ]
+    },
+    {
+      "id": "N009",
+      "family": "wb03",
+      "role": "carrier",
+      "source_ja": "おいしければ客は黙るので、この静けさは好評の印だ。"
+    },
+    {
+      "id": "N010",
+      "family": "wb03",
+      "role": "carrier",
+      "source_ja": "おいしければ値段を問わず仕入れる、と店主は決めた。"
+    },
+    {
+      "id": "N011",
+      "family": "wb03",
+      "role": "challenge",
+      "source_ja": "「おいしければ」は条件で、味の保証ではない。",
+      "challenge_primary_type": "metalinguistic"
+    },
+    {
+      "id": "N012",
+      "family": "wb03",
+      "role": "control",
+      "source_ja": "おいしければ売れる、とは言えない。安ければ売れることもある。",
+      "control_expectation": [
+        "designated_focus_outside_anchor"
+      ]
+    },
+    {
+      "id": "N013",
+      "family": "wb04",
+      "role": "carrier",
+      "source_ja": "毛布を三枚重ねると、少しも寒く感じなくなった。"
+    },
+    {
+      "id": "N014",
+      "family": "wb04",
+      "role": "carrier",
+      "source_ja": "少しも寒くないふりをしたが、震える手を見られた。"
+    },
+    {
+      "id": "N015",
+      "family": "wb04",
+      "role": "challenge",
+      "source_ja": "少しも寒くないらしいが、私は確かめていない。",
+      "challenge_primary_type": "source_ambiguity"
+    },
+    {
+      "id": "N016",
+      "family": "wb04",
+      "role": "control",
+      "source_ja": "私は少しも寒くないが、弟も少しも寒くないのかは知らない。",
+      "control_expectation": [
+        "repeated_anchor"
+      ]
+    },
+    {
+      "id": "N017",
+      "family": "wb05",
+      "role": "carrier",
+      "source_ja": "みかんより甘い実だけを選んだつもりが、酸っぱいのも混じっていた。"
+    },
+    {
+      "id": "N018",
+      "family": "wb05",
+      "role": "carrier",
+      "source_ja": "みかんより甘いかどうか、目隠しした客に確かめてもらう。"
+    },
+    {
+      "id": "N019",
+      "family": "wb05",
+      "role": "challenge",
+      "source_ja": "みかんより甘い薬をなめても、咳は止まらない。",
+      "challenge_primary_type": "literal"
+    },
+    {
+      "id": "N020",
+      "family": "wb05",
+      "role": "control",
+      "source_ja": "この実より甘いみかんを、客は先に選んだ。",
+      "control_expectation": [
+        "no_match"
+      ]
+    },
+    {
+      "id": "N021",
+      "family": "wb06",
+      "role": "carrier",
+      "source_ja": "パンだけ食べて帰るつもりが、スープまで頼んでしまった。"
+    },
+    {
+      "id": "N022",
+      "family": "wb06",
+      "role": "carrier",
+      "source_ja": "パンだけ食べ残した客は、具のほうは全部平らげた。"
+    },
+    {
+      "id": "N023",
+      "family": "wb06",
+      "role": "challenge",
+      "source_ja": "パンだけ食べさせたのは母で、食べたのは父だ。",
+      "challenge_primary_type": "participant_assignment"
+    },
+    {
+      "id": "N024",
+      "family": "wb06",
+      "role": "control",
+      "source_ja": "パンだけ食べる予定だったが、おいしければケーキも頼む。",
+      "control_expectation": [
+        "competing_records"
+      ]
+    },
+    {
+      "id": "N025",
+      "family": "wb07",
+      "role": "carrier",
+      "source_ja": "帰る時間がありながら、彼は終電まで残って片付けを手伝った。"
+    },
+    {
+      "id": "N026",
+      "family": "wb07",
+      "role": "carrier",
+      "source_ja": "調べる時間がありながら、担当者は噂を事実として公表した。"
+    },
+    {
+      "id": "N027",
+      "family": "wb07",
+      "role": "challenge",
+      "source_ja": "小説『時間がありながら』の著者は匿名だ。",
+      "challenge_primary_type": "otherwise_inappropriate"
+    },
+    {
+      "id": "N028",
+      "family": "wb07",
+      "role": "control",
+      "source_ja": "時間がありながら返事をせず、笑いながら席を立った。",
+      "control_expectation": [
+        "designated_focus_outside_anchor"
+      ]
+    },
+    {
+      "id": "N029",
+      "family": "wb08",
+      "role": "carrier",
+      "source_ja": "娘は「手作りのバッグ、綺麗でしょう」と胸を張った。"
+    },
+    {
+      "id": "N030",
+      "family": "wb08",
+      "role": "carrier",
+      "source_ja": "展示のバッグ、綺麗でしょうけれど、私には重すぎます。"
+    },
+    {
+      "id": "N031",
+      "family": "wb08",
+      "role": "challenge",
+      "source_ja": "「そのバッグ、綺麗でしょう」とは誰も言っていない。",
+      "challenge_primary_type": "polarity"
+    },
+    {
+      "id": "N032",
+      "family": "wb08",
+      "role": "control",
+      "source_ja": "そのバッグは綺麗でしょうが、持ち主に返してください。",
+      "control_expectation": [
+        "no_match"
+      ]
+    }
+  ]
+}

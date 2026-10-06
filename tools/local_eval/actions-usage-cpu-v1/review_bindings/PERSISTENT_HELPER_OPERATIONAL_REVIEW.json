@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "reviewed_at_utc": "2026-10-06T14:03:00Z",
+  "verdict": "PASS_OPERATIONAL_DESIGN_FOR_NATIVE_BRIDGE_IMPLEMENTATION_AND_AUDIT_ONLY",
+  "proposal": {
+    "relative_file": "luna-usage-example-runner-20261006/PERSISTENT_HELPER_AMENDMENT_PROPOSAL.md",
+    "sha256": "f5fc65a31677360f5125365d55e5f050aec16ad5c27ed9dfa72543b33d5a65ac",
+    "bytes": 7652
+  },
+  "execution_or_publication_authorized": false,
+  "explicit_amendment": "The prior one-shot helper lifetime is replaced by one owned persistent worker with <=15 seconds aggregate active wall time, <=15 seconds cumulative worker CPU, and <=600 seconds idle-inclusive lifetime including cleanup. This does not establish native enforcement or expand the inherited experiment-wide limits.",
+  "inventory": {
+    "preflight_prepare": 87,
+    "measured_prepare": 87,
+    "preflight_gate": 24,
+    "measured_gate": 24,
+    "seal": 1,
+    "finish": 1,
+    "parent_commands_total": 224,
+    "ready_responses": 1,
+    "http_requests_unchanged": 398,
+    "no_spare_commands_or_retries": true
+  },
+  "resource_and_timing_contract": {
+    "actual_worker_peak_rss_max_bytes": 33554432,
+    "aggregate_active_wall_seconds": 15,
+    "worker_user_system_cpu_seconds": 15,
+    "owned_child_lifetime_seconds_including_cleanup": 600,
+    "cleanup_reserve_seconds": 20,
+    "last_new_command_offset_seconds": 580,
+    "absolute_command_deadline": "minimum of remaining active allowance, child launch+580, and every applicable inherited phase/work/post-ready deadline",
+    "cleanup_deadline": "minimum of failure+20, child launch+600, and inherited cleanup/lifecycle/outer deadline",
+    "helper_measured_prepare_samples": 87,
+    "full_ipc_encoding_decoding_response_validation_and_gate_cost_in_candidate_elapsed": true,
+    "startup_and_finish_costs_reported_with_no_extra_benchmark": true
+  },
+  "bounded_state_contract": {
+    "frame_prefix_bytes": 4,
+    "payload_max_bytes": 32768,
+    "compact_cross_phase_receipts_max_bytes": 65536,
+    "bank_max_bytes": 16384,
+    "current_plans_max": 1,
+    "strict_json_schema_sequence_and_identity_validation": true,
+    "finite_terminal_error_codes": true,
+    "ineligible_preflight_count_validation_owned_by_parent": true,
+    "worker_binds_preflight_receipt_commitment_and_compares_its_known_row_state": true
+  },
+  "native_audit_requirements": [
+    "Bind the actual child interpreter/process identity and exact import/source closure. No policy execution in an unrelated process may be used to claim the 32 MiB helper pass.",
+    "Enforce independently supervised monotonic deadlines, cumulative active wall/CPU budgets and actual process RSS. The state-machine proposal alone is not enforcement.",
+    "Prove bounded pipe reads/writes and backpressure, strict frame validation, no concurrent commands/retries, and no unbounded wait or timeout reset.",
+    "Preserve original parent baseline object identity on abstention; bind prospective messages, source and preflight/measured receipts exactly.",
+    "Share the existing absolute cleanup reserve across owned processes; handle interruption and every error path, confirm exit and reaping, and leave no daemon.",
+    "Keep the helper free of HTTP, model/tokenizer calls, filesystem mutation, application imports and subprocess launches, including incidental interpreter behavior.",
+    "Retain only the authorized finite evidence. Do not export raw frames, source-bearing exceptions, environment or process dumps."
+  ],
+  "review_limits": {
+    "proposal_text_only": true,
+    "native_process_or_bridge_launched": false,
+    "ipc_or_network_used": false,
+    "tokenizer_or_model_calls": 0,
+    "private_criteria_or_outputs_read": false,
+    "rss_cpu_lifetime_or_cleanup_enforcement_verified": false
+  }
+}

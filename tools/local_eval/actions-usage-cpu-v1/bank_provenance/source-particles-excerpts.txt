@@ -1,0 +1,17 @@
+日語/文法/助詞
+https://zh.wikibooks.org/wiki/日語/文法/助詞
+
+Selected example spans (rendered-response line numbers):
+L193: りんごはみかんより甘いです。/蘋果比橘子甜。
+L254: 映画館で映画を見ます。/在電影院看電影。
+L363: あさ、パンだけ食べました。/ 早上只吃了面包。
+L432: 少しも寒くはありません。/一點也不冷。
+L539: 時間がありながら、勉強しません。/ 儘管有時間，卻不學習。
+L552: 寒いので、窓をしめました。/ 因為冷，所以關上了窗。
+L587: おいしければ食べます。/如果好吃的話就吃。
+
+Visible current-page notices (link labels expanded to their URLs separately in metadata):
+L633: 检索自“https://zh.wikibooks.org/w/index.php?title=日語/文法/助詞&oldid=168908”
+此页面最后编辑于2022年9月9日 (星期五) 14:43。
+L639: 本站的全部文字在創用CC 姓名標示-相同方式分享 4.0 協議之條款下提供，附加條款亦可能應用（請參閱使用條款）。
+Visible page reference: https://kobun.weblio.jp/content/%E3%81%A7

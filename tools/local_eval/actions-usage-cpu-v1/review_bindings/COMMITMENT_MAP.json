@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "commitments": {
+    "source_plan": {
+      "sha256": "da7707839e131635a03697a5eba1d13926720ab23194b8607c057287f97b8c3b",
+      "kind": "reviewed_public_commitment",
+      "path": "review_bindings/SOURCE_PLAN_COMMITMENT.json"
+    },
+    "source_author_receipt": {
+      "sha256": "da49a8b8dc9ffdc2bec74808c649db08f23d8c0d0b1ae902d5e6302ce530e701",
+      "kind": "reviewed_public_commitment",
+      "original_sha256": "da49a8b8dc9ffdc2bec74808c649db08f23d8c0d0b1ae902d5e6302ce530e701",
+      "public_projection_path": "review_bindings/FREEZE_MANIFEST.path-redacted.json",
+      "public_projection_sha256": "8d92751594c7ebeed54b34940349e83168e5111e117f67e26a2f3205fad70bbc",
+      "projection_map": "PUBLIC_PATH_PROJECTIONS.json",
+      "projected_bytes_are_not_original_bytes": true
+    },
+    "literal_audit_receipt": {
+      "sha256": "6482dc6b8e5324c25bf1406eee1a76248842dfb5eb5334e1f3cf51cfc22c9ae0",
+      "kind": "reviewed_public_commitment",
+      "path": "review_bindings/PUBLIC_RUNTIME_PROJECTION_REVIEW.json"
+    },
+    "parent_preregistration": {
+      "sha256": "a0ee6c3cb0806360dbc69765651118239d19418e190ab1d4fa49916306252934",
+      "kind": "opaque_root_supplied_digest"
+    },
+    "criteria_commitment": {
+      "sha256": "95a06135e32cd5f55d17b93ca986c80c9881b88c1ecd4f38661240178335b3a2",
+      "kind": "opaque_root_supplied_digest"
+    },
+    "redirect_policy": {
+      "sha256": "492ad121683fa2a9b7b3cc0eaabd374c4996f7eaa213e25b92b0f3749f42769e",
+      "kind": "reviewed_public_commitment",
+      "provenance": "Unchanged verified prior public INPUT_COMMITMENTS; same official model/runtime policy. Additional bank attribution remains separately preserved."
+    },
+    "license_notice_evidence": {
+      "sha256": "7d58466fea3fd99523e7310b56fea8e489df60595b75dff08d280b68f0c55cb4",
+      "kind": "reviewed_public_commitment",
+      "provenance": "Unchanged verified prior public INPUT_COMMITMENTS; same official model/runtime policy. Additional bank attribution remains separately preserved."
+    }
+  },
+  "no_private_receipt_path_or_content": true
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "reviewer": "independent_sparse_usage_method_and_source_reviewer",
+  "reviewed_at_utc": "2026-10-06T13:10:00Z",
+  "verdict": "ACCEPT_EIGHT_PAIRS_FOR_BOUNDED_SOURCE_BILINGUAL_CONVERSION_AND_CUE_REVIEW",
+  "scope": "Independent source, bilingual, orthographic conversion, contextual cue, and compact runtime projection review. This is automated review, not professional human validation, tokenizer admission, execution authorization, or evidence of improved translation.",
+  "reviewed_artifacts": {
+    "bank_draft_sha256": "6e001e0fc8b73ed90656eb925811f46e43813c5224b026080517950cdf70156e",
+    "runtime_bank_sha256": "11b6a4c253e849477bcf05ede095c0b859ee57a9d9bfeec0296b5e51e215cf89",
+    "projection_binding_sha256": "662648e8a39ebdbbd43f00dae9430268bd5a4435a5f2df980acf8e63877ab188",
+    "reviewed_protocol_sha256": "9e2061fbe68c6607e90cb5c8c80195e81c9539ba0faa10b532307f3a7184cf43"
+  },
+  "source_verification": {
+    "method": "Independently reopened the same two named official current-page rendered-text responses and checked all eight complete aligned pairs, source contexts, displayed revision labels, and license footers against the local excerpts.",
+    "pages": [
+      "https://zh.wikibooks.org/wiki/日語/文法/助詞",
+      "https://zh.wikibooks.org/wiki/日語/文法/形容動詞"
+    ],
+    "displayed_revisions": [168908, 166793],
+    "raw_revision_verified": false,
+    "histories_or_discussion_verified": false,
+    "limitations": "Responses may be cached. Displayed revision IDs are observed metadata, not proof of independently retrieved immutable revision bytes. Local hashes identify captured excerpts. No guarantee about unread notices is asserted."
+  },
+  "attribution_review": {
+    "verdict": "ACCEPT_FOR_BOUNDED_CURRENT_PAGE_CAPTURE_CONTRACT",
+    "license": "CC BY-SA 4.0",
+    "attribution_and_modification_notice_retained": true,
+    "notices_must_travel_with_bank": true,
+    "basis": [
+      "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use#7._Licensing_of_Content",
+      "https://creativecommons.org/licenses/by-sa/4.0/legalcode.en#s3"
+    ]
+  },
+  "pair_verdicts": [
+    {"id":"wb01","verdict":"ACCEPT","reason":"Location, action and object align; both orthographic substitutions preserve meaning; cinema/movie context exceeds the particle focus."},
+    {"id":"wb02","verdict":"ACCEPT","reason":"Coldness as cause, completed window closing and implicit participant align; both substitutions preserve meaning."},
+    {"id":"wb03","verdict":"ACCEPT","reason":"Taste condition and consequent eating align without adding participants; conditional morphology supplies context beyond the fixed focus."},
+    {"id":"wb04","verdict":"ACCEPT","reason":"Emphatic absence of coldness aligns; the sole orthographic substitution preserves negation and degree."},
+    {"id":"wb05","verdict":"ACCEPT","reason":"Comparison direction, fruit referents and sweetness dimension align; the sole orthographic substitution preserves meaning."},
+    {"id":"wb06","verdict":"ACCEPT","reason":"Morning, completed eating and bread-only restriction align; no Chinese text change is proposed."},
+    {"id":"wb07","verdict":"ACCEPT","reason":"Available time contrasts with not studying; this is concessive use, not a claim of simultaneity; all six substitutions preserve meaning."},
+    {"id":"wb08","verdict":"ACCEPT_WITH_RECORDED_AMBIGUITY","reason":"The Chinese target is a faithful source-permitted appearance reading with confirmation. The revised anchor contains modal focus でしょう. 綺麗 can also support a clean reading; the cue does not prove a unique lexical interpretation and other faithful readings must remain valid."}
+  ],
+  "mechanical_verification": {
+    "sha256_manifest_passed": true,
+    "exact_runtime_projection_passed": true,
+    "original_pair_and_excerpt_hashes_passed": true,
+    "pair_count": 8,
+    "complete_position_maps_verified": 70,
+    "changed_positions_verified": 15,
+    "runtime_bytes": 1602,
+    "runtime_cap_bytes": 16384,
+    "all_focuses_contained_in_their_anchors": true,
+    "all_source_examples_have_one_anchor_occurrence": true,
+    "all_source_examples_have_no_selected_focus_outside_their_anchor": true
+  },
+  "method_constraints": [
+    "Exact-anchor overlap and local bank uniqueness are not semantic disambiguation guarantees.",
+    "Select the unique full-anchor record, then scan only that record's designated focus outside its anchor; substring matching includes occurrences within other words and overlapping occurrences.",
+    "Final token wording must use B and C for complete baseline/candidate chat templates including generation markers, delta=C-B, delta<=min(16,floor(0.40*B)), and C<=384; standalone prefix tokenization is not the gate.",
+    "Over-budget rows return the unchanged baseline; unchanged global coverage failure stops the attempt. Do not prune, replace or rewrite the frozen bank after preflight.",
+    "No new fixtures, private criteria, prior ratings or held-out outputs were inspected; no tokenizer or model calls, installation, training, or publication occurred in this review."
+  ],
+  "freeze_note": "The curator may bind this receipt to separate frozen source artifacts only if all reviewed source/target strings, mappings, cue metadata and runtime record bytes are retained. Correcting the draft's token-gate wording and adding source-only freeze metadata do not establish token feasibility. Final frozen hashes should be checked separately."
+}

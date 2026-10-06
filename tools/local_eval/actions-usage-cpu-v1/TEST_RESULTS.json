@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "status": "PASS_FAKE_SOURCE_TESTS_ONLY",
+  "command": "python -m unittest -v test_usage_runner.py test_usage_actions_wiring.py test_usage_helper_bridge.py test_usage_worker_packets.py",
+  "tests": 92,
+  "failures": 0,
+  "errors": 0,
+  "tested_at_utc": "2026-10-06T15:59:30Z",
+  "python": "3.12.14",
+  "observed_scope": "Exact fake398 HTTP /174 completion /224 parent IPC routing; Actions/claim/provider guards; concrete fake packet factory; timing/cleanup/privacy projections.",
+  "real_native_children": 0,
+  "real_native_probes": 0,
+  "real_network_calls": 0,
+  "real_tokenizer_requests": 0,
+  "real_generations": 0,
+  "execution_claims_created": 0,
+  "publication_or_activation": false,
+  "private_criteria_or_ratings_or_outputs_read": false,
+  "frozen_cc31_verified_unchanged": true,
+  "not_established": [
+    "actual tokenizer admission/coverage",
+    "actual translation quality",
+    "actual helper RSS/CPU/latency",
+    "current live host/asset observations",
+    "OS reaping or exact VM teardown",
+    "publication or execution approval"
+  ],
+  "privacy_projection_validation": "Exactly three path values replaced; all other parsed JSON values equal originals; original digests preserved; no local workspace paths remain in payload."
+}

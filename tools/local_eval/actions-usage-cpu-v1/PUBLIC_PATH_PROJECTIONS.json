@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "projection_kind": "local_path_redaction_only",
+  "original_records_unchanged": true,
+  "projected_bytes_are_not_original_bytes": true,
+  "original_absolute_values_included": false,
+  "records": [
+    {
+      "original_filename": "luna-wikibooks-independent-review-v2-20261006.json",
+      "original_sha256": "1929e8d600ea7a376938ced5aa7cd7cde8d8bf7d1ada1a6d4d2538ba3c30677d",
+      "public_projection_path": "reviews/luna-wikibooks-independent-review-v2-20261006.path-redacted.json",
+      "public_projection_sha256": "5b26ab009360e33336b601333085b8af45724e25fce9d1964b5a9ceff2c9ea66",
+      "changes": [
+        {
+          "json_pointer": "/reviewed_bank/path",
+          "replacement": "bank.draft.json"
+        },
+        {
+          "json_pointer": "/supersedes_operational_verdict_of/path",
+          "replacement": "luna-wikibooks-independent-review-20261006.json"
+        }
+      ],
+      "all_other_json_values_identical": true,
+      "historical_filenames_are_labels_not_distributed_drafts": true
+    },
+    {
+      "original_filename": "FREEZE_MANIFEST.json",
+      "original_sha256": "da49a8b8dc9ffdc2bec74808c649db08f23d8c0d0b1ae902d5e6302ce530e701",
+      "public_projection_path": "review_bindings/FREEZE_MANIFEST.path-redacted.json",
+      "public_projection_sha256": "8d92751594c7ebeed54b34940349e83168e5111e117f67e26a2f3205fad70bbc",
+      "changes": [
+        {
+          "json_pointer": "/source_path",
+          "replacement": "source_history/SOURCES.frozen.json"
+        }
+      ],
+      "all_other_json_values_identical": true,
+      "historical_filenames_are_labels_not_distributed_drafts": true
+    }
+  ]
+}
