@@ -1,0 +1,50 @@
+name: Luna CPU usage example 20261006
+run-name: Luna CPU usage example at ${{ github.sha }}
+on:
+  push:
+    branches: ['experiment/luna-actions-lexical-20261005']
+    paths: ['.github/workflows/luna-usage-cpu-v1.yml']
+permissions:
+  contents: read
+concurrency:
+  group: luna-actions-usage-cpu-20261006-v1
+  cancel-in-progress: false
+jobs:
+  usage:
+    if: >-
+      github.repository == 'yuxixi311/LunaTranslator-UI-Custom' &&
+      github.event.repository.private == false && github.event_name == 'push' &&
+      github.ref == 'refs/heads/experiment/luna-actions-lexical-20261005' &&
+      github.event.before == 'd8d4501722a5b7177c5bcf1a309fd2ea5cc54e03' &&
+      github.event.created == false && github.event.deleted == false &&
+      github.event.forced == false && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      LUNA_SOURCE_COMMIT: 'd8d4501722a5b7177c5bcf1a309fd2ea5cc54e03'
+      LUNA_MANIFEST_SHA: '321b4743c3cf7610324b62e3dfeb6ab5c6403db36becd599c3ca55b01ca83739'
+      LUNA_BOOTSTRAP_SHA: '4f93377139ac379f37f9b0736c9364f44c402cfa7a6f63e66d6a0bfddd31002f'
+      LUNA_PROJECT: tools/local_eval/actions-usage-cpu-v1
+      PYTHONDONTWRITEBYTECODE: '1'
+      CUDA_VISIBLE_DEVICES: ''
+    steps:
+      - name: Checkout exact triggering commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 3
+          fetch-tags: false
+          persist-credentials: false
+          submodules: false
+          lfs: false
+          show-progress: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/local_eval/actions-usage-cpu-v1/
+            /.github/workflows/luna-usage-cpu-v1.yml
+      - name: Validate exact source and perform the fixed attempt
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$LUNA_BOOTSTRAP_SHA" "$LUNA_PROJECT/verified_bootstrap.py" | sha256sum --check --status
+          /usr/bin/python3 -I -B "$GITHUB_WORKSPACE/$LUNA_PROJECT/verified_bootstrap.py" "$GITHUB_WORKSPACE/$LUNA_PROJECT/KIT_MANIFEST.json" "$LUNA_MANIFEST_SHA" actions unused
