@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "tests": 238,
+  "published_base_manifest_sha256": "ada2668eb6e6221be5d8b9567116056284a81873837c909b50986e899a2ec2dc",
+  "published_source_unchanged": true,
+  "previous_correction_manifest_sha256": "09cee2b294b0895af5c3234544306934ca2d9d2374b16bc871ad747dac430789",
+  "original_run_id": "37387212977",
+  "original_job_id": "112023302998",
+  "original_failure_cause": "unknown",
+  "guarded_native_starts": 0,
+  "network_calls": 0,
+  "live_host_probes": 0,
+  "model_calls": 0,
+  "real_claims": 0,
+  "reruns": 0,
+  "private_criteria_read": false,
+  "fresh_source_semantics_displayed": false,
+  "unchanged_payloads": [
+    "frozen_renderer.py",
+    "evidence_validation.py",
+    "isolated_helper.py",
+    "activation_scope.py",
+    "audited/resources.py",
+    "audited/myutils/__init__.py",
+    "audited/myutils/local_translation.py",
+    "audited/myutils/local_translation_integrity.py",
+    "audited/hymt_chat_template.jinja",
+    "inputs/SOURCES48.json",
+    "inputs/PUBLIC_REGRESSION40_REFERENCE.json",
+    "inputs/runtimelexicon.json",
+    "SCIENTIFIC_PROTOCOL.md"
+  ],
+  "core_comparison": "all functions/classes AST-identical",
+  "host_policy_change": [
+    "libssl.so.3",
+    "libcrypto.so.3"
+  ],
+  "host_functions": "AST-identical",
+  "claim_handoff_tests": "post-open sync, root close, write plus close failures; first exception retained and every close attempted once",
+  "helper_imports": [
+    "actions_policy",
+    "diagnostics",
+    "activation_scope",
+    "cpu_harness",
+    "frozen_renderer",
+    "isolated_helper"
+  ],
+  "helper_limit_bytes": 33554432
+}
