@@ -1,0 +1,49 @@
+name: Luna single GET header observation
+run-name: Luna header observation at ${{ github.sha }}
+on:
+  push:
+    branches: ['experiment/luna-actions-lexical-20261005']
+    paths: ['.github/workflows/luna-sense-headers-v1.yml']
+permissions:
+  contents: read
+concurrency:
+  group: luna-sense-headers-20261006-v1
+  cancel-in-progress: false
+jobs:
+  headers:
+    if: >-
+      github.repository == 'yuxixi311/LunaTranslator-UI-Custom' &&
+      github.event.repository.private == false && github.event_name == 'push' &&
+      github.ref == 'refs/heads/experiment/luna-actions-lexical-20261005' &&
+      github.event.before == 'c09c659ea6cb92e31d16780b7de595344a266e89' &&
+      github.event.created == false && github.event.deleted == false &&
+      github.event.forced == false && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    env:
+      LUNA_SOURCE_COMMIT: 'c09c659ea6cb92e31d16780b7de595344a266e89'
+      LUNA_MANIFEST_SHA: '367e2d1aad7f22ba3dfa5fb76778f5b6cac6a3c6f35eac3490d4adb2c47550c5'
+      LUNA_BOOTSTRAP_SHA: 'cb6dbbc28816476d14def8961af5c4a75e9152ea292c6a1b5b11b6a493fd52f9'
+      LUNA_PROJECT: tools/local_eval/actions-sense-headers-v1
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Checkout exact diagnostic trigger
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 3
+          fetch-tags: false
+          persist-credentials: false
+          submodules: false
+          lfs: false
+          show-progress: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/local_eval/actions-sense-headers-v1/
+            /.github/workflows/luna-sense-headers-v1.yml
+      - name: Verify source and perform only the bounded header observation
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$LUNA_BOOTSTRAP_SHA" "$LUNA_PROJECT/bootstrap.py" | sha256sum --check --status
+          /usr/bin/python3 -I -B "$LUNA_PROJECT/bootstrap.py" owner "$LUNA_MANIFEST_SHA" unused
