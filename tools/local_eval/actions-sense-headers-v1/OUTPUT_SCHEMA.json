@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Closed header-only diagnostic receipt and failure envelope",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "application_body_read_calls",
+        "authority",
+        "cleanup",
+        "current_policy_outcome",
+        "failure",
+        "header_block_complete",
+        "host_class",
+        "initial_exchange_intents",
+        "location_form",
+        "loopback_http_requests",
+        "protocol_sha256",
+        "redirects_followed",
+        "request_send_complete",
+        "request_sha256",
+        "run_attempt",
+        "run_id",
+        "schema",
+        "source_commit",
+        "source_manifest_sha256",
+        "status",
+        "workflow_commit"
+      ],
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "protocol_sha256": {
+          "const": "258087a02ea74cb8ab8a1daba55af68f68fd273f0c089c51164b52dc81179db2"
+        },
+        "source_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "workflow_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "run_id": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]{0,19}$"
+        },
+        "run_attempt": {
+          "const": 1
+        },
+        "request_sha256": {
+          "const": "bb5f8ccce0cf154af79ad020167071a7a83212016611adc267bc29f6ac4d27e9"
+        },
+        "status": {
+          "enum": [
+            "UNOBSERVED",
+            "HTTP_200",
+            "HTTP_301",
+            "HTTP_302",
+            "HTTP_303",
+            "HTTP_307",
+            "HTTP_308",
+            "OTHER_HTTP_STATUS"
+          ]
+        },
+        "location_form": {
+          "enum": [
+            "UNOBSERVED",
+            "ABSENT",
+            "RELATIVE",
+            "ABSOLUTE",
+            "NETWORK_PATH",
+            "INVALID"
+          ]
+        },
+        "host_class": {
+          "enum": [
+            null,
+            "EXISTING_EXPECTED_BRIDGE",
+            "HF_META_AP_SOUTHEAST_1_AWS_CDN_HF_CO",
+            "HF_META_ASIA_SOUTHEAST1_US_GCP_CDN_HF_CO",
+            "HF_META_AWS_CDN_HF_CO",
+            "HF_META_CDN_LFS_EU_1_HF_CO",
+            "HF_META_CDN_LFS_HF_CO",
+            "HF_META_CDN_LFS_US_1_HF_CO",
+            "HF_META_EUROPE_WEST4_US_GCP_CDN_HF_CO",
+            "HF_META_EU_WEST_3_AWS_CDN_HF_CO",
+            "HF_META_HF_CO",
+            "HF_META_HUGGINGFACE_CN",
+            "HF_META_HUGGINGFACE_CO",
+            "HF_META_HUGGINGFACE_COM",
+            "HF_META_TRANSFER_XETHUB_EU_HF_CO",
+            "HF_META_TRANSFER_XETHUB_HF_CO",
+            "HF_META_US_AWS_CDN_HF_CO",
+            "HF_META_US_CENTRAL1_US_GCP_CDN_HF_CO",
+            "HF_META_US_EAST1_US_GCP_CDN_HF_CO",
+            "HF_META_US_EAST_1_AWS_CDN_HF_CO",
+            "HF_META_US_GCP_CDN_HF_CO",
+            "HF_META_US_WEST4_US_GCP_CDN_HF_CO",
+            "HF_META_US_WEST_2_AWS_CDN_HF_CO",
+            "NO_LOCATION",
+            "OTHER_UNREVIEWED_HOST",
+            "UNPARSEABLE"
+          ]
+        },
+        "authority": {
+          "enum": [
+            "UNOBSERVED",
+            "IMPLICIT_SAME_ORIGIN",
+            "CANONICAL_HTTPS_443",
+            "NONCANONICAL_HTTPS_443",
+            "REJECTED_AUTHORITY"
+          ]
+        },
+        "current_policy_outcome": {
+          "enum": [
+            "UNOBSERVED",
+            "NOT_A_REDIRECT",
+            "ACCEPTS_EXISTING_HOST_AND_AUTHORITY",
+            "REJECTS_HOST",
+            "REJECTS_AUTHORITY_SHAPE",
+            "REJECTS_OTHER_EXISTING_URL_RULE"
+          ]
+        },
+        "failure": {
+          "enum": [
+            "NONE",
+            "DNS_FAILURE",
+            "CONNECT_FAILURE",
+            "TLS_FAILURE",
+            "SEND_FAILURE",
+            "HTTP_LINE_LIMIT",
+            "HTTP_HEADER_BLOCK_LIMIT",
+            "HTTP_CRLF_REJECTED",
+            "HTTP_EOF_OR_INVALID_READ",
+            "ASSET_STATUS_LINE_REJECTED",
+            "ASSET_HEADER_FIELDS_REJECTED",
+            "ASSET_HEADER_SYNTAX_REJECTED",
+            "RESOURCE_CAP",
+            "DEADLINE_EXPIRED",
+            "CLEANUP_UNCONFIRMED",
+            "UNKNOWN_FAILURE"
+          ]
+        },
+        "cleanup": {
+          "enum": [
+            "UNOBSERVED",
+            "CONFIRMED",
+            "UNCONFIRMED"
+          ]
+        },
+        "initial_exchange_intents": {
+          "enum": [
+            null,
+            0,
+            1
+          ]
+        },
+        "request_send_complete": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "header_block_complete": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "application_body_read_calls": {
+          "const": 0
+        },
+        "redirects_followed": {
+          "const": 0
+        },
+        "loopback_http_requests": {
+          "const": 0
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "status",
+        "reason"
+      ],
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "status": {
+          "const": "incomplete"
+        },
+        "reason": {
+          "const": "SOURCE_OR_EXECUTION_BLOCKED"
+        }
+      }
+    }
+  ],
+  "x-runtime-invariants": [
+    "All seven identity bindings must equal admitted owner binding, with strict Python types; JSON booleans are not integers.",
+    "source_commit differs from workflow_commit.",
+    "header_block_complete=true implies request_send_complete=true,initial_exchange_intents=1,status is observed.",
+    "request_send_complete=true implies initial_exchange_intents=1.",
+    "Canonical ASCII JSON plus one LF,at most2048 bytes per frame; no extra fields.",
+    "Unbound failure envelope is not evidence of zero requests or denied admission."
+  ]
+}

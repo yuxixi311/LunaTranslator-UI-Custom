@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "source_url": "https://huggingface.co/.well-known/meta.json",
+  "observed_date_utc": "2026-10-06",
+  "capture_kind": "selected hostname fields transcribed from official primary-source web rendering; not a byte-exact copy of the HTTP response",
+  "purpose": "finite observation vocabulary only; never a connection allowlist",
+  "fields": {
+    "lfsDomains": [
+      "cdn-lfs.hf.co",
+      "cdn-lfs-us-1.hf.co",
+      "cdn-lfs-eu-1.hf.co",
+      "transfer.xethub.hf.co",
+      "transfer.xethub-eu.hf.co"
+    ],
+    "cdnDomains": [
+      "aws.cdn.hf.co",
+      "us.aws.cdn.hf.co",
+      "us-east-1.aws.cdn.hf.co",
+      "us-west-2.aws.cdn.hf.co",
+      "eu-west-3.aws.cdn.hf.co",
+      "ap-southeast-1.aws.cdn.hf.co",
+      "us.gcp.cdn.hf.co",
+      "us-east1.us.gcp.cdn.hf.co",
+      "us-central1.us.gcp.cdn.hf.co",
+      "us-west4.us.gcp.cdn.hf.co",
+      "europe-west4.us.gcp.cdn.hf.co",
+      "asia-southeast1.us.gcp.cdn.hf.co"
+    ],
+    "hubDomains": [
+      "huggingface.co",
+      "hf.co",
+      "huggingface.com",
+      "huggingface.cn"
+    ]
+  }
+}

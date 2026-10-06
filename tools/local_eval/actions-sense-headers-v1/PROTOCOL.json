@@ -1,0 +1,177 @@
+{
+  "schema": 1,
+  "protocol": "luna-initial-get-header-observation-v1",
+  "status": "proposal_only_no_harness_or_execution_release",
+  "consumed_source_manifest_sha256": "3d382006230bee79a18822183144adf24706619a0467f58c03b400526283d97c",
+  "parent_run_id": "37434985945",
+  "original_failure": "ASSET_REDIRECT_HOST_REJECTED",
+  "historical_target_host": "unknown; not retained",
+  "initial_request": {
+    "method": "GET",
+    "url": "https://huggingface.co/tencent/Hy-MT2-1.8B-GGUF/resolve/b27182d810fa3ceb6ed04e7c324c54e35c0d209c/Hy-MT2-1.8B-Q4_K_M.gguf",
+    "headers": {
+      "Host": "huggingface.co",
+      "Accept-Encoding": "identity",
+      "Connection": "close"
+    },
+    "http_version": "HTTP/1.1",
+    "query_added": false,
+    "credentials": false,
+    "cookies": false,
+    "proxies": false,
+    "range_header": false,
+    "user_agent_added": false,
+    "tls_certificate_and_hostname_verification": true,
+    "https_port": 443
+  },
+  "limits": {
+    "initial_asset_gets": 1,
+    "exchange_intents": 1,
+    "dns_calls": 1,
+    "address_attempts": 1,
+    "tcp_connections": 1,
+    "redirects_followed": 0,
+    "retries": 0,
+    "application_body_read_calls": 0,
+    "asset_file_writes": 0,
+    "loopback_http_requests": 0,
+    "model_calls": 0,
+    "runtime_downloads": 0,
+    "header_line_bytes": 2048,
+    "header_block_bytes": 16384,
+    "header_fields": 64,
+    "location_url_bytes": 2048,
+    "request_header_bytes": 8192,
+    "total_lifecycle_seconds_including_cleanup": 30,
+    "request_worker_seconds": 20,
+    "cleanup_reserve_seconds": 10,
+    "worker_rss_bytes": 134217728,
+    "aggregate_owned_rss_bytes": 268435456,
+    "public_diagnostic_bytes": 2048,
+    "retained_diagnostic_evidence_bytes": 4096,
+    "owned_request_workers": 1
+  },
+  "deadline_enforcement": "Independent owner arms the30-second absolute monotonic lifecycle before child launch. Stop accepting worker work/results at20 seconds and reserve at most10 seconds for bounded cleanup attempts. At30 seconds stop accepting cleanup/results and return incomplete/unconfirmed if any owned outcome is unresolved, without later request/follow-up work. These deadlines do not promise interruption of every blocked syscall or successful reap; a stuck native outcome remains explicitly unconfirmed.",
+  "response_handling": "Read one HTTP status/header block with the existing strict parser and caps. Stop at the terminating CRLFCRLF; classify in memory; close immediately. Never follow Location or invoke body streaming, even on200. No raw header/status/Location/exception serialization.",
+  "network_byte_interpretation": "Zero application body reads does not promise zero server body transmission, kernel buffering, or TLS buffering. Acquisition exchange counts are separate from the442 loopback/model request schedule.",
+  "host_vocabulary_snapshot_sha256": "185aedecfb16392540015cb26078b2f4e687b719b476d724a1978c274d694f01",
+  "exact_host_observation_classes": {
+    "cdn-lfs.hf.co": "HF_META_CDN_LFS_HF_CO",
+    "cdn-lfs-us-1.hf.co": "HF_META_CDN_LFS_US_1_HF_CO",
+    "cdn-lfs-eu-1.hf.co": "HF_META_CDN_LFS_EU_1_HF_CO",
+    "transfer.xethub.hf.co": "HF_META_TRANSFER_XETHUB_HF_CO",
+    "transfer.xethub-eu.hf.co": "HF_META_TRANSFER_XETHUB_EU_HF_CO",
+    "aws.cdn.hf.co": "HF_META_AWS_CDN_HF_CO",
+    "us.aws.cdn.hf.co": "HF_META_US_AWS_CDN_HF_CO",
+    "us-east-1.aws.cdn.hf.co": "HF_META_US_EAST_1_AWS_CDN_HF_CO",
+    "us-west-2.aws.cdn.hf.co": "HF_META_US_WEST_2_AWS_CDN_HF_CO",
+    "eu-west-3.aws.cdn.hf.co": "HF_META_EU_WEST_3_AWS_CDN_HF_CO",
+    "ap-southeast-1.aws.cdn.hf.co": "HF_META_AP_SOUTHEAST_1_AWS_CDN_HF_CO",
+    "us.gcp.cdn.hf.co": "HF_META_US_GCP_CDN_HF_CO",
+    "us-east1.us.gcp.cdn.hf.co": "HF_META_US_EAST1_US_GCP_CDN_HF_CO",
+    "us-central1.us.gcp.cdn.hf.co": "HF_META_US_CENTRAL1_US_GCP_CDN_HF_CO",
+    "us-west4.us.gcp.cdn.hf.co": "HF_META_US_WEST4_US_GCP_CDN_HF_CO",
+    "europe-west4.us.gcp.cdn.hf.co": "HF_META_EUROPE_WEST4_US_GCP_CDN_HF_CO",
+    "asia-southeast1.us.gcp.cdn.hf.co": "HF_META_ASIA_SOUTHEAST1_US_GCP_CDN_HF_CO",
+    "huggingface.co": "HF_META_HUGGINGFACE_CO",
+    "hf.co": "HF_META_HF_CO",
+    "huggingface.com": "HF_META_HUGGINGFACE_COM",
+    "huggingface.cn": "HF_META_HUGGINGFACE_CN",
+    "cas-bridge.xethub.hf.co": "EXISTING_EXPECTED_BRIDGE"
+  },
+  "additional_host_classes": [
+    "NO_LOCATION",
+    "UNPARSEABLE",
+    "OTHER_UNREVIEWED_HOST"
+  ],
+  "public_projection": {
+    "schema": 1,
+    "status_enum": [
+      "UNOBSERVED",
+      "HTTP_200",
+      "HTTP_301",
+      "HTTP_302",
+      "HTTP_303",
+      "HTTP_307",
+      "HTTP_308",
+      "OTHER_HTTP_STATUS"
+    ],
+    "location_form_enum": [
+      "UNOBSERVED",
+      "ABSENT",
+      "RELATIVE",
+      "ABSOLUTE",
+      "NETWORK_PATH",
+      "INVALID"
+    ],
+    "authority_enum": [
+      "UNOBSERVED",
+      "IMPLICIT_SAME_ORIGIN",
+      "CANONICAL_HTTPS_443",
+      "NONCANONICAL_HTTPS_443",
+      "REJECTED_AUTHORITY"
+    ],
+    "current_policy_outcome_enum": [
+      "UNOBSERVED",
+      "NOT_A_REDIRECT",
+      "ACCEPTS_EXISTING_HOST_AND_AUTHORITY",
+      "REJECTS_HOST",
+      "REJECTS_AUTHORITY_SHAPE",
+      "REJECTS_OTHER_EXISTING_URL_RULE"
+    ],
+    "failure_enum": [
+      "NONE",
+      "DNS_FAILURE",
+      "CONNECT_FAILURE",
+      "TLS_FAILURE",
+      "SEND_FAILURE",
+      "HTTP_LINE_LIMIT",
+      "HTTP_HEADER_BLOCK_LIMIT",
+      "HTTP_CRLF_REJECTED",
+      "HTTP_EOF_OR_INVALID_READ",
+      "ASSET_STATUS_LINE_REJECTED",
+      "ASSET_HEADER_FIELDS_REJECTED",
+      "ASSET_HEADER_SYNTAX_REJECTED",
+      "RESOURCE_CAP",
+      "DEADLINE_EXPIRED",
+      "CLEANUP_UNCONFIRMED",
+      "UNKNOWN_FAILURE"
+    ],
+    "cleanup_enum": [
+      "UNOBSERVED",
+      "CONFIRMED",
+      "UNCONFIRMED"
+    ],
+    "counters": {
+      "initial_exchange_intents": "integer0or1",
+      "request_send_complete": "boolean",
+      "header_block_complete": "boolean",
+      "application_body_read_calls": "constant0",
+      "redirects_followed": "constant0",
+      "loopback_http_requests": "constant0"
+    }
+  },
+  "classification_rules": [
+    "Use exact literal hostname equality against the frozen21-host metadata vocabulary; the prior expected bridge is a separate historical-policy class. No suffix, regex or wildcard matching.",
+    "Unknown hosts produce OTHER_UNREVIEWED_HOST, never their name or hash. No authority/path/query/full-URL hash or arbitrary string leaves memory.",
+    "Keep Location only transiently. Raw control/ASCII/length checks precede URL parsing; safe parsed fields then undergo scheme/credential/port/fragment checks before classification. No outgoing request is ever permitted to the target.",
+    "Relative Location resolves in memory against the exact initial URL only for classification; this is not following it. Host class and canonical authority shape are separate.",
+    "Do not serialize arbitrary paths, queries, header values, status text, exception types/messages or network addresses. Output is the fixed schema plus enums/booleans/bounded counters only.",
+    "The new observation describes this one new GET only; it cannot reconstruct the prior run's exact redirect or authorize a production policy expansion."
+  ],
+  "release_requirements": [
+    "Independent protocol review",
+    "Separate root release before preparing an executable source harness",
+    "Separate authorization and exact activation review before any live request",
+    "No model attempt, old claim reset, source overwrite or automatic follow-on action"
+  ],
+  "unchanged": [
+    "model/data/scientific gates",
+    "176completions442loopback requests of original experiment",
+    "consumed source and claim",
+    "CDN connection allowlist",
+    "original execution resource bounds and historical outputs"
+  ],
+  "dns_and_address_policy": "One getaddrinfo call for the exact pinned initial hostname and443, SOCK_STREAM only. Reject empty, malformed, nonpublic, unsupported-family or inconsistent results using the existing all-addresses-public validation. Multiple valid public candidates are not retries: select only the first reviewed result. No alternate address, fallback, proxy or second lookup. DNS data is never emitted.",
+  "exact_output_schema_release_gate": "Before an executable harness is released, its independent review must freeze exact closed output field names, required types, request/protocol/source binding and observed-run identity; only the enums, booleans and bounded counters specified here are eligible. No additional raw strings or runtime values are permitted."
+}

@@ -1,0 +1,49 @@
+name: Luna single GET header observation
+run-name: Luna header observation at ${{ github.sha }}
+on:
+  push:
+    branches: ['experiment/luna-actions-lexical-20261005']
+    paths: ['.github/workflows/luna-sense-headers-v1.yml']
+permissions:
+  contents: read
+concurrency:
+  group: luna-sense-headers-20261006-v1
+  cancel-in-progress: false
+jobs:
+  headers:
+    if: >-
+      github.repository == 'yuxixi311/LunaTranslator-UI-Custom' &&
+      github.event.repository.private == false && github.event_name == 'push' &&
+      github.ref == 'refs/heads/experiment/luna-actions-lexical-20261005' &&
+      github.event.before == '__SOURCE_COMMIT__' &&
+      github.event.created == false && github.event.deleted == false &&
+      github.event.forced == false && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    env:
+      LUNA_SOURCE_COMMIT: '__SOURCE_COMMIT__'
+      LUNA_MANIFEST_SHA: '__MANIFEST_SHA256__'
+      LUNA_BOOTSTRAP_SHA: '__BOOTSTRAP_SHA256__'
+      LUNA_PROJECT: tools/local_eval/actions-sense-headers-v1
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Checkout exact diagnostic trigger
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 3
+          fetch-tags: false
+          persist-credentials: false
+          submodules: false
+          lfs: false
+          show-progress: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/local_eval/actions-sense-headers-v1/
+            /.github/workflows/luna-sense-headers-v1.yml
+      - name: Verify source and perform only the bounded header observation
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$LUNA_BOOTSTRAP_SHA" "$LUNA_PROJECT/bootstrap.py" | sha256sum --check --status
+          /usr/bin/python3 -I -B "$LUNA_PROJECT/bootstrap.py" owner "$LUNA_MANIFEST_SHA" unused

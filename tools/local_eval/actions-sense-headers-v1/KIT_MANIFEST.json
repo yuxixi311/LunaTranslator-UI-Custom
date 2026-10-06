@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "purpose": "single-initial-GET-header-only-diagnostic",
+  "protocol_sha256": "258087a02ea74cb8ab8a1daba55af68f68fd273f0c089c51164b52dc81179db2",
+  "source_parent": "5e7b952ea2a81873ca67390a7cde42df63527356",
+  "request_sha256": "bb5f8ccce0cf154af79ad020167071a7a83212016611adc267bc29f6ac4d27e9",
+  "native_execution_during_preparation": false,
+  "files": [
+    {
+      "path": "IMPLEMENTATION_CONTRACT.md",
+      "bytes": 5767,
+      "sha256": "0dd0cac157dc6ae4d285870ff218929a63ede2ed9ea51f014808f1bc8ee49836"
+    },
+    {
+      "path": "OFFICIAL_HOST_FIELDS.json",
+      "bytes": 1074,
+      "sha256": "185aedecfb16392540015cb26078b2f4e687b719b476d724a1978c274d694f01"
+    },
+    {
+      "path": "OUTPUT_SCHEMA.json",
+      "bytes": 6045,
+      "sha256": "c90903590ced1ec7d0fd1efb6a7dfd2bf0ceb53ac7e3104190c039a06a6ff6dd"
+    },
+    {
+      "path": "PROTOCOL.json",
+      "bytes": 8489,
+      "sha256": "258087a02ea74cb8ab8a1daba55af68f68fd273f0c089c51164b52dc81179db2"
+    },
+    {
+      "path": "WORKFLOW_TEMPLATE.yml.in",
+      "bytes": 1949,
+      "sha256": "7ca0a0ebbb6efdf7bc794514e2cf3cd62e27f700bd13f3be4445ae3715cefefd"
+    },
+    {
+      "path": "bootstrap.py",
+      "bytes": 2768,
+      "sha256": "cb6dbbc28816476d14def8961af5c4a75e9152ea292c6a1b5b11b6a493fd52f9"
+    },
+    {
+      "path": "header_logic.py",
+      "bytes": 11053,
+      "sha256": "a49d880b76d8bc5c548828a53c2f21a0157269bfeecceb837aff94f64932ffb4"
+    },
+    {
+      "path": "probe_entry.py",
+      "bytes": 25265,
+      "sha256": "8c261aec23b37bcd7bc34705d79d4f8aef4d37e0ef26b47da955f5194ff43038"
+    },
+    {
+      "path": "run_inert_tests.py",
+      "bytes": 1159,
+      "sha256": "92776058ba3b40936d9931fc2642dfc6360d3311e7a155aec228fb1f1cb93a62"
+    },
+    {
+      "path": "test_header_logic.py",
+      "bytes": 15662,
+      "sha256": "fcb67ec5c9cdfca61b272cef05bcef9599b0c5921dc759439c165695afdccdc1"
+    },
+    {
+      "path": "test_probe_entry.py",
+      "bytes": 21371,
+      "sha256": "dbb6d913805667fc09d795ed2a7741fb3edd99fd5bf280aaf3637cc8a10182a6"
+    }
+  ]
+}
