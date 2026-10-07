@@ -1,0 +1,21 @@
+{
+  "schema": "new-term-public-evidence-v1",
+  "files": [
+    "sources.json",
+    "outputs.json",
+    "accounting.json",
+    "metrics.json",
+    "diagnostic.json",
+    "manifest.json"
+  ],
+  "aggregate_bytes": 16777216,
+  "closed_nested_fields": true,
+  "unknowns": "null",
+  "original_and_final_output": "separate sha256-bound fields",
+  "manifest_bytes": "canonical UTF-8 JSON plus LF",
+  "semantic_fidelity": "REVIEW_PENDING",
+  "canonical_compliance": "REVIEW_PENDING",
+  "snapshot_cleanup_scope": "owned_supervisor_at_snapshot",
+  "terminal_cleanup_scope": "whole_attempt",
+  "overall_attempt_status_source": "terminal_result"
+}

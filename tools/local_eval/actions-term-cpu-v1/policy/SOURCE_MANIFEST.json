@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "status": "source_design_frozen_after_independent_review",
+  "scope": "source-only; no fresh19 authoring, inference or publication",
+  "files": {
+    "global_declarations.json": {
+      "sha256": "f7d849ae54ec36d8247aeaadedd633523de92df35313c7bebb3a2073baeccd3b",
+      "bytes": 1408
+    },
+    "term_lock_policy.py": {
+      "sha256": "f621ddec3e4cb7d449693f1ffb28a169276eabf5e7e49441d973d0868f3c2cca",
+      "bytes": 10454
+    },
+    "test_term_lock_policy.py": {
+      "sha256": "5e8e8853b4cfbcf09543f05c6b48f17d8b9d253f49acfa31c68880f67d0b4417",
+      "bytes": 8851
+    },
+    "test_renderer_parity.py": {
+      "sha256": "a770db6ea7a57c50abdcf5ec04449012f51ffde019d45832f35b542caafa2621",
+      "bytes": 3808
+    },
+    "README.md": {
+      "sha256": "15b258ad88fb8ec4a1950b2f75433f4d475368b0b953e3617e2344cb79207003",
+      "bytes": 2859
+    },
+    "scope_selection.json": {
+      "sha256": "d1fae404199f421ec3111daa854513eb92ff6a1a5609ef8ff1a9a065b0c33ef4",
+      "bytes": 1833
+    },
+    "pinned_renderer/commonbase.py": {
+      "sha256": "c562d635565477af7d399273aa3048879652a6e1420f861154b7c958d11c8172",
+      "bytes": 6721
+    },
+    "pinned_renderer/sakura_base.py": {
+      "sha256": "3d9883f7965693cbe17a80db9a8d95ab95213737a782fc69acbee34cfa0ae28f",
+      "bytes": 13027
+    },
+    "pinned_renderer/local_hymt.py": {
+      "sha256": "5ea7215c0330ba43adacbb386517ed56bb5e5ab236088644196b36f8efdd98dc",
+      "bytes": 2777
+    }
+  },
+  "external_sources": {
+    "../DETERMINISTIC_TERM_SOURCE_PROPOSAL_20261006.md": {
+      "sha256": "fabd4e3584908ec6bc4bc46b4fd0773092c3a9207a93a850332b256376ca3b12"
+    },
+    "../luna-usage-actions-activation-preparation-20261006/audited/myutils/local_translation_integrity.py": {
+      "sha256": "74b9e650d51e38f46db25f26b2018ae4dad2a3d4cbaa086110e0e4fffdbd22de"
+    }
+  },
+  "tests": {
+    "command": "python -m unittest -v test_term_lock_policy.py test_renderer_parity.py",
+    "passed": 20,
+    "model_tokenizer_or_native_invocations": 0,
+    "type": "source/fake-only"
+  },
+  "freeze_utc": "2026-10-06T20:19:48Z",
+  "review": {
+    "reviewer": "independent source reviewer",
+    "decision": "PASS as corrected source design/helper",
+    "independently_rerun_fake_tests": 20,
+    "runtime_permission": false
+  }
+}

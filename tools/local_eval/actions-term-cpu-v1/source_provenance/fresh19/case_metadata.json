@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "runtime_input": false,
+  "cases": [
+    {
+      "id": "tl-fresh-01",
+      "scenario": "Departure coordination",
+      "source_form": "Direct address during travel preparations"
+    },
+    {
+      "id": "tl-fresh-02",
+      "scenario": "An exchange about entrusted property",
+      "source_form": "Direct address after an errand"
+    },
+    {
+      "id": "tl-fresh-03",
+      "scenario": "Handling correspondence",
+      "source_form": "Direct address giving two connected instructions"
+    },
+    {
+      "id": "tl-fresh-04",
+      "scenario": "Guest arrival",
+      "source_form": "Direct address requesting assistance at a building"
+    },
+    {
+      "id": "tl-fresh-05",
+      "scenario": "A disagreement following a retreat",
+      "source_form": "Direct address followed by a statement of responsibility"
+    },
+    {
+      "id": "tl-fresh-06",
+      "scenario": "Arranging a station pickup",
+      "source_form": "Direct address requesting help with a family errand"
+    },
+    {
+      "id": "tl-fresh-07",
+      "scenario": "A workshop inventory",
+      "source_form": "Narration followed by an inventory and condition report"
+    },
+    {
+      "id": "tl-fresh-08",
+      "scenario": "Searching for a misplaced component",
+      "source_form": "Narrative identification followed by a short chronology"
+    },
+    {
+      "id": "tl-fresh-09",
+      "scenario": "Plant equipment status",
+      "source_form": "Narration followed by an equipment list and operational update"
+    },
+    {
+      "id": "tl-fresh-10",
+      "scenario": "A maintenance work order",
+      "source_form": "A conventional Japanese task label followed by instructions"
+    },
+    {
+      "id": "tl-fresh-11",
+      "scenario": "A navigation decision",
+      "source_form": "Narration followed by visible landmarks and a route decision"
+    },
+    {
+      "id": "tl-fresh-12",
+      "scenario": "A coastal removal job",
+      "source_form": "A conventional Japanese task label followed by instructions"
+    },
+    {
+      "id": "tl-fresh-13",
+      "scenario": "An observation log",
+      "source_form": "A list within narrative reporting"
+    },
+    {
+      "id": "tl-fresh-14",
+      "scenario": "A unit return report",
+      "source_form": "Narration containing a unit name compound"
+    },
+    {
+      "id": "tl-fresh-15",
+      "scenario": "A workshop exchange",
+      "source_form": "Narration containing direct speech"
+    },
+    {
+      "id": "tl-fresh-16",
+      "scenario": "A delivery round in another fictional scope",
+      "source_form": "Direct address during delivery work"
+    },
+    {
+      "id": "tl-fresh-17",
+      "scenario": "An interface warning and an evacuation instruction",
+      "source_form": "A literal display token embedded in ordinary instructions"
+    },
+    {
+      "id": "tl-fresh-18",
+      "scenario": "A scheduled inspection",
+      "source_form": "A task label followed by a numerical maintenance instruction"
+    },
+    {
+      "id": "tl-fresh-19",
+      "scenario": "A map discrepancy",
+      "source_form": "Two-sentence narrative report"
+    }
+  ]
+}

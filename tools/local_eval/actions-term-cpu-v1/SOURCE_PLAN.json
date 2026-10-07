@@ -1,0 +1,27 @@
+{
+  "status": "ENABLED_DERIVATIVE_PREPARATION_ONLY",
+  "native_execution_enabled": true,
+  "source_parent": "0e9af3bccda4ac162e181fa8b17026a2b3cc8d76",
+  "source_commit": null,
+  "trigger_commit": null,
+  "attempt_id": "e4642260076941788a43ff17dd62a88b",
+  "public_inputs": {
+    "inputs/INPUT_BINDINGS.json": "180b7cea0bf902893180fadad30df8d2bfc22926a6d7c3a692be6eb197906d4f",
+    "inputs/schedule88.json": "4aa12fb23ebbc1bb1a2a2fe31f4d4dda400ec0ddb0fc42ed7d11564400e97f2f",
+    "inputs/coverage19.json": "c754eb4e34f612034a03e646666dd2f707a8cae182762c5364ae9739bbb8e541",
+    "inputs/SOURCE_ONLY_AUDIT.json": "a39c8bb5c57d3e86c759693a1829dac93c46cc2f4373087934a09207177e3178",
+    "inputs/sources88.json": "a98baa95cb520090d21176f03774c63ce5e0d1caca4e5ff6a10e7ed6bd72c9a8"
+  },
+  "protocol_sha256": "fabd4e3584908ec6bc4bc46b4fd0773092c3a9207a93a850332b256376ca3b12",
+  "operational_amendment_sha256": "3119cd8f0a1e75fd5eb509dd6ea1956e9f500fad5d7ff5de7ec9676a1746ed63",
+  "source_only_eligible": 12,
+  "expected_http": 378,
+  "max_http": 398,
+  "expected_helper_commands": 214,
+  "max_helper_commands": 244,
+  "actual_token_counts": false,
+  "old70test_receipt": "historical_only_not_current_validation",
+  "publication_authorized": false,
+  "claim_authorized": false,
+  "activation_note": "Enabled source still requires exact source/trigger workflow chain and process-bound runtime admission. No native execution during preparation."
+}

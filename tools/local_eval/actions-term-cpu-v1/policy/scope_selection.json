@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "root_approved_before_new_outputs",
+  "historical_source_ids": {"prefix": "R", "first": 1, "last": 40},
+  "prior_seen_source_ids": {"prefix": "S", "first": 1, "last": 15},
+  "included_glossary_source_ids": [
+    "person-01", "person-03",
+    "participant-01", "participant-02", "participant-03", "participant-04", "participant-05", "participant-06",
+    "entity-02", "negative-01", "negative-02", "negative-03", "negative-04", "nomatch-01"
+  ],
+  "excluded_but_still_seen_glossary_source_ids": [
+    "person-02", "person-04", "person-05", "person-06",
+    "entity-01", "entity-03", "entity-04", "nomatch-02", "nomatch-03", "nomatch-04"
+  ],
+  "selection_rationale": "Retain all historical40 and prior15, parent-identified glossary uncertainty cases, all six named-participant cases because public aggregate reporting does not name its two fixes, every matched homograph/subword negative, and the lexicographically first no-match representative. This preserves all five public glossary strata and all six entity keys without consulting private criteria or outputs. Excluded within-stratum cases remain seen archival evidence.",
+  "fresh_data_status": "not_authored",
+  "fresh_source_count": 19,
+  "fresh_carriers": {"global_safe_term_families": 6, "scenarios_each": 2, "required_active_rows": 12},
+  "fresh_controls": ["globally_unsafe_homograph", "subword", "quoted_source", "missing_or_foreign_scope", "marker_collision", "protected_syntax", "no_match"],
+  "pair_count": 88,
+  "completion_count": 176,
+  "expected_request_count_if_eligible_12": 378,
+  "request_ceiling": 398,
+  "max_surface_eligible_at_ceiling": 22,
+  "quality_and_timing_gates": "Bound by parent-level DETERMINISTIC_TERM_SOURCE_PROPOSAL_20261006.md; source membership freezes before generation and cannot depend on results."
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "policy_id": "luna-term-lock-v1",
+  "scope_id": "luna-fictional-terminology-v1",
+  "source_language": "ja",
+  "target_language": "zh-Hans",
+  "declaration": "These are application-wide fictional terminology declarations, fixed before source records are authored. The six safe entries denote only their declared fictional entities or terms throughout this scope. No record-level sense, answer, role, gender or eligibility override is permitted. The unsafe entry can denote an ordinary word or a name and is never deterministically replaced in this scope.",
+  "entries": [
+    {"id": "name_1", "src": "リュゼル", "dst": "吕泽尔", "kind": "proper_name", "lock_safe": true},
+    {"id": "name_2", "src": "セノリア", "dst": "瑟诺莉娅", "kind": "proper_name", "lock_safe": true},
+    {"id": "name_3", "src": "ヴァルネク", "dst": "瓦尔内克", "kind": "proper_name", "lock_safe": true},
+    {"id": "term_1", "src": "ネラ位相環", "dst": "涅拉相位环", "kind": "domain_term", "lock_safe": true},
+    {"id": "term_2", "src": "リゼナ転送炉", "dst": "莉泽娜传送炉", "kind": "domain_term", "lock_safe": true},
+    {"id": "term_3", "src": "オルクナ航路標", "dst": "奥尔库纳航路标", "kind": "domain_term", "lock_safe": true},
+    {"id": "unsafe_homograph", "src": "光", "dst": "光", "kind": "ambiguous_surface", "lock_safe": false}
+  ]
+}

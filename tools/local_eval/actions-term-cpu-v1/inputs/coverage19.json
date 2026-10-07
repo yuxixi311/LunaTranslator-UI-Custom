@@ -1,0 +1,116 @@
+[
+  {
+    "id": "tl-fresh-01",
+    "role": "carrier",
+    "family": "name_1",
+    "control_type": null
+  },
+  {
+    "id": "tl-fresh-02",
+    "role": "carrier",
+    "family": "name_1",
+    "control_type": null
+  },
+  {
+    "id": "tl-fresh-03",
+    "role": "carrier",
+    "family": "name_2",
+    "control_type": null
+  },
+  {
+    "id": "tl-fresh-04",
+    "role": "carrier",
+    "family": "name_2",
+    "control_type": null
+  },
+  {
+    "id": "tl-fresh-05",
+    "role": "carrier",
+    "family": "name_3",
+    "control_type": null
+  },
+  {
+    "id": "tl-fresh-06",
+    "role": "carrier",
+    "family": "name_3",
+    "control_type": null
+  },
+  {
+    "id": "tl-fresh-07",
+    "role": "carrier",
+    "family": "term_1",
+    "control_type": null
+  },
+  {
+    "id": "tl-fresh-08",
+    "role": "carrier",
+    "family": "term_1",
+    "control_type": null
+  },
+  {
+    "id": "tl-fresh-09",
+    "role": "carrier",
+    "family": "term_2",
+    "control_type": null
+  },
+  {
+    "id": "tl-fresh-10",
+    "role": "carrier",
+    "family": "term_2",
+    "control_type": null
+  },
+  {
+    "id": "tl-fresh-11",
+    "role": "carrier",
+    "family": "term_3",
+    "control_type": null
+  },
+  {
+    "id": "tl-fresh-12",
+    "role": "carrier",
+    "family": "term_3",
+    "control_type": null
+  },
+  {
+    "id": "tl-fresh-13",
+    "role": "control",
+    "family": null,
+    "control_type": "globally_unsafe_homograph"
+  },
+  {
+    "id": "tl-fresh-14",
+    "role": "control",
+    "family": null,
+    "control_type": "subword"
+  },
+  {
+    "id": "tl-fresh-15",
+    "role": "control",
+    "family": null,
+    "control_type": "quoted_source"
+  },
+  {
+    "id": "tl-fresh-16",
+    "role": "control",
+    "family": null,
+    "control_type": "missing_or_foreign_scope"
+  },
+  {
+    "id": "tl-fresh-17",
+    "role": "control",
+    "family": null,
+    "control_type": "marker_collision"
+  },
+  {
+    "id": "tl-fresh-18",
+    "role": "control",
+    "family": null,
+    "control_type": "protected_syntax"
+  },
+  {
+    "id": "tl-fresh-19",
+    "role": "control",
+    "family": null,
+    "control_type": "no_match"
+  }
+]

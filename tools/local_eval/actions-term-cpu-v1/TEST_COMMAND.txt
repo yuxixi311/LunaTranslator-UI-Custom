@@ -1,0 +1,17 @@
+python -B - <<'PYTEST'
+import sys,unittest
+from unittest.mock import patch
+blocked=[]
+def guard(event,args):
+ if event.startswith('socket.') or event in {'subprocess.Popen','os.system','os.fork','os.forkpty','os.posix_spawn','os.exec'}:
+  blocked.append(event);raise AssertionError('native operation forbidden: '+event)
+sys.addaudithook(guard)
+with patch('threading.Thread.start',side_effect=AssertionError('native threads forbidden')):
+ suite=unittest.defaultTestLoader.loadTestsFromNames(['test_term_runner','test_term_worker_packets','test_term_evidence','test_term_native_wiring'])
+ result=unittest.TextTestRunner(verbosity=2).run(suite)
+ from assemble_sources import assemble
+ v=assemble();assert v[-1]['eligible_count']==12 and v[-1]['intended_requests_if_counts_pass']==378 and v[-1]['intended_helper_commands']==214
+ print('SOURCE_ONLY_AUDIT:88rows;12carriers;7controls;14legacyASTparity;zero real counts')
+print('BLOCKED_NATIVE_ATTEMPTS:',blocked)
+raise SystemExit(0 if result.wasSuccessful() and not blocked else 1)
+PYTEST

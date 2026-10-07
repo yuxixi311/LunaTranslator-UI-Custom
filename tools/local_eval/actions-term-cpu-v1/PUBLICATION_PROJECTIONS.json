@@ -1,0 +1,18 @@
+{
+  "schema": "luna-publication-projection-v1",
+  "projection_only": true,
+  "files": [
+    {
+      "path": "policy/SOURCE_MANIFEST.json",
+      "json_pointer": "/review/reviewer",
+      "original_sha256": "aabc39abb5c3c212df587d683e00f201c5e5fb0e955c5ae7f4874a3d5e4c70b5",
+      "projected_sha256": "67b3cf363f4609ef45ed5053b7f072ffe9faf146d990ef7e8735da526038ce22",
+      "original_bytes": 2333,
+      "projected_bytes": 2295,
+      "published_value": "independent source reviewer",
+      "purpose": "Remove an internal review task identifier from public provenance.",
+      "all_other_bytes_unchanged": true
+    }
+  ],
+  "frozen_reference_semantics": "policy/FREEZE_RECEIPT.json manifest_sha256 and any preexisting historical provenance references continue to identify the exact original reviewed policy manifest, preserved privately; they do not assert byte equality with this publication-only projection. Policy, declarations, protocol, tests, data and schedules are unchanged."
+}

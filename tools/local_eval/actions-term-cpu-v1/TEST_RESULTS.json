@@ -1,0 +1,40 @@
+{
+  "status": "ENABLED_DERIVATIVE_GUARDED_TESTS_PASS",
+  "old_runner_identity_claimed": false,
+  "old70test_receipt": "historical_only",
+  "native_execution_enabled": true,
+  "tests_passed": 63,
+  "tests_failed": 0,
+  "command": "bash TEST_COMMAND.txt",
+  "native_attempts": [],
+  "real_tokenizer_calls": 0,
+  "actual_model_completions": 0,
+  "source_audit": {
+    "rows": 88,
+    "carriers_eligible": 12,
+    "controls_abstaining": 7,
+    "legacy_AST_parity": 14
+  },
+  "synthetic_run": {
+    "http": 378,
+    "completions": 176,
+    "preflight_counts": 176,
+    "recurring_counts": 24,
+    "helper_commands": 214,
+    "restore_commands": 12,
+    "PREPARE_samples": 88
+  },
+  "remaining": [
+    "Independent activation derivative review",
+    "Root source publication release",
+    "Actual source A identity and exact workflow render",
+    "Separate root workflow activation release",
+    "Real full-template preflight before generation"
+  ],
+  "final_review_corrections": [
+    "Explicit supervisor-snapshot versus whole-attempt cleanup scopes",
+    "Hooks-owned observations retained across cancelled logging; strict persisted/in-memory union used in cleanup and public export"
+  ],
+  "native_execution_performed": false,
+  "claim_created": false
+}

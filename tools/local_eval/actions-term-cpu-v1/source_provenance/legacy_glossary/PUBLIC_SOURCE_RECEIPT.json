@@ -1,0 +1,75 @@
+{
+  "commit": "49d3435e95f847a42e0e10053e9155a1695b5432",
+  "files": [
+    {
+      "file": "canon.json",
+      "repository_path": "tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-independent/canon.json",
+      "git_blob_sha1": "c6b2fb544d8faab5584d471032871f3880b1bf69",
+      "bytes": 432,
+      "sha256": "7cc5bdb3626dd4e781070dca708428c0ef81048d72b067a71f9e15c795814337"
+    },
+    {
+      "file": "sources.json",
+      "repository_path": "tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-independent/sources.json",
+      "git_blob_sha1": "5757eb561ae4dd07506ee4af8e3995cc0757d327",
+      "bytes": 5929,
+      "sha256": "29e6d18e8ca8191c87eb2328cf6a4055947d8627cb22ef456199df1fc6bfa092"
+    },
+    {
+      "file": "PREREGISTRATION.md",
+      "repository_path": "tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-design/PREREGISTRATION.md",
+      "git_blob_sha1": "59ed408905dd9a9481260c169cdf2b3f627369bf",
+      "bytes": 10320,
+      "sha256": "492967489479a4756e7df5161a0d952385261094ce7e6e289289d8e8307da2a9"
+    },
+    {
+      "file": "glossary_policy.py",
+      "repository_path": "tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-policy-work/glossary_policy.py",
+      "git_blob_sha1": "469ee1047f7ad6641efc6dbb5fdad3b6ed092ccc",
+      "bytes": 5095,
+      "sha256": "5e7cbc1b9c875de6a07148e60323cdf3f8183d8007e950effa52bdde07e8173f"
+    },
+    {
+      "file": "production_adapter.py",
+      "repository_path": "tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-policy-work/production_adapter.py",
+      "git_blob_sha1": "8634bc728276647aba65d4846c6876e8555f082e",
+      "bytes": 4479,
+      "sha256": "efdd618ceb43032a7e30693f7192bc22942422faf3ec9b93b219f32089344183"
+    },
+    {
+      "file": "source_pins.json",
+      "repository_path": "tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-policy-work/source_pins.json",
+      "git_blob_sha1": "4ae1262213e15f3ea9aee18864a8c6e63e332d25",
+      "bytes": 392,
+      "sha256": "1c6b128e529cb11c77ef3edfe49e62b0c1c2b0007977039a809be391f3d64604"
+    },
+    {
+      "file": "pinned_source/transoptimi/noundict.py",
+      "repository_path": "tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-policy-work/pinned_source/transoptimi/noundict.py",
+      "git_blob_sha1": "b320ce597f7ac23123003035b1a03afff5c41791",
+      "bytes": 4419,
+      "sha256": "d3d968c1aa3a7e54af7db804b81ea05dd19447d826db847d99f458c27115d64f"
+    },
+    {
+      "file": "pinned_source/myutils/commonbase.py",
+      "repository_path": "tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-policy-work/pinned_source/myutils/commonbase.py",
+      "git_blob_sha1": "bc8c583dda130429c86c4ddb4f99fb1d47445264",
+      "bytes": 6721,
+      "sha256": "c562d635565477af7d399273aa3048879652a6e1420f861154b7c958d11c8172"
+    },
+    {
+      "file": "pinned_source/translator/sakura_base.py",
+      "repository_path": "tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-policy-work/pinned_source/translator/sakura_base.py",
+      "git_blob_sha1": "ccb9d713375831a943a5b91dc1b38ebe48cabd7a",
+      "bytes": 13027,
+      "sha256": "3d9883f7965693cbe17a80db9a8d95ab95213737a782fc69acbee34cfa0ae28f"
+    },
+    {
+      "file": "pinned_source/translator/local_hymt.py",
+      "repository_path": "tools/local_eval/hy-glossary-v1/consumer/luna-hy-glossary-policy-work/pinned_source/translator/local_hymt.py",
+      "git_blob_sha1": "93867c5bc7d37f010cd2c9c553d5a11e61ede795",
+      "bytes": 2777,
+      "sha256": "5ea7215c0330ba43adacbb386517ed56bb5e5ab236088644196b36f8efdd98dc"
+    }
+  ]
+}

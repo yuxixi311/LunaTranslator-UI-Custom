@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "glossary": [
+    {
+      "src": "リュゼル",
+      "dst": "吕泽尔"
+    },
+    {
+      "src": "セノリア",
+      "dst": "瑟诺莉娅"
+    },
+    {
+      "src": "ヴァルネク",
+      "dst": "瓦尔内克"
+    },
+    {
+      "src": "ネラ位相環",
+      "dst": "涅拉相位环"
+    },
+    {
+      "src": "リゼナ転送炉",
+      "dst": "莉泽娜传送炉"
+    },
+    {
+      "src": "オルクナ航路標",
+      "dst": "奥尔库纳航路标"
+    },
+    {
+      "src": "光",
+      "dst": "光"
+    }
+  ],
+  "records": [
+    {
+      "id": "tl-fresh-01",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-01",
+      "source": "リュゼル、まだ出発しないで。橋の修理が終わったら、こちらから合図を送る。"
+    },
+    {
+      "id": "tl-fresh-02",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-01",
+      "source": "リュゼル、預かった鍵は返したよ。でも、倉庫の扉は開けていない。"
+    },
+    {
+      "id": "tl-fresh-03",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-02",
+      "source": "セノリア、あの手紙は捨てずに取っておいて。差出人には、返事は明日になるとだけ伝えて。"
+    },
+    {
+      "id": "tl-fresh-04",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-02",
+      "source": "セノリア、お客さんを裏口から案内してくれる？正面の階段は今、使えないんだ。"
+    },
+    {
+      "id": "tl-fresh-05",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-03",
+      "source": "ヴァルネク、隊長を責めないで。撤退を決めたのは私だ。"
+    },
+    {
+      "id": "tl-fresh-06",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-03",
+      "source": "ヴァルネク、妹を駅へ迎えに行ってくれないか。兄には頼んだけれど、まだ返事がないんだ。"
+    },
+    {
+      "id": "tl-fresh-07",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-04",
+      "source": "拾い集めた部品は三つ。ネラ位相環、冷却弁、固定具だ。割れていたのは固定具だけで、残りは無事だった。"
+    },
+    {
+      "id": "tl-fresh-08",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-04",
+      "source": "探していたのは、ネラ位相環。昨日の点検では見つからなかったが、今朝になって工具箱の底から出てきた。"
+    },
+    {
+      "id": "tl-fresh-09",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-05",
+      "source": "停止している設備は二つ。リゼナ転送炉、それから西側の揚水機だ。どちらも明日の朝まで動かせない。"
+    },
+    {
+      "id": "tl-fresh-10",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-05",
+      "source": "修理対象：リゼナ転送炉。外板のへこみはそのままにして、内部の弁だけを交換する。"
+    },
+    {
+      "id": "tl-fresh-11",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-06",
+      "source": "沖に見えるものは二つ。オルクナ航路標、そして岩礁だ。船長はその間を通らず、島の東へ回ることにした。"
+    },
+    {
+      "id": "tl-fresh-12",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-06",
+      "source": "撤去対象：オルクナ航路標。土台は残し、上部だけを岸へ運ぶ。満潮になる前に作業を終えること。"
+    },
+    {
+      "id": "tl-fresh-13",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-07",
+      "source": "光、音、振動を順に記録した。振動だけは原因がわからず、調査を続けることになった。"
+    },
+    {
+      "id": "tl-fresh-14",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-08",
+      "source": "リュゼル隊の帰還は明日に延びた。荷馬車の車輪が壊れたためで、戦闘があったわけではない。"
+    },
+    {
+      "id": "tl-fresh-15",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-09",
+      "source": "整備士は「ネラ位相環、まだ外さないで」と言った。助手は工具を置いて、その場を離れた。"
+    },
+    {
+      "id": "tl-fresh-16",
+      "scope_id": "luna-fictional-delivery-external-v1",
+      "family_id": "tl-family-10",
+      "source": "セノリア、今日の配達はここまでにしよう。残りの荷物は明日の便に回して。"
+    },
+    {
+      "id": "tl-fresh-17",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-11",
+      "source": "警告欄に{LT7}が出たら、扉を開けないこと。ヴァルネク、皆を階段の下で待たせて。"
+    },
+    {
+      "id": "tl-fresh-18",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-12",
+      "source": "点検対象：リゼナ転送炉。出力を30%まで下げてから、予備の弁に交換する。"
+    },
+    {
+      "id": "tl-fresh-19",
+      "scope_id": "luna-fictional-terminology-v1",
+      "family_id": "tl-family-13",
+      "source": "返却された地図には、北門から先の道が描かれていなかった。案内人はそのことを知らずに出発してしまった。"
+    }
+  ]
+}

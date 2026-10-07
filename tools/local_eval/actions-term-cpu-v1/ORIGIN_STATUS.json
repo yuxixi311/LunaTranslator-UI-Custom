@@ -1,0 +1,9 @@
+{
+  "status": "NEW_SOURCE_RECONSTRUCTION_NOT_OLD_RUNNER_IDENTITY",
+  "old_runner_manifest_unrecovered": "d7a80b7f00f3566d5274f8a958b5d017d0406ae5ea21f71b4f61a3cada2691fb",
+  "old70test_receipt": "historical_only_not_reused_as_verification",
+  "native_execution_enabled": false,
+  "policy_sha256": "f621ddec3e4cb7d449693f1ffb28a169276eabf5e7e49441d973d0868f3c2cca",
+  "declarations_sha256": "f7d849ae54ec36d8247aeaadedd633523de92df35313c7bebb3a2073baeccd3b",
+  "fresh_sources_sha256": "83918221ae47cd7be8e863f0f0f5b3b2af8af146fa117ee663093df9ad84fba8"
+}

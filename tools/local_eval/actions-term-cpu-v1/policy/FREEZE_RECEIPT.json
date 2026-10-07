@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "freeze_utc": "2026-10-06T20:19:48Z",
+  "decision": "FROZEN_SOURCE_ONLY",
+  "manifest_sha256": "aabc39abb5c3c212df587d683e00f201c5e5fb0e955c5ae7f4874a3d5e4c70b5",
+  "declarations_sha256": "f7d849ae54ec36d8247aeaadedd633523de92df35313c7bebb3a2073baeccd3b",
+  "policy_sha256": "f621ddec3e4cb7d449693f1ffb28a169276eabf5e7e49441d973d0868f3c2cca",
+  "protocol_sha256": "fabd4e3584908ec6bc4bc46b4fd0773092c3a9207a93a850332b256376ca3b12",
+  "renderer_parity_test_sha256": "a770db6ea7a57c50abdcf5ec04449012f51ffde019d45832f35b542caafa2621",
+  "cohort_selection_sha256": "d1fae404199f421ec3111daa854513eb92ff6a1a5609ef8ff1a9a065b0c33ef4",
+  "review_decision": "PASS as corrected source design/helper; no remaining definition blocker",
+  "review_scope": "independent source and fake-test review, including actual published renderer bytes; no tokenization/inference/semantic evidence",
+  "fresh19_authored": false,
+  "private_criteria_read": false,
+  "runtime_integration_created": false,
+  "inference_or_publication_authorized_by_freeze": false,
+  "next_boundary": "Independent source authoring may be commissioned by root using this immutable declaration/policy; reviewer-only applicability and criteria must remain outside runtime inputs."
+}

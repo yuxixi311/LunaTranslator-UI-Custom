@@ -1,0 +1,1012 @@
+{
+  "status": "NEW_RUNNER_SOURCE_ONLY_PASS_REAL_PREFLIGHT_PENDING",
+  "pairs": 88,
+  "eligible_count": 12,
+  "source_eligible_ids": [
+    "tl-fresh-01",
+    "tl-fresh-02",
+    "tl-fresh-03",
+    "tl-fresh-04",
+    "tl-fresh-05",
+    "tl-fresh-06",
+    "tl-fresh-07",
+    "tl-fresh-08",
+    "tl-fresh-09",
+    "tl-fresh-10",
+    "tl-fresh-11",
+    "tl-fresh-12"
+  ],
+  "intended_requests_if_counts_pass": 378,
+  "intended_helper_commands": 214,
+  "bindings": {
+    "sources": "7a7d9d934f618b5d24a4ff26507eab244b63b6b0b0e8c34fa004fa3cfcd4b91c",
+    "coverage": "678947c9c2328b75a086bcfa6179133ea98e01de87fa5ee7108480c76573f73a",
+    "schedule": "4402f3509bc0abc06996ed8cb88846959200b960c03eab6748547527abc8a574",
+    "declarations": "f7d849ae54ec36d8247aeaadedd633523de92df35313c7bebb3a2073baeccd3b"
+  },
+  "legacy_glossary_renderer_parity": [
+    {
+      "id": "person-01",
+      "matched_sources": [
+        "光"
+      ],
+      "request_sha256": "38a10725efebb409b97fafcb3b9c15a0ec0648adca01248628a975dfeb4ad43e"
+    },
+    {
+      "id": "person-03",
+      "matched_sources": [
+        "蓮"
+      ],
+      "request_sha256": "c68a8bdcca5c56f5005606adce8282f33c142302b78f175c00a1545345fa9f3e"
+    },
+    {
+      "id": "participant-01",
+      "matched_sources": [
+        "光"
+      ],
+      "request_sha256": "f7fd701a1d380b272ced8aa185c005f779eba45563f8288a103878897f112f25"
+    },
+    {
+      "id": "participant-02",
+      "matched_sources": [
+        "翼"
+      ],
+      "request_sha256": "bf08db8d947594ac6ed961dcc5ca0ec474f92575331a044f34cb4fe040c6497b"
+    },
+    {
+      "id": "participant-03",
+      "matched_sources": [
+        "蓮"
+      ],
+      "request_sha256": "eec7458b660c6666a025ffd95605f67ab2535746d61bb5b60aec724702ffaaa5"
+    },
+    {
+      "id": "participant-04",
+      "matched_sources": [
+        "桜"
+      ],
+      "request_sha256": "0ecf663884772ebc018d38f19ee003a3024cf4babdc5f3bb7a9e39438618be7d"
+    },
+    {
+      "id": "participant-05",
+      "matched_sources": [
+        "泉"
+      ],
+      "request_sha256": "43001ad9642dd089889a3abffb2e5cc9fb89cb1f4597291821bbd7648cd7177f"
+    },
+    {
+      "id": "participant-06",
+      "matched_sources": [
+        "遥"
+      ],
+      "request_sha256": "4e90624289edeba65f9077c8544cf71416179bdf6445139ece6fe94192b09191"
+    },
+    {
+      "id": "entity-02",
+      "matched_sources": [],
+      "request_sha256": "2c5e2c7ddd67b595b589a520fff18b33bb82ca98236fd67c5c941f5fba636627"
+    },
+    {
+      "id": "negative-01",
+      "matched_sources": [
+        "光",
+        "翼"
+      ],
+      "request_sha256": "a27237886230189d3df81ffd39926f9f1c901ceb5d0cc8d4f1c54d415215d156"
+    },
+    {
+      "id": "negative-02",
+      "matched_sources": [
+        "蓮"
+      ],
+      "request_sha256": "2e2f671f5292a5b2661bd132a6d58e62b707638bdf6c381007e821c54ed5f74d"
+    },
+    {
+      "id": "negative-03",
+      "matched_sources": [
+        "桜"
+      ],
+      "request_sha256": "b2356a70ad2d22a721c3887db50ead9d8f9770bc93ee49e2b4a7d38d0375ce23"
+    },
+    {
+      "id": "negative-04",
+      "matched_sources": [
+        "泉",
+        "遥"
+      ],
+      "request_sha256": "72a7d8f6d17127b08a5a4569f01975b8683386015380cbdd5560e5ec33a60c2f"
+    },
+    {
+      "id": "nomatch-01",
+      "matched_sources": [],
+      "request_sha256": "78213def447a5517cc46673956e4db6345cba13e10bc398e7c79d62516f1f2f1"
+    }
+  ],
+  "root_source_review_opaque_sha256": "6f6317f929e8b0db7036c0d6842b3c2198ebaa1a09e5637df5b1be21ac37cc47",
+  "private_criteria_opaque_commitment": "8e3afd829bc54ed4f3addd115fad73d5740f8265329d1ea586c54e126d61d8e8",
+  "real_tokenizer_calls": 0,
+  "model_calls": 0,
+  "native_execution_enabled": false,
+  "prompt_bindings": {
+    "R001": {
+      "baseline_prompt_sha256": "9b301687d1cb4fce7d667aa845670a1daf69b87c658888c4bc88167c7c4c46c3",
+      "provisional_prompt_sha256": "9b301687d1cb4fce7d667aa845670a1daf69b87c658888c4bc88167c7c4c46c3",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "9f9764ce055b2a349eb060cb46accb3e9074aa1518ce2f68ca8502f2b15f51c1",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R002": {
+      "baseline_prompt_sha256": "7ee3cd55cb067e59f6f9ffb77ca599c8dcff41d5ca5260455943f46dd29060e8",
+      "provisional_prompt_sha256": "7ee3cd55cb067e59f6f9ffb77ca599c8dcff41d5ca5260455943f46dd29060e8",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "f0ff7eb279ee37e762b7f58474398dffd4a6cce90e99e57f70f8126d59cd9663",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R003": {
+      "baseline_prompt_sha256": "d4384e2acf4d15933f812da076b9ba73c2d2ce1c173bc9c4330be446a3e7fa51",
+      "provisional_prompt_sha256": "d4384e2acf4d15933f812da076b9ba73c2d2ce1c173bc9c4330be446a3e7fa51",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "5e587aeb65822c6b53d5774a20a246790b99c34ece0497fddccecb82fbdc9f97",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R004": {
+      "baseline_prompt_sha256": "708116bac03e38dbfa83876bc351caad743c12bcb13c79a4761a4c085e4c2ea6",
+      "provisional_prompt_sha256": "708116bac03e38dbfa83876bc351caad743c12bcb13c79a4761a4c085e4c2ea6",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "fca82f918c295155453503d0cc845d644a497dde3db97c87f63c3a5fe19bb59c",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R005": {
+      "baseline_prompt_sha256": "bd1185ad34da7666a551e5854382e8cbb8fad3c97692364a331a37b01c661bd5",
+      "provisional_prompt_sha256": "bd1185ad34da7666a551e5854382e8cbb8fad3c97692364a331a37b01c661bd5",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "512f5259deacfa8d235a15b37be94078a2c703a4539a5c6c2fcd599497fc336a",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R006": {
+      "baseline_prompt_sha256": "af2f573448121886d62fb5a200bd0930b13b7635e0656e66ca27f606ee177a1d",
+      "provisional_prompt_sha256": "af2f573448121886d62fb5a200bd0930b13b7635e0656e66ca27f606ee177a1d",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "460c5a41ddf3f88ad3c642414608cadaeb8a56396ee478607d17d39d8910236c",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R007": {
+      "baseline_prompt_sha256": "66a2d602b30a79a5441e7cce7f47fc0deaac2015caaa498e0349474f6be3b12f",
+      "provisional_prompt_sha256": "66a2d602b30a79a5441e7cce7f47fc0deaac2015caaa498e0349474f6be3b12f",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "d1a4f4b927b70181093d77b61e4c258772858db09b2dd80a0757bdc86b337c4e",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R008": {
+      "baseline_prompt_sha256": "9cf1bcf02f0ad66f571adcfec9ca5fb8e9ca9083c701b1628464166825b4f9b9",
+      "provisional_prompt_sha256": "9cf1bcf02f0ad66f571adcfec9ca5fb8e9ca9083c701b1628464166825b4f9b9",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "627afaa77ec7ccec45c99a4fc5bc5f030e58688bf7101b502330d27a0a0c571f",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R009": {
+      "baseline_prompt_sha256": "a2e6341c6945b802e0169dd22e4d1188836e262eb00149d5d1170ffe63051935",
+      "provisional_prompt_sha256": "a2e6341c6945b802e0169dd22e4d1188836e262eb00149d5d1170ffe63051935",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "42e065eeb716bb08bf6c25e0f63b8e68881f3a64d2f122bab1c3bf9a246cc8d6",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R010": {
+      "baseline_prompt_sha256": "390c38d603dda37d86df1953dca6cdc8ead71d5935e284942cce4117e4a98764",
+      "provisional_prompt_sha256": "390c38d603dda37d86df1953dca6cdc8ead71d5935e284942cce4117e4a98764",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "087e63f66009332d77dce19d2de256e6a20a399708e1912ffbbb17ddf9c1a27b",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R011": {
+      "baseline_prompt_sha256": "6aecdeae5ad08b4db022f508dba5bcdc50fcc00cf2d8fca74f9e70915d8f27cf",
+      "provisional_prompt_sha256": "6aecdeae5ad08b4db022f508dba5bcdc50fcc00cf2d8fca74f9e70915d8f27cf",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "98fb686ca52efe1c10ab5b4ce734a631f6449d40d7f2a8a8c22feb486de2e580",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R012": {
+      "baseline_prompt_sha256": "222f0e27061a87c95b2368cab74d59fe5a320294911acc38c27d5a7fdbcc5cfd",
+      "provisional_prompt_sha256": "222f0e27061a87c95b2368cab74d59fe5a320294911acc38c27d5a7fdbcc5cfd",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "cbf3294b3e014e984d62a0000387da8977903f10e94f2cef93c66035f8cbb13d",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R013": {
+      "baseline_prompt_sha256": "ed1c38a4cdb7f6a0f40a4a0c5dd904ddfc048bc8446ee9d07133ed35688b5f50",
+      "provisional_prompt_sha256": "ed1c38a4cdb7f6a0f40a4a0c5dd904ddfc048bc8446ee9d07133ed35688b5f50",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "dc573d5347d334f7516fe255f914ac134227efb0b7bb441074b43f3ec81f16f1",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R014": {
+      "baseline_prompt_sha256": "327473703724e4a947547daefa130ba020cc417bc879faa9ad1a1147fd380560",
+      "provisional_prompt_sha256": "327473703724e4a947547daefa130ba020cc417bc879faa9ad1a1147fd380560",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "6c1adec71b6caada7104200cdba60c18a6ed9b374543060f3ae48e85af48fb48",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R015": {
+      "baseline_prompt_sha256": "64a5f097e6198687c20db528afd9d1d4bd53026784cfaebcf48d5e005872a4e9",
+      "provisional_prompt_sha256": "64a5f097e6198687c20db528afd9d1d4bd53026784cfaebcf48d5e005872a4e9",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "f70bb8313e13445bea9986edc85afba623c0506147b5f321c4bba93407380761",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R016": {
+      "baseline_prompt_sha256": "de24743af6a12ecaca4f024def52f8cd8a2320bbd3b6f19457255a935d3ba0b0",
+      "provisional_prompt_sha256": "de24743af6a12ecaca4f024def52f8cd8a2320bbd3b6f19457255a935d3ba0b0",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "a42e0a33f4fa2ad049b692880d9e67bd63475b7cb4317e963d28ba5808c79257",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R017": {
+      "baseline_prompt_sha256": "5ed90515192b55a9dd6c8d4b34a494c84613d1d760e5b8bea737115577983222",
+      "provisional_prompt_sha256": "5ed90515192b55a9dd6c8d4b34a494c84613d1d760e5b8bea737115577983222",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "a724b56b71760a5b2293af03c4a16fd25f03282c9ba81786f6301c69577dc779",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R018": {
+      "baseline_prompt_sha256": "b1b4e22342ab9a5cff00eca7a95fb434f23b7babca4a9ce2839f0894d3a3d53e",
+      "provisional_prompt_sha256": "b1b4e22342ab9a5cff00eca7a95fb434f23b7babca4a9ce2839f0894d3a3d53e",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "e960a4d2fdb935fc904846e9d5279494d78e6a05feea5cf9dae9075858fcb103",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R019": {
+      "baseline_prompt_sha256": "4920448be4d8f9abcce21193c293b8f37e7112c61ddf59a805ccc7d03a3ccdd7",
+      "provisional_prompt_sha256": "4920448be4d8f9abcce21193c293b8f37e7112c61ddf59a805ccc7d03a3ccdd7",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "622d5f292a7dbbd1964d102fb9267509c71238b72b8078152876c7692a433326",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R020": {
+      "baseline_prompt_sha256": "1506970b5816258badb860dbbd813a04096b664fa7b1967f5be5037f9ad3f372",
+      "provisional_prompt_sha256": "1506970b5816258badb860dbbd813a04096b664fa7b1967f5be5037f9ad3f372",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "a1ce68a6378c9146cdab91f249ad3655ef37be536c7416acc48ce3e120336c54",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R021": {
+      "baseline_prompt_sha256": "5b29f07b9e19a9fc924d3254b4c0a57a05d9a35027b2d88a0f8ae1a1a02c9eb9",
+      "provisional_prompt_sha256": "5b29f07b9e19a9fc924d3254b4c0a57a05d9a35027b2d88a0f8ae1a1a02c9eb9",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "1e6be740720a430684e8232ee6f593d09538043b3086c270443c66025733e65f",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R022": {
+      "baseline_prompt_sha256": "016a9e82cec0f17a5690735e3400f2e1e39a40eafc64434837cf4c37372745b9",
+      "provisional_prompt_sha256": "016a9e82cec0f17a5690735e3400f2e1e39a40eafc64434837cf4c37372745b9",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "82ba022deadf3cbcd3095bf639cd4308e11c5faec4b70788f87ad87adfa31044",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R023": {
+      "baseline_prompt_sha256": "ca064d6af3b00bb69df4aefe83bff7de330f9411f852882c9b73485a169626cc",
+      "provisional_prompt_sha256": "ca064d6af3b00bb69df4aefe83bff7de330f9411f852882c9b73485a169626cc",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "2de6b9616cc5cfc3441193de3b9bc595e6b7e402b39857c1abfbc9baaed54aa7",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R024": {
+      "baseline_prompt_sha256": "d66e6a878b4eb5527e76e69029c006eec9f25d6d3cfb004c7f0864007f3e8352",
+      "provisional_prompt_sha256": "d66e6a878b4eb5527e76e69029c006eec9f25d6d3cfb004c7f0864007f3e8352",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "89885885e89a6192a88db194ec23829989cfbb7ea00d503fd45c4cfd6e40b8b4",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R025": {
+      "baseline_prompt_sha256": "e1d5cb95b944e84159087ae9a77afd6b90f5ada7f563c783e0e7872a9887ac9b",
+      "provisional_prompt_sha256": "e1d5cb95b944e84159087ae9a77afd6b90f5ada7f563c783e0e7872a9887ac9b",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "7536f45487350de3a936f18908c8e7113322b9f09f87119e68dbc72aec6b85dc",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R026": {
+      "baseline_prompt_sha256": "a1490d0f1df528fc2cbe982eb354c109de41040ce685fd80d61150b9825e7231",
+      "provisional_prompt_sha256": "a1490d0f1df528fc2cbe982eb354c109de41040ce685fd80d61150b9825e7231",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "34f5975eb336cd14ff33bc823006990f339fb78d1255650adf8139b16361dc5a",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R027": {
+      "baseline_prompt_sha256": "bbfb348fdfe6755ba56c5ea3ed2770186206639accb0832c33e0710aa09945ee",
+      "provisional_prompt_sha256": "bbfb348fdfe6755ba56c5ea3ed2770186206639accb0832c33e0710aa09945ee",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "c5e688a977b2f6b0c2d5a98c151f889bfc3a2aa3feb5186d794c65fc753b1638",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R028": {
+      "baseline_prompt_sha256": "eb17908383f3fe5c3768d559d9c734063ff928a084e42f9c080dd4f9ed1f4df6",
+      "provisional_prompt_sha256": "eb17908383f3fe5c3768d559d9c734063ff928a084e42f9c080dd4f9ed1f4df6",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "ee85dba74e031dfa8394868b8c73448bbe70264bf9b6788cf6c331e77533821d",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R029": {
+      "baseline_prompt_sha256": "d4ebe4ff5231ccb329555a48da71595948c37c53292edc79d597b583359bac1b",
+      "provisional_prompt_sha256": "d4ebe4ff5231ccb329555a48da71595948c37c53292edc79d597b583359bac1b",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "cee6b1386a41d8787887618816cb0682f4e81deba370a23d3746262b69834210",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R030": {
+      "baseline_prompt_sha256": "d59544dcaa5f2fe0443ba0ea0b59e4f2b68723308569dc4cacc823962dddfa2f",
+      "provisional_prompt_sha256": "d59544dcaa5f2fe0443ba0ea0b59e4f2b68723308569dc4cacc823962dddfa2f",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "a5359370a396cc0a8ca84342adef6efcf05ad29269656f9c757433e3f187052a",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R031": {
+      "baseline_prompt_sha256": "82480cfe2de59dbe6fc61780e16f67d9b88db58747511106331f6f9a53a9a56a",
+      "provisional_prompt_sha256": "82480cfe2de59dbe6fc61780e16f67d9b88db58747511106331f6f9a53a9a56a",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "1c2c3d5eb5a526c4cd88d445cade0c090416720e0654bea07c3e97d997c1552a",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R032": {
+      "baseline_prompt_sha256": "449cf0f0a5fb3e547dce683c3d747f8a9e8a0ce6f7a5d4ca3904d0148df183fe",
+      "provisional_prompt_sha256": "449cf0f0a5fb3e547dce683c3d747f8a9e8a0ce6f7a5d4ca3904d0148df183fe",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "4a1b2b54c480024d1518e34beb6d1002e474696f34818f78d139a36377d82d5d",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R033": {
+      "baseline_prompt_sha256": "85d9b8459550b40d53903ea1be2b90f117c8325c8f36932ec101563d4ba61b5c",
+      "provisional_prompt_sha256": "85d9b8459550b40d53903ea1be2b90f117c8325c8f36932ec101563d4ba61b5c",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "cc626e0449ccf37868e3cd3082fffaa22224886ef0aa7f3890b9394e4ab15b61",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R034": {
+      "baseline_prompt_sha256": "caab022d50283ad57042fa74fa7ab196234e9ecb7521c47a0b104b2022769f05",
+      "provisional_prompt_sha256": "caab022d50283ad57042fa74fa7ab196234e9ecb7521c47a0b104b2022769f05",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "d1ed037315f31bb49e76a322ff15b6f116ded3b2f72ea612b9224e553ec5e89d",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R035": {
+      "baseline_prompt_sha256": "8e33cdd4965b0d9425821826c84dc4db4f565504a7c1427669f5a04d11e43f27",
+      "provisional_prompt_sha256": "8e33cdd4965b0d9425821826c84dc4db4f565504a7c1427669f5a04d11e43f27",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "06bb23a4b77889d2d278c5517f581d2aa2e25bfa53ae6413dd109fe1079d6a34",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R036": {
+      "baseline_prompt_sha256": "3c5e8ed12a5405af5e9eb22df3f53f8e9da837e7aefb59f828bd928806b13620",
+      "provisional_prompt_sha256": "3c5e8ed12a5405af5e9eb22df3f53f8e9da837e7aefb59f828bd928806b13620",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "ebc5bb5504511faf7dac0f978021c067f8f2782964ff26326fb0620241591ca4",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R037": {
+      "baseline_prompt_sha256": "41e8084eb05ecc02593fc60288035b51936c747737a2fd38144e78f3a68d05cb",
+      "provisional_prompt_sha256": "41e8084eb05ecc02593fc60288035b51936c747737a2fd38144e78f3a68d05cb",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "e0307342c60c38fb5557c208d4106a955f3ed04bf8194fdf60658a3efd1d4bc5",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R038": {
+      "baseline_prompt_sha256": "6df459bf127484ccb9bf3be1a9ba7cbadb54b02d575895a3faa0f868b7118d52",
+      "provisional_prompt_sha256": "6df459bf127484ccb9bf3be1a9ba7cbadb54b02d575895a3faa0f868b7118d52",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "35b39ee521979711a32bfca6bfe36af0af2ae2748d6ddcb6bb1ce84f77800870",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R039": {
+      "baseline_prompt_sha256": "5fa77b88337daa10e262b81813777bbcddfbbd6349f60c2a6165e0ebe7dc2ee5",
+      "provisional_prompt_sha256": "5fa77b88337daa10e262b81813777bbcddfbbd6349f60c2a6165e0ebe7dc2ee5",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "f6e767dd80e11f246f02e4cf412084cfef9a5929a705246bd3df7d31cedd2d34",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "R040": {
+      "baseline_prompt_sha256": "cfdea9148eeb30f068bb76e2824e4e08dcc2603fe949fddf81a27a34c5e6041f",
+      "provisional_prompt_sha256": "cfdea9148eeb30f068bb76e2824e4e08dcc2603fe949fddf81a27a34c5e6041f",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "6c32452b05eebdc90183f642ed4c9ce378001b779c7eec214b6d172002cb8eb8",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S001": {
+      "baseline_prompt_sha256": "ec9b841c85de0040af7b51b608ca26df101cd011569d11ed20bdb6ff5b00f2eb",
+      "provisional_prompt_sha256": "ec9b841c85de0040af7b51b608ca26df101cd011569d11ed20bdb6ff5b00f2eb",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "d56ffa1a0cae483649df9e994eea49a0f17d3c06baeac62309479bde972b1124",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S002": {
+      "baseline_prompt_sha256": "2d0ff9b3f6ff8101c5fc8bd791d2d129d28e6af09d16be2fc7ab7bb0260394a5",
+      "provisional_prompt_sha256": "2d0ff9b3f6ff8101c5fc8bd791d2d129d28e6af09d16be2fc7ab7bb0260394a5",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "a1f7c13525c72955bbbe1b04dd3328cd14d50daeabaabe6b0797e5ceb91554da",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S003": {
+      "baseline_prompt_sha256": "255ab507ecf0b705a65daadd6dc840f8a3f01d86382636dbb0b452dfe9110d00",
+      "provisional_prompt_sha256": "255ab507ecf0b705a65daadd6dc840f8a3f01d86382636dbb0b452dfe9110d00",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "52df5e079a537e9ca009332699aa863142310c901db9eabb06ee633d307e0853",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S004": {
+      "baseline_prompt_sha256": "0c5dded1d7075aacbf76a2702515d4541f470bcf75b7169276b3abbbfd1eacb7",
+      "provisional_prompt_sha256": "0c5dded1d7075aacbf76a2702515d4541f470bcf75b7169276b3abbbfd1eacb7",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "4857df3667229ac6b426dbbc8b07d9e5f83c6f21f589ddfe476a2e6c0f273cbb",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S005": {
+      "baseline_prompt_sha256": "169ffc6a8e686ac01fc6a501299910f97f23967185ad6d9f649cdc6d972d5a5c",
+      "provisional_prompt_sha256": "169ffc6a8e686ac01fc6a501299910f97f23967185ad6d9f649cdc6d972d5a5c",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "b85f7d042052a60a94f4d99b999921430f7180a5879f3f3d72f179ef242f7153",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S006": {
+      "baseline_prompt_sha256": "8da97d625a0036746610036777061933249b0509a11699812c030526afbb3c15",
+      "provisional_prompt_sha256": "8da97d625a0036746610036777061933249b0509a11699812c030526afbb3c15",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "c5135e52bc2e1adfc938ec9524d08975baf1c5b741eff9ec21da718836c68d59",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S007": {
+      "baseline_prompt_sha256": "2f4f4cea937d9063ff8d3768090781c38c6612432a41d9c2012492a9c7bdb94b",
+      "provisional_prompt_sha256": "2f4f4cea937d9063ff8d3768090781c38c6612432a41d9c2012492a9c7bdb94b",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "e6b85b24ac4a7e70b27482c2a8687745e41e7b88b785c3aaf3634d0ba054e33b",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S008": {
+      "baseline_prompt_sha256": "1b7ce16d360ede7cb61e5843896c9e3cf5b6fbaf77539e393471916d3bfa5965",
+      "provisional_prompt_sha256": "1b7ce16d360ede7cb61e5843896c9e3cf5b6fbaf77539e393471916d3bfa5965",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "082487e8472af6a0bd9fcdd770c5a075c00db9ae725e9b5627966b390ed28d21",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S009": {
+      "baseline_prompt_sha256": "c6a6966725be2d1cac73b96ebd12e5fa8ed78bcb9d7aa8e056173fb6912ca036",
+      "provisional_prompt_sha256": "c6a6966725be2d1cac73b96ebd12e5fa8ed78bcb9d7aa8e056173fb6912ca036",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "a0e790d5382a7172c3d639884354ec069c329b2983d111b46cf6cad40ae28dba",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S010": {
+      "baseline_prompt_sha256": "6b0a4b7efff8d95061ad3504acdf15b24134b5c7bc252968f20bfbc417d77aae",
+      "provisional_prompt_sha256": "6b0a4b7efff8d95061ad3504acdf15b24134b5c7bc252968f20bfbc417d77aae",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "883339b765addd2d6683a9501ee3e673e2344374a62940b83602b9dac8ecfcfd",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S011": {
+      "baseline_prompt_sha256": "b7d12a984bffbb6946a2e0f45ed163f11f4c12592daea5bdb1650690cb321742",
+      "provisional_prompt_sha256": "b7d12a984bffbb6946a2e0f45ed163f11f4c12592daea5bdb1650690cb321742",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "4034672507dcde2ff8696303569239898be685c04739c90ae080e15614efc2e6",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S012": {
+      "baseline_prompt_sha256": "09d7b32a8689f81e146afa97a17057bf1acb3a197879b710270cc753a368c2f5",
+      "provisional_prompt_sha256": "09d7b32a8689f81e146afa97a17057bf1acb3a197879b710270cc753a368c2f5",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "9c6c45d3e088fe4d98676885567f4382892fb0123a30f41c2b0858f945adaeee",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S013": {
+      "baseline_prompt_sha256": "3b4ce03df14dad97fa26a829a68e832904fe386960ef7cfd16f0bf44205c7653",
+      "provisional_prompt_sha256": "3b4ce03df14dad97fa26a829a68e832904fe386960ef7cfd16f0bf44205c7653",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "cabf80321bca2e3ff3a268e9bd042db1fca485e2359094f446c46f6419bb9b28",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S014": {
+      "baseline_prompt_sha256": "e2381c7fdba0420e91458cef517e9f4d312b7df784ed9ae183eb8e789a32a2d7",
+      "provisional_prompt_sha256": "e2381c7fdba0420e91458cef517e9f4d312b7df784ed9ae183eb8e789a32a2d7",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "51952ebf446a2ec1863da74779e85fde80dc8eca4234cca8ef84c299ee71e483",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "S015": {
+      "baseline_prompt_sha256": "4c7c3071e375b7a1cc36936595d8c0f5f19563e5e113412e3242542c2c87e6c1",
+      "provisional_prompt_sha256": "4c7c3071e375b7a1cc36936595d8c0f5f19563e5e113412e3242542c2c87e6c1",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "ca37ebe9f555a271f5f95f13f9ed673caf00794be95ab26fa2ddb9f1b5da175b",
+      "glossary_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "person-01": {
+      "baseline_prompt_sha256": "58bf206e34f3676e550fb7f8f424d1966631c5a7681ce431c837b51323850fd0",
+      "provisional_prompt_sha256": "58bf206e34f3676e550fb7f8f424d1966631c5a7681ce431c837b51323850fd0",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "e4c972fd35c34a9bb9b4f1f8810e4d3ad069522a32a58aeb92fa0b4eba7250cf",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "person-03": {
+      "baseline_prompt_sha256": "b071246854d2b1f4c28534e645800366c48d993d2f805c484fe2705e285590dd",
+      "provisional_prompt_sha256": "b071246854d2b1f4c28534e645800366c48d993d2f805c484fe2705e285590dd",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "b538c90ce7c2a4e375823662dc669884ec887b91de883cab136ba013c55447e4",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "participant-01": {
+      "baseline_prompt_sha256": "4e9176f827a7ca9e7409147e9f4a371a7c8c4f59ce960bcc25c20f521ba74c39",
+      "provisional_prompt_sha256": "4e9176f827a7ca9e7409147e9f4a371a7c8c4f59ce960bcc25c20f521ba74c39",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "231e06daba9b07b75e37b33aa3a4278c28fefdd21669a31291d1d6490ea07c1c",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "participant-02": {
+      "baseline_prompt_sha256": "b777d413d5b70f425aae447b842153aadd1a3fbd100cba048dc4f6a63cefe31a",
+      "provisional_prompt_sha256": "b777d413d5b70f425aae447b842153aadd1a3fbd100cba048dc4f6a63cefe31a",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "9da48d3588b5d802234e5b47dd457c8f719fd402c69a7eed3d8bdfb399738780",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "participant-03": {
+      "baseline_prompt_sha256": "f91f855ea5f9b35488c58958968a6c8ccd33e26e0cd9056772903d5018baac81",
+      "provisional_prompt_sha256": "f91f855ea5f9b35488c58958968a6c8ccd33e26e0cd9056772903d5018baac81",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "c01438a9b33ab411b4987704a3df0031aef3c91147666a4c5c29a7a2cffea4b8",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "participant-04": {
+      "baseline_prompt_sha256": "61573320a45a57181529ffd155d523089c2b5047106f4b0b4e5519978bb81362",
+      "provisional_prompt_sha256": "61573320a45a57181529ffd155d523089c2b5047106f4b0b4e5519978bb81362",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "326785a75bdadbfeecfba7609b97ba844b736c17263282323e911907d94a733b",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "participant-05": {
+      "baseline_prompt_sha256": "e3efcf15f51115d367f86d3a1b9a1122c54d0b04216d381659b3a10b121d1063",
+      "provisional_prompt_sha256": "e3efcf15f51115d367f86d3a1b9a1122c54d0b04216d381659b3a10b121d1063",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "4b3cd0c4408f1f6759b51b67c879ed0df742d765d6dbc3284e53d00c6edf8466",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "participant-06": {
+      "baseline_prompt_sha256": "6726c833589db5b8147daa7da4393d7e7b4a1b5786befa33982075cbbcc6a5f9",
+      "provisional_prompt_sha256": "6726c833589db5b8147daa7da4393d7e7b4a1b5786befa33982075cbbcc6a5f9",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "e477c2e98a6d269564df024f1270c45675e685c454209401d990a0828281ee52",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "entity-02": {
+      "baseline_prompt_sha256": "c77bbd34ead124db8861f7c3768c798c9c8f30e37aee5e75647599b5b0198f9f",
+      "provisional_prompt_sha256": "c77bbd34ead124db8861f7c3768c798c9c8f30e37aee5e75647599b5b0198f9f",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "1acf5788a5570a7fb29ac768aaf3015a14d1afa0d49598cc095b863ab8bff7ed",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "negative-01": {
+      "baseline_prompt_sha256": "845aad15fecd833625f0471ec1af980868e60206eced349e3c368d1e9d7e78f8",
+      "provisional_prompt_sha256": "845aad15fecd833625f0471ec1af980868e60206eced349e3c368d1e9d7e78f8",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "6acbf58a1b5ae21e91a23b7d097d74e20ccc52d220c776b8ca3096c3755cb0e4",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "negative-02": {
+      "baseline_prompt_sha256": "50b6038b24c42abaf81ec376da0ac8513c998a580520b1bb62052c4971a18032",
+      "provisional_prompt_sha256": "50b6038b24c42abaf81ec376da0ac8513c998a580520b1bb62052c4971a18032",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "a9ccaf3617232257fdcea37a03999f016f6c93496dec3b4875d11c55158971d7",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "negative-03": {
+      "baseline_prompt_sha256": "a97f0e4b9870c585065820bd588b6b8557dcbd9246c26d4afc31e7a5bc36760c",
+      "provisional_prompt_sha256": "a97f0e4b9870c585065820bd588b6b8557dcbd9246c26d4afc31e7a5bc36760c",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "4e4309a2b38b87ae22bba8d00a5439eefb9c4b067b862cfbf85010710090b083",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "negative-04": {
+      "baseline_prompt_sha256": "78fe4009aa1ea811433a38ce1c8824667b9df63c742b2f7a4b12994b0bd1a8b1",
+      "provisional_prompt_sha256": "78fe4009aa1ea811433a38ce1c8824667b9df63c742b2f7a4b12994b0bd1a8b1",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "a3200b8ac53b409a8fc36afcda162905340855e65e11e7d509f9490b876a6140",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "nomatch-01": {
+      "baseline_prompt_sha256": "82579c47b767e0b0c242f2821e3755f3afd54811da352071437cf060fb76fa2f",
+      "provisional_prompt_sha256": "82579c47b767e0b0c242f2821e3755f3afd54811da352071437cf060fb76fa2f",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "3bef0adf6ccb068b278ec29f743213837c21c74191a90ac14d15336f087b8286",
+      "glossary_digest": "dc97688f0b0bd8b3ddcf732746ccda3a7a3899da6715fa4b6b3252ac594d3ecc"
+    },
+    "tl-fresh-01": {
+      "baseline_prompt_sha256": "7217ac191e21e8e6839779cc0e2ea5572d69d170053f05170aed4eb8c9a5d5d2",
+      "provisional_prompt_sha256": "a5fc7e09596ec6af4049185325d98fc9bcdcc1aa5254d3638fa25e308617a7f8",
+      "eligible": true,
+      "reason": "eligible",
+      "entry_id": "name_1",
+      "destination": "吕泽尔",
+      "masked_source_sha256": "8676d33222b55222ed01b5249d0b87da6f3cf9a58cd39c4a7d281494aa8469d0",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-02": {
+      "baseline_prompt_sha256": "6574d6259a35739634eda48ba3da02331a102098b840f39e09a8dd21371fa6ce",
+      "provisional_prompt_sha256": "bd8efff114edf37d63d2a86f953074d226a50c9107ba76a14d0a86d4c387bd60",
+      "eligible": true,
+      "reason": "eligible",
+      "entry_id": "name_1",
+      "destination": "吕泽尔",
+      "masked_source_sha256": "4ebaf97abad966f38690150cdc309a3ee5c8014b1754d828593fec5ff06eb1e5",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-03": {
+      "baseline_prompt_sha256": "7a223565c43b5aa7e8b4c3860b365fa01866e3db42e772f81c46f767306f5ef2",
+      "provisional_prompt_sha256": "85389174c90c005b8c65f61c227c6973094a8debe4d137433b137deb9ae7e4cf",
+      "eligible": true,
+      "reason": "eligible",
+      "entry_id": "name_2",
+      "destination": "瑟诺莉娅",
+      "masked_source_sha256": "075eeebd15c6e257e6258d1c7cae702a5b0ffe113f8dd5055c323ef7571f7eda",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-04": {
+      "baseline_prompt_sha256": "91c5efd1cd5cf0915e25a98977eaee4cd2fa3eedc934046408fc0a5f928704bf",
+      "provisional_prompt_sha256": "04474fdf010d4381d84b3563d7137f50a3577cda789250d7aab0c94c942e5c86",
+      "eligible": true,
+      "reason": "eligible",
+      "entry_id": "name_2",
+      "destination": "瑟诺莉娅",
+      "masked_source_sha256": "6b14c316e0d79dcf3749922626bc238c6b95c15609a24b76b51a319c197885ef",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-05": {
+      "baseline_prompt_sha256": "eb2c482a1dea6e9343ed17bc86672a74d8baa23b26c79ec7967b5528f38afde4",
+      "provisional_prompt_sha256": "e82f0f2bbe87b813a1641e70fead8082b3675b8c0e0d3b24e37f0af758904a4b",
+      "eligible": true,
+      "reason": "eligible",
+      "entry_id": "name_3",
+      "destination": "瓦尔内克",
+      "masked_source_sha256": "a902860052baa2b4780a3e755288198dfc0cbabadcdb1a810d3011af927bb4dd",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-06": {
+      "baseline_prompt_sha256": "4119332fe994a90f62c3ba3a6280a28d83c10599ba7bd8c2314e0c9f0d795dd0",
+      "provisional_prompt_sha256": "149fd5cb63fff2a91101cdd128749d9c84de48d39bc6564d3b15f48e0db54914",
+      "eligible": true,
+      "reason": "eligible",
+      "entry_id": "name_3",
+      "destination": "瓦尔内克",
+      "masked_source_sha256": "13712a7ca030a5990c4bc4578b89083f5b07c760c69b65dde3404735e1ac0b23",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-07": {
+      "baseline_prompt_sha256": "d573f8f12383066ae5d93d03f1c9de456c66c6b08b471519f06cd2c73652f1ab",
+      "provisional_prompt_sha256": "71d1cc8ac0ec7ad744d945a4c898957bb544064240ce3cd088dd3fec6bef1bf6",
+      "eligible": true,
+      "reason": "eligible",
+      "entry_id": "term_1",
+      "destination": "涅拉相位环",
+      "masked_source_sha256": "5e0b30d4fdbcab34b6059b0836350ee432daf686a3edddbfa8261ac0ec92bf2e",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-08": {
+      "baseline_prompt_sha256": "ecdea29705a433161cf09e3664d3cfd33696956a06f192abbb93ea0f8ed635ce",
+      "provisional_prompt_sha256": "d65a22e3c7d19d3943fca78083f3d8f248ccf88198d99cc6bef4d137aac499d2",
+      "eligible": true,
+      "reason": "eligible",
+      "entry_id": "term_1",
+      "destination": "涅拉相位环",
+      "masked_source_sha256": "4bdb090564604a53266c7345161854e045a6d0ffe0f48ad9cea58f449f4f460b",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-09": {
+      "baseline_prompt_sha256": "f2d9033cee820b07c524bb851dd5b6320691a16cfb59861b95ccae109cdd135e",
+      "provisional_prompt_sha256": "dd93ec9c47a7dbcb94181c5a6f266c5d707cfc0b5feb0db483a6c458fc0dac18",
+      "eligible": true,
+      "reason": "eligible",
+      "entry_id": "term_2",
+      "destination": "莉泽娜传送炉",
+      "masked_source_sha256": "1c8af863f38ef4c706c1e01ddd9812a4a59d238c1a6ec6a2776e339ca30a4fca",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-10": {
+      "baseline_prompt_sha256": "1362d1c329f0a4ec58b50eb3ffe1efab3f95a45090c751085ee86ccab6e81b4d",
+      "provisional_prompt_sha256": "af04590d66a731683ac1c0b31bd90cf316d9edc0b48b413c6114dbd92ae9f4c4",
+      "eligible": true,
+      "reason": "eligible",
+      "entry_id": "term_2",
+      "destination": "莉泽娜传送炉",
+      "masked_source_sha256": "3c59b2ce727dc27d02de9af80ffa21749a48669c3491290205b53a98ab67db1f",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-11": {
+      "baseline_prompt_sha256": "a0fe2e748c69471789f07601408413d3c55b870703db87b0fc251941c12df7ee",
+      "provisional_prompt_sha256": "b0ed9899b4482cf50da2588dec23e13a1b4f8bdea095c62b7afba30f8b227d09",
+      "eligible": true,
+      "reason": "eligible",
+      "entry_id": "term_3",
+      "destination": "奥尔库纳航路标",
+      "masked_source_sha256": "13a76c03ff6a8545521ae9325d0e162ed12abae76a1a6976d6dc285af29e6b48",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-12": {
+      "baseline_prompt_sha256": "9de6977fc7a9c097da0dc11453e2d09a79dabf1fd90ecab2f3a96759a187e781",
+      "provisional_prompt_sha256": "ed20ac86758a135ee4cc3ff5960eb391f4015c41c8a83bee65a9f68db6dea5b7",
+      "eligible": true,
+      "reason": "eligible",
+      "entry_id": "term_3",
+      "destination": "奥尔库纳航路标",
+      "masked_source_sha256": "4bd590ee1c6e1b35fb025c5280cf3a02deefe3f5bc28a346c934edf0e360a39c",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-13": {
+      "baseline_prompt_sha256": "478ab016f1efd17002452d915c73ba9427a08da8c31f260cf134a46df28755d7",
+      "provisional_prompt_sha256": "478ab016f1efd17002452d915c73ba9427a08da8c31f260cf134a46df28755d7",
+      "eligible": false,
+      "reason": "globally_unsafe_entry",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "ccd6e0585892ef8a185974cbc28d9a4e6d14c6f40473d605accb956f8f2793db",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-14": {
+      "baseline_prompt_sha256": "47c888dfd1bb09e870c509b546826f3b4f02da2ca7277e8655464b7abfd9d8c6",
+      "provisional_prompt_sha256": "47c888dfd1bb09e870c509b546826f3b4f02da2ca7277e8655464b7abfd9d8c6",
+      "eligible": false,
+      "reason": "unproven_boundary",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "117e0d3fbbc820b9fce772232e431c7a4c6112c1e78313e848b247bd3a0ebfdb",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-15": {
+      "baseline_prompt_sha256": "3f3ec1a7da5d90d1579e306339da62907dbd477c777810d4a18cc6580c0e730a",
+      "provisional_prompt_sha256": "3f3ec1a7da5d90d1579e306339da62907dbd477c777810d4a18cc6580c0e730a",
+      "eligible": false,
+      "reason": "quoted_source",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "304e25f28ea97bc4736cb8859fe709506b4fabd4377043001bd2bcb867e7f2f7",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-16": {
+      "baseline_prompt_sha256": "a1c7d63be18229f05e8e648b78e31d0590219480c5aee6f3f86db334372c27ad",
+      "provisional_prompt_sha256": "a1c7d63be18229f05e8e648b78e31d0590219480c5aee6f3f86db334372c27ad",
+      "eligible": false,
+      "reason": "scope_not_declared",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "58708aff6caf3ca05ddb0acd15be70586e4c3e6cafb30c790387003dead375be",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-17": {
+      "baseline_prompt_sha256": "3a49beaa7328a5ca1ca76e1e085c7b28bdb31e669580a0aab4402db29329a3f0",
+      "provisional_prompt_sha256": "3a49beaa7328a5ca1ca76e1e085c7b28bdb31e669580a0aab4402db29329a3f0",
+      "eligible": false,
+      "reason": "marker_namespace_collision",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "f0ab6f47b5c76bc68e94eac9850f7209ed4a03034f6e59160b5de50a01ce3ccc",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-18": {
+      "baseline_prompt_sha256": "c9fc2728ecbbbeea13d768b692fd7771f1a3d21595a8146459ad6fabe9b669f5",
+      "provisional_prompt_sha256": "c9fc2728ecbbbeea13d768b692fd7771f1a3d21595a8146459ad6fabe9b669f5",
+      "eligible": false,
+      "reason": "protected_source",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "eb0f1442622e05d79c10f4381dcdfaa132e671e1310347a275ec3216497deeda",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    },
+    "tl-fresh-19": {
+      "baseline_prompt_sha256": "e460e30a22f20e1db802241eb8140468a0b0458e01a1f84e133d6e69022b0b38",
+      "provisional_prompt_sha256": "e460e30a22f20e1db802241eb8140468a0b0458e01a1f84e133d6e69022b0b38",
+      "eligible": false,
+      "reason": "no_match",
+      "entry_id": null,
+      "destination": null,
+      "masked_source_sha256": "cf6ff38b7a6a7acf25e128f488cb466886ff4073298b033766507408c46ece5d",
+      "glossary_digest": "7171302d540b809ce14901f3552384486a7cff94c6a1d3356ddf5a0b50e55edd"
+    }
+  }
+}

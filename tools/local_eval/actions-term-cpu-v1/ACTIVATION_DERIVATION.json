@@ -1,0 +1,28 @@
+{
+  "schema": "luna-term-activation-derivation-v1",
+  "status": "PREPARATION_ONLY_PENDING_INDEPENDENT_REVIEW",
+  "inert_kit_sha256": "671f651e0be6bb10315fbc06df8d5b483cc139c1107d29e52f8ac5a75495d98a",
+  "inert_source_manifest_sha256": "a0e529613fc91826b7943e3db8e7ad4fbc2709433a0f5cd276fbbfeca2dc7f26",
+  "inert_independent_review_sha256": "64473d7882de4602632a6342e7a47bebbdb6823d150f6c5429041d6f5e2483fe",
+  "root_preoutput_review_sha256": "6f6317f929e8b0db7036c0d6842b3c2198ebaa1a09e5637df5b1be21ac37cc47",
+  "root_criteria_commitment": "8e3afd829bc54ed4f3addd115fad73d5740f8265329d1ea586c54e126d61d8e8",
+  "source_parent": "0e9af3bccda4ac162e181fa8b17026a2b3cc8d76",
+  "source_commit": null,
+  "trigger_commit": null,
+  "attempt_id": "e4642260076941788a43ff17dd62a88b",
+  "source_prefix": "tools/local_eval/actions-term-cpu-v1",
+  "workflow_path": ".github/workflows/luna-term-lock-cpu-v1.yml",
+  "preparation_only": true,
+  "native_execution_performed": false,
+  "claim_created": false,
+  "publication_performed": false,
+  "opaque_root_hashes_only": true,
+  "prior_usage_identity_untouched": true,
+  "allowed_diff_scope": [
+    "activation metadata and path identity",
+    "remove unconditional inert-only denies while preserving underlying exact admission gates",
+    "entry/bootstrap byte repins",
+    "matching guard-test assertions",
+    "manifests and source verification documentation"
+  ]
+}

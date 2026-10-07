@@ -1,0 +1,133 @@
+from myutils.config import savehook_new_data, globalconfig
+import gobject, re
+from qtsymbols import *
+from myutils.utils import postusewhich, case_insensitive_replace
+from myutils.config import get_launchpath
+from myutils.hwnd import getExeIcon
+from myutils.wrapper import Singleton
+from gui.inputdialog import noundictconfigdialog1___
+
+
+@Singleton
+class postconfigdialog_2(noundictconfigdialog1___):
+    def __init__(
+        self, parent, reflist: list, title, merged=None, mergek=None, mergedf=None
+    ):
+        super().__init__(
+            parent,
+            reflist,
+            title,
+            ["原文", "翻译", "注释"],
+            dictkeys=["src", "dst", "info"],
+            need_regex=False,
+            merged=merged,
+            mergek=mergek,
+            mergedf=mergedf,
+        )
+
+    def dedumpcheck(self, row):
+        k = self.table.getdata(row, 2)
+        if not k:
+            return
+        switchs = tuple(self.table.getdata(row, _) for _ in self.switchcols)
+        t = self.table.getdata(row, 3)
+        t2 = self.table.getdata(row, 4)
+        return (switchs, k, t, t2)
+
+
+class Process:
+    @staticmethod
+    def get_setting_window(parent_window):
+        return postconfigdialog_2(
+            parent_window,
+            globalconfig["noundictconfig_ex"],
+            "专有名词翻译",
+        )
+
+    @staticmethod
+    def get_setting_window_gameprivate(parent_window, gameuid):
+        if "noundictconfig_ex" not in savehook_new_data[gameuid]:
+            savehook_new_data[gameuid]["noundictconfig_ex"] = []
+        postconfigdialog_2(
+            parent_window,
+            savehook_new_data[gameuid]["noundictconfig_ex"],
+            "专有名词翻译_-_[[{}]]".format(savehook_new_data[gameuid]["title"]),
+            merged=savehook_new_data[gameuid],
+            mergek="noundict_merge",
+            mergedf=False,
+        ).setWindowIcon(getExeIcon(get_launchpath(gameuid), cache=True))
+
+    @property
+    def using_X(self):
+        return postusewhich("noundict") != 0
+
+    def usewhich(self) -> "list[dict[str, list]]":
+        which = postusewhich("noundict")
+        if which == 1:
+            return globalconfig["noundictconfig_ex"]
+        elif which == 2:
+            gameuid = gobject.base.gameuid
+            return savehook_new_data[gameuid].get("noundictconfig_ex", [])
+        elif which == 3:
+            gameuid = gobject.base.gameuid
+            return (
+                savehook_new_data[gameuid].get("noundictconfig_ex", [])
+                + globalconfig["noundictconfig_ex"]
+            )
+
+    def __createfake(self):
+        ___idx = 1
+        if ___idx == 1:
+            xx = "ZX{}Z".format(chr(ord("B") + self.zhanweifu))
+        elif ___idx == 2:
+            xx = "{{{}}}".format(self.zhanweifu)
+        self.zhanweifu += 1
+        return xx
+
+    def process_before(self, japanese):
+        used = []
+        gpt_dict = []
+        for gpt in self.usewhich():
+            src_1 = src = gpt["src"]
+            src = re.escape(src)
+            if gpt.get("whole-word", False):
+                src = r"\b" + src + r"\b"
+            flags = 0 if gpt.get("case-sensitive", False) else re.IGNORECASE
+            found = re.search(src, japanese, flags)
+            if not found:
+                continue
+            gpt_dict.append(gpt)
+            used.append((src_1, gpt["dst"]))
+        self.zhanweifu = 0
+        japanese1, mp1 = self.process_before1(japanese, used)
+
+        return japanese1, {
+            "gpt_dict": gpt_dict,
+            "gpt_dict_origin": japanese,
+            "zhanweifu": mp1,
+        }
+
+    def process_before1(self, content: str, dic: list):
+        mp1 = {}
+        srcs = set()
+        for k, v in dic:
+            if not k:
+                continue
+            if k in srcs:
+                continue
+            srcs.add(k)
+            if not v:
+                # 译文不可以为空
+                # 这是为了方便自动从VNDB中导入人名表，且避免破坏现有翻译
+                # 而且如果把译文置空，完全没必要使用这个优化。
+                continue
+            xx = self.__createfake()
+            content = content.replace(k, xx)
+            mp1[xx] = v
+        return content, mp1
+
+    def process_after(self, res: str, context):
+        mp1 = context["zhanweifu"]
+        for key in mp1:
+            res = case_insensitive_replace(res, key, mp1[key])
+        return res

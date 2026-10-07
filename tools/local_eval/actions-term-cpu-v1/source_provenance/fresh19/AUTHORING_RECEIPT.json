@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "AUTHOR_FROZEN_SOURCE_ONLY_PENDING_ROOT_REVIEW",
+  "freeze_utc": "2026-10-06T20:26:50Z",
+  "frozen_candidate_inputs": {
+    "source_manifest_sha256": "aabc39abb5c3c212df587d683e00f201c5e5fb0e955c5ae7f4874a3d5e4c70b5",
+    "declarations_sha256": "f7d849ae54ec36d8247aeaadedd633523de92df35313c7bebb3a2073baeccd3b",
+    "policy_sha256": "f621ddec3e4cb7d449693f1ffb28a169276eabf5e7e49441d973d0868f3c2cca",
+    "protocol_sha256": "fabd4e3584908ec6bc4bc46b4fd0773092c3a9207a93a850332b256376ca3b12"
+  },
+  "public_files": {
+    "fresh19_sources.json": {
+      "sha256": "83918221ae47cd7be8e863f0f0f5b3b2af8af146fa117ee663093df9ad84fba8",
+      "bytes": 5655
+    },
+    "case_metadata.json": {
+      "sha256": "c0fb75492538fb35014a416fb636c5f5648345931e1ab5dfe1680da5809b7189",
+      "bytes": 3104
+    },
+    "README.md": {
+      "sha256": "2be28b8ddfc0ef3a47806ebaa1eb18429a1681fb25b4ea004d208bfed3ef3ca0",
+      "bytes": 3326
+    }
+  },
+  "reviewer_criteria_sha256_commitment": "8e3afd829bc54ed4f3addd115fad73d5740f8265329d1ea586c54e126d61d8e8",
+  "source_schema": {
+    "top_level": [
+      "schema_version",
+      "glossary",
+      "records"
+    ],
+    "record_fields": [
+      "id",
+      "scope_id",
+      "family_id",
+      "source"
+    ],
+    "glossary_binding": "One immutable complete ordered seven-entry src/dst projection shared by all records."
+  },
+  "counts": {
+    "new_records": 19,
+    "declared_safe_families": 6,
+    "scenarios_per_safe_family": 2,
+    "intended_carriers": 12,
+    "source_observable_control_types": 7,
+    "same_scope_records": 18,
+    "foreign_scope_records": 1
+  },
+  "validation": {
+    "schema_and_exact_literal_inspection": "PASS",
+    "candidate_execution_count": 0,
+    "tokenizer_or_model_calls": 0,
+    "network_requests": 0,
+    "prior_evaluation_or_unit_test_texts_read": false,
+    "preflight_membership_verified": false,
+    "token_budget_verified": false
+  },
+  "author_review_limitations": [
+    "No independent native-speaker review yet.",
+    "No access to unseen archives; exact whole-source overlap must be checked by an authorized source-only reviewer.",
+    "Narrow discourse forms, not representative Japanese traffic.",
+    "Root source-only semantic review remains required before output generation."
+  ],
+  "runtime_permission_granted_by_this_receipt": false
+}
