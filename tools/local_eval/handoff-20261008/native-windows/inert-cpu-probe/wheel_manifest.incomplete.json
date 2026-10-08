@@ -1,0 +1,13 @@
+{
+  "schema": "official-windows-wheel-manifest-v1",
+  "target": "cp312-win_amd64",
+  "closure_reviewed": false,
+  "closure_review_sha256": null,
+  "wheels": [],
+  "blockers": [
+    "torch_exact_bytes_and_sha256_unknown",
+    "complete_transitive_wheel_closure_unknown",
+    "wheel_licenses_and_target_tags_need_review",
+    "no_wheel_assets_downloaded_or_hashed"
+  ]
+}

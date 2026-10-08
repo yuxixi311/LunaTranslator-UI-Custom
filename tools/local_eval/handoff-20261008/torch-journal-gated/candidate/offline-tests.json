@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "candidate_id": "974d95a3-29c7-4294-9f46-33d247dd72f2",
+  "source_sha256": "00e0c240582533d666428530d55ede1cbcca6783919b6118abd4afa715d10630",
+  "tests_source_sha256": {
+    "offline_test.py": "02a9528bb4598723b5eba109fbc325390535c12e5afbecefefca5a3db3eb8d88",
+    "safety_test.py": "c3df3b650b60a9d25f06b3046f678a03f9d0ce519ab6c76719df3b6fbccbd3a5",
+    "journal_test.py": "b9981baf365461c3497c534c8db6570bcd039f5af7836e583c4d81540fa44b23",
+    "adapted_offline_test.py": "879b9cd53027339148734fa0ca1762ed01770ab0d556b0fb3c996991f741570c",
+    "adapted_safety_test.py": "969f924f5bdc1599bb4779d3802fd705125c5c4480084b430016785d4ae34984"
+  },
+  "test_source_sha256": "02a9528bb4598723b5eba109fbc325390535c12e5afbecefefca5a3db3eb8d88",
+  "test_source_sha256_role": "preserved_historical_fixture_for_existing_preflight_schema; not a fresh pass",
+  "historical_inputs": [
+    "offline_test.py",
+    "safety_test.py"
+  ],
+  "executed_suites": [
+    "journal_test.py",
+    "adapted_offline_test.py",
+    "adapted_safety_test.py"
+  ],
+  "suites": [
+    {
+      "receipt": "journal-run-01.json",
+      "receipt_sha256": "c6564a99c4b312b6df63349477c80b9b0e4ef43995bc0febe19547f95b1bac96",
+      "passed_count": 219,
+      "test_count": 219
+    },
+    {
+      "receipt": "adapted-offline-results.json",
+      "receipt_sha256": "979006e7d8ecf8f97d361db791b8f39589009cd9ba22dd58fe46f7ad57503fe7",
+      "passed_count": 105,
+      "test_count": 105
+    },
+    {
+      "receipt": "adapted-safety-results.json",
+      "receipt_sha256": "55d659490d9140a5ab1666bcfc2f7846a1f4766ed9ef63cd52a9a0d356aca4e3",
+      "passed_count": 86,
+      "test_count": 86
+    }
+  ],
+  "test_count": 410,
+  "passed_count": 410,
+  "superseded_historical_cases": 10,
+  "network_requests": 0,
+  "native_candidate_execution": false,
+  "execution_model": "guarded fake I/O only; restored identity-bound gates exercised",
+  "live_execution_authorized": false,
+  "source_only_hard_guard": false,
+  "execution_authorization_absent": true,
+  "inert_results_inherited_as_current_passes": false
+}

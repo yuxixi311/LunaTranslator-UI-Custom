@@ -1,0 +1,20 @@
+{
+  "status": "approved",
+  "candidate_id": "974d95a3-29c7-4294-9f46-33d247dd72f2",
+  "source_sha256": "00e0c240582533d666428530d55ede1cbcca6783919b6118abd4afa715d10630",
+  "tests_source_sha256": {
+    "offline_test.py": "02a9528bb4598723b5eba109fbc325390535c12e5afbecefefca5a3db3eb8d88",
+    "safety_test.py": "c3df3b650b60a9d25f06b3046f678a03f9d0ce519ab6c76719df3b6fbccbd3a5",
+    "journal_test.py": "b9981baf365461c3497c534c8db6570bcd039f5af7836e583c4d81540fa44b23",
+    "adapted_offline_test.py": "879b9cd53027339148734fa0ca1762ed01770ab0d556b0fb3c996991f741570c",
+    "adapted_safety_test.py": "969f924f5bdc1599bb4779d3802fd705125c5c4480084b430016785d4ae34984"
+  },
+  "review_scope": "source-only gated derivative and 410 fresh guarded fake tests; not live authorization",
+  "live_execution_authorized": false,
+  "execution_authorization_supplied": false,
+  "copy_or_activation_authorized": false,
+  "independent_detailed_review_sha256": "64cd4e87aadc7fd34dd21de295c41926af1ccc7d1ef24ca46f19cb4f5f90aa33",
+  "network_requests": 0,
+  "native_candidate_execution": false,
+  "superseded_historical_cases_not_passed": 10
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "windows-probe-source-verification-v1",
+  "status": "SOURCE_ONLY_FAKE_TESTS_PASS_EXECUTION_DISABLED",
+  "tests": {
+    "command": "python -m unittest -v test_harness.py",
+    "passed": 22,
+    "failed": 0
+  },
+  "real_windows_tested": false,
+  "torch_imported": false,
+  "native_dll_loaded": false,
+  "network_performed": false,
+  "wheel_or_model_downloaded": false,
+  "cuda_tested": false,
+  "installer_implemented": false,
+  "windows_process_tree_backend_implemented": false,
+  "windows_resource_sampler_implemented": false,
+  "hard_rss_cap_enforced": false,
+  "cpu_template_reachable": false,
+  "required_before_execution": [
+    "complete_frozen_wheel_closure_review",
+    "owned_windows_process_tree_and_sampler",
+    "bounded_installer",
+    "independent_execution_review",
+    "exact_execution_approval"
+  ],
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 4546,
+      "sha256": "12204de975e732a9399dc805b0fd73b6a29e3c5b82ccc3685236f3b44c0e874a"
+    },
+    {
+      "name": "harness.py",
+      "bytes": 10265,
+      "sha256": "798bcb76f393cb8cda833cd4663fcbf62292133df99ae1ff8597ab541283c426"
+    },
+    {
+      "name": "cpu_probe.py.txt",
+      "bytes": 5080,
+      "sha256": "1b3ee2bb1c3f3022b77a98a3a7d14f1b7dbdbf18927c62f6cf9b913c9e9c19c3"
+    },
+    {
+      "name": "test_harness.py",
+      "bytes": 9079,
+      "sha256": "1998fa7685aaf3c5b8c059e4d8a2230457ac127e144838ebad39b56473d7e807"
+    },
+    {
+      "name": "wheel_manifest.incomplete.json",
+      "bytes": 369,
+      "sha256": "4f7f73f088374a7471797838df259b1e234600e21c0e0018b6f7616c01d6b933"
+    }
+  ]
+}

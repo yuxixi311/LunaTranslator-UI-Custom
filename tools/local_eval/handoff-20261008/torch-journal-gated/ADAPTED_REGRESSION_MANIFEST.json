@@ -1,0 +1,103 @@
+{
+  "status": "passed",
+  "candidate_id": "974d95a3-29c7-4294-9f46-33d247dd72f2",
+  "source_sha256": "00e0c240582533d666428530d55ede1cbcca6783919b6118abd4afa715d10630",
+  "fresh_run": true,
+  "executed_passed_count": 191,
+  "executed_count": 191,
+  "superseded_not_passed_count": 10,
+  "original_safety_names_preserved": true,
+  "test_sources": {
+    "adapted_offline_test.py": "879b9cd53027339148734fa0ca1762ed01770ab0d556b0fb3c996991f741570c",
+    "adapted_safety_test.py": "969f924f5bdc1599bb4779d3802fd705125c5c4480084b430016785d4ae34984"
+  },
+  "superseded_cases": [
+    {
+      "name": "download_progress_before_write_json_open",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_before_write_json_write",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_before_write_json_close",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_before_write_json_replace",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_after_write_json_open",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_after_write_json_write",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_after_write_json_close",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_after_write_json_replace",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_before_write_serialize_fault",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_after_write_serialize_fault",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    }
+  ],
+  "receipts": [
+    "candidate/adapted-offline-results.json",
+    "candidate/adapted-safety-results.json"
+  ],
+  "guard_counts": {
+    "adapted_offline": {
+      "network": 0,
+      "write": 0,
+      "process": 0,
+      "exit": 0,
+      "thread": 0,
+      "disk": 0,
+      "read": 0,
+      "native": 0
+    },
+    "adapted_download_zip_safety": {
+      "network": 0,
+      "write": 0,
+      "process": 0,
+      "exit": 0,
+      "thread": 0,
+      "disk": 0,
+      "read": 0,
+      "native": 0
+    }
+  },
+  "authorization_file_absent": true
+}

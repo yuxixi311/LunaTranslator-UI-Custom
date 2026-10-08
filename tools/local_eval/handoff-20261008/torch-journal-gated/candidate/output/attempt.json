@@ -1,0 +1,7 @@
+{
+  "candidate_id": "974d95a3-29c7-4294-9f46-33d247dd72f2",
+  "source_sha256": "00e0c240582533d666428530d55ede1cbcca6783919b6118abd4afa715d10630",
+  "url": "https://download-r2.pytorch.org/whl/cu128/torch-2.10.0%2Bcu128-cp312-cp312-win_amd64.whl",
+  "expected_sha256": "fbde8f6a9ec8c76979a0d14df21c10b9e5cab6f0d106a73ca73e2179bc597cae",
+  "single_attempt": true
+}

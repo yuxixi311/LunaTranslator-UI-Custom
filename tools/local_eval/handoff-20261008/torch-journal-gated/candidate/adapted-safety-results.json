@@ -1,0 +1,375 @@
+{
+  "status": "passed",
+  "suite": "adapted_download_zip_safety",
+  "candidate_id": "974d95a3-29c7-4294-9f46-33d247dd72f2",
+  "source_sha256": "00e0c240582533d666428530d55ede1cbcca6783919b6118abd4afa715d10630",
+  "tests_source_sha256": {
+    "adapted_offline_test.py": "879b9cd53027339148734fa0ca1762ed01770ab0d556b0fb3c996991f741570c",
+    "adapted_safety_test.py": "969f924f5bdc1599bb4779d3802fd705125c5c4480084b430016785d4ae34984"
+  },
+  "python_version": "3.12.14",
+  "collected_at": "2026-10-08T15:24:42+00:00",
+  "test_count": 86,
+  "passed_count": 86,
+  "original_expected_count": 63,
+  "original_names_preserved": true,
+  "additional_candidate_safety_count": 23,
+  "network_requests": 0,
+  "guard_counts": {
+    "network": 0,
+    "write": 0,
+    "process": 0,
+    "exit": 0,
+    "thread": 0,
+    "disk": 0,
+    "read": 0,
+    "native": 0
+  },
+  "filesystem_model": "memory_only",
+  "tests": [
+    {
+      "name": "valid_static_metadata_license_CRC_RECORD_no_code_execution",
+      "status": "passed"
+    },
+    {
+      "name": "valid_stored_members",
+      "status": "passed"
+    },
+    {
+      "name": "valid_local_ZIP64_layout",
+      "status": "passed"
+    },
+    {
+      "name": "supported_legacy_license_layout_2.1",
+      "status": "passed"
+    },
+    {
+      "name": "supported_legacy_license_layout_2.2",
+      "status": "passed"
+    },
+    {
+      "name": "supported_legacy_license_layout_2.3",
+      "status": "passed"
+    },
+    {
+      "name": "invalid_ZIP",
+      "status": "passed"
+    },
+    {
+      "name": "unknown_ZIP_trailing_layout",
+      "status": "passed"
+    },
+    {
+      "name": "unsupported_metadata_version",
+      "status": "passed"
+    },
+    {
+      "name": "wrong_metadata_identity",
+      "status": "passed"
+    },
+    {
+      "name": "wrong_WHEEL_Tag",
+      "status": "passed"
+    },
+    {
+      "name": "duplicate_critical_metadata",
+      "status": "passed"
+    },
+    {
+      "name": "license_path_traversal",
+      "status": "passed"
+    },
+    {
+      "name": "ZIP_member_path_traversal",
+      "status": "passed"
+    },
+    {
+      "name": "ZIP_casefold_duplicate",
+      "status": "passed"
+    },
+    {
+      "name": "ZIP_exact_duplicate",
+      "status": "passed"
+    },
+    {
+      "name": "ZIP_symlink_refusal",
+      "status": "passed"
+    },
+    {
+      "name": "encrypted_ZIP_refusal",
+      "status": "passed"
+    },
+    {
+      "name": "unsupported_compression",
+      "status": "passed"
+    },
+    {
+      "name": "16_MiB_central_directory_limit",
+      "status": "passed"
+    },
+    {
+      "name": "10000_member_limit",
+      "status": "passed"
+    },
+    {
+      "name": "16_MiB_selected_text_limit",
+      "status": "passed"
+    },
+    {
+      "name": "RECORD_duplicate_row",
+      "status": "passed"
+    },
+    {
+      "name": "RECORD_wrong_length",
+      "status": "passed"
+    },
+    {
+      "name": "RECORD_wrong_digest",
+      "status": "passed"
+    },
+    {
+      "name": "RECORD_invalid_digest_encoding",
+      "status": "passed"
+    },
+    {
+      "name": "RECORD_self_entry_must_be_empty",
+      "status": "passed"
+    },
+    {
+      "name": "selected_member_CRC_failure",
+      "status": "passed"
+    },
+    {
+      "name": "unread_DLL_not_claimed_verified",
+      "status": "passed"
+    },
+    {
+      "name": "streaming_hash_and_actual_bytes",
+      "status": "passed"
+    },
+    {
+      "name": "wrong_full_download_hash",
+      "status": "passed"
+    },
+    {
+      "name": "403_stops_without_reading_body_or_opening_file",
+      "status": "passed"
+    },
+    {
+      "name": "redirect_not_followed",
+      "status": "passed"
+    },
+    {
+      "name": "compressed_body_refused",
+      "status": "passed"
+    },
+    {
+      "name": "oversized_declared_body_before_download",
+      "status": "passed"
+    },
+    {
+      "name": "ambiguous_HTTP_framing",
+      "status": "passed"
+    },
+    {
+      "name": "hard_body_limit_no_overread_unknown_length",
+      "status": "passed"
+    },
+    {
+      "name": "truncated_HTTP_body",
+      "status": "passed"
+    },
+    {
+      "name": "initial_8_GiB_disk_requirement",
+      "status": "passed"
+    },
+    {
+      "name": "running_2_GiB_disk_reserve",
+      "status": "passed"
+    },
+    {
+      "name": "4_point_1_GiB_increment_limit",
+      "status": "passed"
+    },
+    {
+      "name": "disk_drop_after_receive_before_write",
+      "status": "passed"
+    },
+    {
+      "name": "download_deadline_during_receive",
+      "status": "passed"
+    },
+    {
+      "name": "static_deadline_before_ZIP",
+      "status": "passed"
+    },
+    {
+      "name": "exact_one_verified_TLS_GET_no_proxy_auth_cookie_range",
+      "status": "passed"
+    },
+    {
+      "name": "download_870_work_30_termination_reserve",
+      "status": "passed"
+    },
+    {
+      "name": "static_50_work_10_termination_reserve",
+      "status": "passed"
+    },
+    {
+      "name": "unconfirmed_exit_reported",
+      "status": "passed"
+    },
+    {
+      "name": "unconfirmed_exit_blocks_ZIP_and_all_cleanup_path_access",
+      "status": "passed"
+    },
+    {
+      "name": "independent_watchdog_870",
+      "status": "passed"
+    },
+    {
+      "name": "independent_watchdog_900",
+      "status": "passed"
+    },
+    {
+      "name": "independent_watchdog_50",
+      "status": "passed"
+    },
+    {
+      "name": "independent_watchdog_60",
+      "status": "passed"
+    },
+    {
+      "name": "fixed_error_code_redaction",
+      "status": "passed"
+    },
+    {
+      "name": "worker_reentry_after_403_one_GET_marker_and_evidence_preserved",
+      "status": "passed"
+    },
+    {
+      "name": "worker_changed_execution_evidence_blocks_GET_and_checkpoint_overwrite",
+      "status": "passed"
+    },
+    {
+      "name": "worker_changed_review_blocks_GET",
+      "status": "passed"
+    },
+    {
+      "name": "worker_changed_offline_evidence_blocks_GET",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_reentry_preserves_original_report_without_IO",
+      "status": "passed"
+    },
+    {
+      "name": "worker_deadline_reject_NaN",
+      "status": "passed"
+    },
+    {
+      "name": "worker_deadline_reject_Infinity",
+      "status": "passed"
+    },
+    {
+      "name": "worker_deadline_reject_expired",
+      "status": "passed"
+    },
+    {
+      "name": "worker_deadline_reject_overlong",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_claim_valid_proof_once_only",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_exit_unconfirmed",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_terminal_unconfirmed",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_worker_failed",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_boolean_returncode",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_stage_first_error",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_stage_error_code",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_report_first_error",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_report_save_failed",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_report_not_persisted",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_old_candidate",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_old_source",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_body_incomplete",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_hash_unmatched",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_actual_hash_wrong",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_body_not_fsynced",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_body_not_closed",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_counters_incomplete",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_boolean_byte_count",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_mismatched_byte_count",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_old_checkpoint_candidate",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_old_checkpoint_source",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_static_gate_reject_report_checkpoint_mismatch",
+      "status": "passed"
+    }
+  ]
+}

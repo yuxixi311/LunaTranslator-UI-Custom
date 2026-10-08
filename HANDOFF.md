@@ -1,6 +1,10 @@
-# Development handoff — 2026-10-04
+# Development handoff — 2026-10-08
 
 Branch: `codex/local-translation-presets`.
+
+## 当前交接入口
+
+本次是源码、证据和接续说明归档，不是新二进制发行。翻译工作请先读 [10 月 8 日总节点](docs/LOCAL_TRANSLATION_CHECKPOINT_20261008.md)、[完整后续路线](docs/LOCAL_TRANSLATION_ROADMAP_20261008.md) 和 [新本地对话交接](docs/LOCAL_TRANSLATION_LOCAL_HANDOFF_20261008.md)。UI v1.0.1、已有 providers、默认配置和可选 Hy1.8B baseline 保持原状。下面保留 UI 实现与原生验收待办。
 
 ## Latest source change
 
@@ -14,4 +18,5 @@ Headless tests execute the changed Python methods and browser event handlers wit
 
 Run the focused Windows acceptance checklist in a disposable portable copy before producing a binary. Native PyQt/Windows/WebView interaction and visual verification are still pending; the source-only cloud checks cannot certify them. No application release, installer, model weight or user configuration is included in this checkpoint.
 
-The separate local-translation project retains its existing evidence, experimental status and cloud-startup blocker. See the [roadmap](ROADMAP.md) and [translation checkpoint](docs/LOCAL_TRANSLATION_CHECKPOINT_20261004.md). This UI change does not execute or alter that experiment.
+The separate local-translation project retains its existing evidence and experimental status. The [2026-10-04 checkpoint](docs/LOCAL_TRANSLATION_CHECKPOINT_20261004.md) records its historical cloud-startup blocker; that is not the current blocker. Later completed and incomplete runs are preserved in the [roadmap](ROADMAP.md), and the [2026-10-08 checkpoint](docs/LOCAL_TRANSLATION_CHECKPOINT_20261008.md) is the current continuation point. This UI change does not execute or alter that experiment.
+

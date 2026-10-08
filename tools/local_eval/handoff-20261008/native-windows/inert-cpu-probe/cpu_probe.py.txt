@@ -1,0 +1,106 @@
+"""INERT SOURCE TEMPLATE: imports torch only inside a permanently gated function.
+
+Not a Windows executable release. No model weights or tokenizer are loaded.
+Review and implement the owning Windows supervisor before creating a runnable copy.
+"""
+import json
+
+
+def prepared_cpu_probe(adapter_directory):
+    raise RuntimeError("execution_disabled_pending_windows_supervisor_review")
+    # The remainder is source for review, deliberately unreachable in this artifact.
+    import gc
+    import os
+    import warnings
+
+    # Set in the future child before framework imports; never dump environment.
+    os.environ["HF_HUB_OFFLINE"] = "1"
+    os.environ["TRANSFORMERS_OFFLINE"] = "1"
+    os.environ["HF_HUB_DISABLE_TELEMETRY"] = "1"
+    os.environ["CUDA_VISIBLE_DEVICES"] = ""
+    os.environ["TOKENIZERS_PARALLELISM"] = "false"
+    os.environ["OMP_NUM_THREADS"] = "1"
+    os.environ["MKL_NUM_THREADS"] = "1"
+    warnings.filterwarnings("ignore")
+    import torch
+    from transformers import HunYuanDenseV1Config, HunYuanDenseV1ForCausalLM
+    from peft import LoraConfig, PeftModel, get_peft_model
+
+    torch.set_num_threads(1)
+    torch.set_num_interop_threads(1)
+    config = HunYuanDenseV1Config(
+        num_hidden_layers=2, hidden_size=128, num_attention_heads=4,
+        num_key_value_heads=2, intermediate_size=256, vocab_size=256,
+        max_position_embeddings=64, attention_dropout=0.0,
+        bos_token_id=1, eos_token_id=2, pad_token_id=0, use_cache=False,
+    )
+    config._attn_implementation = "eager"
+
+    def base():
+        torch.manual_seed(713)
+        return HunYuanDenseV1ForCausalLM(config).to(device="cpu", dtype=torch.float32)
+
+    model = get_peft_model(base(), LoraConfig(
+        task_type="CAUSAL_LM", r=8, lora_alpha=16, lora_dropout=0.0,
+        target_modules=["q_proj", "k_proj", "v_proj", "o_proj"], bias="none",
+    ))
+    trainable = [(name, parameter) for name, parameter in model.named_parameters()
+                 if parameter.requires_grad]
+    assert trainable and all("lora_" in name for name, _ in trainable)
+    frozen = [(name, parameter) for name, parameter in model.named_parameters()
+              if "lora_" not in name]
+    assert frozen and all(not parameter.requires_grad for _, parameter in frozen)
+    optimizer = torch.optim.AdamW([p for _, p in trainable], lr=1e-3)
+    ids = (torch.arange(32, dtype=torch.long).reshape(1, 32) % 253) + 3
+    labels = ids.clone()
+    labels[:, :16] = -100
+    assert (labels[:, :16] == -100).all() and (labels[:, 16:] != -100).all()
+    mask = torch.ones_like(ids)
+    losses = []
+    model.train()
+    for _ in range(2):
+        optimizer.zero_grad(set_to_none=True)
+        output = model(input_ids=ids, attention_mask=mask, labels=labels, use_cache=False)
+        loss = output.loss
+        assert loss.device.type == "cpu" and torch.isfinite(loss).item()
+        # Independently check target-only shifted causal loss.
+        expected = torch.nn.functional.cross_entropy(
+            output.logits[:, :-1, :].reshape(-1, 256), labels[:, 1:].reshape(-1),
+            ignore_index=-100,
+        )
+        assert torch.allclose(loss, expected, rtol=1e-5, atol=1e-6)
+        loss.backward()
+        assert all(p.grad is None for _, p in frozen)
+        assert all(p.grad is not None and torch.isfinite(p.grad).all().item()
+                   for _, p in trainable)
+        assert any(torch.count_nonzero(p.grad).item() > 0 for _, p in trainable)
+        optimizer.step()
+        assert all(torch.isfinite(p).all().item() for _, p in trainable)
+        losses.append(float(loss.detach()))
+    model.eval()
+    with torch.no_grad():
+        expected_logits = model(input_ids=ids, attention_mask=mask, use_cache=False).logits.detach().clone()
+    # Local adapter only. No pretrained base loading, hub lookup or tokenizer.
+    model.save_pretrained(adapter_directory, safe_serialization=True, save_embedding_layers=False)
+    del output, expected, loss, optimizer, trainable, frozen, model
+    gc.collect()
+    reloaded = PeftModel.from_pretrained(base(), adapter_directory,
+                                          is_trainable=False, local_files_only=True)
+    reloaded.eval()
+    with torch.no_grad():
+        actual = reloaded(input_ids=ids, attention_mask=mask, use_cache=False).logits
+    assert torch.isfinite(actual).all().item()
+    assert torch.allclose(expected_logits, actual, rtol=1e-5, atol=1e-6)
+    del actual, expected_logits, reloaded
+    gc.collect()
+    # Future supervisor collects only this allowlisted result. Child stdout/stderr
+    # must be discarded, not copied into the receipt (framework errors can contain paths).
+    return {"schema": "tiny-random-cpu-probe-v1", "status": "passed",
+            "optimizer_steps": 2, "target_tokens": 16, "losses": losses,
+            "base_frozen": True, "adapter_gradients_finite": True,
+            "save_release_reload_equal": True, "real_model_tested": False,
+            "cuda_tested": False}
+
+
+if __name__ == "__main__":
+    print(json.dumps({"status": "disabled", "reason": "source_only_unreviewed_windows_supervisor"}))

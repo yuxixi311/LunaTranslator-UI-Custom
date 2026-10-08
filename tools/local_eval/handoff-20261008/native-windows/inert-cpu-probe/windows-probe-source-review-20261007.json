@@ -1,0 +1,63 @@
+{
+  "schema": "windows-cpu-probe-template-independent-source-review-v1",
+  "reviewed_utc": "2026-10-07T16:26:25.853714+00:00",
+  "decision": "PASS_INERT_FAKE_PLAN_AND_CPU_TEMPLATE_NOT_EXECUTABLE_WINDOWS_RELEASE",
+  "files": {
+    "harness.py": {
+      "bytes": 10265,
+      "sha256": "798bcb76f393cb8cda833cd4663fcbf62292133df99ae1ff8597ab541283c426"
+    },
+    "cpu_probe.py.txt": {
+      "bytes": 5080,
+      "sha256": "1b3ee2bb1c3f3022b77a98a3a7d14f1b7dbdbf18927c62f6cf9b913c9e9c19c3"
+    },
+    "test_harness.py": {
+      "bytes": 9079,
+      "sha256": "1998fa7685aaf3c5b8c059e4d8a2230457ac127e144838ebad39b56473d7e807"
+    },
+    "README.md": {
+      "bytes": 4546,
+      "sha256": "12204de975e732a9399dc805b0fd73b6a29e3c5b82ccc3685236f3b44c0e874a"
+    },
+    "wheel_manifest.incomplete.json": {
+      "bytes": 369,
+      "sha256": "4f7f73f088374a7471797838df259b1e234600e21c0e0018b6f7616c01d6b933"
+    },
+    "VERIFICATION.json": {
+      "bytes": 1603,
+      "sha256": "918f9010970c71d93b7f5deadd4891aafb289f21d6b6de219b9dcd709d75c7a8"
+    }
+  },
+  "independent_tests": {
+    "count": 22,
+    "passed": 22,
+    "failed": 0,
+    "duration_seconds": 0.019,
+    "socket_process_thread_attempts": [],
+    "torch_imported": false,
+    "native_backend_exercised": false,
+    "verification_manifest_all_files_match": true
+  },
+  "source_checks": [
+    "Every plan returns execution_enabled=false and cuda_enabled=false, including complete-looking manifests and explicit setup modes. No installer or subprocess/RSS backend exists.",
+    "The prepared CPU function raises unconditionally as its first statement, before imports or writes. Loading/calling it under fake tests never imports Torch; editing to a runnable derivative requires separate review.",
+    "The only simulated process/resource/clock inputs accepted are exact local fake types. Sample thresholds, free-memory checks, ownership refusal, nonzero exit, deadline expiry and cleanup failure are modeled without native operations.",
+    "The 120-second probe model reserves its last 10 seconds for cleanup and requires enough of the shared 30-minute preparation/probe budget. The overall 35-minute plan retains 5 minutes of cleanup reserve.",
+    "RSS is explicitly a sampled stop threshold rather than a proven hard cap. Windows process-tree containment, sampling, race-safe launch and cleanup remain unimplemented prerequisites.",
+    "CPU template uses random small built-in model initialization, no real tokenizer/base weights, rank 8 q/k/v/o adapters, two optimizer steps and target-only shifted-loss/frozen-base/adapter-gradient checks, followed by one local adapter save/reload comparison. All template body behavior remains unexecuted.",
+    "GPU execution stays disabled pending CUDA initialization/driver/workspace overhead policy and total-device sampling/stop rules. The 256 MiB tensor allocation proposal is not total VRAM containment.",
+    "The corrected manifest validator requires actual strings for closure and wheel hashes before 64-character hexadecimal checks. A 64-digit-integer regression now rejects both forged hash types.",
+    "Receipts preserve simulation and execution-disabled flags, finite failure reasons and numeric samples; no private paths, exception text, logs or credentials are included."
+  ],
+  "resolved_finding": "Removed str() hash coercion and added one regression; total fake tests increased from 21 to 22.",
+  "required_before_real_execution": [
+    "Complete reviewed wheel closure and actual local asset verification.",
+    "Owned Windows process-tree backend, resource sampler, bounded installer and tested cleanup.",
+    "Reviewed enabled derivative and exact user-approved interpreter/directory/install/CPU and any optional CUDA scope."
+  ],
+  "remaining_inert_source_review_blockers": [],
+  "limits": [
+    "This review establishes source preparation and fake behavior only, not Windows import/API compatibility, resource enforcement, model quality, GPU compatibility or training fit.",
+    "No user-PC, network, wheel/model download, package installation, native probe, real optimizer step, inference or training occurred."
+  ]
+}

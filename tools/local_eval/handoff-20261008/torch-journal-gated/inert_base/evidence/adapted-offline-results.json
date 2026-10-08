@@ -1,0 +1,508 @@
+{
+  "status": "passed",
+  "source_sha256": "bb1dc03d42731916b4959f3cd546863efb798b844493b5621f28f78bab77678a",
+  "test_source_sha256": "05e361879edad1d588f90b26a28db97383e293e64b019c93550ec8890be5b360",
+  "python_version": "3.12.14",
+  "collected_at": "2026-10-08T15:18:04+00:00",
+  "test_count": 105,
+  "legacy_registered_count": 115,
+  "superseded_count": 10,
+  "passed_count": 105,
+  "network_requests": 0,
+  "real_network_attempts": 0,
+  "real_write_probe_attempts": 0,
+  "real_subprocess_attempts": 0,
+  "guard_counts": {
+    "network": 0,
+    "write": 0,
+    "process": 0,
+    "exit": 0,
+    "thread": 0,
+    "disk": 0,
+    "read": 0,
+    "native": 0
+  },
+  "filesystem_model": "memory_only",
+  "tests": [
+    {
+      "name": "guard_synthetic_events_without_real_io",
+      "status": "passed"
+    },
+    {
+      "name": "json_real_serialization_full_memory_chain",
+      "status": "passed"
+    },
+    {
+      "name": "json_open_fault",
+      "status": "passed"
+    },
+    {
+      "name": "json_write_fault",
+      "status": "passed"
+    },
+    {
+      "name": "json_close_fault",
+      "status": "passed"
+    },
+    {
+      "name": "json_replace_fault",
+      "status": "passed"
+    },
+    {
+      "name": "json_write_short",
+      "status": "passed"
+    },
+    {
+      "name": "json_write_none",
+      "status": "passed"
+    },
+    {
+      "name": "json_serialize_type",
+      "status": "passed"
+    },
+    {
+      "name": "json_serialize_nonfinite",
+      "status": "passed"
+    },
+    {
+      "name": "json_serialize_unicode",
+      "status": "passed"
+    },
+    {
+      "name": "json_serialized_size_limit",
+      "status": "passed"
+    },
+    {
+      "name": "json_write_first_error_survives_close_error",
+      "status": "passed"
+    },
+    {
+      "name": "stream_keeps_all_progress_and_disk_protection",
+      "status": "passed"
+    },
+    {
+      "name": "progress_before_write_json_open",
+      "status": "passed"
+    },
+    {
+      "name": "progress_before_write_json_write",
+      "status": "passed"
+    },
+    {
+      "name": "progress_before_write_json_close",
+      "status": "passed"
+    },
+    {
+      "name": "progress_before_write_json_replace",
+      "status": "passed"
+    },
+    {
+      "name": "progress_after_write_json_open",
+      "status": "passed"
+    },
+    {
+      "name": "progress_after_write_json_write",
+      "status": "passed"
+    },
+    {
+      "name": "progress_after_write_json_close",
+      "status": "passed"
+    },
+    {
+      "name": "progress_after_write_json_replace",
+      "status": "passed"
+    },
+    {
+      "name": "body_write_short",
+      "status": "passed"
+    },
+    {
+      "name": "body_write_none",
+      "status": "passed"
+    },
+    {
+      "name": "body_write_exception",
+      "status": "passed"
+    },
+    {
+      "name": "response_read_error_is_distinct",
+      "status": "passed"
+    },
+    {
+      "name": "disk_check_error_is_distinct",
+      "status": "passed"
+    },
+    {
+      "name": "first_error_preserved_secondary_errors_bounded",
+      "status": "passed"
+    },
+    {
+      "name": "unknown_exception_and_noninteger_codes_are_redacted",
+      "status": "passed"
+    },
+    {
+      "name": "known_exception_bool_and_string_codes_are_redacted",
+      "status": "passed"
+    },
+    {
+      "name": "final_report_save_failure_is_retained_in_memory",
+      "status": "passed"
+    },
+    {
+      "name": "final_report_failure_does_not_overwrite_first_error",
+      "status": "passed"
+    },
+    {
+      "name": "download_body_open_fault",
+      "status": "passed"
+    },
+    {
+      "name": "download_body_write_fault",
+      "status": "passed"
+    },
+    {
+      "name": "download_body_flush_fault",
+      "status": "passed"
+    },
+    {
+      "name": "download_body_fsync_fault",
+      "status": "passed"
+    },
+    {
+      "name": "download_body_close_fault",
+      "status": "passed"
+    },
+    {
+      "name": "download_receive_error_single_request",
+      "status": "passed"
+    },
+    {
+      "name": "download_disk_error_before_request",
+      "status": "passed"
+    },
+    {
+      "name": "download_progress_before_write_json_open",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_before_write_json_write",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_before_write_json_close",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_before_write_json_replace",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_after_write_json_open",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_after_write_json_write",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_after_write_json_close",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_after_write_json_replace",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_before_write_serialize_fault",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_progress_after_write_serialize_fault",
+      "status": "superseded",
+      "replacement_suite": "journal_test.py",
+      "reason": "Download now writes an append-only journal, not per-chunk JSON replacement"
+    },
+    {
+      "name": "download_final_checkpoint_serialize_fault",
+      "status": "passed"
+    },
+    {
+      "name": "body_first_survives_close_and_final_save_failure",
+      "status": "passed"
+    },
+    {
+      "name": "worker_attempt_marker_blocks_second_memory_request",
+      "status": "passed"
+    },
+    {
+      "name": "cleanup_failure_does_not_replace_first_error",
+      "status": "passed"
+    },
+    {
+      "name": "oneget_connect_first_error_preserved_no_retry",
+      "status": "passed"
+    },
+    {
+      "name": "oneget_request_first_error_preserved_no_retry",
+      "status": "passed"
+    },
+    {
+      "name": "unconfirmed_exit_blocks_cleanup_and_static_gate",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_missing_checkpoint_preserves_validated_journal_first_error",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_unconfirmed_exit_has_no_later_save_cleanup_or_static",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_initial_report_failure_stops_future_actions",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_final_report_failure_stops_future_actions",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_retains_body_write_first_error_and_blocks_static",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_retains_journal_write_first_error_and_blocks_static",
+      "status": "passed"
+    },
+    {
+      "name": "source_only_connect_blocks_before_memory_dns_socket_tls",
+      "status": "passed"
+    },
+    {
+      "name": "source_only_cli_missing_authorization_stops_before_actions",
+      "status": "passed"
+    },
+    {
+      "name": "restored_connect_first_error_survives_close_failure",
+      "status": "passed"
+    },
+    {
+      "name": "restored_handshake_first_error_survives_close_failure",
+      "status": "passed"
+    },
+    {
+      "name": "direct_connect_host_invalid_before_dns",
+      "status": "passed"
+    },
+    {
+      "name": "direct_connect_port_invalid_before_dns",
+      "status": "passed"
+    },
+    {
+      "name": "direct_connect__tunnel_host_invalid_before_dns",
+      "status": "passed"
+    },
+    {
+      "name": "direct_connect_check_hostname_invalid_before_dns",
+      "status": "passed"
+    },
+    {
+      "name": "direct_connect_verify_mode_invalid_before_dns",
+      "status": "passed"
+    },
+    {
+      "name": "direct_connect_missing_authorization_before_dns",
+      "status": "passed"
+    },
+    {
+      "name": "source_only_connect_repeated_calls_never_reach_network",
+      "status": "passed"
+    },
+    {
+      "name": "source_only_direct_connection_has_no_wire_request",
+      "status": "passed"
+    },
+    {
+      "name": "source_only_cli_authorized_memory_supervise_dispatch_blocked",
+      "status": "passed"
+    },
+    {
+      "name": "source_only_cli_authorized_memory_download_worker_dispatch_blocked",
+      "status": "passed"
+    },
+    {
+      "name": "source_only_cli_authorized_memory_static_worker_dispatch_blocked",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_consumed_execution-started_json_blocks_supervisor",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_consumed_request-attempt_json_blocks_supervisor",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_consumed_static-attempt_json_blocks_supervisor",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_consumed_report_json_blocks_supervisor",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_consumed_payload_part_blocks_supervisor",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_consumed_download-checkpoint_json_blocks_supervisor",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_fixed_url_sha_and_resource_constants",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_preflight_all_evidence_memory_only",
+      "status": "passed"
+    },
+    {
+      "name": "authorization_candidate_id_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "authorization_source_sha256_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "authorization_action_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "authorization_authorized_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_candidate-identity_json_candidate_id_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_candidate-identity_json_live_execution_authorized_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_output_attempt_json_candidate_id_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_output_attempt_json_source_sha256_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_output_attempt_json_url_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_output_attempt_json_expected_sha256_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_offline-tests_json_source_sha256_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_offline-tests_json_candidate_id_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_offline-tests_json_network_requests_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_independent-review_json_source_sha256_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_independent-review_json_candidate_id_mismatch_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_changed_offline_test_py_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_changed_safety_test_py_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_other_work_directory_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_other_out_directory_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_missing_identity_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_old_execution_identity_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_invalid_cli_none_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_invalid_cli_execute_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "candidate_invalid_cli_worker_rejected",
+      "status": "passed"
+    },
+    {
+      "name": "static_archive_open_diagnostic_memory_only",
+      "status": "passed"
+    },
+    {
+      "name": "static_archive_close_diagnostic_memory_only",
+      "status": "passed"
+    },
+    {
+      "name": "static_inspect_first_error_survives_close_and_final_save_failure",
+      "status": "passed"
+    },
+    {
+      "name": "disk_start_low_remains_enforced",
+      "status": "passed"
+    },
+    {
+      "name": "disk_reserve_low_remains_enforced",
+      "status": "passed"
+    },
+    {
+      "name": "disk_increment_limit_remains_enforced",
+      "status": "passed"
+    }
+  ]
+}

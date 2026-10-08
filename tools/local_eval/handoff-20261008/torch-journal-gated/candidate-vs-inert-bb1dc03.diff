@@ -1,0 +1,39 @@
+--- inert-bb1dc03/run_check.py
++++ candidate/run_check.py
+@@ -63,7 +63,7 @@
+     ssl.SSLCertVerificationError, socket.gaierror, http.client.HTTPException,
+     http.client.IncompleteRead, http.client.RemoteDisconnected, subprocess.TimeoutExpired)}
+ SECONDARY_MAX = 8
+-CANDIDATE_ID = 'e09c42d2-71ac-4da8-9f68-782e85c9b4f6'
++CANDIDATE_ID = '974d95a3-29c7-4294-9f46-33d247dd72f2'
+ TEST_FILES = ('offline_test.py', 'safety_test.py', 'journal_test.py', 'adapted_offline_test.py', 'adapted_safety_test.py')
+ ERRORS = ERRORS | frozenset(('CANDIDATE_INVALID', 'CANDIDATE_PATH_INVALID',
+                             'EXECUTION_NOT_AUTHORIZED', 'STAGE_INVALID'))
+@@ -261,8 +261,9 @@
+         call('JSON_REPLACE', context, os.replace, pending, path)
+ 
+ 
+-# SOURCE_ONLY: this preparation cannot run a live worker or HTTPS connection.
+-SOURCE_ONLY = True
++# Preparation derivative: original identity-bound authorization gates are restored.
++# No execution-authorization.json is supplied; this is not live authorization.
++SOURCE_ONLY = False
+ JOURNAL_MAGIC = b'LTJR0001'
+ JOURNAL_PAYLOAD_MAX = 2048
+ JOURNAL_RECORD_MAX = 4102
+@@ -643,7 +644,6 @@
+         super().__init__(host, port=443, timeout=budget.socket_timeout(), context=context)
+         self.auto_open = 0
+     def connect(self):
+-        fail('OFFLINE_PREPARATION_ONLY', 'NETWORK_OPEN', 'DOWNLOAD')
+         if self.connect_used:
+             fail('REQUEST_ALREADY_USED', 'NETWORK_OPEN', 'DOWNLOAD')
+         self.connect_used = True
+@@ -1719,7 +1719,6 @@
+ 
+ def main():
+     try:
+-        fail('OFFLINE_PREPARATION_ONLY')
+         if sys.version_info[:2] != (3, 12):
+             fail('PYTHON_VERSION_INVALID')
+         if len(sys.argv) == 4 and sys.argv[1] == 'supervise':

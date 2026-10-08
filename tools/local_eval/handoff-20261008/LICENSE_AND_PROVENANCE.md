@@ -1,0 +1,7 @@
+# License and provenance
+
+The target repository carries the GNU General Public License version 3 in its root [LICENSE](https://github.com/yuxixi311/LunaTranslator-UI-Custom/blob/a33dd731998f63e6ffd7d5fff1e2612d5cbcac80/LICENSE). This overlay is intended to live inside that repository; preserve the root license and all existing notices when redistributing repository code. This document does not amend or replace upstream licenses.
+
+The retained Python source, tests, synthetic fixtures embedded within tests, preparation documents and reviews are project preparation artifacts. No third-party wheel, package source distribution, model weights, tokenizer, adapter or external parallel corpus is redistributed. References and URLs do not grant redistribution rights to their targets. PyTorch, Transformers, PEFT, Accelerate, safetensors, the Hy-MT model and any future training data require their own exact-version provenance/license review before download, installation, use or redistribution. The incomplete native manifest is explicitly not a verified license/dependency lock.
+
+Model-assisted development data is not published in this overlay. Its private provenance does not establish originality, legal clearance, human bilingual certification or training readiness. Existing historical corpus/license notices in the repository remain in force; this checkpoint does not erase their restrictions or claim new rights.

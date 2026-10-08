@@ -1,0 +1,11 @@
+{
+  "design_path": "CHECKPOINT_JOURNAL_DESIGN_2026-10-08.md",
+  "design_sha256": "6ddbaa3b80ff665aa9c1f738385a44fee9f81bb3ad58064c946d03b9d9cdfbe1",
+  "archive_sha256": "22fd4f445d0b3a703e3b6e4a3d78d9c22fe2bfb48b1affead6d13f903c6b55a5",
+  "base_source_sha256": "b6f8e0f56c6966bdef809da506c284adf1b5c61df88665be8132bc4a1a5401b4",
+  "journal_payload_max": 2048,
+  "journal_record_max": 4102,
+  "journal_file_byte_max": 8548576,
+  "body_snapshot_interval": 1048576,
+  "status": "design_only_not_implemented_or_tested"
+}

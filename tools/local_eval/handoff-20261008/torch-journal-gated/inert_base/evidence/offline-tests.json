@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "candidate_id": "e09c42d2-71ac-4da8-9f68-782e85c9b4f6",
+  "source_sha256": "bb1dc03d42731916b4959f3cd546863efb798b844493b5621f28f78bab77678a",
+  "tests_source_sha256": {
+    "offline_test.py": "02a9528bb4598723b5eba109fbc325390535c12e5afbecefefca5a3db3eb8d88",
+    "safety_test.py": "c3df3b650b60a9d25f06b3046f678a03f9d0ce519ab6c76719df3b6fbccbd3a5",
+    "journal_test.py": "f7b93c72db5b0c750a24390d1f99294a855df9d06906f58d35b36a499a39c3c4",
+    "adapted_offline_test.py": "05e361879edad1d588f90b26a28db97383e293e64b019c93550ec8890be5b360",
+    "adapted_safety_test.py": "969f924f5bdc1599bb4779d3802fd705125c5c4480084b430016785d4ae34984"
+  },
+  "test_source_sha256": "02a9528bb4598723b5eba109fbc325390535c12e5afbecefefca5a3db3eb8d88",
+  "test_source_sha256_role": "preserved_historical_fixture_for_existing_preflight_schema; not a fresh pass",
+  "historical_inputs": [
+    "offline_test.py",
+    "safety_test.py"
+  ],
+  "executed_suites": [
+    "journal_test.py",
+    "adapted_offline_test.py",
+    "adapted_safety_test.py"
+  ],
+  "suites": [
+    {
+      "receipt": "journal-run-01.json",
+      "receipt_sha256": "db2548d1c7756521c6437fd9c2aca1eeced0fb80779aeec608be21082b4ca080",
+      "passed_count": 127,
+      "test_count": 127
+    },
+    {
+      "receipt": "adapted-offline-results.json",
+      "receipt_sha256": "cc1ba3b10dec132b3622c28a25bcd76577d75bb1eb258bbff9cecc0288b618da",
+      "passed_count": 105,
+      "test_count": 105
+    },
+    {
+      "receipt": "adapted-safety-results.json",
+      "receipt_sha256": "33d6d22bca25652c8562830154d1bd453a990c07e52ef0ca16668556f25ef58f",
+      "passed_count": 86,
+      "test_count": 86
+    }
+  ],
+  "test_count": 318,
+  "passed_count": 318,
+  "superseded_historical_cases": 10,
+  "network_requests": 0,
+  "native_candidate_execution": false,
+  "execution_model": "guarded fake I/O only",
+  "live_execution_authorized": false,
+  "source_only_hard_guard": true
+}

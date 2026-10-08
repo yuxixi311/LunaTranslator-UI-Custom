@@ -2,6 +2,14 @@
 
 This branch contains development source and checkpoints, not a new binary release.
 
+## 2026-10-08 当前接续节点
+
+最新总览：[当前状态、失败与证据边界](docs/LOCAL_TRANSLATION_CHECKPOINT_20261008.md)、[分阶段路线](docs/LOCAL_TRANSLATION_ROADMAP_20261008.md)、[新本地对话交接](docs/LOCAL_TRANSLATION_LOCAL_HANDOFF_20261008.md)。历史结果不被本次归档替换。
+
+当前仍维持可选 Hy1.8B baseline；尚无获证改善的候选。LoRA 仅进入数据与运行环境可行性研究，未训练、未证明 12GB 可行。Windows Torch 的两次实际 GET 均失败，尚无完整 wheel 或静态检查成功。新的 append-only journal 候选通过 410 项新鲜 fake 检查，但尚未产生真实 Windows 网络运行证据。
+
+下一步限于核对现有 ZIP、精确源码/测试绑定和本地消费标记，按用户已明确批准的原范围进行至多一次指定 Torch GET 与静态检查。历史准备包未含 execution-authorization.json；操作员需先核对授权适用性再写入精确绑定，不能把这份公开文档当作授权。不得重用旧 attempt、自动重试、安装软件、下载模型或训练。成功后才准备完整依赖闭包与隔离安装方案；失败则保留证据并报告首错和保留状态。
+
 ## Small dictionary popup
 
 - [x] Show the current word and a queried status in the popup
@@ -40,3 +48,4 @@ The [NER result](docs/LOCAL_TRANSLATION_NER_RESULT_20261005.md) remains a comple
 - [ ] Complete the remaining [translation acceptance plan](docs/LOCAL_TRANSLATION_TEST_PLAN.md) before release-level claims
 
 Stop promotion of the unchanged failed sense prefix, POS rule and NER admission rule; do not advance them to GPU evaluation. The sense experiment's fresh 48 cases, like the earlier fresh sets, are now seen regression material and cannot serve as another untouched holdout. No larger generator or auxiliary sense model, training, paid API or generic prompt loop follows from these results. The earlier maximum-of-three plan remains historical; the owner subsequently authorized sequential, separately frozen methods. That does not authorize retries after failure or relaxing a failed gate. The currently examined sequential methods are exhausted: supplied glossary inconclusive; grounded context blocked by source provenance; microexamples blocked by token/coverage feasibility; sense-prefix and GiNZA-derived POS/NER work without demonstrated general benefit; term lock without incremental advantage. Keeping baseline is a valid decision. A curated licensed parallel-data and small-LoRA feasibility proposal is the only new bounded research option recorded here: no download, GPU run or training is released by this checkpoint, no training has been completed, and fit within 12 GB is unmeasured. Do not force another inference round or tune against the now-seen fresh19. UI checks provide no semantic evidence.
+

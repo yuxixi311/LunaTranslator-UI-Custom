@@ -1,0 +1,595 @@
+{
+  "schema": "luna-portable-public-source-overlay-v2",
+  "date": "2026-10-08",
+  "repository": "yuxixi311/LunaTranslator-UI-Custom",
+  "branch": "codex/local-translation-presets",
+  "read_only_verified_git_parent": "a33dd731998f63e6ffd7d5fff1e2612d5cbcac80",
+  "repository_prefix": "tools/local_eval/handoff-20261008",
+  "scope": "source and historical preparation evidence only; no activation/workflow/runtime change",
+  "manifest_scope": "Every file in this subtree except PUBLIC_MANIFEST.json itself. Parent documentation is independently manifested by the publishing coordinator.",
+  "files": [
+    {
+      "path": "LICENSE_AND_PROVENANCE.md",
+      "bytes": 1421,
+      "sha256": "381b291a777e3fc3f8a3fd24eaee018b229be5960cea5c075edeb7406e5b6301",
+      "relationship": "new-checkpoint-document"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4930,
+      "sha256": "a11bdcdfbc5c4b69b7082604b940f1b90236a43001b06ea33bdd931e50fa22c1",
+      "relationship": "new-checkpoint-document"
+    },
+    {
+      "path": "lora/LORA_PLAN_ZH.md",
+      "bytes": 9498,
+      "sha256": "ef80ee1290b5505f934628b4539e6a0b686bcffb8f3985f32912a9df6f9b10fe",
+      "original_bytes": 9498,
+      "original_sha256": "ef80ee1290b5505f934628b4539e6a0b686bcffb8f3985f32912a9df6f9b10fe",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "native-windows/inert-cpu-probe/README.md",
+      "bytes": 4864,
+      "sha256": "703190dadfcc17e8a63c1ce11566ba08b1e0da3c867f602910b02d7b9ad9ff8a",
+      "original_bytes": 4546,
+      "original_sha256": "12204de975e732a9399dc805b0fd73b6a29e3c5b82ccc3685236f3b44c0e874a",
+      "relationship": "metadata_projection_v2",
+      "source_category": "project preparation artifact",
+      "projection_reason": "Remove private proposal locator, retain public source review and verification references. Historical reviews refer to original README hash."
+    },
+    {
+      "path": "native-windows/inert-cpu-probe/VERIFICATION.json",
+      "bytes": 1603,
+      "sha256": "918f9010970c71d93b7f5deadd4891aafb289f21d6b6de219b9dcd709d75c7a8",
+      "original_bytes": 1603,
+      "original_sha256": "918f9010970c71d93b7f5deadd4891aafb289f21d6b6de219b9dcd709d75c7a8",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "native-windows/inert-cpu-probe/cpu_probe.py.txt",
+      "bytes": 5080,
+      "sha256": "1b3ee2bb1c3f3022b77a98a3a7d14f1b7dbdbf18927c62f6cf9b913c9e9c19c3",
+      "original_bytes": 5080,
+      "original_sha256": "1b3ee2bb1c3f3022b77a98a3a7d14f1b7dbdbf18927c62f6cf9b913c9e9c19c3",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "native-windows/inert-cpu-probe/harness.py",
+      "bytes": 10265,
+      "sha256": "798bcb76f393cb8cda833cd4663fcbf62292133df99ae1ff8597ab541283c426",
+      "original_bytes": 10265,
+      "original_sha256": "798bcb76f393cb8cda833cd4663fcbf62292133df99ae1ff8597ab541283c426",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "native-windows/inert-cpu-probe/test_harness.py",
+      "bytes": 9079,
+      "sha256": "1998fa7685aaf3c5b8c059e4d8a2230457ac127e144838ebad39b56473d7e807",
+      "original_bytes": 9079,
+      "original_sha256": "1998fa7685aaf3c5b8c059e4d8a2230457ac127e144838ebad39b56473d7e807",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "native-windows/inert-cpu-probe/wheel_manifest.incomplete.json",
+      "bytes": 369,
+      "sha256": "4f7f73f088374a7471797838df259b1e234600e21c0e0018b6f7616c01d6b933",
+      "original_bytes": 369,
+      "original_sha256": "4f7f73f088374a7471797838df259b1e234600e21c0e0018b6f7616c01d6b933",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "native-windows/inert-cpu-probe/windows-probe-source-review-20261007.json",
+      "bytes": 4142,
+      "sha256": "87aa89f5169d9c94e46fa528304d4100d0798f8a7ad439b422c2132893239c7f",
+      "original_bytes": 4142,
+      "original_sha256": "87aa89f5169d9c94e46fa528304d4100d0798f8a7ad439b422c2132893239c7f",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "native-windows/preparation/METADATA_SOURCE_REVIEW.json",
+      "bytes": 4651,
+      "sha256": "c6d93738ae5ade40c55ac1332a81167d39571c4ffe5cd02d271a44e82c9dfc64",
+      "original_bytes": 4651,
+      "original_sha256": "c6d93738ae5ade40c55ac1332a81167d39571c4ffe5cd02d271a44e82c9dfc64",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "native-windows/preparation/metadata-only/HANDOFF.md",
+      "bytes": 5190,
+      "sha256": "50f494e8aa818575d1bcce0b4cfc8f25638d21cf522a119b93f3dd2f007a1596",
+      "original_bytes": 5190,
+      "original_sha256": "50f494e8aa818575d1bcce0b4cfc8f25638d21cf522a119b93f3dd2f007a1596",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "native-windows/preparation/metadata-only/collect_metadata.py",
+      "bytes": 12387,
+      "sha256": "54802e34ef336d77f95f6e27a1b784cfe816da1bbe52c85f7a438a5de3e52cf4",
+      "original_bytes": 12387,
+      "original_sha256": "54802e34ef336d77f95f6e27a1b784cfe816da1bbe52c85f7a438a5de3e52cf4",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "native-windows/preparation/metadata-only/test_collect_metadata.py",
+      "bytes": 7362,
+      "sha256": "546c25120c00c66f2c41aa3b4ee53c94dff3a1a5392b064f2ab6fe2916cd5be7",
+      "original_bytes": 7362,
+      "original_sha256": "546c25120c00c66f2c41aa3b4ee53c94dff3a1a5392b064f2ab6fe2916cd5be7",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/ADAPTED_REGRESSIONS.md",
+      "bytes": 3329,
+      "sha256": "72a8a0a91624d22cb16fee8b13128bc19ef4e0609cb4a144a0e0d8b8c2a7b731",
+      "original_bytes": 3329,
+      "original_sha256": "72a8a0a91624d22cb16fee8b13128bc19ef4e0609cb4a144a0e0d8b8c2a7b731",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/ADAPTED_REGRESSION_MANIFEST.json",
+      "bytes": 3534,
+      "sha256": "4e18018ac15a9c88f732e515bd2d8fa35c8a942f2a53ce96c965070eaa6ccf16",
+      "original_bytes": 3534,
+      "original_sha256": "4e18018ac15a9c88f732e515bd2d8fa35c8a942f2a53ce96c965070eaa6ccf16",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/BUNDLE_RECEIPT.public-projection.json",
+      "bytes": 675,
+      "sha256": "0f7f706201d09f681d902092eb41f3755fee0856a20070037560f6b6719fce82",
+      "original_bytes": 707,
+      "original_sha256": "7e6850356291b6b8b769d9233278581de6057662ff4b39e0a7a0342d49287699",
+      "relationship": "metadata-projection",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/CHECKPOINT_JOURNAL_DESIGN_2026-10-08.md",
+      "bytes": 20469,
+      "sha256": "6ddbaa3b80ff665aa9c1f738385a44fee9f81bb3ad58064c946d03b9d9cdfbe1",
+      "original_bytes": 20469,
+      "original_sha256": "6ddbaa3b80ff665aa9c1f738385a44fee9f81bb3ad58064c946d03b9d9cdfbe1",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/CHECKPOINT_JOURNAL_DESIGN_MANIFEST.public-projection.json",
+      "bytes": 517,
+      "sha256": "f68370a1540b2bf07619f327585211dc5296f0784e7d828822a65242d542c209",
+      "original_bytes": 579,
+      "original_sha256": "9c4af3c46028bc2987f4ec0998ddf6412e6907383fe29a48fc7a7a919a37bcd3",
+      "relationship": "metadata-projection",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/GATED_PREPARATION_REPORT_2026-10-08.md",
+      "bytes": 4238,
+      "sha256": "02262fd5332e364c846d64497ad8dd686a02f6d8a1c669eafc6d5aa38920fc98",
+      "original_bytes": 4238,
+      "original_sha256": "02262fd5332e364c846d64497ad8dd686a02f6d8a1c669eafc6d5aa38920fc98",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/GATED_SOURCE_MANIFEST.original.json",
+      "bytes": 9220,
+      "sha256": "e3cde9e1ead7a83bc01fc02ed5e05ee1f1f7f10b26ac3847d33567c122d8bf0c",
+      "original_bytes": 9220,
+      "original_sha256": "e3cde9e1ead7a83bc01fc02ed5e05ee1f1f7f10b26ac3847d33567c122d8bf0c",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/INDEPENDENT_GATED_SOURCE_REVIEW.json",
+      "bytes": 6918,
+      "sha256": "64cd4e87aadc7fd34dd21de295c41926af1ccc7d1ef24ca46f19cb4f5f90aa33",
+      "original_bytes": 6918,
+      "original_sha256": "64cd4e87aadc7fd34dd21de295c41926af1ccc7d1ef24ca46f19cb4f5f90aa33",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/LOCAL_HANDOFF_AND_REPORT_REQUIREMENTS.md",
+      "bytes": 7376,
+      "sha256": "24efc02302ad13621d3ec55c8a90c4edb9fa8f48c741da49e0351b21410987da",
+      "original_bytes": 7376,
+      "original_sha256": "24efc02302ad13621d3ec55c8a90c4edb9fa8f48c741da49e0351b21410987da",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/adapted_offline_test.py.diff",
+      "bytes": 9998,
+      "sha256": "71222c19ff722ac091635c1af6138118e52c507bc6494f14bb663609135bb1bd",
+      "original_bytes": 9998,
+      "original_sha256": "71222c19ff722ac091635c1af6138118e52c507bc6494f14bb663609135bb1bd",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/adapted_safety_test.py.diff",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate/adapted-offline-results.json",
+      "bytes": 13470,
+      "sha256": "979006e7d8ecf8f97d361db791b8f39589009cd9ba22dd58fe46f7ad57503fe7",
+      "original_bytes": 13470,
+      "original_sha256": "979006e7d8ecf8f97d361db791b8f39589009cd9ba22dd58fe46f7ad57503fe7",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate/adapted-safety-results.json",
+      "bytes": 8683,
+      "sha256": "55d659490d9140a5ab1666bcfc2f7846a1f4766ed9ef63cd52a9a0d356aca4e3",
+      "original_bytes": 8683,
+      "original_sha256": "55d659490d9140a5ab1666bcfc2f7846a1f4766ed9ef63cd52a9a0d356aca4e3",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate/adapted_offline_test.py",
+      "bytes": 71046,
+      "sha256": "879b9cd53027339148734fa0ca1762ed01770ab0d556b0fb3c996991f741570c",
+      "original_bytes": 71046,
+      "original_sha256": "879b9cd53027339148734fa0ca1762ed01770ab0d556b0fb3c996991f741570c",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate/adapted_safety_test.py",
+      "bytes": 33466,
+      "sha256": "969f924f5bdc1599bb4779d3802fd705125c5c4480084b430016785d4ae34984",
+      "original_bytes": 33466,
+      "original_sha256": "969f924f5bdc1599bb4779d3802fd705125c5c4480084b430016785d4ae34984",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate/candidate-identity.json",
+      "bytes": 238,
+      "sha256": "f619466b43c81335a58b71daf4dd3dd8091f18cddfe85e950c8549c9aa7f910d",
+      "original_bytes": 238,
+      "original_sha256": "f619466b43c81335a58b71daf4dd3dd8091f18cddfe85e950c8549c9aa7f910d",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate/independent-review.json",
+      "bytes": 1124,
+      "sha256": "f6f572942738fe3b1a872b4d1fe00172de108d5f87654dd84e963587aefad144",
+      "original_bytes": 1124,
+      "original_sha256": "f6f572942738fe3b1a872b4d1fe00172de108d5f87654dd84e963587aefad144",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate/journal-run-01.json",
+      "bytes": 22720,
+      "sha256": "c6564a99c4b312b6df63349477c80b9b0e4ef43995bc0febe19547f95b1bac96",
+      "original_bytes": 22720,
+      "original_sha256": "c6564a99c4b312b6df63349477c80b9b0e4ef43995bc0febe19547f95b1bac96",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate/journal_test.py",
+      "bytes": 64790,
+      "sha256": "b9981baf365461c3497c534c8db6570bcd039f5af7836e583c4d81540fa44b23",
+      "original_bytes": 64790,
+      "original_sha256": "b9981baf365461c3497c534c8db6570bcd039f5af7836e583c4d81540fa44b23",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate/offline-tests.json",
+      "bytes": 2078,
+      "sha256": "6eb24cbc4fcf326099760dd4beb4e0468c57dd17ba8300b12e97db47a5719433",
+      "original_bytes": 2078,
+      "original_sha256": "6eb24cbc4fcf326099760dd4beb4e0468c57dd17ba8300b12e97db47a5719433",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate/offline_test.py",
+      "bytes": 66718,
+      "sha256": "02a9528bb4598723b5eba109fbc325390535c12e5afbecefefca5a3db3eb8d88",
+      "original_bytes": 66718,
+      "original_sha256": "02a9528bb4598723b5eba109fbc325390535c12e5afbecefefca5a3db3eb8d88",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate/output/attempt.json",
+      "bytes": 364,
+      "sha256": "f2178bd6fecfb3f43bdbd1b3577a43c9dc79d811ff282f311321101979a695a8",
+      "original_bytes": 364,
+      "original_sha256": "f2178bd6fecfb3f43bdbd1b3577a43c9dc79d811ff282f311321101979a695a8",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate/run_check.py",
+      "bytes": 86119,
+      "sha256": "00e0c240582533d666428530d55ede1cbcca6783919b6118abd4afa715d10630",
+      "original_bytes": 86119,
+      "original_sha256": "00e0c240582533d666428530d55ede1cbcca6783919b6118abd4afa715d10630",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate/safety_test.py",
+      "bytes": 32489,
+      "sha256": "c3df3b650b60a9d25f06b3046f678a03f9d0ce519ab6c76719df3b6fbccbd3a5",
+      "original_bytes": 32489,
+      "original_sha256": "c3df3b650b60a9d25f06b3046f678a03f9d0ce519ab6c76719df3b6fbccbd3a5",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate-vs-inert-bb1dc03.diff",
+      "bytes": 1722,
+      "sha256": "068b7806b55398deeb42f8bacf432be4f84aa135763eba5307fff4d167d586fb",
+      "original_bytes": 1722,
+      "original_sha256": "068b7806b55398deeb42f8bacf432be4f84aa135763eba5307fff4d167d586fb",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/candidate-vs-original-b6f8e0.diff",
+      "bytes": 22481,
+      "sha256": "6aa57406f9e9c81978473eb6b853bd8194e0783a32ea64d4fc722a8ee4ce4ab8",
+      "original_bytes": 22481,
+      "original_sha256": "6aa57406f9e9c81978473eb6b853bd8194e0783a32ea64d4fc722a8ee4ce4ab8",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/independent-adapted-offline-results.json",
+      "bytes": 13470,
+      "sha256": "0baef85fe1588b29875b671dfb437e8bcd4fb003dee17226d18a4c25c3d19d1b",
+      "original_bytes": 13470,
+      "original_sha256": "0baef85fe1588b29875b671dfb437e8bcd4fb003dee17226d18a4c25c3d19d1b",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/independent-adapted-safety-results.json",
+      "bytes": 8683,
+      "sha256": "f257f3635d41a73aa1af99b7c712cef73546c2efe3225e01ea0f1bb48aefc3f5",
+      "original_bytes": 8683,
+      "original_sha256": "f257f3635d41a73aa1af99b7c712cef73546c2efe3225e01ea0f1bb48aefc3f5",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/independent-journal-results.json",
+      "bytes": 22720,
+      "sha256": "c6564a99c4b312b6df63349477c80b9b0e4ef43995bc0febe19547f95b1bac96",
+      "original_bytes": 22720,
+      "original_sha256": "c6564a99c4b312b6df63349477c80b9b0e4ef43995bc0febe19547f95b1bac96",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/adapted_offline_test.py",
+      "bytes": 70447,
+      "sha256": "05e361879edad1d588f90b26a28db97383e293e64b019c93550ec8890be5b360",
+      "original_bytes": 70447,
+      "original_sha256": "05e361879edad1d588f90b26a28db97383e293e64b019c93550ec8890be5b360",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/adapted_safety_test.py",
+      "bytes": 33466,
+      "sha256": "969f924f5bdc1599bb4779d3802fd705125c5c4480084b430016785d4ae34984",
+      "original_bytes": 33466,
+      "original_sha256": "969f924f5bdc1599bb4779d3802fd705125c5c4480084b430016785d4ae34984",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/candidate-identity.json",
+      "bytes": 188,
+      "sha256": "898737b908fc069b2b5338b0d0e9ac896f2d36d0a3668cd311f99d3b794f1237",
+      "original_bytes": 188,
+      "original_sha256": "898737b908fc069b2b5338b0d0e9ac896f2d36d0a3668cd311f99d3b794f1237",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/evidence/INDEPENDENT_SOURCE_REVIEW.json",
+      "bytes": 9412,
+      "sha256": "fe2a849b58f6558b3d67dbce78ab6e43c01776b62cf0202380df431ef8616e0e",
+      "original_bytes": 9412,
+      "original_sha256": "fe2a849b58f6558b3d67dbce78ab6e43c01776b62cf0202380df431ef8616e0e",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/evidence/SOURCE_ONLY_MANIFEST.json",
+      "bytes": 5551,
+      "sha256": "ad7989167b66e6d88c140075b5f0d976f156cc62cfac3144c0bf762cda8e93ad",
+      "original_bytes": 5551,
+      "original_sha256": "ad7989167b66e6d88c140075b5f0d976f156cc62cfac3144c0bf762cda8e93ad",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/evidence/adapted-offline-results.json",
+      "bytes": 13495,
+      "sha256": "cc1ba3b10dec132b3622c28a25bcd76577d75bb1eb258bbff9cecc0288b618da",
+      "original_bytes": 13495,
+      "original_sha256": "cc1ba3b10dec132b3622c28a25bcd76577d75bb1eb258bbff9cecc0288b618da",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/evidence/adapted-safety-results.json",
+      "bytes": 8683,
+      "sha256": "33d6d22bca25652c8562830154d1bd453a990c07e52ef0ca16668556f25ef58f",
+      "original_bytes": 8683,
+      "original_sha256": "33d6d22bca25652c8562830154d1bd453a990c07e52ef0ca16668556f25ef58f",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/evidence/independent-adapted-offline-results.json",
+      "bytes": 13495,
+      "sha256": "cefba6e42e2b222ed8d3f1c7d2a8c3997234c03a19ca092f5534782c9d188df4",
+      "original_bytes": 13495,
+      "original_sha256": "cefba6e42e2b222ed8d3f1c7d2a8c3997234c03a19ca092f5534782c9d188df4",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/evidence/independent-adapted-safety-results.json",
+      "bytes": 8683,
+      "sha256": "070283833ab6dc6ac927014fa33fa9f7ef01baf63aa3735681ff84215e5cadcd",
+      "original_bytes": 8683,
+      "original_sha256": "070283833ab6dc6ac927014fa33fa9f7ef01baf63aa3735681ff84215e5cadcd",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/evidence/independent-journal-results.json",
+      "bytes": 13273,
+      "sha256": "db2548d1c7756521c6437fd9c2aca1eeced0fb80779aeec608be21082b4ca080",
+      "original_bytes": 13273,
+      "original_sha256": "db2548d1c7756521c6437fd9c2aca1eeced0fb80779aeec608be21082b4ca080",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/evidence/journal-run-01.json",
+      "bytes": 13273,
+      "sha256": "db2548d1c7756521c6437fd9c2aca1eeced0fb80779aeec608be21082b4ca080",
+      "original_bytes": 13273,
+      "original_sha256": "db2548d1c7756521c6437fd9c2aca1eeced0fb80779aeec608be21082b4ca080",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/evidence/offline-tests.json",
+      "bytes": 1940,
+      "sha256": "2135b304e832256fc5eefc1d8a87c6282b630ba9cda2c9e242313aa0dc1c4d78",
+      "original_bytes": 1940,
+      "original_sha256": "2135b304e832256fc5eefc1d8a87c6282b630ba9cda2c9e242313aa0dc1c4d78",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/journal_test.py",
+      "bytes": 57607,
+      "sha256": "f7b93c72db5b0c750a24390d1f99294a855df9d06906f58d35b36a499a39c3c4",
+      "original_bytes": 57607,
+      "original_sha256": "f7b93c72db5b0c750a24390d1f99294a855df9d06906f58d35b36a499a39c3c4",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/offline_test.py",
+      "bytes": 66718,
+      "sha256": "02a9528bb4598723b5eba109fbc325390535c12e5afbecefefca5a3db3eb8d88",
+      "original_bytes": 66718,
+      "original_sha256": "02a9528bb4598723b5eba109fbc325390535c12e5afbecefefca5a3db3eb8d88",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/run_check.py",
+      "bytes": 86143,
+      "sha256": "bb1dc03d42731916b4959f3cd546863efb798b844493b5621f28f78bab77678a",
+      "original_bytes": 86143,
+      "original_sha256": "bb1dc03d42731916b4959f3cd546863efb798b844493b5621f28f78bab77678a",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/inert_base/safety_test.py",
+      "bytes": 32489,
+      "sha256": "c3df3b650b60a9d25f06b3046f678a03f9d0ce519ab6c76719df3b6fbccbd3a5",
+      "original_bytes": 32489,
+      "original_sha256": "c3df3b650b60a9d25f06b3046f678a03f9d0ce519ab6c76719df3b6fbccbd3a5",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/original/candidate-identity.json",
+      "bytes": 160,
+      "sha256": "01b17610caabf246166cae5665fe3db10adf3598f54a6d7bb385734d4e351f69",
+      "original_bytes": 160,
+      "original_sha256": "01b17610caabf246166cae5665fe3db10adf3598f54a6d7bb385734d4e351f69",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/original/offline_test.py",
+      "bytes": 66718,
+      "sha256": "02a9528bb4598723b5eba109fbc325390535c12e5afbecefefca5a3db3eb8d88",
+      "original_bytes": 66718,
+      "original_sha256": "02a9528bb4598723b5eba109fbc325390535c12e5afbecefefca5a3db3eb8d88",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/original/run_check.py",
+      "bytes": 68695,
+      "sha256": "b6f8e0f56c6966bdef809da506c284adf1b5c61df88665be8132bc4a1a5401b4",
+      "original_bytes": 68695,
+      "original_sha256": "b6f8e0f56c6966bdef809da506c284adf1b5c61df88665be8132bc4a1a5401b4",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    },
+    {
+      "path": "torch-journal-gated/original/safety_test.py",
+      "bytes": 32489,
+      "sha256": "c3df3b650b60a9d25f06b3046f678a03f9d0ce519ab6c76719df3b6fbccbd3a5",
+      "original_bytes": 32489,
+      "original_sha256": "c3df3b650b60a9d25f06b3046f678a03f9d0ce519ab6c76719df3b6fbccbd3a5",
+      "relationship": "byte-identical",
+      "source_category": "project preparation artifact"
+    }
+  ],
+  "payload_file_count": 63,
+  "payload_bytes": 1222421,
+  "source_tests_unchanged": true,
+  "projected_metadata_count": 3,
+  "new_execution_performed": false,
+  "new_tests_performed": false,
+  "validation": "Exact original manifest/hash checks and static AST parsing; no payload execution",
+  "original_gated_zip": {
+    "bytes": 270447,
+    "sha256": "ac1606f1d56870c29a0f9e1b7f98bb1a8efd6c59ff9cc93d668ace5c7e02b96d",
+    "packaged": false
+  },
+  "public_exclusions": [
+    "Private hardware proposal and hardware-specific review",
+    "Synthetic24 development data and full revision/review history",
+    "Private evaluation criteria/answers/ratings",
+    "Original absolute-path metadata and private bundle identifiers",
+    "Local machine runtime reports, raw host logs and consumed attempt markers",
+    "Model assets, wheels, dependency packages and workflow triggers"
+  ],
+  "revision": "v2: remove private proposal locator from native inert README; code, tests and exact candidate ZIP unchanged"
+}

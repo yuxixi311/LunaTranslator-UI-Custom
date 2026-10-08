@@ -1,0 +1,55 @@
+{
+  "schema": "windows-metadata-handoff-independent-source-review-v1",
+  "reviewed_utc": "2026-10-07T16:26:25.852886+00:00",
+  "decision": "PASS_METADATA_SOURCE_HANDOFF_ONLY_NO_LIVE_EXECUTION_OR_INSTALL_RELEASE",
+  "files": {
+    "collect_metadata.py": {
+      "bytes": 12387,
+      "sha256": "54802e34ef336d77f95f6e27a1b784cfe816da1bbe52c85f7a438a5de3e52cf4"
+    },
+    "test_collect_metadata.py": {
+      "bytes": 7362,
+      "sha256": "546c25120c00c66f2c41aa3b4ee53c94dff3a1a5392b064f2ab6fe2916cd5be7"
+    },
+    "HANDOFF.md": {
+      "bytes": 5190,
+      "sha256": "50f494e8aa818575d1bcce0b4cfc8f25638d21cf522a119b93f3dd2f007a1596"
+    }
+  },
+  "independent_tests": {
+    "count": 9,
+    "passed": 9,
+    "failed": 0,
+    "duration_seconds": 0.003,
+    "execution": "Python isolated mode; fake unittest responses only, audit hook rejects sockets/process execution and Thread.start is blocked.",
+    "native_attempts": [],
+    "network_requests": 0,
+    "user_PC_actions": 0
+  },
+  "scope_checks": [
+    "Exactly five literal GET URLs are permitted: the PyTorch cu128 torch HTML index and four fixed PyPI version JSON endpoints. Request validation excludes wheel bodies, source archives, HEAD/Range/guessed metadata URLs, arbitrary links and the previously 403 wheel endpoint.",
+    "The Torch wheel URL and declared SHA may be retained as record-only metadata; attempting to pass that URL to the request client fails. No link is followed by the parser.",
+    "Direct HTTPS uses fixed headers without Cookie or Authorization, no inherited proxy selection and no redirect-following handler. This is a script transport choice, not a change to user network/proxy/security settings. Any denied access stops; no alternate route is authorized.",
+    "Attempts are counted before transport; there is no retry/fallback loop. Non-200 status, unexpected content type/encoding, malformed metadata, cap or deadline failure stops the collection.",
+    "The per-connection socket timeout is capped at 10 seconds and applies to connection/request/header/body socket operations. An independent parent waits through 110 seconds, then bounded termination/kill waits up to 120 seconds. OS-level start/suspension/final-write timing is explicitly not claimed hard-real-time.",
+    "Response-body bytes are read in bounded chunks. A body reaching 1 MiB is conservatively rejected; total response bodies are capped at 8 MiB, and the five-request/per-response constraint is stricter. Headers/TLS/wire overhead are not called body bytes.",
+    "Report errors are finite allowlisted codes. Raw exception messages/classes/reprs are not exported by collect, including secret-bearing unexpected exceptions.",
+    "PyPI parser rejects duplicate keys, NaN/Infinity/overflow, non-string Requires-Python/license fields, invalid or boolean wheel sizes, invalid SHA256 values, wrong fixed filenames/version/host and yanked entries.",
+    "The handoff now distinguishes nine executed cloud fake tests from live collection, which remains unexecuted. Future real Windows execution belongs to a separately authorized local dialogue using verified interpreter/output paths."
+  ],
+  "practical_result_limits": [
+    "May establish the official-index-declared Torch filename/hash and fixed PyPI top-level size/hash/release dependency/license declarations. It does not verify any wheel body.",
+    "Torch size, Requires-Dist and license remain UNKNOWN; transitive versions/hashes/bytes/licenses, markers/extras, wheel-specific metadata and total download size remain unresolved.",
+    "install_ready stays false, and success is explicitly named top_level_metadata_collected_not_install_ready. The artifact is not a lockfile, installer, compatibility certificate or CPU/GPU/model/training approval.",
+    "Native Windows supervisor start/termination/persistence behavior was not run here. worker_exit_confirmed is required before treating child exit as confirmed; missing/incomplete reports remain failures."
+  ],
+  "resolved_findings": [
+    "Replaced raw exception export with finite codes and verified secret-bearing exceptions are never stringified or echoed.",
+    "Added strict nullable-text JSON schema checks, duplicate/nonfinite rejection and fake deadline advancement through transport/header/body phases.",
+    "Updated unexecuted-test wording to the actual nine fake-test pass while preserving unexecuted live collection status."
+  ],
+  "remaining_source_review_blockers": [],
+  "actions_not_taken": [
+    "No external requests, denied-route retry, wheel/model download, package installation, user-PC access, native worker launch, CUDA, inference, training or publication."
+  ]
+}

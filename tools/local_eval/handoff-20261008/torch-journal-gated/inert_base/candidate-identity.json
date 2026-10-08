@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "candidate_id": "e09c42d2-71ac-4da8-9f68-782e85c9b4f6",
+  "status": "preparation_only",
+  "live_execution_authorized": false,
+  "source_only_hard_guard": true
+}

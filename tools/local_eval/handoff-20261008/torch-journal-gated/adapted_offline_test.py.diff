@@ -1,0 +1,182 @@
+--- inert_base/adapted_offline_test.py
++++ candidate/adapted_offline_test.py
+@@ -1,4 +1,4 @@
+-"""Adapted source-only regressions; originals remain unchanged.
++"""Adapted authorization-gated preparation regressions; originals remain unchanged.
+ 
+ Ten obsolete per-chunk download JSON cases are listed as superseded, never passed.
+ Journal faults are covered by journal_test.py. Subject loads only after all guards.
+@@ -1104,18 +1104,14 @@
+     def restored_connect_memory_leaves():
+         with Scenario(g, source_bytes) as s, MemoryNetwork() as net:
+             g['worker_claim']('download', s.work, s.out)
+-            connection = g['DirectHTTPS']('download-r2.pytorch.org', net.context, s.budget())
+-            before = dict(s.fs.data)
+-            for ignored in range(2):
+-                try:
+-                    connection.connect()
+-                except g['Failure'] as exc:
+-                    assert exc.code == 'OFFLINE_PREPARATION_ONLY'
+-                else:
+-                    raise AssertionError
+-            assert not net.events and not net.sent and connection.auto_open == 0
+-            assert s.fs.data == before and not s.requests
+-    test('source_only_connect_blocks_before_memory_dns_socket_tls', restored_connect_memory_leaves)
++            connection = g['DirectHTTPS']('download-r2.pytorch.org', net.context, g['Budget'](100, clock=lambda: 0))
++            connection.connect()
++            assert connection.sock is net.wire
++            assert net.events.count('dns') == net.events.count('socket') == net.events.count('connect') == 1
++            assert net.events.count('wrap_socket') == net.events.count('handshake') == 1
++            assert net.sent == []
++            connection.close()
++    test('source_connect_restored_uses_memory_dns_socket_tls', restored_connect_memory_leaves)
+ 
+     def candidate_cli_missing_authorization():
+         with Scenario(g, source_bytes) as s:
+@@ -1126,9 +1122,9 @@
+             before = dict(s.fs.data)
+             assert g['main']() == 1
+             result = json.loads(capture.getvalue())
+-            assert result['error_code'] == 'OFFLINE_PREPARATION_ONLY'
++            assert result['error_code'] == 'EXECUTION_NOT_AUTHORIZED'
+             assert s.fs.data == before and not s.fs.events and not s.requests and not s.static_calls
+-    test('source_only_cli_missing_authorization_stops_before_actions', candidate_cli_missing_authorization)
++    test('source_cli_missing_authorization_stops_before_actions', candidate_cli_missing_authorization)
+ 
+     for phase in ('connect', 'handshake'):
+         def case(phase=phase):
+@@ -1139,11 +1135,12 @@
+                 try:
+                     one.open(g['URL'], g['Budget'](100, clock=lambda: 0), lambda: None)
+                 except g['Failure'] as exc:
+-                    assert exc.code == 'OFFLINE_PREPARATION_ONLY'
+-                    assert exc.secondary_errors == []
++                    assert_diagnostic(exc.diagnostic, 'NETWORK_OPEN', errno=5, winerror=32)
++                    assert any(item['operation'] == 'CONNECTION_CLOSE' and item['errno'] == 28 and item['winerror'] == 112 for item in exc.secondary_errors)
+                 else:
+                     raise AssertionError
+-                assert not net.events
++                assert net.events.count('dns') == net.events.count('connect') == 1
++                assert net.events.count('handshake') == (1 if phase == 'handshake' else 0)
+                 assert not net.sent
+         test('restored_' + phase + '_first_error_survives_close_failure', case)
+ 
+@@ -1160,7 +1157,7 @@
+                 try:
+                     connection.connect()
+                 except g['Failure'] as exc:
+-                    assert exc.code == 'OFFLINE_PREPARATION_ONLY'
++                    assert exc.code in ('URL_NOT_ALLOWED', 'TLS_ERROR')
+                 else:
+                     raise AssertionError
+                 assert net.events == [] and not net.sent
+@@ -1173,7 +1170,7 @@
+             try:
+                 connection.connect()
+             except g['Failure'] as exc:
+-                assert exc.code == 'OFFLINE_PREPARATION_ONLY'
++                assert exc.code == 'EXECUTION_NOT_AUTHORIZED'
+             else:
+                 raise AssertionError
+             assert not net.events and not net.sent and not s.fs.events
+@@ -1182,47 +1179,55 @@
+     def direct_connect_single_use():
+         with Scenario(g, source_bytes) as s, MemoryNetwork() as net:
+             g['worker_claim']('download', s.work, s.out)
+-            connection = g['DirectHTTPS']('download-r2.pytorch.org', net.context, s.budget())
+-            before = dict(s.fs.data)
+-            for ignored in range(2):
+-                try:
+-                    connection.connect()
+-                except g['Failure'] as exc:
+-                    assert exc.code == 'OFFLINE_PREPARATION_ONLY'
+-                else:
+-                    raise AssertionError
+-            assert not net.events and not net.sent and connection.auto_open == 0
+-            assert s.fs.data == before and not s.requests
+-    test('source_only_connect_repeated_calls_never_reach_network', direct_connect_single_use)
++            connection = g['DirectHTTPS']('download-r2.pytorch.org', net.context, g['Budget'](100, clock=lambda: 0))
++            connection.connect()
++            before = list(net.events)
++            try:
++                connection.connect()
++            except g['Failure'] as exc:
++                assert exc.code == 'REQUEST_ALREADY_USED'
++            else:
++                raise AssertionError
++            assert before == net.events and connection.auto_open == 0
++            connection.close()
++    test('direct_connect_single_use_and_no_automatic_reconnect', direct_connect_single_use)
+ 
+     def restored_one_get_exact_wire():
++        actual_oneget = g['OneGET']
+         with Scenario(g, source_bytes) as s, MemoryNetwork() as net:
+             g['worker_claim']('download', s.work, s.out)
+-            connection = g['DirectHTTPS']('download-r2.pytorch.org', net.context, s.budget())
+-            before = dict(s.fs.data)
+-            for ignored in range(2):
+-                try:
+-                    connection.connect()
+-                except g['Failure'] as exc:
+-                    assert exc.code == 'OFFLINE_PREPARATION_ONLY'
+-                else:
+-                    raise AssertionError
+-            assert not net.events and not net.sent and connection.auto_open == 0
+-            assert s.fs.data == before and not s.requests
+-    test('source_only_direct_connection_has_no_wire_request', restored_one_get_exact_wire)
+-
+-    def restored_cli_supervise_dispatch_blocked():
++            one, sends = actual_oneget(), []
++            connection, response = one.open(g['URL'], g['Budget'](100, clock=lambda: 0), lambda: sends.append('GET'))
++            assert response.status == 200 and response.read1(3) == b'abc'
++            wire = b''.join(net.sent).decode('ascii')
++            assert wire.startswith('GET ' + urlsplit(g['URL']).path + ' HTTP/1.1\r\n')
++            lines = [line.lower() for line in wire.split('\r\n')]
++            assert not any(line.startswith(('authorization:', 'proxy-authorization:', 'cookie:', 'range:')) for line in lines)
++            assert 'accept-encoding: identity' in lines
++            assert wire.count('GET ') == 1 and sends == ['GET']
++            before = list(net.events)
++            try:
++                one.open(g['URL'], g['Budget'](100, clock=lambda: 0), lambda: sends.append('RETRY'))
++            except g['Failure'] as exc:
++                assert exc.code == 'REQUEST_ALREADY_USED'
++            else:
++                raise AssertionError
++            assert before == net.events and sends == ['GET']
++            response.close()
++            connection.close()
++    test('restored_oneget_real_http_path_one_fixed_request_no_sensitive_headers', restored_one_get_exact_wire)
++
++    def restored_cli_supervise_dispatch():
+         with Scenario(g, source_bytes) as s:
+             s.fs.data.pop(str(s.out / 'execution-started.json'))
+             calls, capture = [], io.StringIO()
+             s.patches.item(g, 'supervise', lambda work, out: calls.append((work, out)) or 0)
+             s.patches.attr(sys, 'stdout', capture)
+             s.patches.attr(sys, 'argv', ['run_check.py', 'supervise', str(s.work), str(s.out)])
+-            assert g['main']() == 1
+-            assert json.loads(capture.getvalue())['error_code'] == 'OFFLINE_PREPARATION_ONLY'
+-            assert calls == []
++            assert g['main']() == 0
++            assert calls == [(s.work, s.out)]
+             assert not s.requests and not s.fs.events and not s.static_calls
+-    test('source_only_cli_authorized_memory_supervise_dispatch_blocked', restored_cli_supervise_dispatch_blocked)
++    test('restored_cli_authorized_memory_supervise_dispatch', restored_cli_supervise_dispatch)
+ 
+     for phase in ('download', 'static'):
+         def case(phase=phase):
+@@ -1231,11 +1236,10 @@
+                 s.patches.item(g, 'worker', lambda *args: calls.append(args) or 0)
+                 s.patches.attr(sys, 'stdout', capture)
+                 s.patches.attr(sys, 'argv', ['run_check.py', 'worker', phase, str(s.work), str(s.out), '10'])
+-                assert g['main']() == 1
+-                assert json.loads(capture.getvalue())['error_code'] == 'OFFLINE_PREPARATION_ONLY'
+-                assert calls == []
++                assert g['main']() == 0
++                assert calls == [(phase, s.work, s.out, 10.0)]
+                 assert not s.requests and not s.fs.events and not s.static_calls
+-        test('source_only_cli_authorized_memory_' + phase + '_worker_dispatch_blocked', case)
++        test('restored_cli_authorized_memory_' + phase + '_worker_dispatch', case)
+ 
+     for filename in ('execution-started.json', 'request-attempt.json', 'static-attempt.json', 'report.json', 'payload.part', 'download-checkpoint.json'):
+         def case(filename=filename):

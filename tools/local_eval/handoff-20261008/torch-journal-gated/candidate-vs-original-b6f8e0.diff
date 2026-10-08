@@ -1,0 +1,424 @@
+--- original-b6f8e0/run_check.py
++++ candidate/run_check.py
+@@ -63,8 +63,8 @@
+     ssl.SSLCertVerificationError, socket.gaierror, http.client.HTTPException,
+     http.client.IncompleteRead, http.client.RemoteDisconnected, subprocess.TimeoutExpired)}
+ SECONDARY_MAX = 8
+-CANDIDATE_ID = '22af8bac-a4c3-4b48-94e3-3bd3333ea15b'
+-TEST_FILES = ('offline_test.py', 'safety_test.py')
++CANDIDATE_ID = '974d95a3-29c7-4294-9f46-33d247dd72f2'
++TEST_FILES = ('offline_test.py', 'safety_test.py', 'journal_test.py', 'adapted_offline_test.py', 'adapted_safety_test.py')
+ ERRORS = ERRORS | frozenset(('CANDIDATE_INVALID', 'CANDIDATE_PATH_INVALID',
+                             'EXECUTION_NOT_AUTHORIZED', 'STAGE_INVALID'))
+ 
+@@ -259,6 +259,312 @@
+         raise first from None
+     if not exclusive:
+         call('JSON_REPLACE', context, os.replace, pending, path)
++
++
++# Preparation derivative: original identity-bound authorization gates are restored.
++# No execution-authorization.json is supplied; this is not live authorization.
++SOURCE_ONLY = False
++JOURNAL_MAGIC = b'LTJR0001'
++JOURNAL_PAYLOAD_MAX = 2048
++JOURNAL_RECORD_MAX = 4102
++JOURNAL_BYTE_MAX = 8548576
++JOURNAL_INTERVAL = 1024 * 1024
++JOURNAL_FIELDS = frozenset(('schema', 'candidate_id', 'source_sha256', 'seq', 'event',
++    'request_count', 'get_send_attempts', 'http_status', 'received_bytes', 'written_bytes',
++    'actual_sha256', 'counters_complete', 'response_body_complete', 'sha256_matches_expected',
++    'status', 'first_error'))
++OPERATIONS = OPERATIONS | frozenset(('JOURNAL_OPEN', 'JOURNAL_WRITE', 'JOURNAL_FLUSH',
++    'JOURNAL_FSYNC', 'JOURNAL_CLOSE', 'JOURNAL_READ', 'FINAL_CHECKPOINT_FLUSH',
++    'FINAL_CHECKPOINT_FSYNC'))
++
++
++def journal_payload(state, seq, event):
++    result = {key: state[key] for key in JOURNAL_FIELDS - {'schema', 'seq', 'event'}}
++    result.update(schema=1, seq=seq, event=event)
++    return result
++
++
++def journal_payload_valid(item):
++    if type(item) is not dict or set(item) != JOURNAL_FIELDS:
++        return False
++    if type(item['schema']) is not int or item['schema'] != 1:
++        return False
++    for field in ('source_sha256', 'actual_sha256'):
++        value = item[field]
++        if type(value) is not str or len(value) != 64 or any(c not in '0123456789abcdef' for c in value):
++            return False
++    if item['candidate_id'] != CANDIDATE_ID:
++        return False
++    for field in ('seq', 'request_count', 'get_send_attempts', 'received_bytes', 'written_bytes'):
++        if type(item[field]) is not int:
++            return False
++    if not (0 <= item['seq'] < JOURNAL_RECORD_MAX and
++            0 <= item['get_send_attempts'] <= item['request_count'] <= 1 and
++            0 <= item['written_bytes'] <= item['received_bytes'] <= BODY_MAX):
++        return False
++    if item['http_status'] is not None and (type(item['http_status']) is not int or not 100 <= item['http_status'] <= 599):
++        return False
++    if any(type(item[k]) is not bool for k in ('counters_complete', 'response_body_complete', 'sha256_matches_expected')):
++        return False
++    if item['status'] not in ('running', 'completed', 'failed'):
++        return False
++    if item['event'] not in ('INITIAL', 'REQUEST', 'SENT', 'HEADERS', 'BYTE_SNAPSHOT', 'EOF', 'TERMINAL'):
++        return False
++    if item['event'] != 'TERMINAL' and item['status'] != 'running':
++        return False
++    if item['event'] == 'TERMINAL' and item['status'] not in ('completed', 'failed'):
++        return False
++    if item['first_error'] is not None:
++        restored = restored_failure({'first_error': item['first_error']})
++        if restored.diagnostic != item['first_error']:
++            return False
++    return True
++
++
++class ProgressJournal:
++    def __init__(self, path, state, budget, disk):
++        self.state, self.budget, self.disk = state, budget, disk
++        self.handle = None
++        self.poisoned = False
++        self.closed = False
++        self.count, self.size = 0, 0
++        self.digest = bytes(32)
++        self.next_threshold = JOURNAL_INTERVAL
++        self.phase = None
++        state.update(journal_format='LTJR0001', journal_frame_count=0,
++                     journal_last_digest=self.digest.hex(), journal_terminal_written=False,
++                     journal_handle_opened=False, journal_close_completed=False)
++        try:
++            budget.remaining()
++            call('DISK_CHECK', 'DOWNLOAD', disk.check, len(JOURNAL_MAGIC))
++            self.handle = call('JOURNAL_OPEN', 'DOWNLOAD', path.open, 'xb', buffering=0)
++            state['journal_handle_opened'] = True
++            self._write(JOURNAL_MAGIC)
++            self.size = len(JOURNAL_MAGIC)
++        except BaseException as exc:
++            self.poisoned = True
++            first = self.close(as_failure(exc))
++            raise first from None
++
++    def _write(self, body):
++        self.budget.remaining()
++        call('DISK_CHECK', 'DOWNLOAD', self.disk.check, len(body))
++        written = call('JOURNAL_WRITE', 'DOWNLOAD', self.handle.write, body)
++        if type(written) is not int or written != len(body):
++            fail('SHORT_WRITE', 'JOURNAL_WRITE', 'DOWNLOAD')
++        call('JOURNAL_FLUSH', 'DOWNLOAD', self.handle.flush)
++        descriptor = call('JOURNAL_FSYNC', 'DOWNLOAD', self.handle.fileno)
++        call('JOURNAL_FSYNC', 'DOWNLOAD', os.fsync, descriptor)
++
++    def append(self, state, event):
++        if self.poisoned or self.closed or self.handle is None:
++            fail('CHECKPOINT_INVALID', 'JOURNAL_WRITE', 'DOWNLOAD')
++        try:
++            if event == 'TERMINAL':
++                allowed = self.phase is not None and self.phase != 'TERMINAL' and (state['status'] != 'completed' or self.phase == 'EOF')
++            elif event == 'BYTE_SNAPSHOT':
++                allowed = (self.phase in ('HEADERS', 'BYTE_SNAPSHOT') and
++                           self.next_threshold <= state['written_bytes'] < self.next_threshold + CHUNK and
++                           state['written_bytes'] == state['received_bytes'])
++            elif event == 'EOF':
++                allowed = (self.phase in ('HEADERS', 'BYTE_SNAPSHOT') and state['response_body_complete'] is True and
++                           state['written_bytes'] < self.next_threshold)
++            else:
++                allowed = {'INITIAL': None, 'REQUEST': 'INITIAL', 'SENT': 'REQUEST', 'HEADERS': 'SENT'}.get(event, 'INVALID') == self.phase
++            if not allowed:
++                fail('CHECKPOINT_INVALID', 'JOURNAL_WRITE', 'DOWNLOAD')
++            item = journal_payload(state, self.count, event)
++            if not journal_payload_valid(item):
++                fail('CHECKPOINT_INVALID', 'JOURNAL_WRITE', 'DOWNLOAD')
++            body = json.dumps(item, sort_keys=True, separators=(',', ':'), ensure_ascii=True, allow_nan=False).encode('ascii')
++            if not 1 <= len(body) <= JOURNAL_PAYLOAD_MAX or self.count >= JOURNAL_RECORD_MAX:
++                fail('OUTPUT_ERROR', 'JOURNAL_WRITE', 'DOWNLOAD')
++            length = struct.pack('>I', len(body))
++            digest = hashlib.sha256(self.digest + length + body).digest()
++            frame = length + body + digest
++            if self.size + len(frame) > JOURNAL_BYTE_MAX:
++                fail('OUTPUT_ERROR', 'JOURNAL_WRITE', 'DOWNLOAD')
++            self._write(frame)
++            self.count += 1
++            self.size += len(frame)
++            self.digest = digest
++            self.phase = event
++            if event == 'BYTE_SNAPSHOT':
++                self.next_threshold += JOURNAL_INTERVAL
++            state.update(journal_frame_count=self.count, journal_last_digest=digest.hex())
++            if event == 'TERMINAL':
++                state['journal_terminal_written'] = True
++            self.budget.remaining()
++        except BaseException:
++            self.poisoned = True
++            raise
++
++    def save(self, state, context='PROGRESS'):
++        if context == 'PROGRESS_BEFORE_WRITE':
++            return
++        if context == 'PROGRESS_AFTER_WRITE':
++            if state['written_bytes'] >= self.next_threshold:
++                self.append(state, 'BYTE_SNAPSHOT')
++            return
++        event = {'PROGRESS_INITIAL': 'INITIAL', 'PROGRESS_REQUEST': 'REQUEST',
++                 'PROGRESS_SENT': 'SENT', 'PROGRESS_HEADERS': 'HEADERS',
++                 'PROGRESS_FINAL': 'EOF'}.get(context)
++        if event is None:
++            fail('CHECKPOINT_INVALID', 'JOURNAL_WRITE', 'DOWNLOAD')
++        self.append(state, event)
++
++    def finish(self, state):
++        if not self.poisoned:
++            self.append(state, 'TERMINAL')
++
++    def close(self, first=None):
++        if self.handle is not None:
++            handle, self.handle = self.handle, None
++            try:
++                call('JOURNAL_CLOSE', 'DOWNLOAD', handle.close)
++                self.closed = True
++                self.state['journal_close_completed'] = True
++            except BaseException as exc:
++                failure = as_failure(exc, 'JOURNAL_CLOSE', 'DOWNLOAD')
++                if first is None:
++                    first = failure
++                elif len(first.secondary_errors) < SECONDARY_MAX:
++                    first.secondary_errors.append(copy.deepcopy(failure.diagnostic))
++                else:
++                    first.secondary_errors_truncated = True
++        return first
++
++
++def read_journal(path, expected_source=None):
++    result = {'complete': False, 'frame_count': 0, 'last_digest': bytes(32).hex(),
++              'last': None, 'counters_complete': False, 'evidence': 'validated_prefix_lower_bound_only'}
++    try:
++        handle = None
++        raw, extra, first = b'', b'', None
++        try:
++            handle = call('JOURNAL_READ', 'SUPERVISOR', path.open, 'rb', buffering=0)
++            raw = call('JOURNAL_READ', 'SUPERVISOR', handle.read, JOURNAL_BYTE_MAX + 1)
++            if type(raw) is not bytes or len(raw) > JOURNAL_BYTE_MAX:
++                fail('CHECKPOINT_INVALID', 'JOURNAL_READ', 'SUPERVISOR')
++            # Reject a short read that happens to end at a valid terminal frame.
++            extra = call('JOURNAL_READ', 'SUPERVISOR', handle.read, 1)
++            if extra != b'':
++                fail('CHECKPOINT_INVALID', 'JOURNAL_READ', 'SUPERVISOR')
++        except BaseException as exc:
++            first = as_failure(exc, 'JOURNAL_READ', 'SUPERVISOR')
++        finally:
++            if handle is not None:
++                first = close_preserving(handle, first, 'JOURNAL_CLOSE', 'SUPERVISOR')
++        if first is not None:
++            return result
++        if len(raw) > JOURNAL_BYTE_MAX or raw[:8] != JOURNAL_MAGIC:
++            return result
++        at, digest, phase, threshold = 8, bytes(32), None, JOURNAL_INTERVAL
++        def pairs(items):
++            obj = {}
++            for key, value in items:
++                if key in obj:
++                    raise ValueError('duplicate')
++                obj[key] = value
++            return obj
++        while at < len(raw):
++            if result['frame_count'] >= JOURNAL_RECORD_MAX or len(raw) - at < 4:
++                return result
++            length_raw = raw[at:at + 4]
++            length = struct.unpack('>I', length_raw)[0]
++            if not 1 <= length <= JOURNAL_PAYLOAD_MAX or len(raw) - at < 4 + length + 32:
++                return result
++            body = raw[at + 4:at + 4 + length]
++            actual = raw[at + 4 + length:at + 4 + length + 32]
++            expected = hashlib.sha256(digest + length_raw + body).digest()
++            if actual != expected:
++                return result
++            item = json.loads(body.decode('utf-8'), object_pairs_hook=pairs,
++                              parse_constant=lambda _: (_ for _ in ()).throw(ValueError('constant')))
++            if (not journal_payload_valid(item) or item['seq'] != result['frame_count'] or
++                    (expected_source is not None and item['source_sha256'] != expected_source)):
++                return result
++            previous = result['last']
++            if previous is not None and (item['source_sha256'] != previous['source_sha256'] or
++                    any(item[k] < previous[k] for k in ('received_bytes', 'written_bytes', 'request_count', 'get_send_attempts'))):
++                return result
++            event = item['event']
++            if event == 'TERMINAL':
++                if phase is None or phase == 'TERMINAL' or (item['status'] == 'completed' and phase != 'EOF'):
++                    return result
++            elif event == 'BYTE_SNAPSHOT':
++                if phase not in ('HEADERS', 'BYTE_SNAPSHOT') or not threshold <= item['written_bytes'] < threshold + CHUNK:
++                    return result
++                if item['written_bytes'] != item['received_bytes']:
++                    return result
++                threshold += JOURNAL_INTERVAL
++            elif event == 'EOF':
++                if (phase not in ('HEADERS', 'BYTE_SNAPSHOT') or not item['response_body_complete'] or
++                        item['written_bytes'] >= threshold):
++                    return result
++            elif {'INITIAL': None, 'REQUEST': 'INITIAL', 'SENT': 'REQUEST', 'HEADERS': 'SENT'}.get(event, 'INVALID') != phase:
++                return result
++            if ((event == 'INITIAL' and (item['request_count'] != 0 or item['received_bytes'] != 0)) or
++                    (event == 'REQUEST' and (item['request_count'] != 1 or item['get_send_attempts'] != 0)) or
++                    (event in ('SENT', 'HEADERS', 'BYTE_SNAPSHOT', 'EOF') and item['get_send_attempts'] != 1)):
++                return result
++            phase, digest = event, actual
++            at += 4 + length + 32
++            result.update(frame_count=result['frame_count'] + 1, last_digest=digest.hex(), last=item)
++        result['complete'] = phase == 'TERMINAL'
++        return result
++    except BaseException:
++        return result
++
++
++def validate_download_journal(path, data):
++    journal = read_journal(path)
++    last = journal['last']
++    keys = JOURNAL_FIELDS - {'schema', 'seq', 'event'}
++    if (not journal['complete'] or last is None or data.get('journal_close_completed') is not True or
++            data.get('journal_terminal_written') is not True or data.get('journal_format') != 'LTJR0001' or
++            type(data.get('journal_frame_count')) is not int or data['journal_frame_count'] != journal['frame_count'] or
++            data.get('journal_last_digest') != journal['last_digest'] or
++            any(data.get(key) != last[key] for key in keys)):
++        fail('CHECKPOINT_INVALID', 'JOURNAL_READ', 'SUPERVISOR')
++    return journal
++
++
++def final_checkpoint(path, state, budget, disk):
++    if state.get('journal_handle_opened') is True and state.get('journal_close_completed') is not True:
++        fail('CHECKPOINT_INVALID', 'JSON_OPEN', 'FINAL_CHECKPOINT')
++    if disk is None:
++        fail('CHECKPOINT_INVALID', 'DISK_CHECK', 'FINAL_CHECKPOINT')
++    body = dumps(state, 'FINAL_CHECKPOINT')
++    handle, first = None, None
++    try:
++        budget.remaining()
++        call('DISK_CHECK', 'DOWNLOAD', disk.check, len(body))
++        handle = call('JSON_OPEN', 'FINAL_CHECKPOINT', path.open, 'xb', buffering=0)
++        written = call('JSON_WRITE', 'FINAL_CHECKPOINT', handle.write, body)
++        if type(written) is not int or written != len(body):
++            fail('SHORT_WRITE', 'JSON_WRITE', 'FINAL_CHECKPOINT')
++        call('FINAL_CHECKPOINT_FLUSH', 'FINAL_CHECKPOINT', handle.flush)
++        descriptor = call('FINAL_CHECKPOINT_FSYNC', 'FINAL_CHECKPOINT', handle.fileno)
++        call('FINAL_CHECKPOINT_FSYNC', 'FINAL_CHECKPOINT', os.fsync, descriptor)
++        budget.remaining()
++    except BaseException as exc:
++        first = as_failure(exc, 'JSON_WRITE', 'FINAL_CHECKPOINT')
++    finally:
++        if handle is not None:
++            first = close_preserving(handle, first, 'JSON_CLOSE', 'FINAL_CHECKPOINT')
++    try:
++        budget.remaining()
++    except BaseException as exc:
++        failure = as_failure(exc, 'DEADLINE_CHECK', 'FINAL_CHECKPOINT')
++        if first is None:
++            first = failure
++        elif len(first.secondary_errors) < SECONDARY_MAX:
++            first.secondary_errors.append(copy.deepcopy(failure.diagnostic))
++        else:
++            first.secondary_errors_truncated = True
++    if first is not None:
++        raise first from None
+ 
+ 
+ class Budget:
+@@ -602,6 +908,7 @@
+                 stage_result.get('data') != prior or prior.get('candidate_id') != CANDIDATE_ID or
+                 prior.get('source_sha256') != source_hash or not can_inspect(prior, True)):
+             fail('CHECKPOINT_INVALID')
++        validate_download_journal(work / 'download-progress.journal', prior)
+     write_json(out / filename, {'claimed_at': utc(), 'candidate_id': CANDIDATE_ID, 'stage': stage, 'url': URL,
+                'final_source_sha256': source_hash, 'single_attempt_consumed': True, 'retry_forbidden': True},
+                exclusive=True, context='ATTEMPT_MARKER')
+@@ -617,11 +924,14 @@
+     state['status'] = 'running'
+     state['started_at'] = utc()
+     start = time.monotonic()
+-    save = lambda obj, context='PROGRESS': write_json(checkpoint, obj, context=context)
++    journal = disk = None
++    def save(obj, context='PROGRESS'):
++        journal.save(obj, context)
+     conn = response = target = None
+     try:
+         disk = call('DISK_CHECK', 'DOWNLOAD', DiskGuard, work, out)
+         state['disk_start'] = call('DISK_CHECK', 'DOWNLOAD', disk.check, initial=True)
++        journal = ProgressJournal(work / 'download-progress.journal', state, budget, disk)
+         save(state, context='PROGRESS_INITIAL')
+         if (call('BODY_LAYOUT', 'DOWNLOAD', (out / PART).exists) or
+                 call('BODY_LAYOUT', 'DOWNLOAD', (out / FILENAME).exists)):
+@@ -674,11 +984,21 @@
+                     record_error(state, exc)
+     state['finished_at'] = utc()
+     state['elapsed_seconds'] = round(time.monotonic() - start, 6)
+-    # One terminal save is allowed after a distinct failed progress save. A failed
+-    # terminal save is never retried; that diagnostic then exists only in memory.
++    # Journal and terminal checkpoint are separate one-shot outputs, never retries.
++    if journal is not None:
++        try:
++            journal.finish(state)
++        except BaseException as exc:
++            record_error(state, exc)
++        close_error = journal.close()
++        if close_error is not None:
++            record_error(state, close_error)
++    if state.get('journal_handle_opened') is True and state.get('journal_close_completed') is not True:
++        state['checkpoint_persisted'] = False
++        return state
+     state['checkpoint_persisted'] = True
+     try:
+-        save(state, context='FINAL_CHECKPOINT')
++        final_checkpoint(checkpoint, state, budget, disk)
+     except BaseException as exc:
+         state['checkpoint_persisted'] = False
+         record_error(state, exc)
+@@ -1117,6 +1437,11 @@
+             download_result.get('error_code') is None and download_result.get('counters_complete') is True and
+             download_result.get('body_fsync_completed') is True and download_result.get('body_close_completed') is True and
+             download_result.get('first_error') is None and download_result.get('checkpoint_persisted') is True and
++            download_result.get('journal_format') == 'LTJR0001' and
++            download_result.get('journal_terminal_written') is True and
++            download_result.get('journal_close_completed') is True and
++            type(download_result.get('journal_frame_count')) is int and
++            1 <= download_result.get('journal_frame_count') <= JOURNAL_RECORD_MAX and
+             download_result.get('response_body_complete') is True and download_result.get('sha256_matches_expected') is True and
+             type(download_result.get('received_bytes')) is int and type(download_result.get('written_bytes')) is int and
+             0 < download_result.get('received_bytes') <= BODY_MAX and
+@@ -1255,6 +1580,14 @@
+                 if type(data) is not dict or data.get('status') not in ('completed', 'failed', 'running'):
+                     fail('CHECKPOINT_INVALID', 'CHECKPOINT_READ', 'SUPERVISOR')
+             except BaseException as exc:
++                if stage == 'download':
++                    evidence = read_journal(work / 'download-progress.journal', expected_source=report.get('final_source_sha256', 'INVALID'))
++                    stage_result['journal_crash_evidence'] = evidence
++                    last = evidence.get('last')
++                    if (type(last) is dict and last.get('event') == 'TERMINAL' and
++                            last.get('status') == 'failed' and last.get('first_error') is not None):
++                        record_error(stage_result, restored_failure(last))
++                        stage_result['worker_error_details'] = 'RECORDED_FROM_JOURNAL'
+                 raise Failure('CHECKPOINT_INVALID', 'CHECKPOINT_READ', 'SUPERVISOR', exc) from None
+             stage_result['data'] = data
+             terminal = (data.get('checkpoint_persisted') is True and
+@@ -1279,6 +1612,12 @@
+             elif data.get('first_error') is not None:
+                 record_error(stage_result, Failure('CHECKPOINT_INVALID', 'CHECKPOINT_READ', 'SUPERVISOR'))
+             else:
++                if stage == 'download':
++                    if data.get('candidate_id') != CANDIDATE_ID or data.get('source_sha256') != report.get('final_source_sha256'):
++                        fail('CHECKPOINT_INVALID', 'CHECKPOINT_READ', 'SUPERVISOR')
++                    validate_download_journal(work / 'download-progress.journal', data)
++                    if not can_inspect(data, True):
++                        fail('CHECKPOINT_INVALID', 'CHECKPOINT_READ', 'SUPERVISOR')
+                 stage_result['status'] = 'completed'
+                 success = True
+     except BaseException as exc:
+@@ -1308,7 +1647,7 @@
+                      'report.json', PART, FILENAME):
+         if (out / filename).exists():
+             fail('ATTEMPT_ALREADY_USED')
+-    for filename in ('download-checkpoint.json', 'static-checkpoint.json'):
++    for filename in ('download-checkpoint.json', 'static-checkpoint.json', 'download-progress.journal'):
+         if (work / filename).exists():
+             fail('ATTEMPT_ALREADY_USED')
+     source_hash = checked['source_hash']

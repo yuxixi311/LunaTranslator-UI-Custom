@@ -1,0 +1,534 @@
+{
+  "candidate_id": "e09c42d2-71ac-4da8-9f68-782e85c9b4f6",
+  "guard_counts": {
+    "disk": 0,
+    "exit": 0,
+    "file": 0,
+    "native": 0,
+    "network": 0,
+    "process": 0,
+    "thread": 0
+  },
+  "guards_installed_before_candidate_import": true,
+  "live_download_pass": false,
+  "native_candidate_execution": false,
+  "network_requests": 0,
+  "passed_count": 127,
+  "schema_version": 1,
+  "scope": "guarded_fake_only_journal_matrix",
+  "source_sha256": "bb1dc03d42731916b4959f3cd546863efb798b844493b5621f28f78bab77678a",
+  "status": "passed",
+  "test_count": 127,
+  "test_source_sha256": "f7b93c72db5b0c750a24390d1f99294a855df9d06906f58d35b36a499a39c3c4",
+  "tests": [
+    {
+      "name": "constants_exact_4102_records_8548576_bytes_limits_unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "deterministic_byte_schedule_0",
+      "status": "passed"
+    },
+    {
+      "name": "deterministic_byte_schedule_1",
+      "status": "passed"
+    },
+    {
+      "name": "deterministic_byte_schedule_1048575",
+      "status": "passed"
+    },
+    {
+      "name": "deterministic_byte_schedule_1048576",
+      "status": "passed"
+    },
+    {
+      "name": "deterministic_byte_schedule_1048577",
+      "status": "passed"
+    },
+    {
+      "name": "deterministic_byte_schedule_3145745",
+      "status": "passed"
+    },
+    {
+      "name": "deterministic_byte_schedule_4294967296",
+      "status": "passed"
+    },
+    {
+      "name": "one_million_single_byte_updates_emit_one_sample",
+      "status": "passed"
+    },
+    {
+      "name": "original_receive_disk_get_and_static_source_definitions_exactly_preserved",
+      "status": "passed"
+    },
+    {
+      "name": "complete_journal_independent_digest_and_final_consistency",
+      "status": "passed"
+    },
+    {
+      "name": "truncate_every_byte_of_magic_six_frames_and_terminal_digest",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_unknown_field_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_sequence_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_bool_counter_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_negative_counter_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_write_exceeds_receive_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_oversize_counter_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_candidate_identity_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_source_identity_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_hash_shape_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_unknown_diagnostic_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_duplicate_phase_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_phase_skipped_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_terminal_before_eof_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_receive_decreases_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_duplicate_key_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_nan_without_resynchronization",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_raw_magic",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_raw_zero_length",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_raw_oversize_length",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_raw_digest",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_raw_trailing_byte",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_raw_duplicate_terminal",
+      "status": "passed"
+    },
+    {
+      "name": "reader_reject_raw_file_cap",
+      "status": "passed"
+    },
+    {
+      "name": "fault_magic_JOURNAL_OPEN_permission",
+      "status": "passed"
+    },
+    {
+      "name": "fault_magic_JOURNAL_WRITE_permission",
+      "status": "passed"
+    },
+    {
+      "name": "fault_magic_JOURNAL_FLUSH_permission",
+      "status": "passed"
+    },
+    {
+      "name": "fault_magic_JOURNAL_FSYNC_permission",
+      "status": "passed"
+    },
+    {
+      "name": "fault_magic_write_short",
+      "status": "passed"
+    },
+    {
+      "name": "fault_magic_write_none",
+      "status": "passed"
+    },
+    {
+      "name": "fault_magic_write_bool",
+      "status": "passed"
+    },
+    {
+      "name": "fault_frame_JOURNAL_WRITE_permission",
+      "status": "passed"
+    },
+    {
+      "name": "fault_frame_JOURNAL_FLUSH_permission",
+      "status": "passed"
+    },
+    {
+      "name": "fault_frame_JOURNAL_FSYNC_permission",
+      "status": "passed"
+    },
+    {
+      "name": "fault_frame_write_short",
+      "status": "passed"
+    },
+    {
+      "name": "fault_frame_write_none",
+      "status": "passed"
+    },
+    {
+      "name": "fault_frame_write_bool",
+      "status": "passed"
+    },
+    {
+      "name": "journal_close_once_preserves_first_error_and_suppresses_final_open",
+      "status": "passed"
+    },
+    {
+      "name": "first_error_unchanged_eight_secondary_cap_and_new_enum_restore",
+      "status": "passed"
+    },
+    {
+      "name": "fault_final_open_permission_no_retry",
+      "status": "passed"
+    },
+    {
+      "name": "fault_final_write_permission_no_retry",
+      "status": "passed"
+    },
+    {
+      "name": "fault_final_flush_permission_no_retry",
+      "status": "passed"
+    },
+    {
+      "name": "fault_final_fsync_permission_no_retry",
+      "status": "passed"
+    },
+    {
+      "name": "fault_final_close_permission_no_retry",
+      "status": "passed"
+    },
+    {
+      "name": "fault_final_write_short",
+      "status": "passed"
+    },
+    {
+      "name": "fault_final_write_none",
+      "status": "passed"
+    },
+    {
+      "name": "fault_final_write_bool",
+      "status": "passed"
+    },
+    {
+      "name": "exclusive_final_close_before_open_flush_fsync_no_replace_collision",
+      "status": "passed"
+    },
+    {
+      "name": "final_serialize_nan_before_open",
+      "status": "passed"
+    },
+    {
+      "name": "final_serialize_json_cap_before_open",
+      "status": "passed"
+    },
+    {
+      "name": "truncate_final_json_at_every_semantic_byte",
+      "status": "passed"
+    },
+    {
+      "name": "terminal_consistency_journal_close_completed_False",
+      "status": "passed"
+    },
+    {
+      "name": "terminal_consistency_journal_terminal_written_False",
+      "status": "passed"
+    },
+    {
+      "name": "terminal_consistency_journal_frame_count_5",
+      "status": "passed"
+    },
+    {
+      "name": "terminal_consistency_journal_frame_count_True",
+      "status": "passed"
+    },
+    {
+      "name": "terminal_consistency_journal_last_digest_bbbbbbbb",
+      "status": "passed"
+    },
+    {
+      "name": "terminal_consistency_candidate_id_wrong",
+      "status": "passed"
+    },
+    {
+      "name": "terminal_consistency_source_sha256_bbbbbbbb",
+      "status": "passed"
+    },
+    {
+      "name": "terminal_consistency_received_bytes_2",
+      "status": "passed"
+    },
+    {
+      "name": "terminal_consistency_written_bytes_2",
+      "status": "passed"
+    },
+    {
+      "name": "terminal_consistency_status_failed",
+      "status": "passed"
+    },
+    {
+      "name": "terminal_consistency_actual_sha256_bbbbbbbb",
+      "status": "passed"
+    },
+    {
+      "name": "writer_record_cap_fails_before_write",
+      "status": "passed"
+    },
+    {
+      "name": "writer_byte_cap_fails_before_write",
+      "status": "passed"
+    },
+    {
+      "name": "writer_payload_cap_fails_before_write",
+      "status": "passed"
+    },
+    {
+      "name": "maximum_fixed_enum_lengths_and_int64_diagnostic_fit_payload",
+      "status": "passed"
+    },
+    {
+      "name": "deadline_consumed_during_journal_fsync",
+      "status": "passed"
+    },
+    {
+      "name": "deadline_consumed_during_final_fsync",
+      "status": "passed"
+    },
+    {
+      "name": "writer_duplicate_initial_poisons_before_write",
+      "status": "passed"
+    },
+    {
+      "name": "writer_duplicate_headers_poisons_before_write",
+      "status": "passed"
+    },
+    {
+      "name": "writer_duplicate_terminal_poisons_before_write",
+      "status": "passed"
+    },
+    {
+      "name": "final_checkpoint_without_disk_guard_refuses_before_open",
+      "status": "passed"
+    },
+    {
+      "name": "deadline_consumed_during_final_close_fails_after_single_close",
+      "status": "passed"
+    },
+    {
+      "name": "reader_bounded_handle_read_and_expected_source_binding",
+      "status": "passed"
+    },
+    {
+      "name": "journal_existing_path_exclusive_refusal_preserves_evidence",
+      "status": "passed"
+    },
+    {
+      "name": "reader_io_fault_journal_read_open_fail_closed",
+      "status": "passed"
+    },
+    {
+      "name": "reader_io_fault_journal_read_fail_closed",
+      "status": "passed"
+    },
+    {
+      "name": "reader_io_fault_journal_close_fail_closed",
+      "status": "passed"
+    },
+    {
+      "name": "disk_reject_journal_link",
+      "status": "passed"
+    },
+    {
+      "name": "disk_reject_journal_reparse",
+      "status": "passed"
+    },
+    {
+      "name": "disk_counts_journal_cluster_4096_near_False",
+      "status": "passed"
+    },
+    {
+      "name": "disk_counts_journal_cluster_4096_near_True",
+      "status": "passed"
+    },
+    {
+      "name": "disk_counts_journal_cluster_2097152_near_False",
+      "status": "passed"
+    },
+    {
+      "name": "disk_counts_journal_cluster_2097152_near_True",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_complete_exact_counters_close_order_no_progress_replace",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_journal_open_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_journal_write_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_journal_flush_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_journal_fsync_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_journal_close_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_body_write_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_body_flush_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_body_fsync_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_body_close_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_final_open_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_final_write_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_final_flush_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_final_fsync_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_fault_final_close_blocks_inspection",
+      "status": "passed"
+    },
+    {
+      "name": "fake_download_body_error_primary_close_secondary_no_final",
+      "status": "passed"
+    },
+    {
+      "name": "old_replace_permission_fixture_new_progress_never_calls_replace",
+      "status": "passed"
+    },
+    {
+      "name": "receive_order_counters_hash_disk_budget_normal",
+      "status": "passed"
+    },
+    {
+      "name": "receive_order_counters_hash_disk_budget_read_error",
+      "status": "passed"
+    },
+    {
+      "name": "receive_order_counters_hash_disk_budget_write_error",
+      "status": "passed"
+    },
+    {
+      "name": "irregular_short_reads_real_hash_exact_counters_single_crossing_sample",
+      "status": "passed"
+    },
+    {
+      "name": "body_max_model_no_extra_read_known_length_False",
+      "status": "passed"
+    },
+    {
+      "name": "body_max_model_no_extra_read_known_length_True",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_gate_valid",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_gate_missing_final",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_gate_nonzero",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_gate_incomplete_journal",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_gate_mismatch",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_gate_unconfirmed",
+      "status": "passed"
+    },
+    {
+      "name": "supervisor_gate_report_save_failure",
+      "status": "passed"
+    },
+    {
+      "name": "missing_final_failed_terminal_recovery_foreign_False",
+      "status": "passed"
+    },
+    {
+      "name": "missing_final_failed_terminal_recovery_foreign_True",
+      "status": "passed"
+    }
+  ],
+  "windows_reproduction": false
+}

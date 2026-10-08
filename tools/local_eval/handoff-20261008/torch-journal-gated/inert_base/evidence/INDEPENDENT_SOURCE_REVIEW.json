@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-10-08T15:20:46.299265+00:00",
+  "decision": "PASS_SOURCE_ONLY_JOURNAL_IMPLEMENTATION_AND_GUARDED_FAKE_TESTS",
+  "candidate_id": "e09c42d2-71ac-4da8-9f68-782e85c9b4f6",
+  "source": {
+    "file": "candidate/run_check.py",
+    "bytes": 86143,
+    "sha256": "bb1dc03d42731916b4959f3cd546863efb798b844493b5621f28f78bab77678a"
+  },
+  "original_source": {
+    "file": "original/run_check.py",
+    "bytes": 68695,
+    "sha256": "b6f8e0f56c6966bdef809da506c284adf1b5c61df88665be8132bc4a1a5401b4"
+  },
+  "approved_design": {
+    "file": "CHECKPOINT_JOURNAL_DESIGN_2026-10-08.md",
+    "bytes": 20469,
+    "sha256": "6ddbaa3b80ff665aa9c1f738385a44fee9f81bb3ad58064c946d03b9d9cdfbe1"
+  },
+  "test_sources": [
+    {
+      "file": "candidate/journal_test.py",
+      "bytes": 57607,
+      "sha256": "f7b93c72db5b0c750a24390d1f99294a855df9d06906f58d35b36a499a39c3c4"
+    },
+    {
+      "file": "candidate/adapted_offline_test.py",
+      "bytes": 70447,
+      "sha256": "05e361879edad1d588f90b26a28db97383e293e64b019c93550ec8890be5b360"
+    },
+    {
+      "file": "candidate/adapted_safety_test.py",
+      "bytes": 33466,
+      "sha256": "969f924f5bdc1599bb4779d3802fd705125c5c4480084b430016785d4ae34984"
+    },
+    {
+      "file": "candidate/offline_test.py",
+      "bytes": 66718,
+      "sha256": "02a9528bb4598723b5eba109fbc325390535c12e5afbecefefca5a3db3eb8d88"
+    },
+    {
+      "file": "candidate/safety_test.py",
+      "bytes": 32489,
+      "sha256": "c3df3b650b60a9d25f06b3046f678a03f9d0ce519ab6c76719df3b6fbccbd3a5"
+    }
+  ],
+  "independent_runs": [
+    {
+      "file": "independent-journal-results.json",
+      "bytes": 13273,
+      "sha256": "db2548d1c7756521c6437fd9c2aca1eeced0fb80779aeec608be21082b4ca080",
+      "passed": 127,
+      "superseded_not_passed": 0,
+      "guard_counts": {
+        "disk": 0,
+        "exit": 0,
+        "file": 0,
+        "native": 0,
+        "network": 0,
+        "process": 0,
+        "thread": 0
+      }
+    },
+    {
+      "file": "independent-adapted-offline-results.json",
+      "bytes": 13495,
+      "sha256": "cefba6e42e2b222ed8d3f1c7d2a8c3997234c03a19ca092f5534782c9d188df4",
+      "passed": 105,
+      "superseded_not_passed": 10,
+      "guard_counts": {
+        "network": 0,
+        "write": 0,
+        "process": 0,
+        "exit": 0,
+        "thread": 0,
+        "disk": 0,
+        "read": 0,
+        "native": 0
+      }
+    },
+    {
+      "file": "independent-adapted-safety-results.json",
+      "bytes": 8683,
+      "sha256": "070283833ab6dc6ac927014fa33fa9f7ef01baf63aa3735681ff84215e5cadcd",
+      "passed": 86,
+      "superseded_not_passed": 0,
+      "guard_counts": {
+        "network": 0,
+        "write": 0,
+        "process": 0,
+        "exit": 0,
+        "thread": 0,
+        "disk": 0,
+        "read": 0,
+        "native": 0
+      }
+    }
+  ],
+  "commands": [
+    "python3 -I -S -B candidate/journal_test.py",
+    "python3 -I -S -B candidate/adapted_offline_test.py",
+    "python3 -I -S -B candidate/adapted_safety_test.py"
+  ],
+  "test_summary": {
+    "passed_current_source_cases": 318,
+    "superseded_obsolete_cases_not_passed": 10,
+    "original_fixture_bytes_unchanged": true,
+    "original_fixture_entrypoints_not_executed": true,
+    "subject_loaded_only_after_test_guards": true,
+    "actual_network_requests": 0,
+    "native_probe_or_candidate_execution": false
+  },
+  "source_scope": {
+    "changed_original_definitions": [
+      "DirectHTTPS",
+      "can_inspect",
+      "download",
+      "main",
+      "run_stage",
+      "supervise",
+      "worker_claim"
+    ],
+    "added_definitions": [
+      "ProgressJournal",
+      "final_checkpoint",
+      "journal_payload",
+      "journal_payload_valid",
+      "read_journal",
+      "validate_download_journal"
+    ],
+    "selected_ast_identical_definitions": [
+      "receive_body",
+      "DiskGuard",
+      "disk_limits",
+      "Budget",
+      "OneGET",
+      "cleanup_partial",
+      "wait_process",
+      "static_check",
+      "Archive",
+      "write_json",
+      "restored_failure",
+      "record_error",
+      "worker"
+    ],
+    "other_top_level_changes": "New candidate ID, current-source TEST_FILES binding, journal constants/fields/operation enums and SOURCE_ONLY label. CLI main and DirectHTTPS.connect have unconditional preparation denials."
+  },
+  "reviewed_behavior": [
+    "Append-only exclusive unbuffered journal; one checked write then flush/fsync per magic/frame; durable bookkeeping advances only after successful fsync; failed writes/flush/fsync poison further append attempts.",
+    "4096 maximum byte snapshots plus six lifecycle frames, 4102 total; exact maximum logical journal size 8548576 bytes, enforced before writes. Terminal has capacity on the longest healthy path.",
+    "Writer rejects duplicate/out-of-order events. Reader validates digest chain, field types, schema, phase, counter monotonicity, sequence, lengths and frame/file limits; no scan-forward resynchronization.",
+    "Prefix counters are explicitly lower bounds and counters_complete=false. A journal, including a complete terminal frame, never independently authorizes success or static inspection.",
+    "Final checkpoint is attempted once only after confirmed journal closure, using exclusive creation, bounded serialization, checked write/flush/fsync/close. Failed close suppresses final output; parseable bytes after fsync/close failure do not override failed worker exit.",
+    "All original byte/hash/disk/time receive ordering is AST-identical. Only the save callback changes persistence sampling. The deliberate weaker process-crash evidence remains disclosed in the approved design.",
+    "Success requires the full original body/hash/count/fsync/close gates, current identity, consistent complete journal and final checkpoint, and confirmed zero worker exit with no timeout/error. Static worker_claim revalidates journal and supervisor evidence.",
+    "First bounded diagnostic remains primary; later failures are bounded secondary entries. Source-bound terminal failed records can preserve the first error when final JSON is missing, while checkpoint invalidity remains separately recorded and success stays false.",
+    "Original single-GET latch, disk/body limits, deadlines, watchdog and conservative partial cleanup are unchanged. Journal/final output use the same disk projection and budget; no retry, limit increase or evidence deletion is added."
+  ],
+  "resolved_findings": [
+    {
+      "finding": "Final output could bypass disk gating when DiskGuard construction failed.",
+      "resolution": "disk=None now fails before serialization/open with CHECKPOINT_INVALID at DISK_CHECK/FINAL_CHECKPOINT; the original construction failure remains primary."
+    },
+    {
+      "finding": "Journal read_bytes could exceed the read cap after a stale stat.",
+      "resolution": "One bounded cap+1 raw read and one bounded one-byte EOF check, with checked close; oversize/short-read hidden suffix fails closed. No unbounded read_bytes remains in the journal reader."
+    },
+    {
+      "finding": "Missing final JSON discarded an available journal terminal first error and prefix source identity was not checked.",
+      "resolution": "Crash recovery binds frames to report.final_source_sha256, retains a valid terminal failed first_error as primary, records CHECKPOINT_INVALID secondarily, and keeps the attempt failed."
+    },
+    {
+      "finding": "Final close could return after deadline without another check.",
+      "resolution": "Post-close budget check runs with earliest-error preservation; a delayed close cannot leave successful finalization."
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "This is source-preparation acceptance, not authorization to activate or execute a live attempt. Candidate CLI and DirectHTTPS remain hard-disabled.",
+    "No live Windows reproduction, original-failure-cause finding, durability guarantee, download success, package installation/import, or real network-path execution is established.",
+    "The adapted suites exercise memory/fake paths on the new source. Ten obsolete before/after-write JSON cases are explicitly superseded; original historical fixture receipts are not reused as current passes.",
+    "Hard-disabled networking tests prove preparation refusal. They do not independently exercise an enabled real DNS/TLS/HTTP path; any enabled derivative still needs separate review and actual authority.",
+    "Final manifests, execution-authorization documents, copied deployment and later live-attempt binding are outside this source/test receipt."
+  ],
+  "aggregate_test_receipt": {
+    "file": "candidate/offline-tests.json",
+    "bytes": 1940,
+    "sha256": "2135b304e832256fc5eefc1d8a87c6282b630ba9cda2c9e242313aa0dc1c4d78",
+    "tests_source_sha256": {
+      "offline_test.py": "02a9528bb4598723b5eba109fbc325390535c12e5afbecefefca5a3db3eb8d88",
+      "safety_test.py": "c3df3b650b60a9d25f06b3046f678a03f9d0ce519ab6c76719df3b6fbccbd3a5",
+      "journal_test.py": "f7b93c72db5b0c750a24390d1f99294a855df9d06906f58d35b36a499a39c3c4",
+      "adapted_offline_test.py": "05e361879edad1d588f90b26a28db97383e293e64b019c93550ec8890be5b360",
+      "adapted_safety_test.py": "969f924f5bdc1599bb4779d3802fd705125c5c4480084b430016785d4ae34984"
+    },
+    "verified_against_actual_files_and_three_author_receipts": true,
+    "historical_compatibility_field_not_counted_as_new_test": true
+  }
+}
